@@ -197,7 +197,7 @@ namespace DevilDaggersCore.Spawnset
 				{
 					int enemyType = BitConverter.ToInt32(spawnBuffer, bytePosition);
 					bytePosition += 4;
-					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition) * 0.75f;
+					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
 					if (enemyType > 9)
