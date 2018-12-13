@@ -1,4 +1,7 @@
-﻿namespace DevilDaggersCore.Spawnset
+﻿using DevilDaggersCore.Game;
+using System.Linq;
+
+namespace DevilDaggersCore.Spawnset
 {
 	/// <summary>
 	/// Simplified version of the <see cref="Game.Enemy"/> class.
@@ -6,13 +9,13 @@
 	/// </summary>
 	public class SpawnsetEnemy
 	{
-		public int ID { get; set; }
 		public string Name { get; set; }
 		public int Gems { get; set; }
 
-		public SpawnsetEnemy(int id, string name, int gems)
+		public Enemy Enemy { get { return Game.Game.GetEntities<Enemy>().Where(e => e.Name == Name).FirstOrDefault(); } }
+
+		public SpawnsetEnemy(string name, int gems)
 		{
-			ID = id;
 			Name = name;
 			Gems = gems;
 		}

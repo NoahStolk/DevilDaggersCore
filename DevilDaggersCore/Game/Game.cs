@@ -9,12 +9,26 @@ namespace DevilDaggersCore.Game
 	{
 		//public static Death Disintegrated = new Death("DISINTEGRATED", "FF3131", 19); // V3 beta???
 
-		public static GameVersion[] GameVersions =
+		public const string DEFAULT_GAME_VERSION = "V3";
+
+		public static Dictionary<string, GameVersion> GameVersions = new Dictionary<string, GameVersion>
 		{
-			new GameVersion(typeof(V1), new DateTime(2016, 2, 18)),
-			new GameVersion(typeof(V2), new DateTime(2016, 7, 5)),
-			new GameVersion(typeof(V3), new DateTime(2016, 9, 19))
+			{ "V1", new GameVersion(typeof(V1), new DateTime(2016, 2, 18)) },
+			{ "V2", new GameVersion(typeof(V2), new DateTime(2016, 7, 5)) },
+			{ "V3", new GameVersion(typeof(V3), new DateTime(2016, 9, 19)) }
 		};
+
+		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
+		{
+			GameVersion gameVersion = GameVersions["V1"];
+			for (int i = 0; i < GameVersions.Count; i++)
+			{
+				string key = $"V{i + 1}";
+				if (GameVersions[key].ReleaseDate < dateTime)
+					gameVersion = GameVersions[key];
+			}
+			return gameVersion;
+		}
 
 		public static class V1
 		{
@@ -32,11 +46,11 @@ namespace DevilDaggersCore.Game
 			public static Death Fallen = new Death("FALLEN", "DDDDDD", 0);
 			public static Death Swarmed = new Death("SWARMED", "352710", 1);
 			public static Death Impaled = new Death("IMPALED", "433114", 2);
-			public static Death Infested = new Death("INFESTED", "DCCB00", 4);
+			public static Death Infested = new Death("INFESTED", "99A100", 4);
 			public static Death Purged = new Death("PURGED", "4E3000", 6);
-			public static Death Sacrificed = new Death("SACRIFICED", "AF6B00", 8);
+			public static Death Sacrificed = new Death("SACRIFICED", "804E00", 8);
 			public static Death Eviscerated = new Death("EVISCERATED", "837E75", 9);
-			public static Death Annihilated = new Death("ANNIHILATED", "478B41", 10);
+			public static Death Annihilated = new Death("ANNIHILATED", "F00000", 10);
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 			public static Death Dismembered = new Death("DISMEMBERED", "804E00", 18);
@@ -44,7 +58,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1);
 			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Sacrificed, 2, 1);
 			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25);
-			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Eviscerated, 50, 50);
+			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Eviscerated, 50, 50); //TODO: Different color?
 			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500 /*TODO: A lot less...*/, 6, Devastated, 1500, 1500);
 			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, 3);
 
@@ -79,7 +93,7 @@ namespace DevilDaggersCore.Game
 			public static Death Swarmed = new Death("SWARMED", "352710", 1);
 			public static Death Impaled = new Death("IMPALED", "433114", 2);
 			public static Death Gored = new Death("GORED", "6E5021", 3);
-			public static Death Infested = new Death("INFESTED", "DCCB00", 4);
+			public static Death Infested = new Death("INFESTED", "99A100", 4);
 			public static Death Opened = new Death("OPENED", "976E2E", 5);
 			public static Death Purged = new Death("PURGED", "4E3000", 6);
 			public static Death Desecrated = new Death("DESECRATED", "804E00", 7);
@@ -94,7 +108,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1);
 			public static Enemy Squid3 = new Enemy("Squid III", "AF6B00", 90, 3, Sacrificed, 3, 9);
 			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25);
-			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Annihilated, 50, 50);
+			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Annihilated, 50, 50); //TODO: Different color?
 			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Devastated, 1500, 1500);
 			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, 3);
 			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenmonated, 20, 20);
@@ -175,13 +189,13 @@ namespace DevilDaggersCore.Game
 			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Infested, 1, 1, SpiderEgg1, SpiderEgg2);
 		}
 
-		public static Dictionary<Enemy, string> EnemyInfo { get; set; } = new Dictionary<Enemy, string>
+		private static Dictionary<Enemy, string> EnemyInfo { get; set; } = new Dictionary<Enemy, string>
 		{
 			{ V3.Squid1, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull II every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V3.Squid2, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull III every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V3.Squid3, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 15 Skull Is and 1 Skull IV every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V3.Centipede, "Emerges and flies idly for a while, then starts chasing the player\nRegularly dives down and moves underground for a while" },
-			{ V3.Gigapede, "Emerges and starts chasing the player immediately" },
+			{ V3.Gigapede, "Emerges and starts chasing the player immediately" }, /*TODO: Add V1 behavior and V1 and V2 image*/
 			{ V3.Ghostpede, "Emerges and starts flying in circles high above the arena\nAttracts and consumes all homing daggers, making them useless" },
 			{ V3.Leviathan, "Attracts and transmutes all skulls every 20 seconds\nRotates counter-clockwise\nDrops The Orb after dying" },
 			{ V3.Thorn, "Takes up space" },
@@ -203,23 +217,31 @@ namespace DevilDaggersCore.Game
 			{ V2.Andras, "Unfinished enemy that was never added to the game\nOnly appears in V2, can only be spawned using an edited spawnset\nHas its own sounds\nUses the model for Skull III, but is smaller in size\nDoes nothing but attract and consume all homing daggers like Ghostpede \nOnly takes damage when shot from above, so the player will need to daggerjump\nYou don't die when touching it" }
 		};
 
+		public static string GetEnemyInfo(Enemy enemy)
+		{
+			foreach (KeyValuePair<Enemy, string> kvp in EnemyInfo)
+				if (kvp.Key.Name == enemy.Name)
+					return kvp.Value;
+			throw new Exception($"Could not find enemy info for Enemy with name \"{enemy.Name}\".");
+		}
+
 		public static List<T> GetEntities<T>(params GameVersion[] gameVersions)
 			where T : DevilDaggersEntity
 		{
 			// If no game versions are specified, use all
 			if (gameVersions.Length == 0)
-				gameVersions = GameVersions;
+				gameVersions = GameVersions.Values.ToArray();
 
 			List<T> entities = new List<T>();
 
 			foreach (GameVersion gameVersion in gameVersions)
 			{
-				foreach (PropertyInfo prop in gameVersion.Type.GetProperties())
+				foreach (FieldInfo field in gameVersion.Type.GetFields())
 				{
-					if (prop.PropertyType == typeof(T))
+					if (field.FieldType == typeof(T))
 					{
 						bool add = true;
-						T entity = prop.GetValue(prop) as T;
+						T entity = field.GetValue(field) as T;
 						foreach (T e in entities)
 						{
 							if (e.Name == entity.Name)
@@ -238,11 +260,30 @@ namespace DevilDaggersCore.Game
 			return entities;
 		}
 
-		public static Death GetDeathFromDeathName(string deathName)
+		public static Death GetDeathFromDeathName(string deathName, params GameVersion[] gameVersions)
 		{
-			return GetEntities<Death>().Where(d => d.Name == deathName).FirstOrDefault();
+			try
+			{
+				return GetEntities<Death>(gameVersions).Where(d => d.Name == deathName).First();
+			}
+			catch
+			{
+				//throw new Exception($"Could not parse string \"{deathName}\" to a valid Death object.");
+				return V3.Unknown;
+			}
+		}
 
-			//throw new Exception($"Could not parse death type \"{deathName}\" to a valid death type.");
+		public static Death GetDeathFromDeathType(int deathType, params GameVersion[] gameVersions)
+		{
+			try
+			{
+				return GetEntities<Death>(gameVersions).Where(d => d.DeathType == deathType).First();
+			}
+			catch
+			{
+				//throw new Exception($"Could not find Death object with death type: {deathType}.");
+				return V3.Unknown;
+			}
 		}
 
 		public static Dagger GetDaggerFromTime(int time)

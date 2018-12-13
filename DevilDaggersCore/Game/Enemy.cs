@@ -22,7 +22,7 @@
 
 		public int GetGemHP()
 		{
-			return Gems > 1 ? HP / Gems : HP;
+			return HP / Gems;
 		}
 	}
 }

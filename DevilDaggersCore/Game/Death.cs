@@ -2,12 +2,12 @@
 {
 	public class Death : DevilDaggersEntity
 	{
-		public int LeaderboardType { get; set; }
+		public int DeathType { get; set; }
 
-		public Death(string name, string colorCode, int leaderboardType)
+		public Death(string name, string colorCode, int deathType)
 			: base(name, colorCode)
 		{
-			LeaderboardType = leaderboardType;
+			DeathType = deathType;
 		}
 	}
 }

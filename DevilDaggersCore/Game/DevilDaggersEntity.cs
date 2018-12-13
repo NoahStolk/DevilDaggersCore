@@ -16,13 +16,13 @@ namespace DevilDaggersCore.Game
 
 		public IEnumerable<GameVersion> GetAppearances()
 		{
-			foreach (GameVersion gameVersion in Game.GameVersions)
+			foreach (GameVersion gameVersion in Game.GameVersions.Values)
 			{
-				foreach (PropertyInfo prop in gameVersion.Type.GetProperties())
+				foreach (FieldInfo field in gameVersion.Type.GetFields())
 				{
-					if (prop.PropertyType == GetType())
+					if (field.FieldType == GetType())
 					{
-						DevilDaggersEntity dde = prop.GetValue(prop) as DevilDaggersEntity;
+						DevilDaggersEntity dde = field.GetValue(field) as DevilDaggersEntity;
 						if (dde.Name == Name)
 							yield return gameVersion;
 					}
