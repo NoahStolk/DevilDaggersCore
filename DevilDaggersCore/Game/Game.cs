@@ -9,27 +9,6 @@ namespace DevilDaggersCore.Game
 	{
 		//public static Death Disintegrated = new Death("DISINTEGRATED", "FF3131", 19); // V3 beta???
 
-		public const string DEFAULT_GAME_VERSION = "V3";
-
-		public static Dictionary<string, GameVersion> GameVersions = new Dictionary<string, GameVersion>
-		{
-			{ "V1", new GameVersion(typeof(V1), new DateTime(2016, 2, 18)) },
-			{ "V2", new GameVersion(typeof(V2), new DateTime(2016, 7, 5)) },
-			{ "V3", new GameVersion(typeof(V3), new DateTime(2016, 9, 19)) }
-		};
-
-		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
-		{
-			GameVersion gameVersion = GameVersions["V1"];
-			for (int i = 0; i < GameVersions.Count; i++)
-			{
-				string key = $"V{i + 1}";
-				if (GameVersions[key].ReleaseDate < dateTime)
-					gameVersion = GameVersions[key];
-			}
-			return gameVersion;
-		}
-
 		public static class V1
 		{
 			public static Dagger Default = new Dagger("Default", "444444", null);
@@ -212,15 +191,44 @@ namespace DevilDaggersCore.Game
 			{ V3.SpiderEgg1, "Hatches into 5 Spiderlings after 10 seconds" },
 			{ V3.SpiderEgg2, "Hatches into 5 Spiderlings after 10 seconds" },
 			{ V3.Spiderling, "Darts towards the player in bursts with random offsets" },
-			{ V3.TheOrb, "Behaves like an eyeball, will look at the player, then attract and transmute all skulls every 2.5 seconds\nBecomes stunned under constant fire, cannot look or attract skulls while stunned" },
-
-			{ V2.Andras, "Unfinished enemy that was never added to the game\nOnly appears in V2, can only be spawned using an edited spawnset\nHas its own sounds\nUses the model for Skull III, but is smaller in size\nDoes nothing but attract and consume all homing daggers like Ghostpede \nOnly takes damage when shot from above, so the player will need to daggerjump\nYou don't die when touching it" }
+			{ V3.TheOrb, "Behaves like an eyeball, will look at the player, then attract and transmute all skulls every 2.5 seconds\nBecomes stunned under constant fire, cannot look or attract skulls while stunned" }
 		};
+
+		public const string DEFAULT_GAME_VERSION = "V3";
+
+		public static Dictionary<string, GameVersion> GameVersions = new Dictionary<string, GameVersion>
+		{
+			{ "V1", new GameVersion(typeof(V1), new DateTime(2016, 2, 18)) },
+			{ "V2", new GameVersion(typeof(V2), new DateTime(2016, 7, 5)) },
+			{ "V3", new GameVersion(typeof(V3), new DateTime(2016, 9, 19)) }
+		};
+
+		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
+		{
+			GameVersion gameVersion = GameVersions["V1"];
+			for (int i = 0; i < GameVersions.Count; i++)
+			{
+				string key = $"V{i + 1}";
+				if (GameVersions[key].ReleaseDate < dateTime)
+					gameVersion = GameVersions[key];
+			}
+			return gameVersion;
+		}
+
+		public static bool TryGetGameVersionFromString(string gameVersionString, out GameVersion gameVersion)
+		{
+			if (!string.IsNullOrEmpty(gameVersionString))
+				if (GameVersions.TryGetValue(gameVersionString, out gameVersion))
+					return true;
+
+			gameVersion = GameVersions[DEFAULT_GAME_VERSION];
+			return false;
+		}
 
 		public static string GetEnemyInfo(Enemy enemy)
 		{
 			foreach (KeyValuePair<Enemy, string> kvp in EnemyInfo)
-				if (kvp.Key.Name == enemy.Name)
+				if (kvp.Key == enemy)
 					return kvp.Value;
 			throw new Exception($"Could not find enemy info for Enemy with name \"{enemy.Name}\".");
 		}
