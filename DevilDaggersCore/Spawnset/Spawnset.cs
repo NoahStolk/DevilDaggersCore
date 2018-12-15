@@ -7,13 +7,13 @@ namespace DevilDaggersCore.Spawnset
 {
 	public class Spawnset
 	{
-		public const int HEADER_BUFFER_SIZE = 36;
-		public const int ARENA_BUFFER_SIZE = 10404;
-		public const int SPAWNS_OFFSET_BUFFER_SIZE = 40; // The amount of bytes between the arena and the spawns, no idea what they are used for.
-		public const int SPAWN_LENGTH = 28; // The amount of bytes of a spawn.
+		public const int HeaderBufferSize = 36;
+		public const int ArenaBufferSize = 10404;
+		public const int SpawnsOffsetBufferSize = 40; // The amount of bytes between the arena and the spawns, no idea what they are used for.
+		public const int SpawnLength = 28; // The amount of bytes of a spawn.
 
-		public const int ARENA_WIDTH = 51;
-		public const int ARENA_HEIGHT = 51;
+		public const int ArenaWidth = 51;
+		public const int ArenaHeight = 51;
 
 		public static Dictionary<int, SpawnsetEnemy> Enemies { get; set; } = new Dictionary<int, SpawnsetEnemy>
 		{
@@ -35,40 +35,29 @@ namespace DevilDaggersCore.Spawnset
 			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
 		}
 
-		public SortedDictionary<int, Spawn> Spawns { get; set; }
-		public float[,] ArenaTiles { get; set; }
-		public float ShrinkStart { get; set; }
-		public float ShrinkEnd { get; set; }
-		public float ShrinkRate { get; set; }
-		public float Brightness { get; set; }
-
-		//public Spawnset()
-		//{
-		//	Spawns = new SortedDictionary<int, Spawn>();
-		//	ArenaTiles = new float[ARENA_WIDTH, ARENA_HEIGHT];
-		//	ShrinkStart = 50;
-		//	ShrinkEnd = 20;
-		//	ShrinkRate = 0.025f;
-		//	Brightness = 60;
-
-		//	byte[] defaultArenaBuffer = new byte[ARENA_BUFFER_SIZE];
-		//	FileStream fs = new FileStream(Constants.SurvivalPath, FileMode.Open, FileAccess.Read)
-		//	{
-		//		Position = HEADER_BUFFER_SIZE
-		//	};
-		//	fs.Read(defaultArenaBuffer, 0, ARENA_BUFFER_SIZE);
-		//	fs.Close();
-
-		//	for (int i = 0; i < defaultArenaBuffer.Length; i += 4)
-		//	{
-		//		int x = i / (ARENA_WIDTH * 4);
-		//		int y = i / 4 % ARENA_HEIGHT;
-		//		ArenaTiles[x, y] = BitConverter.ToSingle(defaultArenaBuffer, i);
-		//	}
-		//}
+		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
+		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
+		public float ShrinkStart { get; set; } = 50;
+		public float ShrinkEnd { get; set; } = 20;
+		public float ShrinkRate { get; set; } = 0.025f;
+		public float Brightness { get; set; } = 60;
 
 		public Spawnset()
 		{
+			//byte[] defaultArenaBuffer = new byte[ARENA_BUFFER_SIZE];
+			//FileStream fs = new FileStream(Constants.SurvivalPath, FileMode.Open, FileAccess.Read)
+			//{
+			//	Position = HEADER_BUFFER_SIZE
+			//};
+			//fs.Read(defaultArenaBuffer, 0, ARENA_BUFFER_SIZE);
+			//fs.Close();
+
+			//for (int i = 0; i < defaultArenaBuffer.Length; i += 4)
+			//{
+			//	int x = i / (ARENA_WIDTH * 4);
+			//	int y = i / 4 % ARENA_HEIGHT;
+			//	ArenaTiles[x, y] = BitConverter.ToSingle(defaultArenaBuffer, i);
+			//}
 		}
 
 		public Spawnset(SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness)
@@ -81,21 +70,14 @@ namespace DevilDaggersCore.Spawnset
 			Brightness = brightness;
 		}
 
-		public bool TryGetBytes(Stream stream, out byte[] bytes)
+		public bool TryGetBytes(out byte[] bytes)
 		{
 			try
 			{
 				// Set the file values for reading V3 spawnsets
-				byte[] headerBuffer = new byte[HEADER_BUFFER_SIZE];
-				byte[] arenaBuffer = new byte[ARENA_BUFFER_SIZE];
-				byte[] spawnBuffer = new byte[SPAWNS_OFFSET_BUFFER_SIZE + Spawns.Count * SPAWN_LENGTH];
-
-				// Read the file and write the data into the buffers, then close the file since we do not need it anymore
-				stream.Read(headerBuffer, 0, HEADER_BUFFER_SIZE);
-				stream.Read(arenaBuffer, 0, ARENA_BUFFER_SIZE);
-				stream.Read(spawnBuffer, 0, SPAWNS_OFFSET_BUFFER_SIZE);
-
-				stream.Close();
+				byte[] headerBuffer = new byte[HeaderBufferSize];
+				byte[] arenaBuffer = new byte[ArenaBufferSize];
+				byte[] spawnBuffer = new byte[SpawnsOffsetBufferSize + Spawns.Count * SpawnLength];
 
 				// Get the settings bytes and copy them into the header buffer
 				byte[] shrinkEndBytes = BitConverter.GetBytes(ShrinkEnd);
@@ -115,8 +97,8 @@ namespace DevilDaggersCore.Spawnset
 				// Get the arena bytes and copy them into the arena buffer
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
-					int x = i / (ARENA_WIDTH * 4);
-					int y = i / 4 % ARENA_HEIGHT;
+					int x = i / (ArenaWidth * 4);
+					int y = i / 4 % ArenaHeight;
 
 					byte[] tileBytes = BitConverter.GetBytes(ArenaTiles[x, y]);
 
@@ -143,11 +125,11 @@ namespace DevilDaggersCore.Spawnset
 					}
 					byte[] enemyBytes = BitConverter.GetBytes(enemyType);
 					for (int i = 0; i < enemyBytes.Length; i++)
-						spawnBuffer[SPAWNS_OFFSET_BUFFER_SIZE + kvp.Key * SPAWN_LENGTH + i] = enemyBytes[i];
+						spawnBuffer[SpawnsOffsetBufferSize + kvp.Key * SpawnLength + i] = enemyBytes[i];
 
 					byte[] delayBytes = BitConverter.GetBytes((float)kvp.Value.Delay);
 					for (int i = 0; i < delayBytes.Length; i++)
-						spawnBuffer[SPAWNS_OFFSET_BUFFER_SIZE + kvp.Key * SPAWN_LENGTH + 4 + i] = delayBytes[i];
+						spawnBuffer[SpawnsOffsetBufferSize + kvp.Key * SpawnLength + 4 + i] = delayBytes[i];
 				}
 
 				// Create the file buffer
@@ -178,14 +160,14 @@ namespace DevilDaggersCore.Spawnset
 			try
 			{
 				// Set the file values for reading V3 spawnsets
-				int spawnBufferSize = (int)stream.Length - (HEADER_BUFFER_SIZE + ARENA_BUFFER_SIZE);
-				byte[] headerBuffer = new byte[HEADER_BUFFER_SIZE];
-				byte[] arenaBuffer = new byte[ARENA_BUFFER_SIZE];
+				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize);
+				byte[] headerBuffer = new byte[HeaderBufferSize];
+				byte[] arenaBuffer = new byte[ArenaBufferSize];
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
 				// Read the file and write the data into the buffers, then close the file since we do not need it anymore
-				stream.Read(headerBuffer, 0, HEADER_BUFFER_SIZE);
-				stream.Read(arenaBuffer, 0, ARENA_BUFFER_SIZE);
+				stream.Read(headerBuffer, 0, HeaderBufferSize);
+				stream.Read(arenaBuffer, 0, ArenaBufferSize);
 				stream.Read(spawnBuffer, 0, spawnBufferSize);
 
 				stream.Close();
@@ -197,11 +179,11 @@ namespace DevilDaggersCore.Spawnset
 				float brightness = BitConverter.ToSingle(headerBuffer, 20);
 
 				// Set the arena values
-				float[,] arenaTiles = new float[ARENA_WIDTH, ARENA_HEIGHT];
+				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
-					int x = i / (ARENA_WIDTH * 4);
-					int y = (i / 4) % ARENA_HEIGHT;
+					int x = i / (ArenaWidth * 4);
+					int y = (i / 4) % ArenaHeight;
 					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
 				}
 
@@ -209,7 +191,7 @@ namespace DevilDaggersCore.Spawnset
 				SortedDictionary<int, Spawn> spawns = new SortedDictionary<int, Spawn>();
 				int spawnIndex = 0;
 
-				int bytePosition = SPAWNS_OFFSET_BUFFER_SIZE;
+				int bytePosition = SpawnsOffsetBufferSize;
 				while (bytePosition < spawnBufferSize)
 				{
 					int enemyType = BitConverter.ToInt32(spawnBuffer, bytePosition);
@@ -250,19 +232,19 @@ namespace DevilDaggersCore.Spawnset
 		{
 			try
 			{
-				int spawnBufferSize = (int)stream.Length - (HEADER_BUFFER_SIZE + ARENA_BUFFER_SIZE + SPAWNS_OFFSET_BUFFER_SIZE);
+				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize);
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
-				stream.Position += HEADER_BUFFER_SIZE + ARENA_BUFFER_SIZE + SPAWNS_OFFSET_BUFFER_SIZE;
+				stream.Position += HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize;
 				stream.Read(spawnBuffer, 0, spawnBufferSize);
 				stream.Close();
 
 				int loopBegin = 0;
-				for (int i = spawnBuffer.Length - SPAWN_LENGTH; i > 0; i -= SPAWN_LENGTH)
+				for (int i = spawnBuffer.Length - SpawnLength; i > 0; i -= SpawnLength)
 				{
 					if (BitConverter.ToInt32(spawnBuffer, i) == -1)
 					{
-						loopBegin = i / SPAWN_LENGTH;
+						loopBegin = i / SpawnLength;
 						break;
 					}
 				}
@@ -271,16 +253,16 @@ namespace DevilDaggersCore.Spawnset
 				int loopSpawns = 0;
 				float nonLoopSeconds = 0;
 				float loopSeconds = 0;
-				for (int j = 0; j < spawnBuffer.Length; j += SPAWN_LENGTH)
+				for (int j = 0; j < spawnBuffer.Length; j += SpawnLength)
 				{
-					if (j < loopBegin * SPAWN_LENGTH)
+					if (j < loopBegin * SpawnLength)
 						nonLoopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
 					else
 						loopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
 
 					if (BitConverter.ToInt32(spawnBuffer, j) != -1)
 					{
-						if (j < loopBegin * SPAWN_LENGTH)
+						if (j < loopBegin * SpawnLength)
 							nonLoopSpawns++;
 						else
 							loopSpawns++;
