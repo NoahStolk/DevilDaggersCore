@@ -45,7 +45,6 @@ namespace DevilDaggersCore.Game
 			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, null, Squid1);
 			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Dismembered, 1, null, Squid2);
 
-			/*In V1, Leviathan turns Skull I into Transmuted Skull II, Skull II into Transmuted Skull III, Skull III into Transmuted Skull IV*/
 			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 10, 1, Impaled, 1, null, Leviathan);
 			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 20, 1, Dismembered, 2, null, Leviathan);
 			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 100, 0, Annihilated, 10, null, Leviathan);

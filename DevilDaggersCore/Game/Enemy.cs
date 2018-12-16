@@ -24,5 +24,15 @@
 		{
 			return HP / Gems;
 		}
+
+		public string GetGemHPString()
+		{
+			return $"({GetGemHP()} x {Gems})";
+		}
+
+		public Enemy Copy()
+		{
+			return new Enemy(Name, ColorCode, HP, Gems, Death, Homing3, Homing4, SpawnedBy);
+		}
 	}
 }
