@@ -1,4 +1,6 @@
 ﻿using DevilDaggersCore.Game;
+using NetBase.Extensions;
+using NetBase.Utils;
 using System;
 using System.Linq;
 
@@ -21,7 +23,7 @@ namespace DevilDaggersCore.Spawnset
 			}
 			catch
 			{
-				throw new Exception($"No Enemy found for SpawnsetEnemy '{Name}' in game versions '{gameVersions[0].Type.Name/*.ItemsAppended<string>()*/}'.");
+				throw new Exception($"No Enemy found for SpawnsetEnemy '{Name}' in game versions '{gameVersions.GetMemberValues<GameVersion, Type>("type", false).ItemsAppended(", ")}'.");
 			}
 		}
 

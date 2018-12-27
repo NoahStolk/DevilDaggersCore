@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Data\survival">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\..\NetBase\NetBase\NetBase.csproj" />
   </ItemGroup>
 
 </Project>

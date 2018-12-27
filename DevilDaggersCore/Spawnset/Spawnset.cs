@@ -44,20 +44,6 @@ namespace DevilDaggersCore.Spawnset
 
 		public Spawnset()
 		{
-			//byte[] defaultArenaBuffer = new byte[ARENA_BUFFER_SIZE];
-			//FileStream fs = new FileStream(Constants.SurvivalPath, FileMode.Open, FileAccess.Read)
-			//{
-			//	Position = HEADER_BUFFER_SIZE
-			//};
-			//fs.Read(defaultArenaBuffer, 0, ARENA_BUFFER_SIZE);
-			//fs.Close();
-
-			//for (int i = 0; i < defaultArenaBuffer.Length; i += 4)
-			//{
-			//	int x = i / (ARENA_WIDTH * 4);
-			//	int y = i / 4 % ARENA_HEIGHT;
-			//	ArenaTiles[x, y] = BitConverter.ToSingle(defaultArenaBuffer, i);
-			//}
 		}
 
 		public Spawnset(SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness)
@@ -273,8 +259,8 @@ namespace DevilDaggersCore.Spawnset
 				{
 					NonLoopSpawns = nonLoopSpawns,
 					LoopSpawns = loopSpawns,
-					NonLoopSeconds = nonLoopSpawns == 0 ? 0 : nonLoopSeconds,
-					LoopSeconds = loopSpawns == 0 ? 0 : loopSeconds
+					NonLoopLength = nonLoopSpawns == 0 ? 0 : nonLoopSeconds,
+					LoopLength = loopSpawns == 0 ? 0 : loopSeconds
 				};
 
 				return true;

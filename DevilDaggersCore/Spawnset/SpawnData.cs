@@ -5,9 +5,9 @@
 		public int NonLoopSpawns { get; set; }
 		public int LoopSpawns { get; set; }
 
-		public float NonLoopSeconds { get; set; }
-		public float LoopSeconds { get; set; }
+		public float NonLoopLength { get; set; }
+		public float LoopLength { get; set; }
 
-		public float LoopStart { get { return LoopSpawns == 0 ? 0 : NonLoopSeconds; } }
+		public float LoopStart { get { return LoopSpawns == 0 ? 0 : NonLoopLength; } }
 	}
 }
