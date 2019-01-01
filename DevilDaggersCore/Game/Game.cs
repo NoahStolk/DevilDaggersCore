@@ -78,7 +78,7 @@ namespace DevilDaggersCore.Game
 			public static Death Sacrificed = new Death("SACRIFICED", "AF6B00", 8);
 			public static Death Eviscerated = new Death("EVISCERATED", "837E75", 9);
 			public static Death Annihilated = new Death("ANNIHILATED", "7B5157", 10);
-			public static Death Envenmonated = new Death("ENVENMONATED", "657A00", 12);
+			public static Death Envenmonated = new Death("ENVENOMATED", "657A00", 12);
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 
@@ -134,7 +134,7 @@ namespace DevilDaggersCore.Game
 			public static Death Eviscerated = new Death("EVISCERATED", "837E75", 9);
 			public static Death Annihilated = new Death("ANNIHILATED", "478B41", 10);
 			public static Death Intoxicated = new Death("INTOXICATED", "99A100", 11);
-			public static Death Envenmonated = new Death("ENVENMONATED", "657A00", 12);
+			public static Death Envenmonated = new Death("ENVENOMATED", "657A00", 12);
 			public static Death Incarnated = new Death("INCARNATED", "FF0000", 13);
 			public static Death Discarnated = new Death("DISCARNATED", "FF3131", 14);
 			public static Death Barbed = new Death("BARBED", "771D00", 15);
