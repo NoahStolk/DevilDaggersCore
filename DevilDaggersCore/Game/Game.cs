@@ -78,7 +78,7 @@ namespace DevilDaggersCore.Game
 			public static Death Sacrificed = new Death("SACRIFICED", "AF6B00", 8);
 			public static Death Eviscerated = new Death("EVISCERATED", "837E75", 9);
 			public static Death Annihilated = new Death("ANNIHILATED", "7B5157", 10);
-			public static Death Envenmonated = new Death("ENVENOMATED", "657A00", 12);
+			public static Death Envenomated = new Death("ENVENOMATED", "657A00", 12);
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 
@@ -89,7 +89,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Gigapede = new Enemy("Gigapede", "7B5157", 250, 50, Annihilated, 50, 50);
 			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Devastated, 1500, 1500);
 			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, 3);
-			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenmonated, 20, 20);
+			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20);
 
 			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, Squid1, Squid2, Squid3);
 			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, Squid1);
@@ -102,7 +102,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, Leviathan);
 
 			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Infested, 3, 3, Spider1);
-			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenmonated, 3, 3, Spider2);
+			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, Spider2);
 			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Stricken, 1, 1, SpiderEgg1, SpiderEgg2);
 
 			public static Enemy Andras = new Enemy("Andras", "666666", 25, 1, Unknown, null, null);
@@ -134,7 +134,7 @@ namespace DevilDaggersCore.Game
 			public static Death Eviscerated = new Death("EVISCERATED", "837E75", 9);
 			public static Death Annihilated = new Death("ANNIHILATED", "478B41", 10);
 			public static Death Intoxicated = new Death("INTOXICATED", "99A100", 11);
-			public static Death Envenmonated = new Death("ENVENOMATED", "657A00", 12);
+			public static Death Envenomated = new Death("ENVENOMATED", "657A00", 12);
 			public static Death Incarnated = new Death("INCARNATED", "FF0000", 13);
 			public static Death Discarnated = new Death("DISCARNATED", "FF3131", 14);
 			public static Death Barbed = new Death("BARBED", "771D00", 15);
@@ -148,7 +148,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Incarnated, 1500, 1500);
 			public static Enemy Thorn = new Enemy("Thorn", "771D00", 120, 0, Barbed, 12, 12);
 			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Intoxicated, 3, 3);
-			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenmonated, 20, 20);
+			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20);
 
 			public static Enemy TheOrb = new Enemy("The Orb", "FF3131", 2400, 0, Discarnated /*Disintegrated in V3 Beta?*/, 2400, 2400, Leviathan);
 
@@ -163,7 +163,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, Leviathan, TheOrb);
 
 			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Intoxicated, 3, 3, Spider1);
-			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenmonated, 3, 3, Spider2);
+			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, Spider2);
 			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Infested, 1, 1, SpiderEgg1, SpiderEgg2);
 		}
 
