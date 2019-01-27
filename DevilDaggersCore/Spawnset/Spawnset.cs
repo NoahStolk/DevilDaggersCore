@@ -10,7 +10,7 @@ namespace DevilDaggersCore.Spawnset
 		public const int HeaderBufferSize = 36;
 		public const int ArenaBufferSize = 10404;
 		public const int SpawnsOffsetBufferSize = 40; // The amount of bytes between the arena and the spawns, no idea what they are used for.
-		public const int SpawnLength = 28; // The amount of bytes of a spawn.
+		public const int SpawnLength = 28; // The amount of bytes per spawn.
 
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
@@ -214,7 +214,7 @@ namespace DevilDaggersCore.Spawnset
 			}
 		}
 
-		public static bool TryGetSpawnData(Stream stream, out SpawnData spawnData)
+		public static bool TryGetSpawnData(Stream stream, out SpawnsetData spawnsetData)
 		{
 			try
 			{
@@ -255,7 +255,7 @@ namespace DevilDaggersCore.Spawnset
 					}
 				}
 
-				spawnData = new SpawnData
+				spawnsetData = new SpawnsetData
 				{
 					NonLoopSpawns = nonLoopSpawns,
 					LoopSpawns = loopSpawns,
@@ -267,7 +267,7 @@ namespace DevilDaggersCore.Spawnset
 			}
 			catch
 			{
-				spawnData = new SpawnData();
+				spawnsetData = new SpawnsetData();
 
 				return false;
 			}

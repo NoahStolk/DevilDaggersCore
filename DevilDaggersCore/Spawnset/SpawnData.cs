@@ -1,6 +1,6 @@
 ﻿namespace DevilDaggersCore.Spawnset
 {
-	public class SpawnData
+	public class SpawnsetData
 	{
 		public int NonLoopSpawns { get; set; }
 		public int LoopSpawns { get; set; }
