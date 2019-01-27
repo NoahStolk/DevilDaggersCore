@@ -15,6 +15,12 @@ namespace DevilDaggersCore.Spawnset
 		public string Name { get; set; }
 		public int NoFarmGems { get; set; }
 
+		public SpawnsetEnemy(string name, int noFarmGems)
+		{
+			Name = name;
+			NoFarmGems = noFarmGems;
+		}
+
 		public Enemy ToEnemy(params GameVersion[] gameVersions)
 		{
 			try
@@ -25,12 +31,6 @@ namespace DevilDaggersCore.Spawnset
 			{
 				throw new Exception($"No Enemy found for SpawnsetEnemy '{Name}' in game versions '{gameVersions.GetMemberValues<GameVersion, Type>("type", false).ItemsAppended(", ")}'.");
 			}
-		}
-
-		public SpawnsetEnemy(string name, int noFarmGems)
-		{
-			Name = name;
-			NoFarmGems = noFarmGems;
 		}
 	}
 }
