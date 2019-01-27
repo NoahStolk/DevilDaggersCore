@@ -19,7 +19,7 @@ namespace DevilDaggersCore.Game
 
 			public static Upgrade Level1 = new Upgrade("Level 1", "BB5500", 20, 10, null, null, "N/A");
 			public static Upgrade Level2 = new Upgrade("Level 2", "FFAA00", 40, 20, null, null, "10 gems");
-			public static Upgrade Level3 = new Upgrade("Level 3", "00FFFF", 80, 40, 40, 20, "70 gems");
+			public static Upgrade Level3 = new Upgrade("Level 3", "00FFFF", 80, 40, 40, 40, "70 gems"); // TODO: Level 3 homing spray
 
 			public static Death Unknown = new Death("N/A", "444444", -1);
 			public static Death Fallen = new Death("FALLEN", "DDDDDD", 0);
