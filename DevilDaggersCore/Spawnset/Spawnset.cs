@@ -56,6 +56,56 @@ namespace DevilDaggersCore.Spawnset
 			Brightness = brightness;
 		}
 
+		public List<SpawnsetEvent> GenerateSpawnsetEventList(int gushes, int beckons)
+		{
+			List<SpawnsetEvent> events = new List<SpawnsetEvent>();
+
+			double totalSeconds = 0;
+			foreach (Spawn spawn in Spawns.Values)
+			{
+				totalSeconds += spawn.Delay;
+				if (spawn.SpawnsetEnemy == Enemies[-1])
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Spawn, spawn.SpawnsetEnemy.Name, totalSeconds, 0, null));
+				else
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Spawn, spawn.SpawnsetEnemy.Name, totalSeconds, spawn.SpawnsetEnemy.ToEnemy().Gems, null));
+			}
+
+			List<SpawnsetEvent> squid1s = events.Where(s => s.Name == Game.Game.V3.Squid1.Name).ToList();
+			List<SpawnsetEvent> squid2s = events.Where(s => s.Name == Game.Game.V3.Squid2.Name).ToList();
+			List<SpawnsetEvent> squid3s = events.Where(s => s.Name == Game.Game.V3.Squid3.Name).ToList();
+
+			List<SpawnsetEvent> leviathans = events.Where(s => s.Name == Game.Game.V3.Leviathan.Name).ToList();
+
+			List<SpawnsetEvent> spider1s = events.Where(s => s.Name == Game.Game.V3.Spider1.Name).ToList();
+			List<SpawnsetEvent> spider2s = events.Where(s => s.Name == Game.Game.V3.Spider2.Name).ToList();
+
+			List<SpawnsetEvent> emergers = events.Where(s => s.Name == Game.Game.V3.Thorn.Name || s.Name == Game.Game.V3.Centipede.Name || s.Name == Game.Game.V3.Gigapede.Name || s.Name == Game.Game.V3.Ghostpede.Name).ToList();
+
+			foreach (SpawnsetEvent squid1 in squid1s)
+				for (int i = 0; i < gushes; i++)
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid1.Name} gushes 10 Skull Is and 1 Skull II", squid1.Seconds + 3 + i * 20, Game.Game.V3.Skull2.Gems, squid1));
+			foreach (SpawnsetEvent squid2 in squid2s)
+				for (int i = 0; i < gushes; i++)
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid2.Name} gushes 10 Skull Is and 1 Skull III", squid2.Seconds + 3 + i * 20, Game.Game.V3.Skull3.Gems, squid2));
+			foreach (SpawnsetEvent squid3 in squid3s)
+				for (int i = 0; i < gushes; i++)
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid3.Name} gushes 15 Skull Is and 1 Skull IV", squid3.Seconds + 3 + i * 20, Game.Game.V3.Skull4.Gems, squid3));
+
+			foreach (SpawnsetEvent leviathan in leviathans)
+				for (int i = 0; i < beckons; i++)
+					events.Add(new SpawnsetEvent(SpawnsetEventType.Beckon, $"{leviathan.Name} beckons", leviathan.Seconds + 13.5333f + i * 20, Game.Game.V3.Skull4.Gems, leviathan));
+
+			foreach (SpawnsetEvent spider1 in spider1s)
+				events.Add(new SpawnsetEvent(SpawnsetEventType.HeadLift, $"{spider1.Name} lifts head", spider1.Seconds + 3, 0, spider1));
+			foreach (SpawnsetEvent spider2 in spider2s)
+				events.Add(new SpawnsetEvent(SpawnsetEventType.HeadLift, $"{spider2.Name} lifts head", spider2.Seconds + 9, 0, spider2));
+
+			foreach (SpawnsetEvent emerger in emergers)
+				events.Add(new SpawnsetEvent(SpawnsetEventType.Emerge, $"{emerger.Name} emerges", emerger.Seconds + 3, 0, emerger));
+
+			return events.OrderBy(e => e.Seconds).ToList();
+		}
+
 		public bool TryGetBytes(out byte[] bytes)
 		{
 			try
