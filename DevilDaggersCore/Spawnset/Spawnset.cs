@@ -103,7 +103,7 @@ namespace DevilDaggersCore.Spawnset
 					int enemyType = -1;
 					for (int i = 0; i < Enemies.Count - 1; i++)
 					{
-						if (kvp.Value.Enemy == Enemies[i])
+						if (kvp.Value.SpawnsetEnemy == Enemies[i])
 						{
 							enemyType = i;
 							break;
