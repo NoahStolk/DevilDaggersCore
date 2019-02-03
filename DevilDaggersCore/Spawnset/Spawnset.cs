@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DevilDaggersCore.Spawnset.Events;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace DevilDaggersCore.Spawnset
 {
@@ -56,52 +58,63 @@ namespace DevilDaggersCore.Spawnset
 			Brightness = brightness;
 		}
 
-		public List<SpawnsetEvent> GenerateSpawnsetEventList(int gushes, int beckons)
+		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons)
 		{
-			List<SpawnsetEvent> events = new List<SpawnsetEvent>();
+			List<AbstractEvent> events = new List<AbstractEvent>();
 
 			double totalSeconds = 0;
 			foreach (Spawn spawn in Spawns.Values)
 			{
 				totalSeconds += spawn.Delay;
-				if (spawn.SpawnsetEnemy == Enemies[-1])
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Spawn, spawn.SpawnsetEnemy.Name, totalSeconds, 0, null));
-				else
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Spawn, spawn.SpawnsetEnemy.Name, totalSeconds, spawn.SpawnsetEnemy.ToEnemy().Gems, null));
+				events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
 			}
 
-			List<SpawnsetEvent> squid1s = events.Where(s => s.Name == Game.Game.V3.Squid1.Name).ToList();
-			List<SpawnsetEvent> squid2s = events.Where(s => s.Name == Game.Game.V3.Squid2.Name).ToList();
-			List<SpawnsetEvent> squid3s = events.Where(s => s.Name == Game.Game.V3.Squid3.Name).ToList();
+			List<SpawnEvent> spawnEvents = events.Where(s => s.GetType() == typeof(SpawnEvent)).Cast<SpawnEvent>().ToList();
+			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy == Enemies[0] || s.Enemy == Enemies[1] || s.Enemy == Enemies[6]).ToList();
+			List<SpawnEvent> leviathans = spawnEvents.Where(s => s.Enemy == Enemies[4]).ToList();
+			List<SpawnEvent> spider1s = spawnEvents.Where(s => s.Enemy == Enemies[3]).ToList();
+			List<SpawnEvent> spider2s = spawnEvents.Where(s => s.Enemy == Enemies[8]).ToList();
+			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy == Enemies[2] || s.Enemy == Enemies[5] || s.Enemy == Enemies[7] || s.Enemy == Enemies[9]).ToList();
 
-			List<SpawnsetEvent> leviathans = events.Where(s => s.Name == Game.Game.V3.Leviathan.Name).ToList();
+			foreach (SpawnEvent squid in squids)
+			{
+				Dictionary<Game.Enemy, int> skulls = new Dictionary<Game.Enemy, int>();
+				if (squid.Enemy == Enemies[0])
+				{
+					skulls.Add(Game.Game.V3.Skull1, 10);
+					skulls.Add(Game.Game.V3.Skull2, 1);
+				}
+				else if (squid.Enemy == Enemies[1])
+				{
+					skulls.Add(Game.Game.V3.Skull1, 10);
+					skulls.Add(Game.Game.V3.Skull3, 1);
+				}
+				else if (squid.Enemy == Enemies[6])
+				{
+					skulls.Add(Game.Game.V3.Skull1, 15);
+					skulls.Add(Game.Game.V3.Skull4, 1);
+				}
+				StringBuilder gushText = new StringBuilder();
+				foreach (KeyValuePair<Game.Enemy, int> kvp in skulls)
+					gushText.Append($"{kvp.Value} {kvp.Key.Name}{(kvp.Value == 1 ? "" : "s")} and ");
 
-			List<SpawnsetEvent> spider1s = events.Where(s => s.Name == Game.Game.V3.Spider1.Name).ToList();
-			List<SpawnsetEvent> spider2s = events.Where(s => s.Name == Game.Game.V3.Spider2.Name).ToList();
-
-			List<SpawnsetEvent> emergers = events.Where(s => s.Name == Game.Game.V3.Thorn.Name || s.Name == Game.Game.V3.Centipede.Name || s.Name == Game.Game.V3.Gigapede.Name || s.Name == Game.Game.V3.Ghostpede.Name).ToList();
-
-			foreach (SpawnsetEvent squid1 in squid1s)
 				for (int i = 0; i < gushes; i++)
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid1.Name} gushes 10 Skull Is and 1 Skull II", squid1.Seconds + 3 + i * 20, Game.Game.V3.Skull2.Gems, squid1));
-			foreach (SpawnsetEvent squid2 in squid2s)
-				for (int i = 0; i < gushes; i++)
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid2.Name} gushes 10 Skull Is and 1 Skull III", squid2.Seconds + 3 + i * 20, Game.Game.V3.Skull3.Gems, squid2));
-			foreach (SpawnsetEvent squid3 in squid3s)
-				for (int i = 0; i < gushes; i++)
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Gush, $"{squid3.Name} gushes 15 Skull Is and 1 Skull IV", squid3.Seconds + 3 + i * 20, Game.Game.V3.Skull4.Gems, squid3));
+				{
+					events.Add(new GushEvent(squid.Seconds + 3 + i * 20, $"{squid.Enemy.Name} gushes {gushText.ToString().Substring(0, gushText.Length - " and ".Length)}", squid, skulls));
+				}
+			}
 
-			foreach (SpawnsetEvent leviathan in leviathans)
+			foreach (SpawnEvent leviathan in leviathans)
 				for (int i = 0; i < beckons; i++)
-					events.Add(new SpawnsetEvent(SpawnsetEventType.Beckon, $"{leviathan.Name} beckons", leviathan.Seconds + 13.5333f + i * 20, Game.Game.V3.Skull4.Gems, leviathan));
+					events.Add(new SubEvent(leviathan.Seconds + 13.5333f + i * 20, $"{leviathan.Enemy.Name} beckons", leviathan));
 
-			foreach (SpawnsetEvent spider1 in spider1s)
-				events.Add(new SpawnsetEvent(SpawnsetEventType.HeadLift, $"{spider1.Name} lifts head", spider1.Seconds + 3, 0, spider1));
-			foreach (SpawnsetEvent spider2 in spider2s)
-				events.Add(new SpawnsetEvent(SpawnsetEventType.HeadLift, $"{spider2.Name} lifts head", spider2.Seconds + 9, 0, spider2));
+			foreach (SpawnEvent spider1 in spider1s)
+				events.Add(new SubEvent(spider1.Seconds + 3, $"{spider1.Enemy.Name} lifts head", spider1));
+			foreach (SpawnEvent spider2 in spider2s)
+				events.Add(new SubEvent(spider2.Seconds + 9, $"{spider2.Enemy.Name} lifts head", spider2));
 
-			foreach (SpawnsetEvent emerger in emergers)
-				events.Add(new SpawnsetEvent(SpawnsetEventType.Emerge, $"{emerger.Name} emerges", emerger.Seconds + 3, 0, emerger));
+			foreach (SpawnEvent emerger in emergers)
+				events.Add(new SubEvent(emerger.Seconds + 3, $"{emerger.Enemy.Name} emerges", emerger));
 
 			return events.OrderBy(e => e.Seconds).ToList();
 		}
