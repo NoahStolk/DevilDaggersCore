@@ -33,24 +33,24 @@ namespace DevilDaggersCore.Game
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 			public static Death Dismembered = new Death("DISMEMBERED", "804E00", 18);
+			
+			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, null, true);
+			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Sacrificed, 2, null, true);
+			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, null, true);
+			public static Enemy Gigapede = new Enemy("Gigapede", "7B5157", 250, 50, Eviscerated, 50, null, true);
+			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 600, 6, Devastated, 600, null, true);
+			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, null, true);
 
-			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, null);
-			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Sacrificed, 2, null);
-			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, null);
-			public static Enemy Gigapede = new Enemy("Gigapede", "7B5157", 250, 50, Eviscerated, 50, null);
-			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 600, 6, Devastated, 600, null);
-			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, null);
+			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, null, true, Squid1, Squid2);
+			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, null, true, Squid1);
+			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Dismembered, 1, null, true, Squid2);
 
-			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, null, Squid1, Squid2);
-			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, null, Squid1);
-			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Dismembered, 1, null, Squid2);
+			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 10, 1, Impaled, 1, null, true, Leviathan);
+			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 20, 1, Dismembered, 2, null, true, Leviathan);
+			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 100, 0, Annihilated, 10, null, true, Leviathan);
 
-			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 10, 1, Impaled, 1, null, Leviathan);
-			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 20, 1, Dismembered, 2, null, Leviathan);
-			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 100, 0, Annihilated, 10, null, Leviathan);
-
-			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Infested, 3, null, Spider1);
-			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Stricken, 1, null, SpiderEgg1);
+			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Infested, 3, null, false, Spider1);
+			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Stricken, 1, null, true, SpiderEgg1);
 		}
 
 		public static class V2
@@ -82,30 +82,30 @@ namespace DevilDaggersCore.Game
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 
-			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1);
-			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1);
-			public static Enemy Squid3 = new Enemy("Squid III", "AF6B00", 90, 3, Sacrificed, 3, 9);
-			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25);
-			public static Enemy Gigapede = new Enemy("Gigapede", "7B5157", 250, 50, Annihilated, 50, 50);
-			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Devastated, 1500, 1500);
-			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, 3);
-			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20);
+			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1, true);
+			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1, true);
+			public static Enemy Squid3 = new Enemy("Squid III", "AF6B00", 90, 3, Sacrificed, 3, 9, true);
+			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25, true);
+			public static Enemy Gigapede = new Enemy("Gigapede", "7B5157", 250, 50, Annihilated, 50, 50, true);
+			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Devastated, 1500, 1500, true);
+			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Infested, 3, 3, true);
+			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20, true);
 
-			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, Squid1, Squid2, Squid3);
-			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, Squid1);
-			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Gored, 1, 1, Squid2);
-			public static Enemy Skull4 = new Enemy("Skull IV", "976E2E", 100, 0, Opened, 10, 10, Squid3);
+			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, true, Squid1, Squid2, Squid3);
+			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, true, Squid1);
+			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Gored, 1, 1, true, Squid2);
+			public static Enemy Skull4 = new Enemy("Skull IV", "976E2E", 100, 0, Opened, 10, 10, true, Squid3);
 
-			public static Enemy TransmutedSkull1 = new Enemy("Transmuted Skull I", "4C110C", 10, 0, Swarmed, 0.25f, 10, Leviathan);
-			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 20, 1, Impaled, 2, 2, Leviathan);
-			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 100, 1, Gored, 10, 10, Leviathan);
-			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, Leviathan);
+			public static Enemy TransmutedSkull1 = new Enemy("Transmuted Skull I", "4C110C", 10, 0, Swarmed, 0.25f, 10, true, Leviathan);
+			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 20, 1, Impaled, 2, 2, true, Leviathan);
+			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 100, 1, Gored, 10, 10, true, Leviathan);
+			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, true, Leviathan);
 
-			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Infested, 3, 3, Spider1);
-			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, Spider2);
-			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Stricken, 1, 1, SpiderEgg1, SpiderEgg2);
+			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Infested, 3, 3, false, Spider1);
+			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, false, Spider2);
+			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Stricken, 1, 1, true, SpiderEgg1, SpiderEgg2);
 
-			public static Enemy Andras = new Enemy("Andras", "666666", 25, 1, Unknown, null, null);
+			public static Enemy Andras = new Enemy("Andras", "666666", 25, 1, Unknown, null, null, true);
 		}
 
 		public static class V3
@@ -139,32 +139,32 @@ namespace DevilDaggersCore.Game
 			public static Death Discarnated = new Death("DISCARNATED", "FF3131", 14);
 			public static Death Barbed = new Death("BARBED", "771D00", 15);
 
-			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1);
-			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1);
-			public static Enemy Squid3 = new Enemy("Squid III", "AF6B00", 90, 3, Sacrificed, 3, 9);
-			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25);
-			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Annihilated, 50, 50);
-			public static Enemy Ghostpede = new Enemy("Ghostpede", "C8A2C8", 500, 10, Intoxicated, null, null);
-			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Incarnated, 1500, 1500);
-			public static Enemy Thorn = new Enemy("Thorn", "771D00", 120, 0, Barbed, 12, 12);
-			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Intoxicated, 3, 3);
-			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20);
+			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1, true);
+			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1, true);
+			public static Enemy Squid3 = new Enemy("Squid III", "AF6B00", 90, 3, Sacrificed, 3, 9, true);
+			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, 25, true);
+			public static Enemy Gigapede = new Enemy("Gigapede", "478B41", 250, 50, Annihilated, 50, 50, true);
+			public static Enemy Ghostpede = new Enemy("Ghostpede", "C8A2C8", 500, 10, Intoxicated, null, null, true);
+			public static Enemy Leviathan = new Enemy("Leviathan", "FF0000", 1500, 6, Incarnated, 1500, 1500, true);
+			public static Enemy Thorn = new Enemy("Thorn", "771D00", 120, 0, Barbed, 12, 12, false);
+			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Intoxicated, 3, 3, true);
+			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20, true);
 
-			public static Enemy TheOrb = new Enemy("The Orb", "FF3131", 2400, 0, Discarnated /*Disintegrated in V3 Beta?*/, 2400, 2400, Leviathan);
+			public static Enemy TheOrb = new Enemy("The Orb", "FF3131", 2400, 0, Discarnated /*Disintegrated in V3 Beta?*/, 2400, 2400, false, Leviathan);
 
-			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, Squid1, Squid2, Squid3);
-			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, Squid1);
-			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Gored, 1, 1, Squid2);
-			public static Enemy Skull4 = new Enemy("Skull IV", "976E2E", 100, 0, Opened, 10, 10, Squid3);
+			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, true, Squid1, Squid2, Squid3);
+			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, true, Squid1);
+			public static Enemy Skull3 = new Enemy("Skull III", "6E5021", 10, 1, Gored, 1, 1, true, Squid2);
+			public static Enemy Skull4 = new Enemy("Skull IV", "976E2E", 100, 0, Opened, 10, 10, true, Squid3);
 
-			public static Enemy TransmutedSkull1 = new Enemy("Transmuted Skull I", "4C110C", 10, 0, Swarmed, 0.25f, 10, Leviathan, TheOrb);
-			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 20, 1, Impaled, 2, 2, Leviathan, TheOrb);
-			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 100, 1, Gored, 10, 10, Leviathan, TheOrb);
-			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, Leviathan, TheOrb);
+			public static Enemy TransmutedSkull1 = new Enemy("Transmuted Skull I", "4C110C", 10, 0, Swarmed, 0.25f, 10, true, Leviathan, TheOrb);
+			public static Enemy TransmutedSkull2 = new Enemy("Transmuted Skull II", "721A13", 20, 1, Impaled, 2, 2, true, Leviathan, TheOrb);
+			public static Enemy TransmutedSkull3 = new Enemy("Transmuted Skull III", "982319", 100, 1, Gored, 10, 10, true, Leviathan, TheOrb);
+			public static Enemy TransmutedSkull4 = new Enemy("Transmuted Skull IV", "BE2C20", 300, 0, Opened, 30, 30, true, Leviathan, TheOrb);
 
-			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Intoxicated, 3, 3, Spider1);
-			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, Spider2);
-			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Infested, 1, 1, SpiderEgg1, SpiderEgg2);
+			public static Enemy SpiderEgg1 = new Enemy("Spider Egg I", "99A100", 3, 0, Intoxicated, 3, 3, false, Spider1);
+			public static Enemy SpiderEgg2 = new Enemy("Spider Egg II", "657A00", 3, 0, Envenomated, 3, 3, false, Spider2);
+			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Infested, 1, 1, true, SpiderEgg1, SpiderEgg2);
 		}
 
 		private static Dictionary<Enemy, string> EnemyInfo { get; set; } = new Dictionary<Enemy, string>
