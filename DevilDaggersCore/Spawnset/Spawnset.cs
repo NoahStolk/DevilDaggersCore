@@ -199,11 +199,11 @@ namespace DevilDaggersCore.Spawnset
 		}
 
 		/// <summary>
-		/// Tries to parse the contents of a spawnset file into a Spawnset instance.
+		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
 		/// </summary>
 		/// <param name="filePath">The path to the spawnset file.</param>
-		/// <returns>The <see cref="Spawnset">Spawnset</see>.</returns>
+		/// <returns>The <see cref="Spawnset"/>.</returns>
 		public static bool TryParse(Stream stream, out Spawnset spawnset)
 		{
 			try
