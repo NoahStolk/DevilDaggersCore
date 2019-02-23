@@ -9,6 +9,8 @@
 		public float? Homing4 { get; set; }
 		public bool RegisterKill { get; set; }
 		public Enemy[] SpawnedBy { get; set; }
+		
+		public int GemHP => HP / Gems;
 
 		public Enemy(string name, string colorCode, int hp, int gems, Death death, float? homing3, float? homing4, bool registerKill, params Enemy[] spawnedBy)
 			: base(name, colorCode)
@@ -22,14 +24,10 @@
 			SpawnedBy = spawnedBy;
 		}
 
-		public int GetGemHP()
-		{
-			return HP / Gems;
-		}
 
 		public string GetGemHPString()
 		{
-			return $"({GetGemHP()} x {Gems})";
+			return $"({GemHP} x {Gems})";
 		}
 
 		public Enemy Copy()
