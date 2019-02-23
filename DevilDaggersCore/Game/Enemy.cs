@@ -1,13 +1,23 @@
-﻿namespace DevilDaggersCore.Game
+﻿using Newtonsoft.Json;
+
+namespace DevilDaggersCore.Game
 {
+	[JsonObject(MemberSerialization.OptIn)]
 	public class Enemy : DevilDaggersEntity
 	{
+		[JsonProperty]
 		public int HP { get; set; }
+		[JsonProperty]
 		public int Gems { get; set; }
+		[JsonProperty]
 		public Death Death { get; set; }
+		[JsonProperty]
 		public float? Homing3 { get; set; }
+		[JsonProperty]
 		public float? Homing4 { get; set; }
+		[JsonProperty]
 		public bool RegisterKill { get; set; }
+		[JsonProperty]
 		public Enemy[] SpawnedBy { get; set; }
 		
 		public int GemHP => HP / Gems;
