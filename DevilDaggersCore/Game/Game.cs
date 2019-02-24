@@ -173,7 +173,7 @@ namespace DevilDaggersCore.Game
 			{ V1.Squid2, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull III every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V1.Centipede, "Emerges approximately 3 seconds after its spawn, starts flying idly for a while, then starts chasing the player\nRegularly dives down and moves underground for a while" },
 			{ V1.Gigapede, "Emerges approximately 3 seconds after its spawn, then starts flying around the arena\nRegularly dives down and moves underground for a while" },
-			{ V1.Leviathan, "Activates 8.5333 seconds after its spawn\nAttracts and transmutes all skulls every 20 seconds\nRotates counter-clockwise" },
+			{ V1.Leviathan, "Activates 8.5333 seconds after its initial appearance\nAttracts and transmutes all skulls by beckoning every 20 seconds, starting 13.5333 seconds after its spawn (5 seconds after becoming active)\nRotates counter-clockwise" },
 			{ V1.Spider1, "Spawns at the edge of the arena and starts lifting its head, faces the player after 3 seconds\nAttracts and consumes gems when facing the player, ejecting them as Spider Egg I one at a time\nHides its head when shot and left unharmed for 1 second\nBegins moving randomly in an unpredictable jittery fashion after initially raising its head" },
 			{ V1.Skull1, "Slowly chases the player" },
 			{ V1.Skull2, "Moves randomly" },
@@ -189,7 +189,7 @@ namespace DevilDaggersCore.Game
 			{ V2.Squid3, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 15 Skull Is and 1 Skull IV every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V2.Centipede, "Emerges approximately 3 seconds after its spawn, starts flying idly for a while, then starts chasing the player\nRegularly dives down and moves underground for a while" },
 			{ V2.Gigapede, "Emerges approximately 3 seconds after its spawn, then starts chasing the player immediately" },
-			{ V2.Leviathan, "Activates 8.5333 seconds after its spawn\nAttracts and transmutes all skulls every 20 seconds\nRotates counter-clockwise" },
+			{ V2.Leviathan, "Activates 8.5333 seconds after its initial appearance\nAttracts and transmutes all skulls by beckoning every 20 seconds, starting 13.5333 seconds after its spawn (5 seconds after becoming active)\nRotates counter-clockwise" },
 			{ V2.Spider1, "Spawns at the edge of the arena and starts lifting its head, faces the player after 3 seconds\nAttracts and consumes gems when facing the player, ejecting them as Spider Egg I one at a time\nHides its head when shot and left unharmed for 1 second\nBegins moving randomly in an unpredictable jittery fashion after initially raising its head" },
 			{ V2.Spider2, "Spawns at the edge of the arena and starts lifting its head, faces the player after 9 seconds\nAttracts and consumes gems when facing the player, ejecting them as Spider Egg II one at a time\nHides its head when shot and left unharmed for 1 second\nBegins moving randomly in an unpredictable jittery fashion after initially raising its head (though barely noticeable due to its size)" },
 			{ V2.Skull1, "Slowly chases the player" },
@@ -281,7 +281,7 @@ namespace DevilDaggersCore.Game
 			{
 				foreach (FieldInfo field in gameVersion.Type.GetFields())
 				{
-					if (field.FieldType == typeof(T))
+					if (field.FieldType == typeof(T) || field.FieldType.IsSubclassOf(typeof(T)))
 					{
 						bool add = true;
 						T entity = field.GetValue(field) as T;
