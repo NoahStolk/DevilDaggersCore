@@ -11,4 +11,4 @@ Devil Daggers Core is a .NET Standard class library created for various Devil Da
 ## Dependencies
 
 - [NetBase](https://bitbucket.org/NoahStolk/netbase)
-- [JSON.NET](https://www.newtonsoft.com/json)
+- [Json.NET](https://www.newtonsoft.com/json)
