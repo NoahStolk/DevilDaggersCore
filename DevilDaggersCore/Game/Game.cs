@@ -33,7 +33,7 @@ namespace DevilDaggersCore.Game
 			public static Death Stricken = new Death("STRICKEN", "DCCB00", 16);
 			public static Death Devastated = new Death("DEVASTATED", "FF0000", 17);
 			public static Death Dismembered = new Death("DISMEMBERED", "804E00", 18);
-			
+
 			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, null, true);
 			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Sacrificed, 2, null, true);
 			public static Enemy Centipede = new Enemy("Centipede", "837E75", 75, 25, Eviscerated, 25, null, true);

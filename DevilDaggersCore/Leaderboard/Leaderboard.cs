@@ -34,9 +34,9 @@ namespace DevilDaggersCore.Leaderboard
 
 		public double AccuracyGlobal => ShotsFiredGlobal == 0 ? 0 : ShotsHitGlobal / (double)ShotsFiredGlobal;
 
-		private Completion completion = new Completion();
+		public bool HasBlankName => Entries.Any(e => string.IsNullOrEmpty(e.Username));
 
-		public bool HasBlankName { get { return Entries.Any(e => string.IsNullOrEmpty(e.Username)); } }
+		private Completion completion = new Completion();
 
 		public Completion GetCompletion()
 		{
@@ -54,13 +54,14 @@ namespace DevilDaggersCore.Leaderboard
 				if (string.IsNullOrEmpty(valueString))
 					continue;
 
-				Type type = value.GetType();
+				// TODO: Refactor
 				string name = info.Name.ToLower();
 				if (name.Contains("accuracy") || name.Contains("entries") || name.Contains("datetime") || name.Contains("completion") || name.Contains("hasblankname"))
 					continue;
 
 				completion.CompletionEntries[info.Name] = CompletionEntry.Complete;
 
+				Type type = value.GetType();
 				if (valueString == ReflectionUtils.GetDefaultValue(type).ToString())
 					completion.CompletionEntries[info.Name] = CompletionEntry.Missing;
 			}

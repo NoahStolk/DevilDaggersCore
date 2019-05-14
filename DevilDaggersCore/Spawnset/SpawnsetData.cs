@@ -8,6 +8,6 @@
 		public float NonLoopLength { get; set; }
 		public float LoopLength { get; set; }
 
-		public float LoopStart { get { return LoopSpawns == 0 ? 0 : NonLoopLength; } }
+		public float LoopStart => LoopSpawns == 0 ? 0 : NonLoopLength;
 	}
 }

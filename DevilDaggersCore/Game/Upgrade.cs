@@ -8,7 +8,7 @@
 		public int? HomingShot { get; set; }
 		public string UnlocksAt { get; set; }
 
-		public int Level { get { return int.Parse(Name[Name.Length - 1].ToString()); } }
+		public int Level => int.Parse(Name[Name.Length - 1].ToString());
 
 		public Upgrade(string name, string colorCode, float defaultSpray, int defaultShot, float? homingSpray, int? homingShot, string unlocksAt)
 			: base(name, colorCode)
