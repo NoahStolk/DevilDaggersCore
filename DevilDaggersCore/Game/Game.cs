@@ -268,8 +268,7 @@ namespace DevilDaggersCore.Game
 			throw new Exception($"Could not find enemy info for Enemy with name \"{enemy.Name}\".");
 		}
 
-		public static List<T> GetEntities<T>(params GameVersion[] gameVersions)
-			where T : DevilDaggersEntity
+		public static List<T> GetEntities<T>(params GameVersion[] gameVersions) where T : DevilDaggersEntity
 		{
 			// If no game versions are specified, use all
 			if (gameVersions.Length == 0)
@@ -305,28 +304,18 @@ namespace DevilDaggersCore.Game
 
 		public static Death GetDeathFromDeathName(string deathName, params GameVersion[] gameVersions)
 		{
-			try
-			{
-				return GetEntities<Death>(gameVersions).Where(d => d.Name == deathName).First();
-			}
-			catch
-			{
-				//throw new Exception($"Could not parse string \"{deathName}\" to a valid Death object.");
-				return V3.Unknown;
-			}
+			Death death = GetEntities<Death>(gameVersions).Where(d => d.Name == deathName).FirstOrDefault();
+			if (death != null)
+				return death;
+			return V3.Unknown;
 		}
 
 		public static Death GetDeathFromDeathType(int deathType, params GameVersion[] gameVersions)
 		{
-			try
-			{
-				return GetEntities<Death>(gameVersions).Where(d => d.DeathType == deathType).First();
-			}
-			catch
-			{
-				//throw new Exception($"Could not find Death object with death type: {deathType}.");
-				return V3.Unknown;
-			}
+			Death death = GetEntities<Death>(gameVersions).Where(d => d.DeathType == deathType).FirstOrDefault();
+			if (death != null)
+				return death;
+			return V3.Unknown;
 		}
 
 		public static Dagger GetDaggerFromTime(int time)
