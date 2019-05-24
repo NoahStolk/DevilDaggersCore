@@ -1,8 +1,10 @@
 ﻿using DevilDaggersCore.Spawnset.Events;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DevilDaggersCore.Spawnset
@@ -32,11 +34,6 @@ namespace DevilDaggersCore.Spawnset
 			{ 9, new SpawnsetEnemy("Ghostpede", 10) }
 		};
 
-		public static SpawnsetEnemy GetEnemyByName(string name)
-		{
-			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
-		}
-
 		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
 		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
 		public float ShrinkStart { get; set; } = 50;
@@ -56,6 +53,149 @@ namespace DevilDaggersCore.Spawnset
 			ShrinkEnd = shrinkEnd;
 			ShrinkRate = shrinkRate;
 			Brightness = brightness;
+		}
+
+		public static SpawnsetEnemy GetEnemyByName(string name)
+		{
+			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
+		}
+
+		/// <summary>
+		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
+		/// This only works for V3 spawnsets.
+		/// </summary>
+		/// <param name="filePath">The path to the spawnset file.</param>
+		/// <returns>The <see cref="Spawnset"/>.</returns>
+		public static bool TryParse(Stream stream, out Spawnset spawnset)
+		{
+			try
+			{
+				// Set the file values for reading V3 spawnsets
+				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize);
+				byte[] headerBuffer = new byte[HeaderBufferSize];
+				byte[] arenaBuffer = new byte[ArenaBufferSize];
+				byte[] spawnBuffer = new byte[spawnBufferSize];
+
+				// Read the file and write the data into the buffers, then close the file since we do not need it anymore
+				stream.Read(headerBuffer, 0, HeaderBufferSize);
+				stream.Read(arenaBuffer, 0, ArenaBufferSize);
+				stream.Read(spawnBuffer, 0, spawnBufferSize);
+
+				stream.Close();
+
+				// Set the header values
+				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
+				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
+				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
+				float brightness = BitConverter.ToSingle(headerBuffer, 20);
+
+				// Set the arena values
+				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
+				for (int i = 0; i < arenaBuffer.Length; i += 4)
+				{
+					int x = i / (ArenaWidth * 4);
+					int y = i / 4 % ArenaHeight;
+					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
+				}
+
+				// Set the spawn values
+				SortedDictionary<int, Spawn> spawns = new SortedDictionary<int, Spawn>();
+				int spawnIndex = 0;
+
+				int bytePosition = SpawnsOffsetBufferSize;
+				while (bytePosition < spawnBufferSize)
+				{
+					int enemyType = BitConverter.ToInt32(spawnBuffer, bytePosition);
+					bytePosition += 4;
+					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
+					bytePosition += 24;
+
+					if (enemyType > 9)
+						enemyType = -1;
+
+					// Disable the loop for all previous spawns when we reach an empty spawn.
+					// The empty spawn is part of the new loop (until we find another empty spawn).
+					if (enemyType == -1)
+						foreach (KeyValuePair<int, Spawn> kvp in spawns)
+							kvp.Value.IsInLoop = false;
+
+					spawns.Add(spawnIndex, new Spawn(Enemies[enemyType], delay, true));
+					spawnIndex++;
+				}
+
+				// Set the spawnset
+				spawnset = new Spawnset(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
+
+				// Success
+				return true;
+			}
+			catch
+			{
+				// Set an empty spawnset
+				spawnset = new Spawnset();
+
+				// Failure
+				return false;
+			}
+		}
+
+		public static bool TryGetSpawnData(Stream stream, out SpawnsetData spawnsetData)
+		{
+			try
+			{
+				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize);
+				byte[] spawnBuffer = new byte[spawnBufferSize];
+
+				stream.Position += HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize;
+				stream.Read(spawnBuffer, 0, spawnBufferSize);
+				stream.Close();
+
+				int loopBegin = 0;
+				for (int i = spawnBuffer.Length - SpawnLength; i > 0; i -= SpawnLength)
+				{
+					if (BitConverter.ToInt32(spawnBuffer, i) == -1)
+					{
+						loopBegin = i / SpawnLength;
+						break;
+					}
+				}
+
+				int nonLoopSpawns = 0;
+				int loopSpawns = 0;
+				float nonLoopSeconds = 0;
+				float loopSeconds = 0;
+				for (int j = 0; j < spawnBuffer.Length; j += SpawnLength)
+				{
+					if (j < loopBegin * SpawnLength)
+						nonLoopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
+					else
+						loopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
+
+					if (BitConverter.ToInt32(spawnBuffer, j) != -1)
+					{
+						if (j < loopBegin * SpawnLength)
+							nonLoopSpawns++;
+						else
+							loopSpawns++;
+					}
+				}
+
+				spawnsetData = new SpawnsetData
+				{
+					NonLoopSpawns = nonLoopSpawns,
+					LoopSpawns = loopSpawns,
+					NonLoopLength = nonLoopSpawns == 0 ? 0 : nonLoopSeconds,
+					LoopLength = loopSpawns == 0 ? 0 : loopSeconds
+				};
+
+				return true;
+			}
+			catch
+			{
+				spawnsetData = new SpawnsetData();
+
+				return false;
+			}
 		}
 
 		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons)
@@ -199,141 +339,43 @@ namespace DevilDaggersCore.Spawnset
 		}
 
 		/// <summary>
-		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
-		/// This only works for V3 spawnsets.
+		/// Creates a unique and constant string for this spawnset instance. Each value has a constant order and is separated using the ';' character.
+		/// WARNING: Modifying this method will require a re-compile or re-publish of every application that uses it and render any older versions as obsolete.
 		/// </summary>
-		/// <param name="filePath">The path to the spawnset file.</param>
-		/// <returns>The <see cref="Spawnset"/>.</returns>
-		public static bool TryParse(Stream stream, out Spawnset spawnset)
+		public string GetUniqueString()
 		{
-			try
-			{
-				// Set the file values for reading V3 spawnsets
-				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize);
-				byte[] headerBuffer = new byte[HeaderBufferSize];
-				byte[] arenaBuffer = new byte[ArenaBufferSize];
-				byte[] spawnBuffer = new byte[spawnBufferSize];
+			CultureInfo culture = new CultureInfo("en-US");
+			string floatFormat = "0.0000";
+			char separator = ';';
 
-				// Read the file and write the data into the buffers, then close the file since we do not need it anymore
-				stream.Read(headerBuffer, 0, HeaderBufferSize);
-				stream.Read(arenaBuffer, 0, ArenaBufferSize);
-				stream.Read(spawnBuffer, 0, spawnBufferSize);
+			StringBuilder sb = new StringBuilder();
+			foreach (Spawn spawn in Spawns.Values)
+				sb.Append($"{Enemies.Where(e => e.Value == spawn.SpawnsetEnemy).FirstOrDefault().Key}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
-				stream.Close();
+			for (int i = 0; i < ArenaWidth; i++)
+				for (int j = 0; j < ArenaHeight; j++)
+					sb.Append($"{ArenaTiles[i, j].ToString(floatFormat, culture)}{separator}");
 
-				// Set the header values
-				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
-				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
-				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
-				float brightness = BitConverter.ToSingle(headerBuffer, 20);
+			sb.Append($"{ShrinkStart.ToString(floatFormat, culture)}{separator}");
+			sb.Append($"{ShrinkEnd.ToString(floatFormat, culture)}{separator}");
+			sb.Append($"{ShrinkRate.ToString(floatFormat, culture)}{separator}");
+			sb.Append($"{Brightness.ToString(floatFormat, culture)}{separator}");
 
-				// Set the arena values
-				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
-				for (int i = 0; i < arenaBuffer.Length; i += 4)
-				{
-					int x = i / (ArenaWidth * 4);
-					int y = (i / 4) % ArenaHeight;
-					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
-				}
-
-				// Set the spawn values
-				SortedDictionary<int, Spawn> spawns = new SortedDictionary<int, Spawn>();
-				int spawnIndex = 0;
-
-				int bytePosition = SpawnsOffsetBufferSize;
-				while (bytePosition < spawnBufferSize)
-				{
-					int enemyType = BitConverter.ToInt32(spawnBuffer, bytePosition);
-					bytePosition += 4;
-					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
-					bytePosition += 24;
-
-					if (enemyType > 9)
-						enemyType = -1;
-
-					// Disable the loop for all previous spawns when we reach an empty spawn
-					// The empty spawn is part of the new loop (until we find another empty spawn)
-					if (enemyType == -1)
-						foreach (KeyValuePair<int, Spawn> kvp in spawns)
-							kvp.Value.IsInLoop = false;
-
-					spawns.Add(spawnIndex, new Spawn(Enemies[enemyType], delay, true));
-					spawnIndex++;
-				}
-
-				// Set the spawnset
-				spawnset = new Spawnset(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
-
-				// Success
-				return true;
-			}
-			catch
-			{
-				// Set an empty spawnset
-				spawnset = new Spawnset();
-
-				// Failure
-				return false;
-			}
+			return sb.ToString();
 		}
 
-		public static bool TryGetSpawnData(Stream stream, out SpawnsetData spawnsetData)
+		private byte[] GetHash()
 		{
-			try
-			{
-				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize);
-				byte[] spawnBuffer = new byte[spawnBufferSize];
+			HashAlgorithm algorithm = SHA256.Create();
+			return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
+		}
 
-				stream.Position += HeaderBufferSize + ArenaBufferSize + SpawnsOffsetBufferSize;
-				stream.Read(spawnBuffer, 0, spawnBufferSize);
-				stream.Close();
-
-				int loopBegin = 0;
-				for (int i = spawnBuffer.Length - SpawnLength; i > 0; i -= SpawnLength)
-				{
-					if (BitConverter.ToInt32(spawnBuffer, i) == -1)
-					{
-						loopBegin = i / SpawnLength;
-						break;
-					}
-				}
-
-				int nonLoopSpawns = 0;
-				int loopSpawns = 0;
-				float nonLoopSeconds = 0;
-				float loopSeconds = 0;
-				for (int j = 0; j < spawnBuffer.Length; j += SpawnLength)
-				{
-					if (j < loopBegin * SpawnLength)
-						nonLoopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
-					else
-						loopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
-
-					if (BitConverter.ToInt32(spawnBuffer, j) != -1)
-					{
-						if (j < loopBegin * SpawnLength)
-							nonLoopSpawns++;
-						else
-							loopSpawns++;
-					}
-				}
-
-				spawnsetData = new SpawnsetData
-				{
-					NonLoopSpawns = nonLoopSpawns,
-					LoopSpawns = loopSpawns,
-					NonLoopLength = nonLoopSpawns == 0 ? 0 : nonLoopSeconds,
-					LoopLength = loopSpawns == 0 ? 0 : loopSeconds
-				};
-
-				return true;
-			}
-			catch
-			{
-				spawnsetData = new SpawnsetData();
-
-				return false;
-			}
+		public string GetHashString()
+		{
+			StringBuilder sb = new StringBuilder();
+			foreach (byte b in GetHash())
+				sb.Append(b.ToString("X2"));
+			return sb.ToString();
 		}
 	}
 }
