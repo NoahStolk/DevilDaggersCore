@@ -36,7 +36,7 @@ namespace DevilDaggersCore.Leaderboard
 
 		public bool HasBlankName => Entries.Any(e => string.IsNullOrEmpty(e.Username));
 
-		private Completion completion = new Completion();
+		private readonly Completion completion = new Completion();
 
 		public Completion GetCompletion()
 		{
