@@ -1,4 +1,5 @@
 ﻿using DevilDaggersCore.Spawnset.Events;
+using NetBase.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -36,10 +37,46 @@ namespace DevilDaggersCore.Spawnset
 
 		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
 		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
-		public float ShrinkStart { get; set; } = 50;
-		public float ShrinkEnd { get; set; } = 20;
-		public float ShrinkRate { get; set; } = 0.025f;
-		public float Brightness { get; set; } = 60;
+
+		private float shrinkStart = 50;
+		public float ShrinkStart
+		{
+			get => shrinkStart;
+			set
+			{
+				shrinkStart = MathUtils.Clamp(value, 1, 100);
+			}
+		}
+
+		private float shrinkEnd = 20;
+		public float ShrinkEnd
+		{
+			get => shrinkEnd;
+			set
+			{
+				shrinkEnd = MathUtils.Clamp(value, 1, 100);
+			}
+		}
+
+		private float shrinkRate = 0.025f;
+		public float ShrinkRate
+		{
+			get => shrinkRate;
+			set
+			{
+				shrinkRate = Math.Max(value, 0);
+			}
+		}
+
+		private float brightness = 60;
+		public float Brightness
+		{
+			get => brightness;
+			set
+			{
+				brightness = Math.Max(value, 0);
+			}
+		}
 
 		public Spawnset()
 		{
