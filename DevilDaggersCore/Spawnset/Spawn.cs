@@ -10,7 +10,7 @@
 		{
 			SpawnsetEnemy = spawnsetEnemy;
 			Delay = delay;
-			IsInLoop = IsInLoop;
+			IsInLoop = isInLoop;
 		}
 	}
 }
