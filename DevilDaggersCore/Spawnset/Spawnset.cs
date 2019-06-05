@@ -130,8 +130,8 @@ namespace DevilDaggersCore.Spawnset
 				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
-					int x = i / (ArenaWidth * 4);
-					int y = i / 4 % ArenaHeight;
+					int x = i / 4 % ArenaHeight;
+					int y = i / (ArenaWidth * 4);
 					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
 				}
 
@@ -330,8 +330,8 @@ namespace DevilDaggersCore.Spawnset
 				// Get the arena bytes and copy them into the arena buffer.
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
-					int x = i / (ArenaWidth * 4);
-					int y = i / 4 % ArenaHeight;
+					int x = i / 4 % ArenaHeight;
+					int y = i / (ArenaWidth * 4);
 
 					byte[] tileBytes = BitConverter.GetBytes(ArenaTiles[x, y]);
 
