@@ -1,5 +1,4 @@
 ﻿using DevilDaggersCore.Spawnset.Events;
-using DevilDaggersCore.Spawnset.Web;
 using NetBase.Utils;
 using System;
 using System.Collections.Generic;
@@ -93,6 +92,11 @@ namespace DevilDaggersCore.Spawnset
 			Brightness = brightness;
 		}
 
+		public static bool IsEmptySpawn(int enemyType)
+		{
+			return enemyType == -1 || enemyType > 9;
+		}
+
 		public static SpawnsetEnemy GetEnemyByName(string name)
 		{
 			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
@@ -148,12 +152,9 @@ namespace DevilDaggersCore.Spawnset
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					if (enemyType > 9)
-						enemyType = -1;
-
 					// Disable the loop for all previous spawns when we reach an empty spawn.
 					// The empty spawn is part of the new loop (until we find another empty spawn).
-					if (enemyType == -1)
+					if (IsEmptySpawn(enemyType))
 						foreach (KeyValuePair<int, Spawn> kvp in spawns)
 							kvp.Value.IsInLoop = false;
 
@@ -189,11 +190,16 @@ namespace DevilDaggersCore.Spawnset
 				stream.Close();
 
 				int loopBegin = 0;
+				bool emptyFound = false;
 				for (int i = spawnBuffer.Length - SpawnBufferSize; i > 0; i -= SpawnBufferSize)
 				{
-					if (BitConverter.ToInt32(spawnBuffer, i) == -1)
+					if (IsEmptySpawn(BitConverter.ToInt32(spawnBuffer, i)))
 					{
+						emptyFound = true;
 						loopBegin = i / SpawnBufferSize;
+					}
+					else if (emptyFound)
+					{
 						break;
 					}
 				}
@@ -209,7 +215,7 @@ namespace DevilDaggersCore.Spawnset
 					else
 						loopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
 
-					if (BitConverter.ToInt32(spawnBuffer, j) != -1)
+					if (!IsEmptySpawn(BitConverter.ToInt32(spawnBuffer, j)))
 					{
 						if (j < loopBegin * SpawnBufferSize)
 							nonLoopSpawns++;
