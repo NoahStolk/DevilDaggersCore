@@ -154,11 +154,12 @@ namespace DevilDaggersCore.Spawnset
 
 					// Disable the loop for all previous spawns when we reach an empty spawn.
 					// The empty spawn is part of the new loop (until we find another empty spawn).
-					if (IsEmptySpawn(enemyType))
+					bool isEmpty = IsEmptySpawn(enemyType);
+					if (isEmpty)
 						foreach (KeyValuePair<int, Spawn> kvp in spawns)
 							kvp.Value.IsInLoop = false;
 
-					spawns.Add(spawnIndex, new Spawn(Enemies[enemyType], delay, true));
+					spawns.Add(spawnIndex, new Spawn(Enemies[isEmpty ? -1 : enemyType], delay, true));
 					spawnIndex++;
 				}
 
