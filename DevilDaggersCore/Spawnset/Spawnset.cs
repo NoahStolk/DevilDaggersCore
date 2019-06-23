@@ -169,8 +169,10 @@ namespace DevilDaggersCore.Spawnset
 				// Success
 				return true;
 			}
-			catch
+			catch (Exception ex)
 			{
+				Logging.Log.Error("Could not parse Spawnset.", ex);
+
 				// Set an empty spawnset
 				spawnset = new Spawnset();
 
@@ -235,8 +237,10 @@ namespace DevilDaggersCore.Spawnset
 
 				return true;
 			}
-			catch
+			catch (Exception ex)
 			{
+				Logging.Log.Error("Could not parse SpawnsetData.", ex);
+
 				spawnsetData = new SpawnsetData();
 
 				return false;
@@ -389,9 +393,12 @@ namespace DevilDaggersCore.Spawnset
 				bytes = fileBuffer;
 				return true;
 			}
-			catch
+			catch (Exception ex)
 			{
+				Logging.Log.Error("Could not convert Spawnset to binary.", ex);
+
 				bytes = new byte[0];
+				
 				return false;
 			}
 		}

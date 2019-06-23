@@ -9,11 +9,11 @@ namespace DevilDaggersCore.Spawnset.Web
 		public string Path { get; set; }
 
 		public string FileName => System.IO.Path.GetFileName(Path);
-
 		[JsonProperty] // TODO: JsonProperty is redundant, but still used in DDSE 1...
 		public string Name => GetName(FileName);
 		[JsonProperty] // TODO: JsonProperty is redundant, but still used in DDSE 1...
 		public string Author => GetAuthor(FileName);
+
 		[JsonProperty]
 		public SpawnsetFileSettings settings;
 		[JsonProperty]
