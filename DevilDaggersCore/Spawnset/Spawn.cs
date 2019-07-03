@@ -11,5 +11,10 @@
 			SpawnsetEnemy = spawnsetEnemy;
 			Delay = delay;
 		}
+
+		public Spawn Copy()
+		{
+			return new Spawn(SpawnsetEnemy, Delay);
+		}
 	}
 }
