@@ -6,11 +6,10 @@
 		public double Delay { get; set; }
 		public bool IsInLoop { get; set; }
 
-		public Spawn(SpawnsetEnemy spawnsetEnemy, double delay, bool isInLoop = false)
+		public Spawn(SpawnsetEnemy spawnsetEnemy, double delay)
 		{
 			SpawnsetEnemy = spawnsetEnemy;
 			Delay = delay;
-			IsInLoop = isInLoop;
 		}
 	}
 }

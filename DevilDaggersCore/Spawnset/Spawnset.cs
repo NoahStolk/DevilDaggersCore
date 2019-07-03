@@ -159,7 +159,7 @@ namespace DevilDaggersCore.Spawnset
 						foreach (KeyValuePair<int, Spawn> kvp in spawns)
 							kvp.Value.IsInLoop = false;
 
-					spawns.Add(spawnIndex, new Spawn(Enemies[isEmpty ? -1 : enemyType], delay, true));
+					spawns.Add(spawnIndex, new Spawn(Enemies[isEmpty ? -1 : enemyType], delay));
 					spawnIndex++;
 				}
 
