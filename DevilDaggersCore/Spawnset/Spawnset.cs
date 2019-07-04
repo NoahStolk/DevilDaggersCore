@@ -94,7 +94,7 @@ namespace DevilDaggersCore.Spawnset
 
 		public static bool IsEmptySpawn(int enemyType)
 		{
-			return enemyType == -1 || enemyType > 9;
+			return enemyType < 0 || enemyType > 9;
 		}
 
 		public static SpawnsetEnemy GetEnemyByName(string name)
@@ -152,14 +152,7 @@ namespace DevilDaggersCore.Spawnset
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					// Disable the loop for all previous spawns when we reach an empty spawn.
-					// The empty spawn is part of the new loop (until we find another empty spawn).
-					bool isEmpty = IsEmptySpawn(enemyType);
-					if (isEmpty)
-						foreach (KeyValuePair<int, Spawn> kvp in spawns)
-							kvp.Value.IsInLoop = false;
-
-					spawns.Add(spawnIndex, new Spawn(Enemies[isEmpty ? -1 : enemyType], delay));
+					spawns.Add(spawnIndex, new Spawn(Enemies[IsEmptySpawn(enemyType) ? -1 : enemyType], delay));
 					spawnIndex++;
 				}
 
