@@ -32,7 +32,7 @@ namespace DevilDaggersCore.Spawnset
 				if (gameVersions.Length == 0)
 					gameVersions = Game.Game.GameVersions.Values.ToArray();
 
-				throw new Exception($"No Enemy found for SpawnsetEnemy '{Name}' in game versions '{string.Join(", ", gameVersions.GetMemberValues<GameVersion, Type>("type", false))}'.");
+				throw new Exception($"No Enemy found for {nameof(SpawnsetEnemy)} '{Name}' in game versions '{string.Join(", ", gameVersions.GetMemberValues<GameVersion, Type>("type", false))}'.");
 			}
 		}
 	}
