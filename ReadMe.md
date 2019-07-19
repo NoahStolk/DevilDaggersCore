@@ -6,6 +6,8 @@ Devil Daggers Core is a .NET Standard class library created for various Devil Da
 
 - https://devildaggers.info/
 - [Devil Daggers Survival Editor](https://bitbucket.org/NoahStolk/devildaggerssurvivaleditor/src/master/)
+- [Devil Daggers Custom Leaderboards](https://devildaggers.info/Tools/DevilDaggersCustomLeaderboards)
+- Devil Daggers Discord Bot
 - Upcoming tools
 
 ## Dependencies
