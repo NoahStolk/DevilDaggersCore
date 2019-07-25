@@ -11,8 +11,8 @@ namespace DevilDaggersCore.Spawnset
 	/// </summary>
 	public class SpawnsetEnemy
 	{
-		public string Name { get; set; }
-		public int NoFarmGems { get; set; }
+		public string Name { get; }
+		public int NoFarmGems { get; }
 
 		public SpawnsetEnemy(string name, int noFarmGems)
 		{

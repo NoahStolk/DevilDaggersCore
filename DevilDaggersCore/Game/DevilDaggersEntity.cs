@@ -22,8 +22,8 @@ namespace DevilDaggersCore.Game
 				{
 					if (field.FieldType == GetType())
 					{
-						DevilDaggersEntity dde = field.GetValue(field) as DevilDaggersEntity;
-						if (dde.Name == Name)
+						DevilDaggersEntity entity = field.GetValue(field) as DevilDaggersEntity;
+						if (entity.Name == Name)
 							yield return gameVersion;
 					}
 				}

@@ -78,6 +78,8 @@ namespace DevilDaggersCore.Spawnset
 			}
 		}
 
+		public int SpawnCount => Spawns.Where(s => s.Value.SpawnsetEnemy != Enemies[-1]).Count();
+
 		public Spawnset()
 		{
 		}
@@ -238,6 +240,18 @@ namespace DevilDaggersCore.Spawnset
 
 				return false;
 			}
+		}
+
+		public bool IsEmpty()
+		{
+			if (Spawns.Count == 0)
+				return true;
+
+			foreach (Spawn spawn in Spawns.Values)
+				if (spawn.SpawnsetEnemy != Enemies[-1])
+					return false;
+
+			return true;
 		}
 
 		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons)
