@@ -7,8 +7,6 @@ namespace DevilDaggersCore.Game
 {
 	public static class Game
 	{
-		//public static Death Disintegrated = new Death("DISINTEGRATED", "FF3131", 19); // V3 beta???
-
 		public static class V1
 		{
 			public static Dagger Default = new Dagger("Default", "444444", null);
@@ -138,6 +136,7 @@ namespace DevilDaggersCore.Game
 			public static Death Incarnated = new Death("INCARNATED", "FF0000", 13);
 			public static Death Discarnated = new Death("DISCARNATED", "FF3131", 14);
 			public static Death Barbed = new Death("BARBED", "771D00", 15);
+			//public static Death Disintegrated = new Death("DISINTEGRATED", "FF3131", 19); // The Orb in V3 beta???
 
 			public static Enemy Squid1 = new Enemy("Squid I", "4E3000", 10, 1, Purged, 1, 1, true);
 			public static Enemy Squid2 = new Enemy("Squid II", "804E00", 20, 2, Desecrated, 2, 1, true);
@@ -150,7 +149,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Spider1 = new Enemy("Spider I", "097A00", 25, 1, Intoxicated, 3, 3, true);
 			public static Enemy Spider2 = new Enemy("Spider II", "13FF00", 200, 1, Envenomated, 20, 20, true);
 
-			public static Enemy TheOrb = new Enemy("The Orb", "FF3131", 2400, 0, Discarnated /*Disintegrated in V3 Beta?*/, 2400, 2400, false, Leviathan);
+			public static Enemy TheOrb = new Enemy("The Orb", "FF3131", 2400, 0, Discarnated, 2400, 2400, false, Leviathan);
 
 			public static Enemy Skull1 = new Enemy("Skull I", "352710", 1, 0, Swarmed, 0.25f, 0.25f, true, Squid1, Squid2, Squid3);
 			public static Enemy Skull2 = new Enemy("Skull II", "433114", 5, 1, Impaled, 1, 1, true, Squid1);
@@ -265,7 +264,7 @@ namespace DevilDaggersCore.Game
 			foreach (KeyValuePair<Enemy, string> kvp in EnemyInfo)
 				if (kvp.Key == enemy)
 					return kvp.Value;
-			throw new Exception($"Could not find enemy info for Enemy with name \"{enemy.Name}\".");
+			throw new Exception($"Could not find enemy info for {nameof(Enemy)} with name \"{enemy.Name}\".");
 		}
 
 		public static List<T> GetEntities<T>(params GameVersion[] gameVersions) where T : DevilDaggersEntity
