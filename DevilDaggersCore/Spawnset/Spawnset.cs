@@ -154,8 +154,7 @@ namespace DevilDaggersCore.Spawnset
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					spawns.Add(spawnIndex, new Spawn(Enemies[IsEmptySpawn(enemyType) ? -1 : enemyType], delay));
-					spawnIndex++;
+					spawns.Add(spawnIndex++, new Spawn(Enemies[IsEmptySpawn(enemyType) ? -1 : enemyType], delay));
 				}
 
 				// Set the spawnset
@@ -438,8 +437,8 @@ namespace DevilDaggersCore.Spawnset
 
 		private byte[] GetHash()
 		{
-			HashAlgorithm algorithm = SHA256.Create();
-			return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
+			using (HashAlgorithm algorithm = SHA256.Create())
+				return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
 		}
 
 		public string GetHashString()
