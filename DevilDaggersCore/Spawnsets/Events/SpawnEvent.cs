@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Spawnset.Events
+﻿namespace DevilDaggersCore.Spawnsets.Events
 {
 	public class SpawnEvent : AbstractEvent
 	{

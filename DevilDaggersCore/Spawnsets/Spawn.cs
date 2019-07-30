@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Spawnset
+﻿namespace DevilDaggersCore.Spawnsets
 {
 	public class Spawn
 	{

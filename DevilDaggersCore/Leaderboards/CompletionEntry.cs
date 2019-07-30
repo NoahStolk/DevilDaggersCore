@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Leaderboard
+﻿namespace DevilDaggersCore.Leaderboards
 {
 	public enum CompletionEntry
 	{

@@ -1,7 +1,7 @@
 ﻿using DevilDaggersCore.Game;
 using System.Collections.Generic;
 
-namespace DevilDaggersCore.Spawnset.Events
+namespace DevilDaggersCore.Spawnsets.Events
 {
 	public class GushEvent : SubEvent
 	{

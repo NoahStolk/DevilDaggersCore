@@ -3,7 +3,7 @@ using NetBase.Utils;
 using System;
 using System.Linq;
 
-namespace DevilDaggersCore.Spawnset
+namespace DevilDaggersCore.Spawnsets
 {
 	/// <summary>
 	/// Simplified version of the <see cref="Enemy"/> class.
@@ -24,13 +24,13 @@ namespace DevilDaggersCore.Spawnset
 		{
 			try
 			{
-				return Game.Game.GetEntities<Enemy>(gameVersions).Where(e => e.Name == Name).First();
+				return GameInfo.GetEntities<Enemy>(gameVersions).Where(e => e.Name == Name).First();
 			}
 			catch
 			{
 				// If no game versions are specified, use all
 				if (gameVersions.Length == 0)
-					gameVersions = Game.Game.GameVersions.Values.ToArray();
+					gameVersions = GameInfo.GameVersions.Values.ToArray();
 
 				throw new Exception($"No Enemy found for {nameof(SpawnsetEnemy)} '{Name}' in game versions '{string.Join(", ", gameVersions.GetMemberValues<GameVersion, Type>("type", false))}'.");
 			}

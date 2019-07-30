@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Reflection;
 
-namespace DevilDaggersCore.Leaderboard
+namespace DevilDaggersCore.Leaderboards
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Entry

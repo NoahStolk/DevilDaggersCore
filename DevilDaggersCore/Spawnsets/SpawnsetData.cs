@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace DevilDaggersCore.Spawnset
+namespace DevilDaggersCore.Spawnsets
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class SpawnsetData

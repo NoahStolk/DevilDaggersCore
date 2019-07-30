@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace DevilDaggersCore.Leaderboard
+namespace DevilDaggersCore.Leaderboards
 {
 	public class Completion
 	{

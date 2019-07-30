@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace DevilDaggersCore.Spawnset.Web
+namespace DevilDaggersCore.Spawnsets.Web
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class SpawnsetFile
@@ -12,6 +12,7 @@ namespace DevilDaggersCore.Spawnset.Web
 		[JsonProperty] // TODO: JsonProperty is redundant, but still used in DDSE 1...
 		public string Name => GetName(FileName);
 		[JsonProperty] // TODO: JsonProperty is redundant, but still used in DDSE 1...
+		// TODO: Should actually be called AuthorName but I don't want to break anything
 		public string Author => GetAuthor(FileName);
 
 		[JsonProperty]

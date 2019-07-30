@@ -1,4 +1,5 @@
-﻿using DevilDaggersCore.Spawnset.Events;
+﻿using DevilDaggersCore.Game;
+using DevilDaggersCore.Spawnsets.Events;
 using NetBase.Utils;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DevilDaggersCore.Spawnset
+namespace DevilDaggersCore.Spawnsets
 {
 	public class Spawnset
 	{
@@ -253,16 +254,83 @@ namespace DevilDaggersCore.Spawnset
 			return true;
 		}
 
+		// TODO
 		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons)
 		{
 			List<AbstractEvent> events = new List<AbstractEvent>();
 
-			double totalSeconds = 0;
+			double seconds = 0;
+			int totalGems = 0;
+			List<Spawn> endLoop = new List<Spawn>();
+
 			foreach (Spawn spawn in Spawns.Values)
 			{
-				totalSeconds += spawn.Delay;
-				events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+				seconds += spawn.Delay;
+				if (spawn.SpawnsetEnemy != Enemies[-1])
+					events.Add(new SpawnEvent(seconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+
+				endLoop.Add(spawn);
+				if (spawn.SpawnsetEnemy == Enemies[-1])
+				{
+					foreach (Spawn s in endLoop)
+					{
+						seconds += s.Delay;
+						if (s.SpawnsetEnemy != Enemies[-1])
+						{
+							int gems = s.SpawnsetEnemy.NoFarmGems;
+							totalGems += gems;
+						}
+					}
+					seconds -= spawn.Delay;
+					endLoop.Clear();
+					endLoop.Add(spawn);
+				}
 			}
+
+			if (endLoop.Count != 1 || (endLoop.Count == 1 && endLoop[0].SpawnsetEnemy != Enemies[-1]))
+			{
+				double waveMod = 0;
+				double endGameSecond = seconds;
+				for (int i = 0; i < /*maxWaves*/25; i++)
+				{
+					//if (spawns > SpawnsetUtils.MaxSpawns)
+					//{
+					//	break;
+					//}
+
+					double enemyTimer = 0;
+					double delay = 0;
+					foreach (Spawn spawn in endLoop)
+					{
+						delay += spawn.Delay;
+						while (enemyTimer < delay)
+						{
+							endGameSecond += 1f / 60f;
+							enemyTimer += (1f / 60f) + waveMod;
+						}
+
+						if (spawn.SpawnsetEnemy != Enemies[-1])
+						{
+							events.Add(new SpawnEvent(endGameSecond, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+							SpawnsetEnemy finalEnemy = spawn.SpawnsetEnemy;
+							// Change the third Gigapede into a Ghostpede
+							if (i % 3 == 2 /*&& gameVersion == GameInfoVersions["V3"]*/ && finalEnemy == GetEnemyByName("Gigapede"))
+								finalEnemy = GetEnemyByName("Ghostpede");
+
+							int gems = finalEnemy.NoFarmGems;
+							totalGems += gems;
+						}
+					}
+					waveMod += 1f / 60f / 8f;
+				}
+			}
+
+			//double totalSeconds = 0;
+			//foreach (Spawn spawn in Spawns.Values)
+			//{
+			//totalSeconds += spawn.Delay;
+			//events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+			//}
 
 			List<SpawnEvent> spawnEvents = events.Where(s => s.GetType() == typeof(SpawnEvent)).Cast<SpawnEvent>().ToList();
 			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy == Enemies[0] || s.Enemy == Enemies[1] || s.Enemy == Enemies[6]).ToList();
@@ -276,18 +344,18 @@ namespace DevilDaggersCore.Spawnset
 				Dictionary<Game.Enemy, int> skulls = new Dictionary<Game.Enemy, int>();
 				if (squid.Enemy == Enemies[0])
 				{
-					skulls.Add(Game.Game.V3.Skull1, 10);
-					skulls.Add(Game.Game.V3.Skull2, 1);
+					skulls.Add(GameInfo.V3.Skull1, 10);
+					skulls.Add(GameInfo.V3.Skull2, 1);
 				}
 				else if (squid.Enemy == Enemies[1])
 				{
-					skulls.Add(Game.Game.V3.Skull1, 10);
-					skulls.Add(Game.Game.V3.Skull3, 1);
+					skulls.Add(GameInfo.V3.Skull1, 10);
+					skulls.Add(GameInfo.V3.Skull3, 1);
 				}
 				else if (squid.Enemy == Enemies[6])
 				{
-					skulls.Add(Game.Game.V3.Skull1, 15);
-					skulls.Add(Game.Game.V3.Skull4, 1);
+					skulls.Add(GameInfo.V3.Skull1, 15);
+					skulls.Add(GameInfo.V3.Skull4, 1);
 				}
 				StringBuilder gushText = new StringBuilder();
 				foreach (KeyValuePair<Game.Enemy, int> kvp in skulls)

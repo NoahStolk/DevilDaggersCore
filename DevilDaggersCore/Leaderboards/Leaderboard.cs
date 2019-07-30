@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace DevilDaggersCore.Leaderboard
+namespace DevilDaggersCore.Leaderboards
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Leaderboard

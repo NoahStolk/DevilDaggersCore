@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace DevilDaggersCore.Game
 {
-	public static class Game
+	public static class GameInfo
 	{
 		public static class V1
 		{

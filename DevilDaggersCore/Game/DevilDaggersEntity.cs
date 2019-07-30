@@ -16,7 +16,7 @@ namespace DevilDaggersCore.Game
 
 		public IEnumerable<GameVersion> GetAppearances()
 		{
-			foreach (GameVersion gameVersion in Game.GameVersions.Values)
+			foreach (GameVersion gameVersion in GameInfo.GameVersions.Values)
 			{
 				foreach (FieldInfo field in gameVersion.Type.GetFields())
 				{
