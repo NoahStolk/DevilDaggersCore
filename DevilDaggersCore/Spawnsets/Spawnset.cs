@@ -79,8 +79,6 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public int SpawnCount => Spawns.Where(s => s.Value.SpawnsetEnemy != Enemies[-1]).Count();
-
 		public Spawnset()
 		{
 		}
@@ -252,6 +250,33 @@ namespace DevilDaggersCore.Spawnsets
 					return false;
 
 			return true;
+		}
+
+		public int GetEndLoopStartIndex()
+		{
+			for (int i = Spawns.Count - 1; i >= 0; i--)
+				if (Spawns[i].SpawnsetEnemy == Enemies[-1])
+					return i;
+
+			return 0;
+		}
+
+		public IEnumerable<double> GenerateEndWaveTimes(double endGameSecond, int waveIndex)
+		{
+			double enemyTimer = 0;
+			double delay = 0;
+
+			IEnumerable<Spawn> endLoop = Spawns.Values.Skip(GetEndLoopStartIndex());
+			foreach (Spawn spawn in endLoop)
+			{
+				delay += spawn.Delay;
+				while (enemyTimer < delay)
+				{
+					endGameSecond += 1f / 60f;
+					enemyTimer += (1f / 60f) + (1f / 60f / 8f * waveIndex);
+				}
+				yield return endGameSecond;
+			}
 		}
 
 		// TODO
@@ -472,7 +497,7 @@ namespace DevilDaggersCore.Spawnsets
 				Logging.Log.Error($"Could not convert {nameof(Spawnset)} to binary.", ex);
 
 				bytes = new byte[0];
-				
+
 				return false;
 			}
 		}
