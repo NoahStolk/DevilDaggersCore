@@ -17,9 +17,6 @@ namespace DevilDaggersCore.Spawnsets.Web
 		[JsonProperty]
 		public SpawnsetData spawnsetData;
 
-		[JsonProperty]
-		public bool HasLeaderboard { get; set; }
-
 		public static string GetName(string fileName)
 		{
 			return fileName.Substring(0, fileName.LastIndexOf('_'));
