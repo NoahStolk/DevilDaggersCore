@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace DevilDaggersCore.Game
 {
+	[JsonObject(MemberSerialization.OptIn)]
 	public abstract class DevilDaggersEntity
 	{
+		[JsonProperty]
 		public string Name { get; set; }
+		[JsonProperty]
 		public string ColorCode { get; set; }
 
 		public DevilDaggersEntity(string name, string colorCode)
