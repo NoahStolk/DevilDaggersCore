@@ -15,8 +15,8 @@ namespace DevilDaggersCore.Spawnsets
 	{
 		public const int SettingsBufferSize = 36;
 		public const int ArenaBufferSize = 10404; // ArenaWidth * ArenaHeight * TileBufferSize (51 * 51 * 4 = 10404)
-		public const int SpawnsHeaderBufferSize = 40; // The amount of bytes in the spawns buffer header. No idea what they are used for.
-		public const int SpawnBufferSize = 28; // The amount of bytes per spawn.
+		public const int SpawnsHeaderBufferSize = 40; // The amount of bytes in the spawns buffer header (no idea what they are used for)
+		public const int SpawnBufferSize = 28; // The amount of bytes per spawn
 
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
@@ -113,26 +113,26 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				// Set the file values for reading V3 spawnsets
+				// Set the file values for reading V3 spawnsets.
 				int spawnBufferSize = (int)stream.Length - (SettingsBufferSize + ArenaBufferSize);
 				byte[] headerBuffer = new byte[SettingsBufferSize];
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
-				// Read the file and write the data into the buffers, then close the file since we do not need it anymore
+				// Read the file and write the data into the buffers, then close the file since we do not need it anymore.
 				stream.Read(headerBuffer, 0, SettingsBufferSize);
 				stream.Read(arenaBuffer, 0, ArenaBufferSize);
 				stream.Read(spawnBuffer, 0, spawnBufferSize);
 
 				stream.Close();
 
-				// Set the header values
+				// Set the header values.
 				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
 				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
 				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
 				float brightness = BitConverter.ToSingle(headerBuffer, 20);
 
-				// Set the arena values
+				// Set the arena values.
 				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
@@ -141,7 +141,7 @@ namespace DevilDaggersCore.Spawnsets
 					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
 				}
 
-				// Set the spawn values
+				// Set the spawn values.
 				SortedDictionary<int, Spawn> spawns = new SortedDictionary<int, Spawn>();
 				int spawnIndex = 0;
 
@@ -156,20 +156,18 @@ namespace DevilDaggersCore.Spawnsets
 					spawns.Add(spawnIndex++, new Spawn(Enemies[IsEmptySpawn(enemyType) ? -1 : enemyType], delay));
 				}
 
-				// Set the spawnset
+				// Set the spawnset.
 				spawnset = new Spawnset(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
 
-				// Success
 				return true;
 			}
 			catch (Exception ex)
 			{
 				Logging.Log.Error($"Could not parse {nameof(Spawnset)}.", ex);
 
-				// Set an empty spawnset
+				// Set an empty spawnset.
 				spawnset = new Spawnset();
 
-				// Failure
 				return false;
 			}
 		}

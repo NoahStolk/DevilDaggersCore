@@ -96,7 +96,7 @@ namespace DevilDaggersCore.Leaderboards
 				for (int i = 0; i < completions.Count; i++)
 				{
 					if (string.IsNullOrEmpty(Entries[i].Username))
-						continue; // Skip the blank name
+						continue; // Skip the blank name.
 
 					if (completions[i].CompletionEntries.TryGetValue(kvp.Key, out CompletionEntry ce) && ce == CompletionEntry.Missing)
 						missing++;
@@ -125,7 +125,7 @@ namespace DevilDaggersCore.Leaderboards
 			float userCompletionRate = 0;
 			int totalEntries = Players == 0 ? total : Math.Min(Players, total);
 			foreach (Entry entry in Entries)
-				if (!string.IsNullOrEmpty(entry.Username)) // Skip the blank name
+				if (!string.IsNullOrEmpty(entry.Username)) // Skip the blank name.
 					userCompletionRate += entry.GetCompletion().GetCompletionRate() * (1f / totalEntries);
 			return userCompletionRate * 0.99f + globalCompletionRate * 0.01f;
 		}

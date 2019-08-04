@@ -269,7 +269,7 @@ namespace DevilDaggersCore.Game
 
 		public static List<T> GetEntities<T>(params GameVersion[] gameVersions) where T : DevilDaggersEntity
 		{
-			// If no game versions are specified, use all
+			// If no game versions are specified, use all.
 			if (gameVersions.Length == 0)
 				gameVersions = GameVersions.Values.ToArray();
 

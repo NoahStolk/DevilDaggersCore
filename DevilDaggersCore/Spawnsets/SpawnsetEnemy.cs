@@ -28,7 +28,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 			catch
 			{
-				// If no game versions are specified, use all
+				// If no game versions are specified, use all.
 				if (gameVersions.Length == 0)
 					gameVersions = GameInfo.GameVersions.Values.ToArray();
 
