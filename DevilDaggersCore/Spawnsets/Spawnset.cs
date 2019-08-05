@@ -278,7 +278,7 @@ namespace DevilDaggersCore.Spawnsets
 		}
 
 		// TODO
-		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons)
+		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves, GameVersion gameVersion)
 		{
 			List<AbstractEvent> events = new List<AbstractEvent>();
 
@@ -314,13 +314,8 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				double waveMod = 0;
 				double endGameSecond = seconds;
-				for (int i = 0; i < /*maxWaves*/25; i++)
+				for (int i = 0; i < maxWaves; i++)
 				{
-					//if (spawns > SpawnsetUtils.MaxSpawns)
-					//{
-					//	break;
-					//}
-
 					double enemyTimer = 0;
 					double delay = 0;
 					foreach (Spawn spawn in endLoop)
@@ -336,9 +331,9 @@ namespace DevilDaggersCore.Spawnsets
 						{
 							events.Add(new SpawnEvent(endGameSecond, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
 							SpawnsetEnemy finalEnemy = spawn.SpawnsetEnemy;
-							// Change the third Gigapede into a Ghostpede
-							if (i % 3 == 2 /*&& gameVersion == GameInfoVersions["V3"]*/ && finalEnemy == GetEnemyByName("Gigapede"))
-								finalEnemy = GetEnemyByName("Ghostpede");
+
+							if (i % 3 == 2 && gameVersion == GameInfo.GameVersions["V3"] && finalEnemy == Enemies[5])
+								finalEnemy = Enemies[9];
 
 							int gems = finalEnemy.NoFarmGems;
 							totalGems += gems;
@@ -364,7 +359,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			foreach (SpawnEvent squid in squids)
 			{
-				Dictionary<Game.Enemy, int> skulls = new Dictionary<Game.Enemy, int>();
+				Dictionary<Enemy, int> skulls = new Dictionary<Enemy, int>();
 				if (squid.Enemy == Enemies[0])
 				{
 					skulls.Add(GameInfo.V3.Skull1, 10);
@@ -381,7 +376,7 @@ namespace DevilDaggersCore.Spawnsets
 					skulls.Add(GameInfo.V3.Skull4, 1);
 				}
 				StringBuilder gushText = new StringBuilder();
-				foreach (KeyValuePair<Game.Enemy, int> kvp in skulls)
+				foreach (KeyValuePair<Enemy, int> kvp in skulls)
 					gushText.Append($"{kvp.Value} {kvp.Key.Name}{(kvp.Value == 1 ? "" : "s")} and ");
 
 				for (int i = 0; i < gushes; i++)
