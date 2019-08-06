@@ -184,16 +184,11 @@ namespace DevilDaggersCore.Spawnsets
 				stream.Close();
 
 				int loopBegin = 0;
-				bool emptyFound = false;
 				for (int i = spawnBuffer.Length - SpawnBufferSize; i > 0; i -= SpawnBufferSize)
 				{
 					if (IsEmptySpawn(BitConverter.ToInt32(spawnBuffer, i)))
 					{
-						emptyFound = true;
 						loopBegin = i / SpawnBufferSize;
-					}
-					else if (emptyFound)
-					{
 						break;
 					}
 				}
@@ -205,7 +200,7 @@ namespace DevilDaggersCore.Spawnsets
 				for (int j = 0; j < spawnBuffer.Length; j += SpawnBufferSize)
 				{
 					if (j < loopBegin * SpawnBufferSize)
-						nonLoopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
+						nonLoopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4); // TODO: Trim EMPTY spawns at the end (test with Delirium_Stop)
 					else
 						loopSeconds += BitConverter.ToSingle(spawnBuffer, j + 4);
 
@@ -222,8 +217,8 @@ namespace DevilDaggersCore.Spawnsets
 				{
 					NonLoopSpawns = nonLoopSpawns,
 					LoopSpawns = loopSpawns,
-					NonLoopLength = nonLoopSpawns == 0 ? 0 : nonLoopSeconds,
-					LoopLength = loopSpawns == 0 ? 0 : loopSeconds
+					NonLoopLength = nonLoopSpawns == 0 ? null : (float?)nonLoopSeconds,
+					LoopLength = loopSpawns == 0 ? null : (float?)loopSeconds
 				};
 
 				return true;
