@@ -202,7 +202,7 @@ namespace DevilDaggersCore.Game
 			{ V2.SpiderEgg1, "Hatches into 5 Spiderlings after 10 seconds" },
 			{ V2.SpiderEgg2, "Hatches into 5 Spiderlings after 10 seconds" },
 			{ V2.Spiderling, "Darts towards the player in bursts with random offsets" },
-			{ V2.Andras, "Unfinished enemy that was never added to the real game\nOnly appears in V2, can only be spawned using an edited spawnset\nHas its own sounds\nUses the model for Skull III, but is smaller in size\nDoes nothing but attract and consume all homing daggers like Ghostpede \nOnly takes damage when shot from above, so the player will need to daggerjump\nYou don't die when touching it" },
+			{ V2.Andras, "Unfinished enemy that was never added to the real game\nOnly appears in V2, can only be spawned using an edited spawnset\nHas its own sounds\nUses the model for Skull III, but is smaller in size\nDoes nothing but attract and consume all homing daggers like Ghostpede \nOnly takes damage when shot from above, so the player will need to daggerjump\nThe player doesn't die when touching it" },
 
 			{ V3.Squid1, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull II every 20 seconds (starting 3 seconds after its initial appearance)" },
 			{ V3.Squid2, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull III every 20 seconds (starting 3 seconds after its initial appearance)" },
