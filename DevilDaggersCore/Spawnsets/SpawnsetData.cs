@@ -11,8 +11,16 @@ namespace DevilDaggersCore.Spawnsets
 		public int LoopSpawns { get; set; }
 
 		[JsonProperty]
-		public float? NonLoopLength { get; set; }
+		public float? NonLoopLengthNullable { get; set; }
 		[JsonProperty]
-		public float? LoopLength { get; set; }
+		public float? LoopLengthNullable { get; set; }
+
+		// TODO: Remove these 3 properties (will break DDSE versions 2.0.0.0 to 2.4.0.0)
+		[JsonProperty]
+		public float NonLoopLength => NonLoopLengthNullable.Value;
+		[JsonProperty]
+		public float LoopLength => LoopLengthNullable.Value;
+		[JsonProperty]
+		public float LoopStart => NonLoopLength;
 	}
 }

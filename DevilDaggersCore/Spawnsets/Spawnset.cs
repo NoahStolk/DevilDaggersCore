@@ -217,8 +217,8 @@ namespace DevilDaggersCore.Spawnsets
 				{
 					NonLoopSpawns = nonLoopSpawns,
 					LoopSpawns = loopSpawns,
-					NonLoopLength = nonLoopSpawns == 0 ? null : (float?)nonLoopSeconds,
-					LoopLength = loopSpawns == 0 ? null : (float?)loopSeconds
+					NonLoopLengthNullable = nonLoopSpawns == 0 ? null : (float?)nonLoopSeconds,
+					LoopLengthNullable = loopSpawns == 0 ? null : (float?)loopSeconds
 				};
 
 				return true;
