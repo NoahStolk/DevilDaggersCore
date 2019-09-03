@@ -103,6 +103,11 @@ namespace DevilDaggersCore.Spawnsets
 			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
 		}
 
+		public static int GetEnemyID(SpawnsetEnemy enemy)
+		{
+			return Enemies.Where(e => e.Value == enemy).FirstOrDefault().Key;
+		}
+
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
@@ -492,7 +497,7 @@ namespace DevilDaggersCore.Spawnsets
 
 		/// <summary>
 		/// Creates a unique and constant string for this spawnset instance. Each value has a constant order and is separated using the ';' character.
-		/// WARNING: Modifying this method will require a re-compile or re-publish of every application that uses it and render any older versions as obsolete.
+		/// WARNING: Modifying this method in such a way that it returns different values will require a re-compile or re-publish of every application that uses it and render any older versions as obsolete.
 		/// </summary>
 		public string GetUniqueString()
 		{
@@ -502,7 +507,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			StringBuilder sb = new StringBuilder();
 			foreach (Spawn spawn in Spawns.Values)
-				sb.Append($"{Enemies.Where(e => e.Value == spawn.SpawnsetEnemy).FirstOrDefault().Key}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
+				sb.Append($"{GetEnemyID(spawn.SpawnsetEnemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
 			for (int i = 0; i < ArenaWidth; i++)
 				for (int j = 0; j < ArenaHeight; j++)
