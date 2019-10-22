@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DevilDaggersCore.Tools
 {
@@ -16,5 +17,8 @@ namespace DevilDaggersCore.Tools
 		/// </summary>
 		[JsonProperty]
 		public string VersionNumberRequired { get; set; }
+
+		[JsonProperty]
+		public List<ChangeLogEntry> ChangeLog { get; set; }
 	}
 }
