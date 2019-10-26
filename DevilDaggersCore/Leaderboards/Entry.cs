@@ -8,49 +8,77 @@ namespace DevilDaggersCore.Leaderboards
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Entry
 	{
+		[CompletionProperty]
 		[JsonProperty]
 		public int Rank { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int ID { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public string Username { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int Time { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int Kills { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int Gems { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int DeathType { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int ShotsHit { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public int ShotsFired { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong TimeTotal { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong KillsTotal { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong GemsTotal { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong DeathsTotal { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong ShotsHitTotal { get; set; }
+
+		[CompletionProperty]
 		[JsonProperty]
 		public ulong ShotsFiredTotal { get; set; }
 
 		public double Accuracy => ShotsFired == 0 ? 0 : ShotsHit / (double)ShotsFired;
 		public double AccuracyTotal => ShotsFiredTotal == 0 ? 0 : ShotsHitTotal / (double)ShotsFiredTotal;
 
-		private Completion completion = new Completion();
+		public Completion Completion { get; } = new Completion();
 
 		public Completion GetCompletion()
 		{
-			if (completion.Initialised)
-				return completion;
+			if (Completion.Initialized)
+				return Completion;
 
-			Type t = GetType();
-			foreach (PropertyInfo info in t.GetProperties())
+			foreach (PropertyInfo info in GetType().GetProperties())
 			{
 				object value = info.GetValue(this);
 				if (value == null)
@@ -60,20 +88,23 @@ namespace DevilDaggersCore.Leaderboards
 				if (string.IsNullOrEmpty(valueString))
 					continue;
 
-				Type type = value.GetType();
-				string name = info.Name.ToLower();
-				if (name.Contains("accuracy") || name.Contains("completion"))
+				if (!Attribute.IsDefined(info, typeof(CompletionProperty)))
 					continue;
 
-				completion.CompletionEntries[info.Name] = CompletionEntry.Complete;
-
-				if ((name.Contains("deathtype") && valueString == "-1") ||
-					(!name.Contains("deathtype") && valueString == ReflectionUtils.GetDefaultValue(type).ToString()))
-					completion.CompletionEntries[info.Name] = CompletionEntry.Missing;
+				if ((info.Name == nameof(DeathType) && valueString == "-1")
+				 || (info.Name != nameof(DeathType) && valueString == ReflectionUtils.GetDefaultValue(value.GetType()).ToString()))
+					Completion.CompletionEntries[info.Name] = CompletionEntry.Missing;
+				else
+					Completion.CompletionEntries[info.Name] = CompletionEntry.Complete;
 			}
 
-			completion.Initialised = true;
-			return completion;
+			Completion.Initialized = true;
+			return Completion;
+		}
+
+		public bool IsBlankName()
+		{
+			return ID == 999999;
 		}
 	}
 }
