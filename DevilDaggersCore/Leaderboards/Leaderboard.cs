@@ -1,4 +1,5 @@
-﻿using NetBase.Utils;
+﻿using DevilDaggersCore.Leaderboards.HistoryCompletion;
+using NetBase.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,7 @@ namespace DevilDaggersCore.Leaderboards
 				if (string.IsNullOrEmpty(valueString))
 					continue;
 
-				if (!Attribute.IsDefined(info, typeof(CompletionProperty)))
+				if (!Attribute.IsDefined(info, typeof(CompletionPropertyAttribute)))
 					continue;
 
 				if (valueString == ReflectionUtils.GetDefaultValue(value.GetType()).ToString())

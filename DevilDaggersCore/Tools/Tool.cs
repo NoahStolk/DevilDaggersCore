@@ -8,7 +8,7 @@ namespace DevilDaggersCore.Tools
 	{
 		[JsonProperty]
 		public string Name { get; set; }
-		
+
 		[JsonProperty]
 		public string VersionNumber { get; set; }
 

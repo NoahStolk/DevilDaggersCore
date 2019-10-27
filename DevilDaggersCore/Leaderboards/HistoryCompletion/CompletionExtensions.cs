@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Leaderboards
+﻿namespace DevilDaggersCore.Leaderboards.HistoryCompletion
 {
 	public static class CompletionExtensions
 	{
