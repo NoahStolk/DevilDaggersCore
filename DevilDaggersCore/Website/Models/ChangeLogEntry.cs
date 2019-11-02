@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace DevilDaggersCore.Tools
+namespace DevilDaggersCore.Website.Models
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class ChangeLogEntry
 	{
 		[JsonProperty]
-		public string VersionNumber { get; set; }
+		public Version VersionNumber { get; set; }
 
 		[JsonProperty]
 		public DateTime Date { get; set; }

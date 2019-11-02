@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
-namespace DevilDaggersCore.Tools
+namespace DevilDaggersCore.Website.Models
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Tool
@@ -10,13 +11,19 @@ namespace DevilDaggersCore.Tools
 		public string Name { get; set; }
 
 		[JsonProperty]
-		public string VersionNumber { get; set; }
+		public string DisplayName { get; set; }
+
+		/// <summary>
+		/// Indicates the current version of the tool on the website.
+		/// </summary>
+		[JsonProperty]
+		public Version VersionNumber { get; set; }
 
 		/// <summary>
 		/// Indicates the oldest version of the tool which is still fully compatible with the website.
 		/// </summary>
 		[JsonProperty]
-		public string VersionNumberRequired { get; set; }
+		public Version VersionNumberRequired { get; set; }
 
 		[JsonProperty]
 		public List<ChangeLogEntry> ChangeLog { get; set; }
