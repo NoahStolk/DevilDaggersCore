@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DevilDaggersCore.Website.Models
 {
 	[JsonObject(MemberSerialization.OptIn)]
-	public class ChangeLogEntry
+	public class ChangelogEntry
 	{
 		[JsonProperty]
 		public Version VersionNumber { get; set; }
