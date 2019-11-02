@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Noah Stolk</Authors>
+    <Company />
+    <Copyright>Copyright © Noah Stolk 2018 - 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
