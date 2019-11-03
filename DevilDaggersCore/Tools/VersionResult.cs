@@ -1,5 +1,5 @@
 ﻿using System;
-using DevilDaggersCore.Website.Models;
+using DevilDaggersCore.Tools.Website;
 
 namespace DevilDaggersCore.Tools
 {

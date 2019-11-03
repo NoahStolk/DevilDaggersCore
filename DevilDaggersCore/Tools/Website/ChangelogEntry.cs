@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DevilDaggersCore.Website.Models
+namespace DevilDaggersCore.Tools.Website
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class ChangelogEntry

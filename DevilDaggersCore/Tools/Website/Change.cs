@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DevilDaggersCore.Website.Models
+namespace DevilDaggersCore.Tools.Website
 {
 	public class Change
 	{
