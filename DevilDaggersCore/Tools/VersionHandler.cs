@@ -19,16 +19,18 @@ namespace DevilDaggersCore.Tools
 		private static readonly Lazy<VersionHandler> lazy = new Lazy<VersionHandler>(() => new VersionHandler());
 		public static VersionHandler Instance => lazy.Value;
 
+		public VersionResult VersionResult { get; private set; } = new VersionResult(null, null, new Exception("Version has not yet been retrieved."));
+
 		private VersionHandler()
 		{
 		}
 
-		public Version GetLocalVersion(Assembly assembly)
+		public static Version GetLocalVersion(Assembly assembly)
 		{
 			return Version.Parse(FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion);
 		}
 
-		public VersionResult GetOnlineVersion(string toolName, Version localVersion)
+		public void GetOnlineVersion(string toolName, Version localVersion)
 		{
 			string url = UrlUtils.ApiGetTools;
 			try
@@ -40,22 +42,17 @@ namespace DevilDaggersCore.Tools
 
 				Tool toolOnline = tools.Where(t => t.Name == toolName).FirstOrDefault();
 				if (toolOnline != null)
-					return new VersionResult(toolOnline.VersionNumber <= localVersion, toolOnline);
+					VersionResult = new VersionResult(toolOnline.VersionNumber <= localVersion, toolOnline);
 				else
-					return Error(new Exception($"{toolName} not found in '{url}'."));
+					VersionResult = new VersionResult(null, null, new Exception($"{toolName} not found in '{url}'."));
 			}
 			catch (WebException ex)
 			{
-				return Error(new Exception($"Could not connect to '{url}'.", ex));
+				VersionResult = new VersionResult(null, null, new Exception($"Could not connect to '{url}'.", ex));
 			}
 			catch (Exception ex)
 			{
-				return Error(new Exception($"An unexpected error occurred while trying to retrieve the version number for '{toolName}' from '{url}'.", ex));
-			}
-
-			VersionResult Error(Exception ex = null)
-			{
-				return new VersionResult(null, null, ex);
+				VersionResult = new VersionResult(null, null, new Exception($"An unexpected error occurred while trying to retrieve the version number for '{toolName}' from '{url}'.", ex));
 			}
 		}
 	}
