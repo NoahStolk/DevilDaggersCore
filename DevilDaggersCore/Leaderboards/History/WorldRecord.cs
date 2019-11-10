@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevilDaggersCore.Leaderboards
+namespace DevilDaggersCore.Leaderboards.History
 {
 	public class WorldRecord
 	{

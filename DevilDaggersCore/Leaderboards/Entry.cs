@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Leaderboards.HistoryCompletion;
+﻿using DevilDaggersCore.Leaderboards.History.Completions;
 using NetBase.Utils;
 using Newtonsoft.Json;
 using System;
