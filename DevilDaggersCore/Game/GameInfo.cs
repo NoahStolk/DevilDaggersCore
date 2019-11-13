@@ -303,7 +303,7 @@ namespace DevilDaggersCore.Game
 
 		public static Death GetDeathFromDeathName(string deathName, params GameVersion[] gameVersions)
 		{
-			Death death = GetEntities<Death>(gameVersions).Where(d => d.Name == deathName).FirstOrDefault();
+			Death death = GetEntities<Death>(gameVersions).FirstOrDefault(d => d.Name == deathName);
 			if (death != null)
 				return death;
 			return V3.Unknown;
@@ -311,7 +311,7 @@ namespace DevilDaggersCore.Game
 
 		public static Death GetDeathFromDeathType(int deathType, params GameVersion[] gameVersions)
 		{
-			Death death = GetEntities<Death>(gameVersions).Where(d => d.DeathType == deathType).FirstOrDefault();
+			Death death = GetEntities<Death>(gameVersions).FirstOrDefault(d => d.DeathType == deathType);
 			if (death != null)
 				return death;
 			return V3.Unknown;

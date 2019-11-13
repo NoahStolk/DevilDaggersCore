@@ -100,12 +100,12 @@ namespace DevilDaggersCore.Spawnsets
 
 		public static SpawnsetEnemy GetEnemyByName(string name)
 		{
-			return Enemies.Values.Where(e => e.Name == name).FirstOrDefault();
+			return Enemies.Values.FirstOrDefault(e => e.Name == name);
 		}
 
 		public static int GetEnemyID(SpawnsetEnemy enemy)
 		{
-			return Enemies.Where(e => e.Value == enemy).FirstOrDefault().Key;
+			return Enemies.FirstOrDefault(e => e.Value == enemy).Key;
 		}
 
 		/// <summary>

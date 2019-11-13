@@ -40,7 +40,7 @@ namespace DevilDaggersCore.Tools
 					downloadString = client.DownloadString(url);
 				List<Tool> tools = JsonConvert.DeserializeObject<List<Tool>>(downloadString);
 
-				Tool toolOnline = tools.Where(t => t.Name == toolName).FirstOrDefault();
+				Tool toolOnline = tools.FirstOrDefault(t => t.Name == toolName);
 				if (toolOnline != null)
 					VersionResult = new VersionResult(toolOnline.VersionNumber <= localVersion, toolOnline);
 				else
