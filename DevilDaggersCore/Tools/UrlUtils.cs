@@ -21,6 +21,6 @@ namespace DevilDaggersCore.Tools
 
 		public static string DiscordInviteLink => "https://discord.gg/NF32j8S";
 
-		public static string SourceCodeUrl(string toolName) => $"https://bitbucket.org/NoahStolk/{toolName}/src/master/";
+		public static string SourceCodeUrl(string toolName) => $"https://github.com/NoahStolk/{toolName}";
 	}
 }
