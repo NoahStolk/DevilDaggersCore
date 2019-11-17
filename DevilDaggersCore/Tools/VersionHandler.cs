@@ -16,10 +16,10 @@ namespace DevilDaggersCore.Tools
 		/// </summary>
 		private const int Timeout = 7500;
 
+		public VersionResult VersionResult { get; private set; } = new VersionResult(null, null, new Exception("Version has not yet been retrieved."));
+
 		private static readonly Lazy<VersionHandler> lazy = new Lazy<VersionHandler>(() => new VersionHandler());
 		public static VersionHandler Instance => lazy.Value;
-
-		public VersionResult VersionResult { get; private set; } = new VersionResult(null, null, new Exception("Version has not yet been retrieved."));
 
 		private VersionHandler()
 		{

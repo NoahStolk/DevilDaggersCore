@@ -129,5 +129,12 @@ namespace DevilDaggersCore.Leaderboards
 
 			return userCompletionRate * 0.99f + globalCompletionRate * 0.01f;
 		}
+
+		public string FormatShotsGlobal(bool history)
+		{
+			if (history && (ShotsHitGlobal == 0 || ShotsFiredGlobal == 10000))
+				return "Exact values not known";
+			return $"{ShotsHitGlobal.ToString("N0")} / {ShotsFiredGlobal.ToString("N0")}";
+		}
 	}
 }

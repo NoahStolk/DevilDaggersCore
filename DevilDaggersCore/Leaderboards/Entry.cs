@@ -107,5 +107,19 @@ namespace DevilDaggersCore.Leaderboards
 		{
 			return ID == 999999;
 		}
+
+		public string FormatShots(bool history)
+		{
+			if (history && (ShotsHit == 0 || ShotsFired == 10000))
+				return "Exact values not known";
+			return $"{ShotsHit.ToString("N0")} / {ShotsFired.ToString("N0")}";
+		}
+
+		public string FormatShotsTotal(bool history)
+		{
+			if (history && (ShotsHitTotal == 0 || ShotsFiredTotal == 10000))
+				return "Exact values not known";
+			return $"{ShotsHitTotal.ToString("N0")} / {ShotsFiredTotal.ToString("N0")}";
+		}
 	}
 }

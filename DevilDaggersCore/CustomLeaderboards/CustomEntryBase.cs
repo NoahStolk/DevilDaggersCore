@@ -40,5 +40,10 @@ namespace DevilDaggersCore.CustomLeaderboards
 			SubmitDate = submitDate;
 			ClientVersion = clientVersion;
 		}
+
+		public string FormatShots()
+		{
+			return $"{ShotsHit.ToString("N0")} / {ShotsFired.ToString("N0")}";
+		}
 	}
 }
