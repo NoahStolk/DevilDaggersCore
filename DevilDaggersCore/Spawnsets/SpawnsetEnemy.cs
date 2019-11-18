@@ -1,5 +1,4 @@
 ﻿using DevilDaggersCore.Game;
-using NetBase.Utils;
 using System;
 using System.Linq;
 
@@ -32,7 +31,7 @@ namespace DevilDaggersCore.Spawnsets
 				if (gameVersions.Length == 0)
 					gameVersions = GameInfo.GameVersions.Values.ToArray();
 
-				throw new Exception($"No Enemy found for {nameof(SpawnsetEnemy)} '{Name}' in game versions '{string.Join(", ", gameVersions.GetMemberValues<GameVersion, Type>("type", false))}'.");
+				throw new Exception($"No Enemy found for {nameof(SpawnsetEnemy)} '{Name}' in game versions '{string.Join(", ", gameVersions.Select(g => g.Type))}'.");
 			}
 		}
 	}
