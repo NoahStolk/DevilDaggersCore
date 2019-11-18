@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace DevilDaggersCore.Game
@@ -11,6 +12,9 @@ namespace DevilDaggersCore.Game
 		public string Name { get; set; }
 		[JsonProperty]
 		public string ColorCode { get; set; }
+
+		[JsonProperty]
+		public string[] Appearances => GetAppearances().Select(g => g.Type.Name).ToArray();
 
 		public DevilDaggersEntity(string name, string colorCode)
 		{
