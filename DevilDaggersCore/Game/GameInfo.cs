@@ -301,6 +301,14 @@ namespace DevilDaggersCore.Game
 			return entities;
 		}
 
+		public static IEnumerable<Tuple<string, T>> GetEntitiesWithGameVersion<T>() where T : DevilDaggersEntity
+		{
+			foreach (KeyValuePair<string, GameVersion> gameVersion in GameVersions)
+				foreach (FieldInfo field in gameVersion.Value.Type.GetFields())
+					if (field.FieldType == typeof(T) || field.FieldType.IsSubclassOf(typeof(T)))
+						 yield return Tuple.Create(gameVersion.Key, field.GetValue(field) as T);
+		}
+
 		public static Death GetDeathFromDeathName(string deathName, params GameVersion[] gameVersions)
 		{
 			Death death = GetEntities<Death>(gameVersions).FirstOrDefault(d => d.Name == deathName);
