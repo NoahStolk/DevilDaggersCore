@@ -15,7 +15,7 @@ namespace DevilDaggersCore.Leaderboards
 
 		[CompletionProperty]
 		[JsonProperty]
-		public int ID { get; set; }
+		public int Id { get; set; }
 
 		[CompletionProperty]
 		[JsonProperty]
@@ -103,10 +103,7 @@ namespace DevilDaggersCore.Leaderboards
 			return Completion;
 		}
 
-		public bool IsBlankName()
-		{
-			return ID == 999999;
-		}
+		public bool IsBlankName() => Id == 999999;
 
 		public string FormatShots(bool history)
 		{

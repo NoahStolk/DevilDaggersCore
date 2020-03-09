@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace DevilDaggersCore.MemoryHandling
 {
-	public class MemoryAPI
+	public class MemoryApi
 	{
 		[Flags]
 		public enum ProcessAccessType

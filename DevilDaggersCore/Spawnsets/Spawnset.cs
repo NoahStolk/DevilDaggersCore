@@ -93,20 +93,11 @@ namespace DevilDaggersCore.Spawnsets
 			Brightness = brightness;
 		}
 
-		public static bool IsEmptySpawn(int enemyType)
-		{
-			return enemyType < 0 || enemyType > 9;
-		}
+		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
 
-		public static SpawnsetEnemy GetEnemyByName(string name)
-		{
-			return Enemies.Values.FirstOrDefault(e => e.Name == name);
-		}
+		public static SpawnsetEnemy GetEnemyByName(string name) => Enemies.Values.FirstOrDefault(e => e.Name == name);
 
-		public static int GetEnemyID(SpawnsetEnemy enemy)
-		{
-			return Enemies.FirstOrDefault(e => e.Value == enemy).Key;
-		}
+		public static int GetEnemyId(SpawnsetEnemy enemy) => Enemies.FirstOrDefault(e => e.Value == enemy).Key;
 
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
@@ -507,7 +498,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			StringBuilder sb = new StringBuilder();
 			foreach (Spawn spawn in Spawns.Values)
-				sb.Append($"{GetEnemyID(spawn.SpawnsetEnemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
+				sb.Append($"{GetEnemyId(spawn.SpawnsetEnemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
 			for (int i = 0; i < ArenaWidth; i++)
 				for (int j = 0; j < ArenaHeight; j++)

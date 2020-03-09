@@ -5,7 +5,7 @@ namespace DevilDaggersCore.Leaderboards.History
 {
 	public class WorldRecordHolder
 	{
-		public int ID { get; set; }
+		public int Id { get; set; }
 		public List<string> Usernames { get; } = new List<string>();
 		public TimeSpan TotalTimeHeld { get; set; }
 		public TimeSpan LongestTimeHeldConsecutively { get; set; }
@@ -16,7 +16,7 @@ namespace DevilDaggersCore.Leaderboards.History
 
 		public WorldRecordHolder(int id, string username, TimeSpan totalTimeHeld, TimeSpan longestTimeHeldConsecutively, int worldRecordCount, DateTime lastHeld)
 		{
-			ID = id;
+			Id = id;
 			Usernames.Add(username);
 			TotalTimeHeld = totalTimeHeld;
 			LongestTimeHeldConsecutively = longestTimeHeldConsecutively;

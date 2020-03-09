@@ -16,7 +16,7 @@ namespace DevilDaggersCore.MemoryHandling
 
 		public string SpawnsetHash { get; private set; } = string.Empty;
 
-		public IntVariable PlayerID { get; private set; } = new IntVariable(Magic, 0x5C);
+		public IntVariable PlayerId { get; private set; } = new IntVariable(Magic, 0x5C);
 		public StringVariable Username { get; private set; } = new StringVariable(Magic, 0x60, 32);
 		public FloatVariable Time { get; private set; } = new FloatVariable(Magic, 0x1A0);
 		public IntVariable Gems { get; private set; } = new IntVariable(Magic, 0x1C0);
@@ -81,7 +81,7 @@ namespace DevilDaggersCore.MemoryHandling
 		/// </summary>
 		public void PreScan()
 		{
-			PlayerID.PreScan();
+			PlayerId.PreScan();
 			Username.PreScan();
 
 			IsReplay.PreScan();
@@ -107,7 +107,7 @@ namespace DevilDaggersCore.MemoryHandling
 			try
 			{
 				// Always scan these values.
-				PlayerID.Scan();
+				PlayerId.Scan();
 				Username.Scan();
 
 				// Always calculate the spawnset in menu or lobby.
