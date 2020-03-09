@@ -301,12 +301,13 @@ namespace DevilDaggersCore.Game
 			return entities;
 		}
 
-		public static IEnumerable<Tuple<string, T>> GetEntitiesWithGameVersion<T>() where T : DevilDaggersEntity
+		public static IEnumerable<(string gameVersion, TEntity)> GetEntitiesWithGameVersion<TEntity>()
+			where TEntity : DevilDaggersEntity
 		{
 			foreach (KeyValuePair<string, GameVersion> gameVersion in GameVersions)
 				foreach (FieldInfo field in gameVersion.Value.Type.GetFields())
-					if (field.FieldType == typeof(T) || field.FieldType.IsSubclassOf(typeof(T)))
-						 yield return Tuple.Create(gameVersion.Key, field.GetValue(field) as T);
+					if (field.FieldType == typeof(TEntity) || field.FieldType.IsSubclassOf(typeof(TEntity)))
+						yield return (gameVersion.Key, field.GetValue(field) as TEntity);
 		}
 
 		public static Death GetDeathFromDeathName(string deathName, params GameVersion[] gameVersions)
