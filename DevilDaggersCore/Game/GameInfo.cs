@@ -301,7 +301,7 @@ namespace DevilDaggersCore.Game
 			return entities;
 		}
 
-		public static IEnumerable<(string gameVersion, TEntity)> GetEntitiesWithGameVersion<TEntity>()
+		public static IEnumerable<(string gameVersion, TEntity entity)> GetEntitiesWithGameVersion<TEntity>()
 			where TEntity : DevilDaggersEntity
 		{
 			foreach (KeyValuePair<string, GameVersion> gameVersion in GameVersions)
