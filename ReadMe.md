@@ -1,22 +1,23 @@
 # DevilDaggersCore
-
 DevilDaggersCore is a .NET Standard class library created for various Devil Daggers related applications.
 
-## Used in
+## Framework
+.NET Standard 2.0
 
+## Language
+C# 7.3
+
+## Dependencies
+- [NetBase](https://github.com/NoahStolk/NetBase)
+
+## Used in
 - https://devildaggers.info/
 - [Devil Daggers Survival Editor](https://devildaggers.info/Tools/DevilDaggersSurvivalEditor)
 - [Devil Daggers Custom Leaderboards](https://devildaggers.info/Tools/DevilDaggersCustomLeaderboards)
 - [Devil Daggers Asset Editor](https://devildaggers.info/Tools/DevilDaggersAssetEditor)
 - [Devil Daggers Discord Bot](https://github.com/NoahStolk/DevilDaggersDiscordBot)
 
-## Dependencies
-
-- [NetBase](https://github.com/NoahStolk/NetBase)
-- [Json.NET](https://www.newtonsoft.com/json)
-
 ## License
-
 MIT License
 
 Copyright (c) 2018-2020 Noah Stolk
