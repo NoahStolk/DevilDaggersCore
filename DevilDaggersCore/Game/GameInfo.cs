@@ -228,7 +228,7 @@ namespace DevilDaggersCore.Game
 			{ V3.TheOrb, "Activates 10 seconds after Leviathan's death\nBehaves like an eyeball, will look at the player, then attract and transmute all skulls by beckoning every 2.5333 seconds\nBecomes stunned under constant fire, cannot look or attract skulls while stunned" }
 		};
 
-		public const string DEFAULT_GAME_VERSION = "V3";
+		public const string DefaultGameVersion = "V3";
 
 		public static Dictionary<string, GameVersion> GameVersions = new Dictionary<string, GameVersion>
 		{
@@ -255,7 +255,7 @@ namespace DevilDaggersCore.Game
 				if (GameVersions.TryGetValue(gameVersionString, out gameVersion))
 					return true;
 
-			gameVersion = GameVersions[DEFAULT_GAME_VERSION];
+			gameVersion = GameVersions[DefaultGameVersion];
 			return false;
 		}
 

@@ -4,13 +4,13 @@ namespace DevilDaggersCore.MemoryHandling
 {
 	public static class ProcessUtils
 	{
-		private const string ProcessNameToFind = "dd";
-		private const string ProcessMainWindowTitle = "Devil Daggers";
+		private const string processNameToFind = "dd";
+		private const string processMainWindowTitle = "Devil Daggers";
 
 		public static Process GetDevilDaggersProcess()
 		{
-			foreach (Process process in Process.GetProcessesByName(ProcessNameToFind))
-				if (process.MainWindowTitle == ProcessMainWindowTitle)
+			foreach (Process process in Process.GetProcessesByName(processNameToFind))
+				if (process.MainWindowTitle == processMainWindowTitle)
 					return process;
 			return null;
 		}

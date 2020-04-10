@@ -9,24 +9,24 @@ namespace DevilDaggersCore.MemoryHandling
 {
 	public sealed class Scanner
 	{
-		private const int Magic = 0x001F30C0;
+		private const int magic = 0x001F30C0;
 
 		public Process Process { get; set; }
 		public Memory Memory { get; private set; } = new Memory();
 
 		public string SpawnsetHash { get; private set; } = string.Empty;
 
-		public IntVariable PlayerId { get; private set; } = new IntVariable(Magic, 0x5C);
-		public StringVariable Username { get; private set; } = new StringVariable(Magic, 0x60, 32);
-		public FloatVariable Time { get; private set; } = new FloatVariable(Magic, 0x1A0);
-		public IntVariable Gems { get; private set; } = new IntVariable(Magic, 0x1C0);
-		public IntVariable Kills { get; private set; } = new IntVariable(Magic, 0x1BC);
-		public IntVariable DeathType { get; private set; } = new IntVariable(Magic, 0x1C4);
-		public IntVariable ShotsFired { get; private set; } = new IntVariable(Magic, 0x1B4);
-		public IntVariable ShotsHit { get; private set; } = new IntVariable(Magic, 0x1B8);
-		public IntVariable EnemiesAlive { get; private set; } = new IntVariable(Magic, 0x1FC);
-		public BoolVariable IsAlive { get; private set; } = new BoolVariable(Magic, 0x1A4);
-		public BoolVariable IsReplay { get; private set; } = new BoolVariable(Magic, 0x35D);
+		public IntVariable PlayerId { get; private set; } = new IntVariable(magic, 0x5C);
+		public StringVariable Username { get; private set; } = new StringVariable(magic, 0x60, 32);
+		public FloatVariable Time { get; private set; } = new FloatVariable(magic, 0x1A0);
+		public IntVariable Gems { get; private set; } = new IntVariable(magic, 0x1C0);
+		public IntVariable Kills { get; private set; } = new IntVariable(magic, 0x1BC);
+		public IntVariable DeathType { get; private set; } = new IntVariable(magic, 0x1C4);
+		public IntVariable ShotsFired { get; private set; } = new IntVariable(magic, 0x1B4);
+		public IntVariable ShotsHit { get; private set; } = new IntVariable(magic, 0x1B8);
+		public IntVariable EnemiesAlive { get; private set; } = new IntVariable(magic, 0x1FC);
+		public BoolVariable IsAlive { get; private set; } = new BoolVariable(magic, 0x1A4);
+		public BoolVariable IsReplay { get; private set; } = new BoolVariable(magic, 0x35D);
 
 		public float[] LevelUpTimes { get; private set; } = new float[3] { 0, 0, 0 };
 

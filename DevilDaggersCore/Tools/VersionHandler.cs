@@ -14,7 +14,7 @@ namespace DevilDaggersCore.Tools
 		/// <summary>
 		/// Timeout in milliseconds.
 		/// </summary>
-		private const int Timeout = 7500;
+		private const int timeout = 7500;
 
 		public VersionResult VersionResult { get; private set; } = new VersionResult(null, null, new Exception("Version has not yet been retrieved."));
 
@@ -36,7 +36,7 @@ namespace DevilDaggersCore.Tools
 			try
 			{
 				string downloadString = string.Empty;
-				using (TimeoutWebClient client = new TimeoutWebClient(Timeout))
+				using (TimeoutWebClient client = new TimeoutWebClient(timeout))
 					downloadString = client.DownloadString(url);
 				List<Tool> tools = JsonConvert.DeserializeObject<List<Tool>>(downloadString);
 

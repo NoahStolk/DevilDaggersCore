@@ -4,7 +4,7 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 {
 	public abstract class AbstractVariable<T>
 	{
-		private const uint PointerSize = 4; // For 32-bit applications
+		private const uint pointerSize = 4; // For 32-bit applications
 
 		protected byte[] BytesPrevious { get; private set; }
 		protected byte[] Bytes { get; private set; }
@@ -45,7 +45,7 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 			{
 				Memory memory = Scanner.Instance.Memory;
 
-				byte[] bytes = memory.Read(memory.ReadProcess.MainModule.BaseAddress + LocalBaseAddress, PointerSize, out _);
+				byte[] bytes = memory.Read(memory.ReadProcess.MainModule.BaseAddress + LocalBaseAddress, pointerSize, out _);
 				int ptr = AddressUtils.ToDec(AddressUtils.MakeAddress(bytes));
 
 				Bytes = memory.Read(new IntPtr(ptr) + Offset, Size, out _);

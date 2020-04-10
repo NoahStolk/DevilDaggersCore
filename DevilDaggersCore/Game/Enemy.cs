@@ -6,7 +6,7 @@ namespace DevilDaggersCore.Game
 	public class Enemy : DevilDaggersEntity
 	{
 		[JsonProperty]
-		public int HP { get; set; }
+		public int Hp { get; set; }
 		[JsonProperty]
 		public int Gems { get; set; }
 		[JsonProperty]
@@ -20,12 +20,12 @@ namespace DevilDaggersCore.Game
 		[JsonProperty]
 		public Enemy[] SpawnedBy { get; set; }
 
-		public int GemHP => HP / Gems;
+		public int GemHp => Hp / Gems;
 
 		public Enemy(string name, string colorCode, int hp, int gems, Death death, float? homing3, float? homing4, bool registerKill, params Enemy[] spawnedBy)
 			: base(name, colorCode)
 		{
-			HP = hp;
+			Hp = hp;
 			Gems = gems;
 			Death = death;
 			Homing3 = homing3;
