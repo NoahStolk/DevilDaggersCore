@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonUtils", "..\JsonUtils\J
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptionUtils", "..\EncryptionUtils\EncryptionUtils\EncryptionUtils.csproj", "{5DBBDDD1-0E1D-47F1-B33D-37DE916DF380}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxHighlighter", "..\SyntaxHighlighter\SyntaxHighlighter\SyntaxHighlighter.csproj", "{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -243,6 +245,18 @@ Global
 		{5DBBDDD1-0E1D-47F1-B33D-37DE916DF380}.Release|x64.Build.0 = Release|Any CPU
 		{5DBBDDD1-0E1D-47F1-B33D-37DE916DF380}.Release|x86.ActiveCfg = Release|Any CPU
 		{5DBBDDD1-0E1D-47F1-B33D-37DE916DF380}.Release|x86.Build.0 = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|x64.Build.0 = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -260,6 +274,7 @@ Global
 		{1167F2DF-2780-43DE-A5E3-7013E591D6D8} = {4ED2487E-73B4-4F54-88ED-6DBDDC86F61D}
 		{16AAAC66-E8C5-49A3-96C1-F76395B8917A} = {9454EFE3-EF3D-4CC7-BEED-82134CE25444}
 		{5DBBDDD1-0E1D-47F1-B33D-37DE916DF380} = {9454EFE3-EF3D-4CC7-BEED-82134CE25444}
+		{B6593ED4-8AAD-47A6-8BA1-4255E885F3B5} = {9454EFE3-EF3D-4CC7-BEED-82134CE25444}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6B0C169-2A74-491E-8B34-38A0CC3CD2DE}
