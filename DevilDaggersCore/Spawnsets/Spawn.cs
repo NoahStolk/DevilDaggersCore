@@ -11,9 +11,6 @@
 			Delay = delay;
 		}
 
-		public Spawn Copy()
-		{
-			return new Spawn(SpawnsetEnemy, Delay);
-		}
+		public Spawn Copy() => new Spawn(SpawnsetEnemy, Delay);
 	}
 }

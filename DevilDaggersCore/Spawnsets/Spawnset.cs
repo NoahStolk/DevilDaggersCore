@@ -514,8 +514,8 @@ namespace DevilDaggersCore.Spawnsets
 
 		private byte[] GetHash()
 		{
-			using (HashAlgorithm algorithm = SHA256.Create())
-				return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
+			using HashAlgorithm algorithm = SHA256.Create();
+			return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
 		}
 
 		public string GetHashString()

@@ -23,14 +23,8 @@ namespace DevilDaggersCore.MemoryHandling
 			return sTemp;
 		}
 
-		public static string ToHex(int dec)
-		{
-			return dec.ToString("X");
-		}
+		public static string ToHex(int dec) => dec.ToString("X");
 
-		public static int ToDec(string hex)
-		{
-			return int.Parse(hex, NumberStyles.HexNumber);
-		}
+		public static int ToDec(string hex) => int.Parse(hex, NumberStyles.HexNumber);
 	}
 }

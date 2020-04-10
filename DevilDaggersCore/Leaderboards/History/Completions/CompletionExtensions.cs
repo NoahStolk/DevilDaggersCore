@@ -2,28 +2,17 @@
 {
 	public static class CompletionExtensions
 	{
-		public static string ToHtmlString(this CompletionEntry ce)
+		public static string ToHtmlString(this CompletionEntry ce) => ce switch
 		{
-			switch (ce)
-			{
-				case CompletionEntry.Missing:
-					return "<span style='color: #f00'>(Missing)</span>";
-				default:
-					return string.Empty;
-			}
-		}
+			CompletionEntry.Missing => "<span style='color: #f00'>(Missing)</span>",
+			_ => string.Empty,
+		};
 
-		public static string ToHtmlString(this CompletionEntryCombined cec)
+		public static string ToHtmlString(this CompletionEntryCombined cec) => cec switch
 		{
-			switch (cec)
-			{
-				case CompletionEntryCombined.PartiallyMissing:
-					return "<span style='color: #f80'>(Partially missing)</span>";
-				case CompletionEntryCombined.Missing:
-					return "<span style='color: #f00'>(Missing)</span>";
-				default:
-					return string.Empty;
-			}
-		}
+			CompletionEntryCombined.PartiallyMissing => "<span style='color: #f80'>(Partially missing)</span>",
+			CompletionEntryCombined.Missing => "<span style='color: #f00'>(Missing)</span>",
+			_ => string.Empty,
+		};
 	}
 }

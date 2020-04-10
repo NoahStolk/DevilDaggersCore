@@ -25,10 +25,7 @@ namespace DevilDaggersCore.Tools
 		{
 		}
 
-		public static Version GetLocalVersion(Assembly assembly)
-		{
-			return Version.Parse(FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion);
-		}
+		public static Version GetLocalVersion(Assembly assembly) => Version.Parse(FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion);
 
 		public void GetOnlineVersion(string toolName, Version localVersion)
 		{

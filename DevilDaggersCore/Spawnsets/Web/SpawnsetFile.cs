@@ -17,14 +17,8 @@ namespace DevilDaggersCore.Spawnsets.Web
 		[JsonProperty]
 		public SpawnsetData spawnsetData;
 
-		public static string GetName(string fileName)
-		{
-			return fileName.Substring(0, fileName.LastIndexOf('_'));
-		}
+		public static string GetName(string fileName) => fileName.Substring(0, fileName.LastIndexOf('_'));
 
-		public static string GetAuthor(string fileName)
-		{
-			return fileName.Substring(fileName.LastIndexOf('_') + 1);
-		}
+		public static string GetAuthor(string fileName) => fileName.Substring(fileName.LastIndexOf('_') + 1);
 	}
 }

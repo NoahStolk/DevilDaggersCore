@@ -41,9 +41,6 @@ namespace DevilDaggersCore.CustomLeaderboards
 			ClientVersion = clientVersion;
 		}
 
-		public string FormatShots()
-		{
-			return $"{ShotsHit.ToString("N0")} / {ShotsFired.ToString("N0")}";
-		}
+		public string FormatShots() => $"{ShotsHit:N0} / {ShotsFired:N0}";
 	}
 }

@@ -134,7 +134,7 @@ namespace DevilDaggersCore.Leaderboards
 		{
 			if (history && (ShotsHitGlobal == 0 || ShotsFiredGlobal == 10000))
 				return "Exact values not known";
-			return $"{ShotsHitGlobal.ToString("N0")} / {ShotsFiredGlobal.ToString("N0")}";
+			return $"{ShotsHitGlobal:N0} / {ShotsFiredGlobal:N0}";
 		}
 	}
 }

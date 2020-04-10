@@ -34,14 +34,8 @@ namespace DevilDaggersCore.Game
 			SpawnedBy = spawnedBy;
 		}
 
-		public string GetGemHPString()
-		{
-			return $"({GemHP} x {Gems})";
-		}
+		public string GetGemHpString() => $"({GemHp} x {Gems})";
 
-		public Enemy Copy()
-		{
-			return new Enemy(Name, ColorCode, HP, Gems, Death, Homing3, Homing4, RegisterKill, SpawnedBy);
-		}
+		public Enemy Copy() => new Enemy(Name, ColorCode, Hp, Gems, Death, Homing3, Homing4, RegisterKill, SpawnedBy);
 	}
 }
