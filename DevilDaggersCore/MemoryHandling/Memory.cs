@@ -5,15 +5,13 @@ namespace DevilDaggersCore.MemoryHandling
 {
 	public class Memory
 	{
-		public Process ReadProcess { get; set; }
-
 		private IntPtr hProcess = IntPtr.Zero;
+
+		public Process ReadProcess { get; set; }
 
 		public void Open()
 		{
-			MemoryApi.ProcessAccessType access = MemoryApi.ProcessAccessType.PROCESS_VM_READ
-			| MemoryApi.ProcessAccessType.PROCESS_VM_WRITE
-			| MemoryApi.ProcessAccessType.PROCESS_VM_OPERATION;
+			ProcessAccessType access = ProcessAccessType.PROCESS_VM_READ | ProcessAccessType.PROCESS_VM_WRITE | ProcessAccessType.PROCESS_VM_OPERATION;
 			hProcess = MemoryApi.OpenProcess((uint)access, 1, (uint)ReadProcess.Id);
 		}
 
@@ -22,7 +20,7 @@ namespace DevilDaggersCore.MemoryHandling
 			int iRetValue;
 			iRetValue = MemoryApi.CloseHandle(hProcess);
 			if (iRetValue == 0)
-				throw new Exception("CloseHandle Failed");
+				throw new Exception("CloseHandle failed");
 		}
 
 		public byte[] Read(IntPtr memoryAddress, uint bytesToRead, out int bytesRead)

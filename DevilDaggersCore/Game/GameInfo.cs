@@ -17,7 +17,7 @@ namespace DevilDaggersCore.Game
 
 			public static Upgrade Level1 = new Upgrade("Level 1", "BB5500", 20, 10, null, null, "N/A");
 			public static Upgrade Level2 = new Upgrade("Level 2", "FFAA00", 40, 20, null, null, "10 gems");
-			public static Upgrade Level3 = new Upgrade("Level 3", "00FFFF", 80, 40, 40, 40, "70 gems"); // TODO: Level 3 homing spray
+			public static Upgrade Level3 = new Upgrade("Level 3", "00FFFF", 80, 40, 40, 40, "70 gems"); // TODO: Figure out Level 3 homing spray.
 
 			public static Death Unknown = new Death("N/A", "444444", -1);
 			public static Death Fallen = new Death("FALLEN", "DDDDDD", 0);
@@ -166,6 +166,7 @@ namespace DevilDaggersCore.Game
 			public static Enemy Spiderling = new Enemy("Spiderling", "DCCB00", 3, 0, Infested, 1, 1, true, SpiderEgg1, SpiderEgg2);
 		}
 
+		// TODO: Change value to string[] to remove hardcoded line breaks.
 		private static Dictionary<Enemy, string> EnemyInfo { get; set; } = new Dictionary<Enemy, string>
 		{
 			{ V1.Squid1, "Spawns at the edge of the arena\nMoves slowly and rotates clockwise\nSpawns 10 Skull Is and 1 Skull II every 20 seconds (starting 3 seconds after its initial appearance)" },
@@ -264,10 +265,11 @@ namespace DevilDaggersCore.Game
 			foreach (KeyValuePair<Enemy, string> kvp in EnemyInfo)
 				if (kvp.Key == enemy)
 					return kvp.Value;
-			throw new Exception($"Could not find enemy info for {nameof(Enemy)} with name \"{enemy.Name}\".");
+			throw new Exception($"Could not find enemy info for {nameof(Enemy)} with name '{enemy.Name}'.");
 		}
 
-		public static List<T> GetEntities<T>(params GameVersion[] gameVersions) where T : DevilDaggersEntity
+		public static List<T> GetEntities<T>(params GameVersion[] gameVersions)
+			where T : DevilDaggersEntity
 		{
 			// If no game versions are specified, use all.
 			if (gameVersions.Length == 0)

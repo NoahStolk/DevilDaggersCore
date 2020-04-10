@@ -92,8 +92,8 @@ namespace DevilDaggersCore.Leaderboards
 				if (!Attribute.IsDefined(info, typeof(CompletionPropertyAttribute)))
 					continue;
 
-				if ((info.Name == nameof(DeathType) && valueString == "-1")
-				 || (info.Name != nameof(DeathType) && valueString == ReflectionUtils.GetDefaultValue(value.GetType()).ToString()))
+				if (info.Name == nameof(DeathType) && valueString == "-1"
+				 || info.Name != nameof(DeathType) && valueString == ReflectionUtils.GetDefaultValue(value.GetType()).ToString())
 					Completion.CompletionEntries[info.Name] = CompletionEntry.Missing;
 				else
 					Completion.CompletionEntries[info.Name] = CompletionEntry.Complete;

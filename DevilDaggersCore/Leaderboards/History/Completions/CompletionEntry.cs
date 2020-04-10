@@ -2,6 +2,7 @@
 {
 	public enum CompletionEntry
 	{
-		Complete, Missing
+		Complete,
+		Missing
 	}
 }

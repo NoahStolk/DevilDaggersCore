@@ -262,7 +262,7 @@ namespace DevilDaggersCore.Spawnsets
 				while (enemyTimer < delay)
 				{
 					endGameSecond += 1f / 60f;
-					enemyTimer += (1f / 60f) + (1f / 60f / 8f * waveIndex);
+					enemyTimer += 1f / 60f + 1f / 60f / 8f * waveIndex;
 				}
 				yield return endGameSecond;
 			}
@@ -301,7 +301,7 @@ namespace DevilDaggersCore.Spawnsets
 				}
 			}
 
-			if (endLoop.Count != 1 || (endLoop.Count == 1 && endLoop[0].SpawnsetEnemy != Enemies[-1]))
+			if (endLoop.Count != 1 || endLoop.Count == 1 && endLoop[0].SpawnsetEnemy != Enemies[-1])
 			{
 				double waveMod = 0;
 				double endGameSecond = seconds;
@@ -315,7 +315,7 @@ namespace DevilDaggersCore.Spawnsets
 						while (enemyTimer < delay)
 						{
 							endGameSecond += 1f / 60f;
-							enemyTimer += (1f / 60f) + waveMod;
+							enemyTimer += 1f / 60f + waveMod;
 						}
 
 						if (spawn.SpawnsetEnemy != Enemies[-1])

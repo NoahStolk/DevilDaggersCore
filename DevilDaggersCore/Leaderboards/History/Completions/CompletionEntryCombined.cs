@@ -2,6 +2,8 @@
 {
 	public enum CompletionEntryCombined
 	{
-		Complete, Missing, PartiallyMissing
+		Complete,
+		Missing,
+		PartiallyMissing
 	}
 }
