@@ -1,7 +1,6 @@
 ﻿using DevilDaggersCore.MemoryHandling.Variables;
 using DevilDaggersCore.Spawnsets;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -32,8 +31,6 @@ namespace DevilDaggersCore.MemoryHandling
 
 		public int LevelGems { get; private set; }
 		public int Homing { get; private set; }
-
-		public List<int> HomingLog { get; private set; } = new List<int>();
 
 		private static readonly Lazy<Scanner> lazy = new Lazy<Scanner>(() => new Scanner());
 		public static Scanner Instance => lazy.Value;
@@ -142,9 +139,6 @@ namespace DevilDaggersCore.MemoryHandling
 
 					bytes = Memory.Read(new IntPtr(ptr) + 0x224, 4, out _);
 					Homing = BitConverter.ToInt32(bytes, 0);
-					HomingLog.Add(Homing);
-					if (HomingLog.Count > 5)
-						HomingLog.Remove(HomingLog[0]);
 
 					if (LevelUpTimes[0] == 0 && LevelGems >= 10 && LevelGems < 70)
 						LevelUpTimes[0] = Time.Value;
@@ -166,14 +160,6 @@ namespace DevilDaggersCore.MemoryHandling
 			{
 				Logging.Log.Error("Scan failed", ex);
 			}
-		}
-
-		public void PrepareUpload()
-		{
-			if (HomingLog.Count > 0)
-				Homing = HomingLog[0];
-			else
-				Logging.Log.Error("Homing log is empty");
 		}
 	}
 }
