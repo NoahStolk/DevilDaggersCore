@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace DevilDaggersCore.MemoryHandling.Variables
 {
@@ -33,7 +34,7 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 		/// <summary>
 		/// Gets the bytes for this <see cref="AbstractGameVariable"/>.
 		/// 
-		/// Process.MainModule.BaseAddress is where the process has its memory start point.
+		/// <see cref="Process.MainModule.BaseAddress"/> is where the process has its memory start point.
 		/// <see cref="LocalBaseAddress"/> bytes ahead of the process base address brings us to 4 bytes (for a 32-bit application), which contain a memory address.
 		/// 
 		/// Use that memory address and add the <see cref="Offset"/> to it to get to the bytes that contain the actual value.
@@ -52,13 +53,10 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 			}
 			catch (Exception ex)
 			{
-				Logging.Log.Error($"Error scanning {typeof(T)} variable", ex);
+				Logging.Log.Error($"Error while scanning {typeof(T)} variable.", ex);
 			}
 		}
 
-		public override string ToString()
-		{
-			return Value.ToString();
-		}
+		public override string ToString() => Value.ToString();
 	}
 }
