@@ -86,7 +86,7 @@ namespace DevilDaggersCore.MemoryHandling
 			Username.PreScan();
 
 			IsReplay.PreScan();
-			if (IsReplay.Value)
+			if (IsReplay)
 				return;
 
 			IsAlive.PreScan();
@@ -96,10 +96,10 @@ namespace DevilDaggersCore.MemoryHandling
 			ShotsFired.PreScan();
 			ShotsHit.PreScan();
 
-			if (IsAlive.Value)
+			if (IsAlive)
 				EnemiesAlive.PreScan();
 
-			if (!IsAlive.Value)
+			if (!IsAlive)
 				DeathType.PreScan();
 		}
 
@@ -113,12 +113,12 @@ namespace DevilDaggersCore.MemoryHandling
 
 				// Always calculate the spawnset in menu or lobby.
 				// Otherwise you can first normally load a spawnset to set the hash, exit and load an empty spawnset in the menu/lobby, then during playing the empty spawnset change it back to the same original spawnset and upload a cheated score.
-				if (Time.Value == 0 && Time.ValuePrevious == 0)
+				if (Time == 0 && Time.ValuePrevious == 0)
 					SpawnsetHash = CalculateCurrentSurvivalHash();
 
 				// Stop scanning if it is a replay.
 				IsReplay.Scan();
-				if (IsReplay.Value)
+				if (IsReplay)
 					return;
 
 				IsAlive.Scan();
@@ -128,7 +128,7 @@ namespace DevilDaggersCore.MemoryHandling
 				ShotsFired.Scan();
 				ShotsHit.Scan();
 
-				if (IsAlive.Value)
+				if (IsAlive)
 				{
 					// Enemy count might increase on death, so only scan while player is alive.
 					EnemiesAlive.Scan();

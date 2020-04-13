@@ -58,5 +58,7 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 		}
 
 		public override string ToString() => Value.ToString();
+
+		public static implicit operator T(AbstractVariable<T> variable) => variable.Value;
 	}
 }
