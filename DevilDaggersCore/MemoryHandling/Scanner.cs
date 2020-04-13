@@ -27,7 +27,9 @@ namespace DevilDaggersCore.MemoryHandling
 		public BoolVariable IsAlive { get; private set; } = new BoolVariable(magic, 0x1A4);
 		public BoolVariable IsReplay { get; private set; } = new BoolVariable(magic, 0x35D);
 
-		public float[] LevelUpTimes { get; private set; } = new float[3] { 0, 0, 0 };
+		public float LevelUpTime2 { get; private set; }
+		public float LevelUpTime3 { get; private set; }
+		public float LevelUpTime4 { get; private set; }
 
 		public int LevelGems { get; private set; }
 		public int Homing { get; private set; }
@@ -70,7 +72,9 @@ namespace DevilDaggersCore.MemoryHandling
 		{
 			SpawnsetHash = string.Empty;
 
-			LevelUpTimes = new float[3] { 0, 0, 0 };
+			LevelUpTime2 = 0;
+			LevelUpTime3 = 0;
+			LevelUpTime4 = 0;
 		}
 
 		/// <summary>
@@ -140,12 +144,12 @@ namespace DevilDaggersCore.MemoryHandling
 					bytes = Memory.Read(new IntPtr(ptr) + 0x224, 4, out _);
 					Homing = BitConverter.ToInt32(bytes, 0);
 
-					if (LevelUpTimes[0] == 0 && LevelGems >= 10 && LevelGems < 70)
-						LevelUpTimes[0] = Time.Value;
-					if (LevelUpTimes[1] == 0 && LevelGems == 70)
-						LevelUpTimes[1] = Time.Value;
-					if (LevelUpTimes[2] == 0 && LevelGems == 71)
-						LevelUpTimes[2] = Time.Value;
+					if (LevelUpTime2 == 0 && LevelGems >= 10 && LevelGems < 70)
+						LevelUpTime2 = Time;
+					if (LevelUpTime3 == 0 && LevelGems == 70)
+						LevelUpTime3 = Time;
+					if (LevelUpTime4 == 0 && LevelGems == 71)
+						LevelUpTime4 = Time;
 				}
 				else
 				{
