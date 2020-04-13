@@ -32,9 +32,9 @@ namespace DevilDaggersCore.MemoryHandling.Variables
 		}
 
 		/// <summary>
-		/// Gets the bytes for this <see cref="AbstractGameVariable"/>.
+		/// Gets the bytes for this <see cref="AbstractVariable{T}"/>.
 		/// 
-		/// <see cref="Process.MainModule.BaseAddress"/> is where the process has its memory start point.
+		/// <see cref="ProcessModule.BaseAddress"/> is where the process has its memory start point.
 		/// <see cref="LocalBaseAddress"/> bytes ahead of the process base address brings us to 4 bytes (for a 32-bit application), which contain a memory address.
 		/// 
 		/// Use that memory address and add the <see cref="Offset"/> to it to get to the bytes that contain the actual value.
