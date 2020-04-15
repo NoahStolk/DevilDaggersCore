@@ -3,6 +3,8 @@
 	public class SubmissionInfo
 	{
 		public int TotalPlayers { get; set; }
+		public CustomLeaderboardBase Leaderboard { get; set; }
+		public CustomEntryBase[] Entries { get; set; }
 
 		public int Rank { get; set; }
 		public int RankDiff { get; set; }
