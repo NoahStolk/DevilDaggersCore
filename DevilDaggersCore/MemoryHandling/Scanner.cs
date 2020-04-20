@@ -1,4 +1,5 @@
-﻿using DevilDaggersCore.MemoryHandling.Variables;
+﻿#define POINTER_READ
+using DevilDaggersCore.MemoryHandling.Variables;
 using DevilDaggersCore.Spawnsets;
 using System;
 using System.Diagnostics;
@@ -134,14 +135,22 @@ namespace DevilDaggersCore.MemoryHandling
 					EnemiesAlive.Scan();
 
 					// TODO: Clean up
+#if POINTER_READ
+					byte[] bytes = Memory.PointerRead(Process.MainModule.BaseAddress, 4, new[] { 0x001F8084, 0x218 }, out _);
+#else
 					byte[] bytes = Memory.Read(Process.MainModule.BaseAddress + 0x001F8084, 4, out _);
 					int ptr = AddressUtils.ToDec(AddressUtils.MakeAddress(bytes));
 					bytes = Memory.Read(new IntPtr(ptr), 4, out _);
 					ptr = AddressUtils.ToDec(AddressUtils.MakeAddress(bytes));
 					bytes = Memory.Read(new IntPtr(ptr) + 0x218, 4, out _);
+#endif
 					LevelGems = BitConverter.ToInt32(bytes, 0);
 
+#if POINTER_READ
+					bytes = Memory.PointerRead(Process.MainModule.BaseAddress, 4, new[] { 0x001F8084, 0x224 }, out _);
+#else
 					bytes = Memory.Read(new IntPtr(ptr) + 0x224, 4, out _);
+#endif
 					Homing = BitConverter.ToInt32(bytes, 0);
 
 					if (LevelUpTime2 == 0 && LevelGems >= 10 && LevelGems < 70)
