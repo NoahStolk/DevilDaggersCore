@@ -1,4 +1,4 @@
-﻿#define POINTER_READ
+﻿//#define POINTER_READ
 using DevilDaggersCore.MemoryHandling.Variables;
 using DevilDaggersCore.Spawnsets;
 using System;
