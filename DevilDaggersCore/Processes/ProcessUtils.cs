@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace DevilDaggersCore.MemoryHandling
+namespace DevilDaggersCore.Processes
 {
 	public static class ProcessUtils
 	{
