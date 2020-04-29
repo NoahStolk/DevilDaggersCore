@@ -493,7 +493,7 @@ namespace DevilDaggersCore.Spawnsets
 		public string GetUniqueString()
 		{
 			CultureInfo culture = new CultureInfo("en-US"); // TODO: Use InvariantCulture instead. (Not entirely sure if this changes anything in the hash.)
-			string floatFormat = "0.0000";
+			string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
 			char separator = ';';
 
 			StringBuilder sb = new StringBuilder();
