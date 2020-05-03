@@ -132,8 +132,13 @@ namespace DevilDaggersCore.Leaderboards
 
 		public string FormatShotsGlobal(bool history)
 		{
-			if (history && (ShotsHitGlobal == 0 || ShotsFiredGlobal == 10000))
-				return "Exact values not known";
+			if (history)
+			{
+				if (ShotsHitGlobal == 0)
+					return "No data";
+				if (ShotsFiredGlobal == 10000)
+					return "Exact values not known";
+			}
 			return $"{ShotsHitGlobal:N0} / {ShotsFiredGlobal:N0}";
 		}
 	}
