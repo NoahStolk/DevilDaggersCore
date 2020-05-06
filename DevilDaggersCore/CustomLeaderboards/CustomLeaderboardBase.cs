@@ -5,15 +5,15 @@ namespace DevilDaggersCore.CustomLeaderboards
 	public class CustomLeaderboardBase
 	{
 		public string SpawnsetFileName { get; set; }
-		public float Bronze { get; set; }
-		public float Silver { get; set; }
-		public float Golden { get; set; }
-		public float Devil { get; set; }
-		public float Homing { get; set; }
+		public int Bronze { get; set; }
+		public int Silver { get; set; }
+		public int Golden { get; set; }
+		public int Devil { get; set; }
+		public int Homing { get; set; }
 		public DateTime? DateLastPlayed { get; set; }
 		public DateTime? DateCreated { get; set; }
 
-		public CustomLeaderboardBase(string spawnsetFileName, float bronze, float silver, float golden, float devil, float homing, DateTime? dateLastPlayed, DateTime? dateCreated)
+		public CustomLeaderboardBase(string spawnsetFileName, int bronze, int silver, int golden, int devil, int homing, DateTime? dateLastPlayed, DateTime? dateCreated)
 		{
 			SpawnsetFileName = spawnsetFileName;
 			Bronze = bronze;

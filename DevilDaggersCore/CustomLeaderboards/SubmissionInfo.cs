@@ -10,8 +10,8 @@
 		public int Rank { get; set; }
 		public int RankDiff { get; set; }
 
-		public float Time { get; set; }
-		public float TimeDiff { get; set; }
+		public int Time { get; set; }
+		public int TimeDiff { get; set; }
 
 		public int Kills { get; set; }
 		public int KillsDiff { get; set; }
@@ -31,13 +31,13 @@
 		public int Homing { get; set; }
 		public int HomingDiff { get; set; }
 
-		public float LevelUpTime2 { get; set; }
-		public float LevelUpTime2Diff { get; set; }
+		public int LevelUpTime2 { get; set; }
+		public int LevelUpTime2Diff { get; set; }
 
-		public float LevelUpTime3 { get; set; }
-		public float LevelUpTime3Diff { get; set; }
+		public int LevelUpTime3 { get; set; }
+		public int LevelUpTime3Diff { get; set; }
 
-		public float LevelUpTime4 { get; set; }
-		public float LevelUpTime4Diff { get; set; }
+		public int LevelUpTime4 { get; set; }
+		public int LevelUpTime4Diff { get; set; }
 	}
 }
