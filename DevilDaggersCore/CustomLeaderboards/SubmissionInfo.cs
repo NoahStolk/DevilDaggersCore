@@ -4,6 +4,7 @@
 	{
 		public int TotalPlayers { get; set; }
 		public CustomLeaderboardBase Leaderboard { get; set; }
+		public CustomLeaderboardCategoryBase Category { get; set; }
 		public CustomEntryBase[] Entries { get; set; }
 		public bool IsNewUserOnThisLeaderboard { get; set; }
 
