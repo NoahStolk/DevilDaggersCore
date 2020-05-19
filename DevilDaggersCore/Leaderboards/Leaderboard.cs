@@ -11,6 +11,9 @@ namespace DevilDaggersCore.Leaderboards
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Leaderboard
 	{
+		/// <summary>
+		/// Represents the UTC date and time when the leaderboard was fetched.
+		/// </summary>
 		[JsonProperty]
 		public DateTime DateTime { get; set; } = DateTime.UtcNow;
 
