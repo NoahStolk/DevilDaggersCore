@@ -1,7 +1,7 @@
-﻿using NetBase.Extensions;
+﻿using DevilDaggersCore.Extensions;
 using System;
 
-namespace DevilDaggersCore
+namespace DevilDaggersCore.Utils
 {
 	public static class FormatUtils
 	{

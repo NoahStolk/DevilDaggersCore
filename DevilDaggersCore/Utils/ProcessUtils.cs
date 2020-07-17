@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace DevilDaggersCore.Processes
+namespace DevilDaggersCore.Utils
 {
 	public static class ProcessUtils
 	{

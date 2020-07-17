@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevilDaggersCore.Leaderboards.History
+namespace DevilDaggersCore.Utils
 {
 	public static class HistoryUtils
 	{

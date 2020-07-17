@@ -8,7 +8,7 @@ DevilDaggersCore is a .NET Standard class library created for various Devil Dagg
 C# 8.0
 
 ## Dependencies
-- [NetBase](https://github.com/NoahStolk/NetBase)
+N/A
 
 ## Used in
 - [devildaggers.info](https://devildaggers.info/)

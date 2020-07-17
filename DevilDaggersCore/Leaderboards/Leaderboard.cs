@@ -1,5 +1,5 @@
 ﻿using DevilDaggersCore.Leaderboards.History.Completions;
-using NetBase.Utils;
+using DevilDaggersCore.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
