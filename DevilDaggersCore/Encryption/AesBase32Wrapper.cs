@@ -9,12 +9,6 @@ namespace DevilDaggersCore.Encryption
 	/// </summary>
 	public class AesBase32Wrapper
 	{
-		private enum TransformType
-		{
-			Encrypt,
-			Decrypt
-		};
-
 		private readonly string initializationVector;
 		private readonly string password;
 		private readonly string salt;
@@ -24,6 +18,12 @@ namespace DevilDaggersCore.Encryption
 			this.initializationVector = initializationVector;
 			this.password = password;
 			this.salt = salt;
+		}
+
+		private enum TransformType
+		{
+			Encrypt,
+			Decrypt,
 		}
 
 		public string EncryptAndEncode(string inputRaw)
@@ -58,7 +58,7 @@ namespace DevilDaggersCore.Encryption
 			csp.Padding = PaddingMode.PKCS7;
 			csp.IV = Encoding.UTF8.GetBytes(initializationVector);
 
-			Rfc2898DeriveBytes spec = new Rfc2898DeriveBytes(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt), 65536);
+			using Rfc2898DeriveBytes spec = new Rfc2898DeriveBytes(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt), 65536);
 			byte[] key = spec.GetBytes(16);
 			csp.Key = key;
 

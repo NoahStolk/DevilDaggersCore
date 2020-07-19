@@ -142,6 +142,7 @@ namespace DevilDaggersCore.Leaderboards
 				if (ShotsFiredGlobal == 10000)
 					return "Exact values not known";
 			}
+
 			return $"{ShotsHitGlobal:N0} / {ShotsFiredGlobal:N0}";
 		}
 	}

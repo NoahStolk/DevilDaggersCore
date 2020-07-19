@@ -103,7 +103,8 @@ namespace DevilDaggersCore.Leaderboards
 			return Completion;
 		}
 
-		public bool IsBlankName() => Id == 999999;
+		public bool IsBlankName()
+			=> Id == 999999;
 
 		public string FormatShots(bool history)
 		{
@@ -114,6 +115,7 @@ namespace DevilDaggersCore.Leaderboards
 				if (ShotsFired == 10000)
 					return "Exact values not known";
 			}
+
 			return $"{ShotsHit:N0} / {ShotsFired:N0}";
 		}
 
@@ -126,6 +128,7 @@ namespace DevilDaggersCore.Leaderboards
 				if (ShotsFiredTotal == 10000)
 					return "Exact values not known";
 			}
+
 			return $"{ShotsHitTotal:N0} / {ShotsFiredTotal:N0}";
 		}
 	}

@@ -16,8 +16,11 @@ namespace DevilDaggersCore.Utils
 			List<int> flagsAsInts = new List<int>();
 			int type = (int)(object)flags;
 			for (int i = GetMaxEnumValue<TEnum>() << 1; i > 0; i >>= 1)
+			{
 				if ((type & i) != 0)
 					flagsAsInts.Add(i);
+			}
+
 			return flagsAsInts.Select(f => useUserFriendlyCasing ? ((TEnum)(object)f).ToString() : ((TEnum)(object)f).ToString()).ToArray();
 		}
 

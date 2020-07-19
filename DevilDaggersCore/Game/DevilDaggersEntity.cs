@@ -8,19 +8,19 @@ namespace DevilDaggersCore.Game
 	[JsonObject(MemberSerialization.OptIn)]
 	public abstract class DevilDaggersEntity
 	{
+		public DevilDaggersEntity(string name, string colorCode)
+		{
+			Name = name;
+			ColorCode = colorCode;
+		}
+
 		[JsonProperty]
 		public string Name { get; set; }
 		[JsonProperty]
 		public string ColorCode { get; set; }
 
 		[JsonProperty]
-		public string[] Appearances => GetAppearances().Select(g => g.Type.Name).ToArray();
-
-		public DevilDaggersEntity(string name, string colorCode)
-		{
-			Name = name;
-			ColorCode = colorCode;
-		}
+		public IEnumerable<string> Appearances => GetAppearances().Select(g => g.Type.Name);
 
 		public IEnumerable<GameVersion> GetAppearances()
 		{

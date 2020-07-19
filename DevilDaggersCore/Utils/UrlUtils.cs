@@ -1,13 +1,13 @@
-﻿//#define TESTING
+﻿// #define TESTING
 
 namespace DevilDaggersCore.Utils
 {
 	public static class UrlUtils
 	{
 #if TESTING
-		public static string BaseUrl = "http://localhost:2963";
+		public static string BaseUrl { get; }= "http://localhost:2963";
 #else
-		public static string BaseUrl = "https://devildaggers.info";
+		public static string BaseUrl { get; } = "https://devildaggers.info";
 #endif
 
 		public static string ApiGetTools => $"{BaseUrl}/Api/GetTools";

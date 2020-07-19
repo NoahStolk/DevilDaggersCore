@@ -4,13 +4,13 @@ namespace DevilDaggersCore.Leaderboards.History
 {
 	public class WorldRecord
 	{
-		public DateTime DateTime { get; set; }
-		public Entry Entry { get; set; }
-
 		public WorldRecord(DateTime dateTime, Entry entry)
 		{
 			DateTime = dateTime;
 			Entry = entry;
 		}
+
+		public DateTime DateTime { get; set; }
+		public Entry Entry { get; set; }
 	}
 }

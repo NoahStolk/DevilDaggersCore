@@ -4,6 +4,6 @@
 	{
 		Complete,
 		Missing,
-		PartiallyMissing
+		PartiallyMissing,
 	}
 }

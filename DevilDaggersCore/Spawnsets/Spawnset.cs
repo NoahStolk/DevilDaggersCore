@@ -21,63 +21,10 @@ namespace DevilDaggersCore.Spawnsets
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
 
-		public static Dictionary<int, SpawnsetEnemy> Enemies { get; set; } = new Dictionary<int, SpawnsetEnemy>
-		{
-			{ -1, new SpawnsetEnemy("EMPTY", 0) },
-			{ 0, new SpawnsetEnemy("Squid I", 2) },
-			{ 1, new SpawnsetEnemy("Squid II", 3) },
-			{ 2, new SpawnsetEnemy("Centipede", 25) },
-			{ 3, new SpawnsetEnemy("Spider I", 1) },
-			{ 4, new SpawnsetEnemy("Leviathan", 6) },
-			{ 5, new SpawnsetEnemy("Gigapede", 50) },
-			{ 6, new SpawnsetEnemy("Squid III", 3) },
-			{ 7, new SpawnsetEnemy("Thorn", 0) },
-			{ 8, new SpawnsetEnemy("Spider II", 1) },
-			{ 9, new SpawnsetEnemy("Ghostpede", 10) }
-		};
-
-		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
-		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
-
 		private float shrinkStart = 50;
-		public float ShrinkStart
-		{
-			get => shrinkStart;
-			set
-			{
-				shrinkStart = MathUtils.Clamp(value, 1, 100);
-			}
-		}
-
 		private float shrinkEnd = 20;
-		public float ShrinkEnd
-		{
-			get => shrinkEnd;
-			set
-			{
-				shrinkEnd = MathUtils.Clamp(value, 1, 100);
-			}
-		}
-
 		private float shrinkRate = 0.025f;
-		public float ShrinkRate
-		{
-			get => shrinkRate;
-			set
-			{
-				shrinkRate = Math.Max(value, 0);
-			}
-		}
-
 		private float brightness = 60;
-		public float Brightness
-		{
-			get => brightness;
-			set
-			{
-				brightness = Math.Max(value, 0);
-			}
-		}
 
 		public Spawnset()
 		{
@@ -93,6 +40,60 @@ namespace DevilDaggersCore.Spawnsets
 			Brightness = brightness;
 		}
 
+		public static Dictionary<int, SpawnsetEnemy> Enemies { get; } = new Dictionary<int, SpawnsetEnemy>
+		{
+			{ -1, new SpawnsetEnemy("EMPTY", 0) },
+			{ 0, new SpawnsetEnemy("Squid I", 2) },
+			{ 1, new SpawnsetEnemy("Squid II", 3) },
+			{ 2, new SpawnsetEnemy("Centipede", 25) },
+			{ 3, new SpawnsetEnemy("Spider I", 1) },
+			{ 4, new SpawnsetEnemy("Leviathan", 6) },
+			{ 5, new SpawnsetEnemy("Gigapede", 50) },
+			{ 6, new SpawnsetEnemy("Squid III", 3) },
+			{ 7, new SpawnsetEnemy("Thorn", 0) },
+			{ 8, new SpawnsetEnemy("Spider II", 1) },
+			{ 9, new SpawnsetEnemy("Ghostpede", 10) },
+		};
+
+		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
+		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
+
+		public float ShrinkStart
+		{
+			get => shrinkStart;
+			set
+			{
+				shrinkStart = MathUtils.Clamp(value, 1, 100);
+			}
+		}
+
+		public float ShrinkEnd
+		{
+			get => shrinkEnd;
+			set
+			{
+				shrinkEnd = MathUtils.Clamp(value, 1, 100);
+			}
+		}
+
+		public float ShrinkRate
+		{
+			get => shrinkRate;
+			set
+			{
+				shrinkRate = Math.Max(value, 0);
+			}
+		}
+
+		public float Brightness
+		{
+			get => brightness;
+			set
+			{
+				brightness = Math.Max(value, 0);
+			}
+		}
+
 		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
 
 		public static SpawnsetEnemy GetEnemyByName(string name) => Enemies.Values.FirstOrDefault(e => e.Name == name);
@@ -103,8 +104,8 @@ namespace DevilDaggersCore.Spawnsets
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
 		/// </summary>
-		/// <param name="filePath">The path to the spawnset file.</param>
-		/// <returns>The <see cref="Spawnset"/>.</returns>
+		/// <param name="stream">The stream containing the spawnset file contents.</param>
+		/// <returns>The parsed <see cref="Spawnset"/>.</returns>
 		public static bool TryParse(Stream stream, out Spawnset spawnset)
 		{
 			try
@@ -214,7 +215,7 @@ namespace DevilDaggersCore.Spawnsets
 					NonLoopSpawns = nonLoopSpawns,
 					LoopSpawns = loopSpawns,
 					NonLoopLengthNullable = nonLoopSpawns == 0 ? null : (float?)nonLoopSeconds,
-					LoopLengthNullable = loopSpawns == 0 ? null : (float?)loopSeconds
+					LoopLengthNullable = loopSpawns == 0 ? null : (float?)loopSeconds,
 				};
 
 				return true;
@@ -235,8 +236,10 @@ namespace DevilDaggersCore.Spawnsets
 				return true;
 
 			foreach (Spawn spawn in Spawns.Values)
+			{
 				if (spawn.SpawnsetEnemy != Enemies[-1])
 					return false;
+			}
 
 			return true;
 		}
@@ -244,8 +247,10 @@ namespace DevilDaggersCore.Spawnsets
 		public int GetEndLoopStartIndex()
 		{
 			for (int i = Spawns.Count - 1; i >= 0; i--)
+			{
 				if (Spawns[i].SpawnsetEnemy == Enemies[-1])
 					return i;
+			}
 
 			return 0;
 		}
@@ -264,6 +269,7 @@ namespace DevilDaggersCore.Spawnsets
 					endGameSecond += 1f / 60f;
 					enemyTimer += 1f / 60f + 1f / 60f / 8f * waveIndex;
 				}
+
 				yield return endGameSecond;
 			}
 		}
@@ -295,6 +301,7 @@ namespace DevilDaggersCore.Spawnsets
 							totalGems += gems;
 						}
 					}
+
 					seconds -= spawn.Delay;
 					endLoop.Clear();
 					endLoop.Add(spawn);
@@ -330,16 +337,19 @@ namespace DevilDaggersCore.Spawnsets
 							totalGems += gems;
 						}
 					}
+
 					waveMod += 1f / 60f / 8f;
 				}
 			}
 
-			//double totalSeconds = 0;
-			//foreach (Spawn spawn in Spawns.Values)
-			//{
-			//totalSeconds += spawn.Delay;
-			//events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
-			//}
+			/*
+			double totalSeconds = 0;
+			foreach (Spawn spawn in Spawns.Values)
+			{
+				totalSeconds += spawn.Delay;
+				events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+			}
+			*/
 
 			List<SpawnEvent> spawnEvents = events.Where(s => s.GetType() == typeof(SpawnEvent)).Cast<SpawnEvent>().ToList();
 			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy == Enemies[0] || s.Enemy == Enemies[1] || s.Enemy == Enemies[6]).ToList();
@@ -366,19 +376,20 @@ namespace DevilDaggersCore.Spawnsets
 					skulls.Add(GameInfo.V3.Skull1, 15);
 					skulls.Add(GameInfo.V3.Skull4, 1);
 				}
+
 				StringBuilder gushText = new StringBuilder();
 				foreach (KeyValuePair<Enemy, int> kvp in skulls)
-					gushText.Append($"{kvp.Value} {kvp.Key.Name}{(kvp.Value == 1 ? "" : "s")} and ");
+					gushText.Append($"{kvp.Value} {kvp.Key.Name}{(kvp.Value == 1 ? string.Empty : "s")} and ");
 
 				for (int i = 0; i < gushes; i++)
-				{
 					events.Add(new GushEvent(squid.Seconds + 3 + i * 20, $"{squid.Enemy.Name} gushes {gushText.ToString().Substring(0, gushText.Length - " and ".Length)}", squid, skulls));
-				}
 			}
 
 			foreach (SpawnEvent leviathan in leviathans)
+			{
 				for (int i = 0; i < beckons; i++)
 					events.Add(new SubEvent(leviathan.Seconds + 13.5333f + i * 20, $"{leviathan.Enemy.Name} beckons", leviathan));
+			}
 
 			foreach (SpawnEvent spider1 in spider1s)
 				events.Add(new SubEvent(spider1.Seconds + 3, $"{spider1.Enemy.Name} lifts head", spider1));
@@ -457,6 +468,7 @@ namespace DevilDaggersCore.Spawnsets
 							break;
 						}
 					}
+
 					byte[] enemyBytes = BitConverter.GetBytes(enemyType);
 					for (int i = 0; i < enemyBytes.Length; i++)
 						spawnsBuffer[SpawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + i] = enemyBytes[i];
@@ -480,7 +492,7 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				Logging.Log.Error($"Could not convert {nameof(Spawnset)} to binary.", ex);
 
-				bytes = new byte[0];
+				bytes = Array.Empty<byte>();
 
 				return false;
 			}
@@ -501,8 +513,10 @@ namespace DevilDaggersCore.Spawnsets
 				sb.Append($"{GetEnemyId(spawn.SpawnsetEnemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
 			for (int i = 0; i < ArenaWidth; i++)
+			{
 				for (int j = 0; j < ArenaHeight; j++)
 					sb.Append($"{ArenaTiles[i, j].ToString(floatFormat, culture)}{separator}");
+			}
 
 			sb.Append($"{ShrinkStart.ToString(floatFormat, culture)}{separator}");
 			sb.Append($"{ShrinkEnd.ToString(floatFormat, culture)}{separator}");

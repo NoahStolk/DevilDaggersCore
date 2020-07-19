@@ -6,6 +6,6 @@ namespace DevilDaggersCore.Leaderboards.History.Completions
 	{
 		public bool Initialized { get; set; }
 
-		public Dictionary<string, CompletionEntryCombined> CompletionEntries { get; set; } = new Dictionary<string, CompletionEntryCombined>();
+		public Dictionary<string, CompletionEntryCombined> CompletionEntries { get; } = new Dictionary<string, CompletionEntryCombined>();
 	}
 }

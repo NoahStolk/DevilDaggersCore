@@ -8,12 +8,12 @@ namespace DevilDaggersCore.Tools
 	[DesignerCategory("Code")]
 	public class TimeoutWebClient : WebClient
 	{
-		public int Timeout { get; set; }
-
 		public TimeoutWebClient(int timeout)
 		{
 			Timeout = timeout;
 		}
+
+		public int Timeout { get; set; }
 
 		protected override WebRequest GetWebRequest(Uri address)
 		{

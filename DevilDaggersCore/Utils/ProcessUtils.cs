@@ -10,8 +10,11 @@ namespace DevilDaggersCore.Utils
 		public static Process GetDevilDaggersProcess()
 		{
 			foreach (Process process in Process.GetProcessesByName(processNameToFind))
+			{
 				if (process.MainWindowTitle == processMainWindowTitle)
 					return process;
+			}
+
 			return null;
 		}
 	}

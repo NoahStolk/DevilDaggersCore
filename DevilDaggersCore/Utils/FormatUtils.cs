@@ -24,8 +24,10 @@ namespace DevilDaggersCore.Utils
 			timeStr = timeStr.Reverse().Insert(4, ".");
 
 			if (includeThousandSeparator)
+			{
 				for (int i = 8; i < timeStr.Length; i += 4)
 					timeStr = timeStr.Insert(i, ",");
+			}
 
 			return timeStr.Reverse();
 		}

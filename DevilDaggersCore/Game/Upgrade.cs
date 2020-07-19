@@ -2,14 +2,6 @@
 {
 	public class Upgrade : DevilDaggersEntity
 	{
-		public float DefaultSprayPerSecond { get; set; }
-		public int DefaultShot { get; set; }
-		public float? HomingSprayPerSecond { get; set; }
-		public int? HomingShot { get; set; }
-		public string UnlocksAt { get; set; }
-
-		public int Level => int.Parse(Name[Name.Length - 1].ToString());
-
 		public Upgrade(string name, string colorCode, float defaultSpray, int defaultShot, float? homingSpray, int? homingShot, string unlocksAt)
 			: base(name, colorCode)
 		{
@@ -19,5 +11,13 @@
 			HomingShot = homingShot;
 			UnlocksAt = unlocksAt;
 		}
+
+		public float DefaultSprayPerSecond { get; set; }
+		public int DefaultShot { get; set; }
+		public float? HomingSprayPerSecond { get; set; }
+		public int? HomingShot { get; set; }
+		public string UnlocksAt { get; set; }
+
+		public int Level => int.Parse(Name[Name.Length - 1].ToString());
 	}
 }

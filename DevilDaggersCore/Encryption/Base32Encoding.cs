@@ -10,7 +10,7 @@ namespace DevilDaggersCore.Encryption
 		public static byte[] ToBytes(string input)
 		{
 			if (string.IsNullOrEmpty(input))
-				throw new ArgumentNullException("input");
+				throw new ArgumentNullException(nameof(input));
 
 			input = input.TrimEnd('='); // Remove padding characters.
 			int byteCount = input.Length * 5 / 8; // This must be truncated.
@@ -49,7 +49,7 @@ namespace DevilDaggersCore.Encryption
 		public static string ToString(byte[] input)
 		{
 			if (input == null || input.Length == 0)
-				throw new ArgumentNullException("input");
+				throw new ArgumentNullException(nameof(input));
 
 			int charCount = (int)Math.Ceiling(input.Length / 5d) * 8;
 			char[] returnArray = new char[charCount];
@@ -100,7 +100,7 @@ namespace DevilDaggersCore.Encryption
 			if (value < 123 && value > 96)
 				return value - 97;
 
-			throw new ArgumentException("Character is not a Base32 character.", "c");
+			throw new ArgumentException("Character is not a Base32 character.", nameof(c));
 		}
 
 		private static char ValueToChar(byte b)
@@ -111,7 +111,7 @@ namespace DevilDaggersCore.Encryption
 			if (b < 32)
 				return (char)(b + 24);
 
-			throw new ArgumentException("Byte is not a Base32 value.", "b");
+			throw new ArgumentException("Byte is not a Base32 value.", nameof(b));
 		}
 	}
 }

@@ -1,10 +1,17 @@
-﻿using System;
-using DevilDaggersCore.Tools.Website;
+﻿using DevilDaggersCore.Tools.Website;
+using System;
 
 namespace DevilDaggersCore.Tools
 {
 	public class VersionResult
 	{
+		public VersionResult(bool? isUpToDate, Tool tool, Exception exception = null)
+		{
+			IsUpToDate = isUpToDate;
+			Tool = tool;
+			Exception = exception;
+		}
+
 		/// <summary>
 		/// True if the application is up to date, false if not, null if not known.
 		/// </summary>
@@ -19,12 +26,5 @@ namespace DevilDaggersCore.Tools
 		/// The Exception that occurred if attempting to retrieve the version number failed.
 		/// </summary>
 		public Exception Exception { get; set; }
-
-		public VersionResult(bool? isUpToDate, Tool tool, Exception exception = null)
-		{
-			IsUpToDate = isUpToDate;
-			Tool = tool;
-			Exception = exception;
-		}
 	}
 }

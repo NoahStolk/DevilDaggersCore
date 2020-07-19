@@ -6,16 +6,16 @@ namespace DevilDaggersCore.Spawnsets.Web
 	public class SpawnsetFile
 	{
 		[JsonProperty]
+		public SpawnsetFileSettings settings;
+		[JsonProperty]
+		public SpawnsetData spawnsetData;
+
+		[JsonProperty]
 		public string Path { get; set; }
 
 		public string FileName => System.IO.Path.GetFileName(Path);
 		public string Name => GetName(FileName);
 		public string Author => GetAuthor(FileName);
-
-		[JsonProperty]
-		public SpawnsetFileSettings settings;
-		[JsonProperty]
-		public SpawnsetData spawnsetData;
 
 		public static string GetName(string fileName) => fileName.Substring(0, fileName.LastIndexOf('_'));
 

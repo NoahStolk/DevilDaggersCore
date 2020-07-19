@@ -10,14 +10,14 @@ namespace DevilDaggersCore.Spawnsets
 	/// </summary>
 	public class SpawnsetEnemy
 	{
-		public string Name { get; }
-		public int NoFarmGems { get; }
-
 		public SpawnsetEnemy(string name, int noFarmGems)
 		{
 			Name = name;
 			NoFarmGems = noFarmGems;
 		}
+
+		public string Name { get; }
+		public int NoFarmGems { get; }
 
 		public Enemy ToEnemy(params GameVersion[] gameVersions)
 		{

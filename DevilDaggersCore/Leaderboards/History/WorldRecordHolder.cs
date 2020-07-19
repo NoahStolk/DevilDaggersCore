@@ -5,15 +5,6 @@ namespace DevilDaggersCore.Leaderboards.History
 {
 	public class WorldRecordHolder
 	{
-		public int Id { get; set; }
-		public List<string> Usernames { get; } = new List<string>();
-		public TimeSpan TotalTimeHeld { get; set; }
-		public TimeSpan LongestTimeHeldConsecutively { get; set; }
-		public int WorldRecordCount { get; set; }
-		public DateTime LastHeld { get; set; }
-
-		public string MostRecentUsername { get; set; }
-
 		public WorldRecordHolder(int id, string username, TimeSpan totalTimeHeld, TimeSpan longestTimeHeldConsecutively, int worldRecordCount, DateTime lastHeld)
 		{
 			Id = id;
@@ -25,5 +16,14 @@ namespace DevilDaggersCore.Leaderboards.History
 
 			MostRecentUsername = username;
 		}
+
+		public int Id { get; set; }
+		public List<string> Usernames { get; } = new List<string>();
+		public TimeSpan TotalTimeHeld { get; set; }
+		public TimeSpan LongestTimeHeldConsecutively { get; set; }
+		public int WorldRecordCount { get; set; }
+		public DateTime LastHeld { get; set; }
+
+		public string MostRecentUsername { get; set; }
 	}
 }
