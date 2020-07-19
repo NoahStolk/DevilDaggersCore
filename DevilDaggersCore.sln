@@ -41,7 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDSE", "DDSE", "{D95457A9-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDCL", "DDCL", "{9A540BE3-E316-4D18-B259-D32907D6AB29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolsShared", "..\DevilDaggersWebsite\ToolsShared\ToolsShared.csproj", "{60752989-2CD3-43AB-B19B-CA037304AB37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolsShared", "..\DevilDaggersWebsite\Tools\ToolsShared\ToolsShared.csproj", "{60752989-2CD3-43AB-B19B-CA037304AB37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersDiscordBot.Test", "..\DevilDaggersDiscordBot\DevilDaggersDiscordBot.Test\DevilDaggersDiscordBot.Test.csproj", "{8FE1F26A-C558-49C5-BEA8-C74D671D18BE}"
 EndProject
