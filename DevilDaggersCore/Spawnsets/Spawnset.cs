@@ -105,7 +105,7 @@ namespace DevilDaggersCore.Spawnsets
 		/// This only works for V3 spawnsets.
 		/// </summary>
 		/// <param name="stream">The stream containing the spawnset file contents.</param>
-		/// <returns>The parsed <see cref="Spawnset"/>.</returns>
+		/// <param name="spawnset">The parsed <see cref="Spawnset"/>.</param>
 		public static bool TryParse(Stream stream, out Spawnset spawnset)
 		{
 			try
@@ -504,7 +504,7 @@ namespace DevilDaggersCore.Spawnsets
 		/// </summary>
 		public string GetUniqueString()
 		{
-			CultureInfo culture = new CultureInfo("en-US"); // TODO: Use InvariantCulture instead. (Not entirely sure if this changes anything in the hash.)
+			CultureInfo culture = CultureInfo.InvariantCulture;
 			string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
 			char separator = ';';
 
@@ -536,7 +536,7 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			StringBuilder sb = new StringBuilder();
 			foreach (byte b in GetHash())
-				sb.Append(b.ToString("X2"));
+				sb.Append(b.ToString("X2", CultureInfo.InvariantCulture));
 			return sb.ToString();
 		}
 	}
