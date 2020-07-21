@@ -11,6 +11,6 @@ namespace DevilDaggersCore.Tools.Website
 
 		public string Description { get; set; }
 
-		public List<Change> SubChanges { get; set; }
+		public IReadOnlyList<Change> SubChanges { get; set; }
 	}
 }

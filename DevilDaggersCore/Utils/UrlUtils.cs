@@ -1,13 +1,15 @@
 ﻿// #define TESTING
 
+using System;
+
 namespace DevilDaggersCore.Utils
 {
 	public static class UrlUtils
 	{
 #if TESTING
-		public static string BaseUrl { get; }= "http://localhost:2963";
+		public static Uri BaseUrl { get; } = new Uri("http://localhost:2963");
 #else
-		public static string BaseUrl { get; } = "https://devildaggers.info";
+		public static Uri BaseUrl { get; } = new Uri("https://devildaggers.info");
 #endif
 
 		public static string ApiGetTools => $"{BaseUrl}/Api/GetTools";
@@ -24,6 +26,6 @@ namespace DevilDaggersCore.Utils
 
 		public static string CustomLeaderboard(string spawnsetFileName) => $"{BaseUrl}/CustomLeaderboards/Leaderboard?spawnset={spawnsetFileName}";
 
-		public static string SourceCodeUrl(string toolName) => $"https://github.com/NoahStolk/{toolName}";
+		public static Uri SourceCodeUrl(string toolName) => new Uri($"https://github.com/NoahStolk/{toolName}");
 	}
 }

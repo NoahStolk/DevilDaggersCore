@@ -14,6 +14,6 @@ namespace DevilDaggersCore.Tools.Website
 		public DateTime Date { get; set; }
 
 		[JsonProperty]
-		public List<Change> Changes { get; set; }
+		public IReadOnlyList<Change> Changes { get; set; }
 	}
 }

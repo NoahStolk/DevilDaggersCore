@@ -1,11 +1,13 @@
-﻿namespace DevilDaggersCore.CustomLeaderboards
+﻿using System.Collections.Generic;
+
+namespace DevilDaggersCore.CustomLeaderboards
 {
 	public class SubmissionInfo
 	{
 		public int TotalPlayers { get; set; }
 		public CustomLeaderboardBase Leaderboard { get; set; }
 		public CustomLeaderboardCategoryBase Category { get; set; }
-		public CustomEntryBase[] Entries { get; set; }
+		public IEnumerable<CustomEntryBase> Entries { get; set; }
 		public bool IsNewUserOnThisLeaderboard { get; set; }
 
 		public int Rank { get; set; }

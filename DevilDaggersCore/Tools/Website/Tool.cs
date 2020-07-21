@@ -26,6 +26,6 @@ namespace DevilDaggersCore.Tools.Website
 		public Version VersionNumberRequired { get; set; }
 
 		[JsonProperty]
-		public List<ChangelogEntry> Changelog { get; set; }
+		public IReadOnlyList<ChangelogEntry> Changelog { get; set; }
 	}
 }

@@ -363,18 +363,18 @@ namespace DevilDaggersCore.Spawnsets
 				Dictionary<Enemy, int> skulls = new Dictionary<Enemy, int>();
 				if (squid.Enemy == Enemies[0])
 				{
-					skulls.Add(GameInfo.V3.Skull1, 10);
-					skulls.Add(GameInfo.V3.Skull2, 1);
+					skulls.Add(V3.Skull1, 10);
+					skulls.Add(V3.Skull2, 1);
 				}
 				else if (squid.Enemy == Enemies[1])
 				{
-					skulls.Add(GameInfo.V3.Skull1, 10);
-					skulls.Add(GameInfo.V3.Skull3, 1);
+					skulls.Add(V3.Skull1, 10);
+					skulls.Add(V3.Skull3, 1);
 				}
 				else if (squid.Enemy == Enemies[6])
 				{
-					skulls.Add(GameInfo.V3.Skull1, 15);
-					skulls.Add(GameInfo.V3.Skull4, 1);
+					skulls.Add(V3.Skull1, 15);
+					skulls.Add(V3.Skull4, 1);
 				}
 
 				StringBuilder gushText = new StringBuilder();

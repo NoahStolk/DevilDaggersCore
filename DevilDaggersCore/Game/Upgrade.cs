@@ -1,4 +1,6 @@
-﻿namespace DevilDaggersCore.Game
+﻿using System.Globalization;
+
+namespace DevilDaggersCore.Game
 {
 	public class Upgrade : DevilDaggersEntity
 	{
@@ -18,6 +20,6 @@
 		public int? HomingShot { get; set; }
 		public string UnlocksAt { get; set; }
 
-		public int Level => int.Parse(Name[Name.Length - 1].ToString());
+		public int Level => int.Parse(Name[Name.Length - 1].ToString(), CultureInfo.InvariantCulture);
 	}
 }

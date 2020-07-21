@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DevilDaggersCore.Game
 {
@@ -30,12 +32,12 @@ namespace DevilDaggersCore.Game
 		[JsonProperty]
 		public bool RegisterKill { get; set; }
 		[JsonProperty]
-		public Enemy[] SpawnedBy { get; set; }
+		public IReadOnlyList<Enemy> SpawnedBy { get; set; }
 
 		public int GemHp => Hp / Gems;
 
 		public string GetGemHpString() => $"({GemHp} x {Gems})";
 
-		public Enemy Copy() => new Enemy(Name, ColorCode, Hp, Gems, Death, Homing3, Homing4, RegisterKill, SpawnedBy);
+		public Enemy Copy() => new Enemy(Name, ColorCode, Hp, Gems, Death, Homing3, Homing4, RegisterKill, SpawnedBy.ToArray());
 	}
 }
