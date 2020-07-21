@@ -46,7 +46,7 @@ namespace DevilDaggersCore.Leaderboards
 		public ulong ShotsFiredGlobal { get; set; }
 
 		[JsonProperty]
-		public IReadOnlyList<Entry> Entries { get; set; } = new List<Entry>();
+		public List<Entry> Entries { get; set; } = new List<Entry>();
 
 		public double AccuracyGlobal => ShotsFiredGlobal == 0 ? 0 : ShotsHitGlobal / (double)ShotsFiredGlobal;
 
