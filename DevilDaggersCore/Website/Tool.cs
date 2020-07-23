@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DevilDaggersCore.Tools.Website
+namespace DevilDaggersCore.Website
 {
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Tool

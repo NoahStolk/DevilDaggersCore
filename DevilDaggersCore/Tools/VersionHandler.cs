@@ -1,5 +1,5 @@
-﻿using DevilDaggersCore.Tools.Website;
-using DevilDaggersCore.Utils;
+﻿using DevilDaggersCore.Utils;
+using DevilDaggersCore.Website;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Tools.Website;
+﻿using DevilDaggersCore.Website;
 using System;
 
 namespace DevilDaggersCore.Tools
@@ -18,7 +18,7 @@ namespace DevilDaggersCore.Tools
 		public bool? IsUpToDate { get; set; }
 
 		/// <summary>
-		/// The Tool retrieved from the website, or null if failed.
+		/// The <see cref="DevilDaggersCore.Website.Tool"/> retrieved from the website, or null if failed.
 		/// </summary>
 		public Tool Tool { get; set; }
 
