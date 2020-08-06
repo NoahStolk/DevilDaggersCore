@@ -274,7 +274,6 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		// TODO
 		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves, GameVersion gameVersion)
 		{
 			List<AbstractEvent> events = new List<AbstractEvent>();
@@ -294,7 +293,6 @@ namespace DevilDaggersCore.Spawnsets
 				{
 					foreach (Spawn s in endLoop)
 					{
-						seconds += s.Delay;
 						if (s.SpawnsetEnemy != Enemies[-1])
 						{
 							int gems = s.SpawnsetEnemy.NoFarmGems;
@@ -302,7 +300,6 @@ namespace DevilDaggersCore.Spawnsets
 						}
 					}
 
-					seconds -= spawn.Delay;
 					endLoop.Clear();
 					endLoop.Add(spawn);
 				}
@@ -310,10 +307,10 @@ namespace DevilDaggersCore.Spawnsets
 
 			if (endLoop.Count != 1 || endLoop.Count == 1 && endLoop[0].SpawnsetEnemy != Enemies[-1])
 			{
-				double waveMod = 0;
 				double endGameSecond = seconds;
-				for (int i = 0; i < maxWaves; i++)
+				for (int i = 1; i < maxWaves; i++)
 				{
+					double waveMod = GetWaveMod(i);
 					double enemyTimer = 0;
 					double delay = 0;
 					foreach (Spawn spawn in endLoop)
@@ -327,29 +324,21 @@ namespace DevilDaggersCore.Spawnsets
 
 						if (spawn.SpawnsetEnemy != Enemies[-1])
 						{
-							events.Add(new SpawnEvent(endGameSecond, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
 							SpawnsetEnemy finalEnemy = spawn.SpawnsetEnemy;
-
 							if (i % 3 == 2 && gameVersion == GameInfo.GameVersions["V3"] && finalEnemy == Enemies[5])
 								finalEnemy = Enemies[9];
 
 							int gems = finalEnemy.NoFarmGems;
 							totalGems += gems;
+
+							events.Add(new SpawnEvent(endGameSecond, $"{finalEnemy.Name} spawns", finalEnemy));
 						}
 					}
-
-					waveMod += 1f / 60f / 8f;
 				}
-			}
 
-			/*
-			double totalSeconds = 0;
-			foreach (Spawn spawn in Spawns.Values)
-			{
-				totalSeconds += spawn.Delay;
-				events.Add(new SpawnEvent(totalSeconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+				static double GetWaveMod(int waveIndex)
+					=> 1f / 60f / 8f * waveIndex;
 			}
-			*/
 
 			List<SpawnEvent> spawnEvents = events.Where(s => s.GetType() == typeof(SpawnEvent)).Cast<SpawnEvent>().ToList();
 			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy == Enemies[0] || s.Enemy == Enemies[1] || s.Enemy == Enemies[6]).ToList();
