@@ -4,8 +4,8 @@ namespace DevilDaggersCore.Game
 {
 	public class Upgrade : DevilDaggersEntity
 	{
-		public Upgrade(string name, string colorCode, float defaultSpray, int defaultShot, float? homingSpray, int? homingShot, string unlocksAt)
-			: base(name, colorCode)
+		public Upgrade(GameVersion gameVersion, string name, string colorCode, float defaultSpray, int defaultShot, float? homingSpray, int? homingShot, string unlocksAt)
+			: base(gameVersion, name, colorCode)
 		{
 			DefaultSprayPerSecond = defaultSpray;
 			DefaultShot = defaultShot;

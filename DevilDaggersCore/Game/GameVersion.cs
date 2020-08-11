@@ -1,16 +1,10 @@
-﻿using System;
-
-namespace DevilDaggersCore.Game
+﻿namespace DevilDaggersCore.Game
 {
-	public class GameVersion
+	public enum GameVersion
 	{
-		public GameVersion(Type type, DateTime releaseDate)
-		{
-			Type = type;
-			ReleaseDate = releaseDate;
-		}
-
-		public Type Type { get; set; }
-		public DateTime ReleaseDate { get; set; }
+		None = 0,
+		V1 = 1,
+		V2 = 2,
+		V3 = 3,
 	}
 }
