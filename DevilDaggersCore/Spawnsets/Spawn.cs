@@ -1,20 +1,26 @@
-﻿namespace DevilDaggersCore.Spawnsets
+﻿using DevilDaggersCore.Game;
+
+namespace DevilDaggersCore.Spawnsets
 {
 	public class Spawn
 	{
-		public Spawn(SpawnsetEnemy spawnsetEnemy, double delay)
+		public Spawn(Enemy? enemy, double delay)
 		{
-			SpawnsetEnemy = spawnsetEnemy;
+			Enemy = enemy;
 			Delay = delay;
 		}
 
-		public SpawnsetEnemy SpawnsetEnemy { get; set; }
+		/// <summary>
+		/// Represents the enemy in this spawn, <see langword="null"/> if it is an EMPTY spawn.
+		/// </summary>
+		public Enemy? Enemy { get; set; }
+
 		public double Delay { get; set; }
 
 		public Spawn Copy()
-			=> new Spawn(SpawnsetEnemy, Delay);
+			=> new Spawn(Enemy, Delay);
 
 		public override string ToString()
-			=> $"{Delay:0.0000}: {SpawnsetEnemy.Name}";
+			=> $"{Delay:0.0000}: {Enemy?.Name ?? "EMPTY"}";
 	}
 }

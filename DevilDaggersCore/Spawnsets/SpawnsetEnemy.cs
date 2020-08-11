@@ -1,38 +1,17 @@
-﻿using DevilDaggersCore.Game;
-using System;
-using System.Linq;
-
-namespace DevilDaggersCore.Spawnsets
+﻿namespace DevilDaggersCore.Spawnsets
 {
-	/// <summary>
-	/// Simplified version of the <see cref="Enemy"/> class.
-	/// Only meant for enemies used in spawnsets.
-	/// </summary>
-	public class SpawnsetEnemy
+	public enum SpawnsetEnemy
 	{
-		public SpawnsetEnemy(string name, int noFarmGems)
-		{
-			Name = name;
-			NoFarmGems = noFarmGems;
-		}
-
-		public string Name { get; }
-		public int NoFarmGems { get; }
-
-		public Enemy ToEnemy(params GameVersion[] gameVersions)
-		{
-			try
-			{
-				return GameInfo.GetEntities<Enemy>(gameVersions).Where(e => e.Name == Name).First();
-			}
-			catch
-			{
-				// If no game versions are specified, use all.
-				if (gameVersions.Length == 0)
-					gameVersions = GameInfo.GameVersions.Values.ToArray();
-
-				throw new Exception($"No Enemy found for {nameof(SpawnsetEnemy)} '{Name}' in game versions '{string.Join(", ", gameVersions.Select(g => g.Type))}'.");
-			}
-		}
+		Empty = -1,
+		Squid1 = 0,
+		Squid2 = 1,
+		Centipede = 2,
+		Spider1 = 3,
+		Leviathan = 4,
+		Gigapede = 5,
+		Squid3 = 6,
+		Thorn = 7,
+		Spider2 = 8,
+		Ghostpede = 9,
 	}
 }
