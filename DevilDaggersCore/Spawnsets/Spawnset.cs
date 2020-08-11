@@ -306,10 +306,7 @@ namespace DevilDaggersCore.Spawnsets
 					foreach (Spawn s in endLoop)
 					{
 						if (s.Enemy != null)
-						{
-							int gems = s.Enemy.Gems;
-							totalGems += gems;
-						}
+							totalGems += s.Enemy.NoFarmGems;
 					}
 
 					endLoop.Clear();
@@ -340,8 +337,7 @@ namespace DevilDaggersCore.Spawnsets
 							if (i % 3 == 2 && finalEnemy == GameData.V3Gigapede)
 								finalEnemy = GameData.V3Ghostpede;
 
-							int gems = finalEnemy.Gems;
-							totalGems += gems;
+							totalGems += finalEnemy.NoFarmGems;
 
 							events.Add(new SpawnEvent(endGameSecond, $"{finalEnemy.Name} spawns", finalEnemy));
 						}

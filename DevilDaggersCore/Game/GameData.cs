@@ -28,23 +28,23 @@ namespace DevilDaggersCore.Game
 		public static readonly Death V1Devastated = new Death(GameVersion.V1, "DEVASTATED", "FF0000", 17);
 		public static readonly Death V1Dismembered = new Death(GameVersion.V1, "DISMEMBERED", "804E00", 18);
 
-		public static readonly Enemy V1Squid1 = new Enemy(GameVersion.V1, "Squid I", "4E3000", 10, 1, V1Purged, 1, null, true);
-		public static readonly Enemy V1Squid2 = new Enemy(GameVersion.V1, "Squid II", "804E00", 20, 2, V1Sacrificed, 2, null, true);
-		public static readonly Enemy V1Centipede = new Enemy(GameVersion.V1, "Centipede", "837E75", 75, 25, V1Eviscerated, 25, null, true);
-		public static readonly Enemy V1Gigapede = new Enemy(GameVersion.V1, "Gigapede", "7B5157", 250, 50, V1Eviscerated, 50, null, true);
-		public static readonly Enemy V1Leviathan = new Enemy(GameVersion.V1, "Leviathan", "FF0000", 600, 6, V1Devastated, 600, null, true);
-		public static readonly Enemy V1Spider1 = new Enemy(GameVersion.V1, "Spider I", "097A00", 25, 1, V1Infested, 3, null, true);
+		public static readonly Enemy V1Squid1 = new Enemy(GameVersion.V1, "Squid I", "4E3000", 10, 1, 2, V1Purged, 1, null, true);
+		public static readonly Enemy V1Squid2 = new Enemy(GameVersion.V1, "Squid II", "804E00", 20, 2, 3, V1Sacrificed, 2, null, true);
+		public static readonly Enemy V1Centipede = new Enemy(GameVersion.V1, "Centipede", "837E75", 75, 25, 25, V1Eviscerated, 25, null, true);
+		public static readonly Enemy V1Gigapede = new Enemy(GameVersion.V1, "Gigapede", "7B5157", 250, 50, 50, V1Eviscerated, 50, null, true);
+		public static readonly Enemy V1Leviathan = new Enemy(GameVersion.V1, "Leviathan", "FF0000", 600, 6, 6, V1Devastated, 600, null, true);
+		public static readonly Enemy V1Spider1 = new Enemy(GameVersion.V1, "Spider I", "097A00", 25, 1, 1, V1Infested, 3, null, true);
 
-		public static readonly Enemy V1Skull1 = new Enemy(GameVersion.V1, "Skull I", "352710", 1, 0, V1Swarmed, 0.25f, null, true, V1Squid1, V1Squid2);
-		public static readonly Enemy V1Skull2 = new Enemy(GameVersion.V1, "Skull II", "433114", 5, 1, V1Impaled, 1, null, true, V1Squid1);
-		public static readonly Enemy V1Skull3 = new Enemy(GameVersion.V1, "Skull III", "6E5021", 10, 1, V1Dismembered, 1, null, true, V1Squid2);
+		public static readonly Enemy V1Skull1 = new Enemy(GameVersion.V1, "Skull I", "352710", 1, 0, 0, V1Swarmed, 0.25f, null, true, V1Squid1, V1Squid2);
+		public static readonly Enemy V1Skull2 = new Enemy(GameVersion.V1, "Skull II", "433114", 5, 1, 1, V1Impaled, 1, null, true, V1Squid1);
+		public static readonly Enemy V1Skull3 = new Enemy(GameVersion.V1, "Skull III", "6E5021", 10, 1, 1, V1Dismembered, 1, null, true, V1Squid2);
 
-		public static readonly Enemy V1TransmutedSkull2 = new Enemy(GameVersion.V1, "Transmuted Skull II", "721A13", 10, 1, V1Impaled, 1, null, true, V1Leviathan);
-		public static readonly Enemy V1TransmutedSkull3 = new Enemy(GameVersion.V1, "Transmuted Skull III", "982319", 20, 1, V1Dismembered, 2, null, true, V1Leviathan);
-		public static readonly Enemy V1TransmutedSkull4 = new Enemy(GameVersion.V1, "Transmuted Skull IV", "BE2C20", 100, 0, V1Annihilated, 10, null, true, V1Leviathan);
+		public static readonly Enemy V1TransmutedSkull2 = new Enemy(GameVersion.V1, "Transmuted Skull II", "721A13", 10, 1, 1, V1Impaled, 1, null, true, V1Leviathan);
+		public static readonly Enemy V1TransmutedSkull3 = new Enemy(GameVersion.V1, "Transmuted Skull III", "982319", 20, 1, 1, V1Dismembered, 2, null, true, V1Leviathan);
+		public static readonly Enemy V1TransmutedSkull4 = new Enemy(GameVersion.V1, "Transmuted Skull IV", "BE2C20", 100, 0, 0, V1Annihilated, 10, null, true, V1Leviathan);
 
-		public static readonly Enemy V1SpiderEgg1 = new Enemy(GameVersion.V1, "Spider Egg I", "99A100", 3, 0, V1Infested, 3, null, false, V1Spider1);
-		public static readonly Enemy V1Spiderling = new Enemy(GameVersion.V1, "Spiderling", "DCCB00", 3, 0, V1Stricken, 1, null, true, V1SpiderEgg1);
+		public static readonly Enemy V1SpiderEgg1 = new Enemy(GameVersion.V1, "Spider Egg I", "99A100", 3, 0, 0, V1Infested, 3, null, false, V1Spider1);
+		public static readonly Enemy V1Spiderling = new Enemy(GameVersion.V1, "Spiderling", "DCCB00", 3, 0, 0, V1Stricken, 1, null, true, V1SpiderEgg1);
 
 		public static readonly Dagger V2Default = new Dagger(GameVersion.V2, "Default", "444444", null);
 		public static readonly Dagger V2Bronze = new Dagger(GameVersion.V2, "Bronze", "CD7F32", 60);
@@ -73,30 +73,30 @@ namespace DevilDaggersCore.Game
 		public static readonly Death V2Stricken = new Death(GameVersion.V2, "STRICKEN", "DCCB00", 16);
 		public static readonly Death V2Devastated = new Death(GameVersion.V2, "DEVASTATED", "FF0000", 17);
 
-		public static readonly Enemy V2Squid1 = new Enemy(GameVersion.V2, "Squid I", "4E3000", 10, 1, V2Purged, 1, 1, true);
-		public static readonly Enemy V2Squid2 = new Enemy(GameVersion.V2, "Squid II", "804E00", 20, 2, V2Desecrated, 2, 1, true);
-		public static readonly Enemy V2Squid3 = new Enemy(GameVersion.V2, "Squid III", "AF6B00", 90, 3, V2Sacrificed, 3, 9, true);
-		public static readonly Enemy V2Centipede = new Enemy(GameVersion.V2, "Centipede", "837E75", 75, 25, V2Eviscerated, 25, 25, true);
-		public static readonly Enemy V2Gigapede = new Enemy(GameVersion.V2, "Gigapede", "7B5157", 250, 50, V2Annihilated, 50, 50, true);
-		public static readonly Enemy V2Leviathan = new Enemy(GameVersion.V2, "Leviathan", "FF0000", 1500, 6, V2Devastated, 1500, 1500, true);
-		public static readonly Enemy V2Spider1 = new Enemy(GameVersion.V2, "Spider I", "097A00", 25, 1, V2Infested, 3, 3, true);
-		public static readonly Enemy V2Spider2 = new Enemy(GameVersion.V2, "Spider II", "13FF00", 200, 1, V2Envenomated, 20, 20, true);
+		public static readonly Enemy V2Squid1 = new Enemy(GameVersion.V2, "Squid I", "4E3000", 10, 1, 2, V2Purged, 1, 1, true);
+		public static readonly Enemy V2Squid2 = new Enemy(GameVersion.V2, "Squid II", "804E00", 20, 2, 3, V2Desecrated, 2, 1, true);
+		public static readonly Enemy V2Squid3 = new Enemy(GameVersion.V2, "Squid III", "AF6B00", 90, 3, 3, V2Sacrificed, 3, 9, true);
+		public static readonly Enemy V2Centipede = new Enemy(GameVersion.V2, "Centipede", "837E75", 75, 25, 25, V2Eviscerated, 25, 25, true);
+		public static readonly Enemy V2Gigapede = new Enemy(GameVersion.V2, "Gigapede", "7B5157", 250, 50, 50, V2Annihilated, 50, 50, true);
+		public static readonly Enemy V2Leviathan = new Enemy(GameVersion.V2, "Leviathan", "FF0000", 1500, 6, 6, V2Devastated, 1500, 1500, true);
+		public static readonly Enemy V2Spider1 = new Enemy(GameVersion.V2, "Spider I", "097A00", 25, 1, 1, V2Infested, 3, 3, true);
+		public static readonly Enemy V2Spider2 = new Enemy(GameVersion.V2, "Spider II", "13FF00", 200, 1, 1, V2Envenomated, 20, 20, true);
 
-		public static readonly Enemy V2Skull1 = new Enemy(GameVersion.V2, "Skull I", "352710", 1, 0, V2Swarmed, 0.25f, 0.25f, true, V2Squid1, V2Squid2, V2Squid3);
-		public static readonly Enemy V2Skull2 = new Enemy(GameVersion.V2, "Skull II", "433114", 5, 1, V2Impaled, 1, 1, true, V2Squid1);
-		public static readonly Enemy V2Skull3 = new Enemy(GameVersion.V2, "Skull III", "6E5021", 10, 1, V2Gored, 1, 1, true, V2Squid2);
-		public static readonly Enemy V2Skull4 = new Enemy(GameVersion.V2, "Skull IV", "976E2E", 100, 0, V2Opened, 10, 10, true, V2Squid3);
+		public static readonly Enemy V2Skull1 = new Enemy(GameVersion.V2, "Skull I", "352710", 1, 0, 0, V2Swarmed, 0.25f, 0.25f, true, V2Squid1, V2Squid2, V2Squid3);
+		public static readonly Enemy V2Skull2 = new Enemy(GameVersion.V2, "Skull II", "433114", 5, 1, 1, V2Impaled, 1, 1, true, V2Squid1);
+		public static readonly Enemy V2Skull3 = new Enemy(GameVersion.V2, "Skull III", "6E5021", 10, 1, 1, V2Gored, 1, 1, true, V2Squid2);
+		public static readonly Enemy V2Skull4 = new Enemy(GameVersion.V2, "Skull IV", "976E2E", 100, 0, 0, V2Opened, 10, 10, true, V2Squid3);
 
-		public static readonly Enemy V2TransmutedSkull1 = new Enemy(GameVersion.V2, "Transmuted Skull I", "4C110C", 10, 0, V2Swarmed, 0.25f, 10, true, V2Leviathan);
-		public static readonly Enemy V2TransmutedSkull2 = new Enemy(GameVersion.V2, "Transmuted Skull II", "721A13", 20, 1, V2Impaled, 2, 2, true, V2Leviathan);
-		public static readonly Enemy V2TransmutedSkull3 = new Enemy(GameVersion.V2, "Transmuted Skull III", "982319", 100, 1, V2Gored, 10, 10, true, V2Leviathan);
-		public static readonly Enemy V2TransmutedSkull4 = new Enemy(GameVersion.V2, "Transmuted Skull IV", "BE2C20", 300, 0, V2Opened, 30, 30, true, V2Leviathan);
+		public static readonly Enemy V2TransmutedSkull1 = new Enemy(GameVersion.V2, "Transmuted Skull I", "4C110C", 10, 0, 0, V2Swarmed, 0.25f, 10, true, V2Leviathan);
+		public static readonly Enemy V2TransmutedSkull2 = new Enemy(GameVersion.V2, "Transmuted Skull II", "721A13", 20, 1, 1, V2Impaled, 2, 2, true, V2Leviathan);
+		public static readonly Enemy V2TransmutedSkull3 = new Enemy(GameVersion.V2, "Transmuted Skull III", "982319", 100, 1, 1, V2Gored, 10, 10, true, V2Leviathan);
+		public static readonly Enemy V2TransmutedSkull4 = new Enemy(GameVersion.V2, "Transmuted Skull IV", "BE2C20", 300, 0, 0, V2Opened, 30, 30, true, V2Leviathan);
 
-		public static readonly Enemy V2SpiderEgg1 = new Enemy(GameVersion.V2, "Spider Egg I", "99A100", 3, 0, V2Infested, 3, 3, false, V2Spider1);
-		public static readonly Enemy V2SpiderEgg2 = new Enemy(GameVersion.V2, "Spider Egg II", "657A00", 3, 0, V2Envenomated, 3, 3, false, V2Spider2);
-		public static readonly Enemy V2Spiderling = new Enemy(GameVersion.V2, "Spiderling", "DCCB00", 3, 0, V2Stricken, 1, 1, true, V2SpiderEgg1, V2SpiderEgg2);
+		public static readonly Enemy V2SpiderEgg1 = new Enemy(GameVersion.V2, "Spider Egg I", "99A100", 3, 0, 0, V2Infested, 3, 3, false, V2Spider1);
+		public static readonly Enemy V2SpiderEgg2 = new Enemy(GameVersion.V2, "Spider Egg II", "657A00", 3, 0, 0, V2Envenomated, 3, 3, false, V2Spider2);
+		public static readonly Enemy V2Spiderling = new Enemy(GameVersion.V2, "Spiderling", "DCCB00", 3, 0, 0, V2Stricken, 1, 1, true, V2SpiderEgg1, V2SpiderEgg2);
 
-		public static readonly Enemy V2Andras = new Enemy(GameVersion.V2, "Andras", "666666", 25, 1, V2Unknown, null, null, true);
+		public static readonly Enemy V2Andras = new Enemy(GameVersion.V2, "Andras", "666666", 25, 1, 1, V2Unknown, null, null, true);
 
 		public static readonly Dagger V3Default = new Dagger(GameVersion.V3, "Default", "444444", null);
 		public static readonly Dagger V3Bronze = new Dagger(GameVersion.V3, "Bronze", "CD7F32", 60);
@@ -127,32 +127,32 @@ namespace DevilDaggersCore.Game
 		public static readonly Death V3Discarnated = new Death(GameVersion.V3, "DISCARNATED", "FF3131", 14);
 		public static readonly Death V3Barbed = new Death(GameVersion.V3, "BARBED", "771D00", 15);
 
-		public static readonly Enemy V3Squid1 = new Enemy(GameVersion.V3, "Squid I", "4E3000", 10, 1, V3Purged, 1, 1, true);
-		public static readonly Enemy V3Squid2 = new Enemy(GameVersion.V3, "Squid II", "804E00", 20, 2, V3Desecrated, 2, 1, true);
-		public static readonly Enemy V3Squid3 = new Enemy(GameVersion.V3, "Squid III", "AF6B00", 90, 3, V3Sacrificed, 3, 9, true);
-		public static readonly Enemy V3Centipede = new Enemy(GameVersion.V3, "Centipede", "837E75", 75, 25, V3Eviscerated, 25, 25, true);
-		public static readonly Enemy V3Gigapede = new Enemy(GameVersion.V3, "Gigapede", "478B41", 250, 50, V3Annihilated, 50, 50, true);
-		public static readonly Enemy V3Ghostpede = new Enemy(GameVersion.V3, "Ghostpede", "C8A2C8", 500, 10, V3Intoxicated, null, null, true);
-		public static readonly Enemy V3Leviathan = new Enemy(GameVersion.V3, "Leviathan", "FF0000", 1500, 6, V3Incarnated, 1500, 1500, true);
-		public static readonly Enemy V3Thorn = new Enemy(GameVersion.V3, "Thorn", "771D00", 120, 0, V3Barbed, 12, 12, false);
-		public static readonly Enemy V3Spider1 = new Enemy(GameVersion.V3, "Spider I", "097A00", 25, 1, V3Intoxicated, 3, 3, true);
-		public static readonly Enemy V3Spider2 = new Enemy(GameVersion.V3, "Spider II", "13FF00", 200, 1, V3Envenomated, 20, 20, true);
+		public static readonly Enemy V3Squid1 = new Enemy(GameVersion.V3, "Squid I", "4E3000", 10, 1, 2, V3Purged, 1, 1, true);
+		public static readonly Enemy V3Squid2 = new Enemy(GameVersion.V3, "Squid II", "804E00", 20, 2, 3, V3Desecrated, 2, 1, true);
+		public static readonly Enemy V3Squid3 = new Enemy(GameVersion.V3, "Squid III", "AF6B00", 90, 3, 3, V3Sacrificed, 3, 9, true);
+		public static readonly Enemy V3Centipede = new Enemy(GameVersion.V3, "Centipede", "837E75", 75, 25, 25, V3Eviscerated, 25, 25, true);
+		public static readonly Enemy V3Gigapede = new Enemy(GameVersion.V3, "Gigapede", "478B41", 250, 50, 50, V3Annihilated, 50, 50, true);
+		public static readonly Enemy V3Ghostpede = new Enemy(GameVersion.V3, "Ghostpede", "C8A2C8", 500, 10, 10, V3Intoxicated, null, null, true);
+		public static readonly Enemy V3Leviathan = new Enemy(GameVersion.V3, "Leviathan", "FF0000", 1500, 6, 6, V3Incarnated, 1500, 1500, true);
+		public static readonly Enemy V3Thorn = new Enemy(GameVersion.V3, "Thorn", "771D00", 120, 0, 0, V3Barbed, 12, 12, false);
+		public static readonly Enemy V3Spider1 = new Enemy(GameVersion.V3, "Spider I", "097A00", 25, 1, 1, V3Intoxicated, 3, 3, true);
+		public static readonly Enemy V3Spider2 = new Enemy(GameVersion.V3, "Spider II", "13FF00", 200, 1, 1, V3Envenomated, 20, 20, true);
 
-		public static readonly Enemy V3TheOrb = new Enemy(GameVersion.V3, "The Orb", "FF3131", 2400, 0, V3Discarnated, 2400, 2400, false, V3Leviathan);
+		public static readonly Enemy V3TheOrb = new Enemy(GameVersion.V3, "The Orb", "FF3131", 2400, 0, 0, V3Discarnated, 2400, 2400, false, V3Leviathan);
 
-		public static readonly Enemy V3Skull1 = new Enemy(GameVersion.V3, "Skull I", "352710", 1, 0, V3Swarmed, 0.25f, 0.25f, true, V3Squid1, V3Squid2, V3Squid3);
-		public static readonly Enemy V3Skull2 = new Enemy(GameVersion.V3, "Skull II", "433114", 5, 1, V3Impaled, 1, 1, true, V3Squid1);
-		public static readonly Enemy V3Skull3 = new Enemy(GameVersion.V3, "Skull III", "6E5021", 10, 1, V3Gored, 1, 1, true, V3Squid2);
-		public static readonly Enemy V3Skull4 = new Enemy(GameVersion.V3, "Skull IV", "976E2E", 100, 0, V3Opened, 10, 10, true, V3Squid3);
+		public static readonly Enemy V3Skull1 = new Enemy(GameVersion.V3, "Skull I", "352710", 1, 0, 0, V3Swarmed, 0.25f, 0.25f, true, V3Squid1, V3Squid2, V3Squid3);
+		public static readonly Enemy V3Skull2 = new Enemy(GameVersion.V3, "Skull II", "433114", 5, 1, 1, V3Impaled, 1, 1, true, V3Squid1);
+		public static readonly Enemy V3Skull3 = new Enemy(GameVersion.V3, "Skull III", "6E5021", 10, 1, 1, V3Gored, 1, 1, true, V3Squid2);
+		public static readonly Enemy V3Skull4 = new Enemy(GameVersion.V3, "Skull IV", "976E2E", 100, 0, 0, V3Opened, 10, 10, true, V3Squid3);
 
-		public static readonly Enemy V3TransmutedSkull1 = new Enemy(GameVersion.V3, "Transmuted Skull I", "4C110C", 10, 0, V3Swarmed, 0.25f, 10, true, V3Leviathan, V3TheOrb);
-		public static readonly Enemy V3TransmutedSkull2 = new Enemy(GameVersion.V3, "Transmuted Skull II", "721A13", 20, 1, V3Impaled, 2, 2, true, V3Leviathan, V3TheOrb);
-		public static readonly Enemy V3TransmutedSkull3 = new Enemy(GameVersion.V3, "Transmuted Skull III", "982319", 100, 1, V3Gored, 10, 10, true, V3Leviathan, V3TheOrb);
-		public static readonly Enemy V3TransmutedSkull4 = new Enemy(GameVersion.V3, "Transmuted Skull IV", "BE2C20", 300, 0, V3Opened, 30, 30, true, V3Leviathan, V3TheOrb);
+		public static readonly Enemy V3TransmutedSkull1 = new Enemy(GameVersion.V3, "Transmuted Skull I", "4C110C", 10, 0, 0, V3Swarmed, 0.25f, 10, true, V3Leviathan, V3TheOrb);
+		public static readonly Enemy V3TransmutedSkull2 = new Enemy(GameVersion.V3, "Transmuted Skull II", "721A13", 20, 1, 1, V3Impaled, 2, 2, true, V3Leviathan, V3TheOrb);
+		public static readonly Enemy V3TransmutedSkull3 = new Enemy(GameVersion.V3, "Transmuted Skull III", "982319", 100, 1, 1, V3Gored, 10, 10, true, V3Leviathan, V3TheOrb);
+		public static readonly Enemy V3TransmutedSkull4 = new Enemy(GameVersion.V3, "Transmuted Skull IV", "BE2C20", 300, 0, 0, V3Opened, 30, 30, true, V3Leviathan, V3TheOrb);
 
-		public static readonly Enemy V3SpiderEgg1 = new Enemy(GameVersion.V3, "Spider Egg I", "99A100", 3, 0, V3Intoxicated, 3, 3, false, V3Spider1);
-		public static readonly Enemy V3SpiderEgg2 = new Enemy(GameVersion.V3, "Spider Egg II", "657A00", 3, 0, V3Envenomated, 3, 3, false, V3Spider2);
-		public static readonly Enemy V3Spiderling = new Enemy(GameVersion.V3, "Spiderling", "DCCB00", 3, 0, V3Infested, 1, 1, true, V3SpiderEgg1, V3SpiderEgg2);
+		public static readonly Enemy V3SpiderEgg1 = new Enemy(GameVersion.V3, "Spider Egg I", "99A100", 3, 0, 0, V3Intoxicated, 3, 3, false, V3Spider1);
+		public static readonly Enemy V3SpiderEgg2 = new Enemy(GameVersion.V3, "Spider Egg II", "657A00", 3, 0, 0, V3Envenomated, 3, 3, false, V3Spider2);
+		public static readonly Enemy V3Spiderling = new Enemy(GameVersion.V3, "Spiderling", "DCCB00", 3, 0, 0, V3Infested, 1, 1, true, V3SpiderEgg1, V3SpiderEgg2);
 
 		public static readonly IEnumerable<DevilDaggersEntity> Entities = typeof(GameData).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null));
 
