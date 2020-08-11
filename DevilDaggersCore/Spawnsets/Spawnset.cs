@@ -286,7 +286,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves, GameVersion gameVersion)
+		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves)
 		{
 			List<AbstractEvent> events = new List<AbstractEvent>();
 

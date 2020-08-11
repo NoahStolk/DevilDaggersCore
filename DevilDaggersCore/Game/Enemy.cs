@@ -12,6 +12,7 @@ namespace DevilDaggersCore.Game
 		{
 			Hp = hp;
 			Gems = gems;
+			NoFarmGems = noFarmGems;
 			Death = death;
 			Homing3 = homing3;
 			Homing4 = homing4;
