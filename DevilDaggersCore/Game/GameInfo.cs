@@ -45,5 +45,17 @@ namespace DevilDaggersCore.Game
 			GameVersion.V3 => new DateTime(2016, 9, 19),
 			_ => null,
 		};
+
+		public static Dagger GetDaggerFromTime(int timeInTenthsOfMilliseconds)
+		{
+			List<Dagger> daggers = GetEntities<Dagger>(GameVersion.V3);
+			for (int i = daggers.Count - 1; i >= 0; i--)
+			{
+				if (timeInTenthsOfMilliseconds >= (daggers[i].UnlockSecond ?? 0) * 10000)
+					return daggers[i];
+			}
+
+			throw new Exception($"Could not determine dagger based on time '{timeInTenthsOfMilliseconds}'.");
+		}
 	}
 }
