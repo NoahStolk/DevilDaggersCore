@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 
 namespace DevilDaggersCore.Game
 {
@@ -8,10 +8,10 @@ namespace DevilDaggersCore.Game
 	{
 		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
 		{
-			foreach (GameVersion e in (GameVersion[])Enum.GetValues(typeof(GameVersion)))
+			foreach (GameVersion gameVersion in (GameVersion[])Enum.GetValues(typeof(GameVersion)))
 			{
-				if (GetReleaseDate(e) < dateTime)
-					return e;
+				if (GetReleaseDate(gameVersion) < dateTime)
+					return gameVersion;
 			}
 
 			return GameVersion.None;
@@ -28,32 +28,14 @@ namespace DevilDaggersCore.Game
 			throw new Exception($"Could not find enemy info for {nameof(Enemy)} with name '{enemy.Name}'.");
 		}
 
-		public static List<TEntity> GetEntities<TEntity>(GameVersion gameVersion)
+		public static List<TEntity> GetEntities<TEntity>(GameVersion? gameVersion = null)
 			where TEntity : DevilDaggersEntity
 		{
-			List<TEntity> entities = new List<TEntity>();
+			IEnumerable<TEntity> entities = GameData.Entities.OfType<TEntity>();
+			if (gameVersion != null)
+				entities = entities.Where(e => e.GameVersion == gameVersion);
 
-			foreach (FieldInfo field in gameVersion.Type.GetFields())
-			{
-				if (field.FieldType == typeof(TEntity) || field.FieldType.IsSubclassOf(typeof(TEntity)))
-				{
-					bool add = true;
-					TEntity entity = field.GetValue(field) as TEntity;
-					foreach (TEntity e in entities)
-					{
-						if (e.Name == entity.Name)
-						{
-							add = false;
-							break;
-						}
-					}
-
-					if (add)
-						entities.Add(entity);
-				}
-			}
-
-			return entities;
+			return entities.ToList();
 		}
 
 		public static DateTime? GetReleaseDate(GameVersion gameVersion) => gameVersion switch

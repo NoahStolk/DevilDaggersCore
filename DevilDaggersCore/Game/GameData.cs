@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DevilDaggersCore.Game
 {
@@ -125,7 +126,6 @@ namespace DevilDaggersCore.Game
 		public static readonly Death V3Incarnated = new Death(GameVersion.V3, "INCARNATED", "FF0000", 13);
 		public static readonly Death V3Discarnated = new Death(GameVersion.V3, "DISCARNATED", "FF3131", 14);
 		public static readonly Death V3Barbed = new Death(GameVersion.V3, "BARBED", "771D00", 15);
-		/* public static readonly Death V3Disintegrated = new Death(GameVersion.V3, "DISINTEGRATED", "FF3131", 19); // The Orb in V3 beta??? */
 
 		public static readonly Enemy V3Squid1 = new Enemy(GameVersion.V3, "Squid I", "4E3000", 10, 1, V3Purged, 1, 1, true);
 		public static readonly Enemy V3Squid2 = new Enemy(GameVersion.V3, "Squid II", "804E00", 20, 2, V3Desecrated, 2, 1, true);
@@ -153,6 +153,8 @@ namespace DevilDaggersCore.Game
 		public static readonly Enemy V3SpiderEgg1 = new Enemy(GameVersion.V3, "Spider Egg I", "99A100", 3, 0, V3Intoxicated, 3, 3, false, V3Spider1);
 		public static readonly Enemy V3SpiderEgg2 = new Enemy(GameVersion.V3, "Spider Egg II", "657A00", 3, 0, V3Envenomated, 3, 3, false, V3Spider2);
 		public static readonly Enemy V3Spiderling = new Enemy(GameVersion.V3, "Spiderling", "DCCB00", 3, 0, V3Infested, 1, 1, true, V3SpiderEgg1, V3SpiderEgg2);
+
+		public static readonly IEnumerable<DevilDaggersEntity> Entities = typeof(GameData).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null));
 
 		public static Dictionary<Enemy, string[]> EnemyInfo { get; } = new Dictionary<Enemy, string[]>
 		{
