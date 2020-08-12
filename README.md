@@ -15,7 +15,7 @@ N/A
 - [Devil Daggers Survival Editor](https://devildaggers.info/Tools/DevilDaggersSurvivalEditor)
 - [Devil Daggers Custom Leaderboards](https://devildaggers.info/Tools/DevilDaggersCustomLeaderboards)
 - [Devil Daggers Asset Editor](https://devildaggers.info/Tools/DevilDaggersAssetEditor)
-- [Devil Daggers Discord Bot](https://github.com/NoahStolk/DevilDaggersDiscordBot)
+- [@ddinfo Discord Bot](https://github.com/NoahStolk/DiscordBotDdInfo)
 
 ## License
 MIT License
