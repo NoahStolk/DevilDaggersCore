@@ -11,7 +11,7 @@ namespace DevilDaggersCore.Spawnsets
 		}
 
 		/// <summary>
-		/// Represents the enemy in this spawn, <see langword="null"/> if it is an EMPTY spawn.
+		/// Represents the enemy in this spawn, or <see langword="null"/> if it is an EMPTY spawn.
 		/// </summary>
 		public Enemy? Enemy { get; set; }
 

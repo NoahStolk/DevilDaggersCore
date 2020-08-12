@@ -9,10 +9,11 @@ namespace DevilDaggersCore.Game
 	{
 		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
 		{
-			foreach (GameVersion gameVersion in (GameVersion[])Enum.GetValues(typeof(GameVersion)))
+			GameVersion[] gameVersions = (GameVersion[])Enum.GetValues(typeof(GameVersion));
+			for (int i = 0; i < gameVersions.Length; i++)
 			{
-				if (GetReleaseDate(gameVersion) < dateTime)
-					return gameVersion;
+				if (dateTime > GetReleaseDate(gameVersions[i]) && (i == gameVersions.Length - 1 || dateTime < GetReleaseDate(gameVersions[i + 1])))
+					return gameVersions[i];
 			}
 
 			return GameVersion.None;
