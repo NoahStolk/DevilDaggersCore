@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace DevilDaggersCore.Game
@@ -38,6 +39,12 @@ namespace DevilDaggersCore.Game
 			return entities.ToList();
 		}
 
+		public static Death GetDeathByType(int deathType)
+			=> GetEntities<Death>().FirstOrDefault(e => e.DeathType == deathType);
+
+		public static Death GetDeathByName(string deathName)
+			=> GetEntities<Death>().FirstOrDefault(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
+
 		public static DateTime? GetReleaseDate(GameVersion gameVersion) => gameVersion switch
 		{
 			GameVersion.V1 => new DateTime(2016, 2, 18),
@@ -57,5 +64,8 @@ namespace DevilDaggersCore.Game
 
 			throw new Exception($"Could not determine dagger based on time '{timeInTenthsOfMilliseconds}'.");
 		}
+
+		public static IEnumerable<GameVersion> GetAppearances(string entityName)
+			=> GameData.Entities.Where(e => e.Name == entityName).Select(e => e.GameVersion);
 	}
 }
