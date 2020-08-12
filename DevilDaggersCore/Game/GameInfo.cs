@@ -7,7 +7,7 @@ namespace DevilDaggersCore.Game
 {
 	public static class GameInfo
 	{
-		public static GameVersion GetGameVersionFromDate(DateTime dateTime)
+		public static GameVersion? GetGameVersionFromDate(DateTime dateTime)
 		{
 			GameVersion[] gameVersions = (GameVersion[])Enum.GetValues(typeof(GameVersion));
 			for (int i = 0; i < gameVersions.Length; i++)
@@ -16,7 +16,7 @@ namespace DevilDaggersCore.Game
 					return gameVersions[i];
 			}
 
-			return GameVersion.None;
+			return null;
 		}
 
 		public static string[] GetEnemyInfo(Enemy enemy)
