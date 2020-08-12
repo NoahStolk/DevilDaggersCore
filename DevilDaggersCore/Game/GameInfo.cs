@@ -39,8 +39,8 @@ namespace DevilDaggersCore.Game
 			return entities.ToList();
 		}
 
-		public static Death GetDeathByType(int deathType)
-			=> GetEntities<Death>().FirstOrDefault(e => e.DeathType == deathType);
+		public static Death GetDeathByType(int deathType, GameVersion? gameVersion = null)
+			=> GetEntities<Death>(gameVersion).FirstOrDefault(e => e.DeathType == deathType);
 
 		public static Death GetDeathByName(string deathName)
 			=> GetEntities<Death>().FirstOrDefault(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
