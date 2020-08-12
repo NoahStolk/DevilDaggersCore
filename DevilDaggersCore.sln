@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevilDaggersAssetEditor", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCustomLeaderboards", "..\DevilDaggersCustomLeaderboards\DevilDaggersCustomLeaderboards\DevilDaggersCustomLeaderboards.csproj", "{FD7FEA29-AB64-43B3-9CC6-09EC076E310C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersDiscordBot", "..\DevilDaggersDiscordBot\DevilDaggersDiscordBot\DevilDaggersDiscordBot.csproj", "{7566DD96-03E4-4F85-BE73-8161F01CD5D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBotDdInfo", "..\DiscordBotDdInfo\DiscordBotDdInfo\DiscordBotDdInfo.csproj", "{7566DD96-03E4-4F85-BE73-8161F01CD5D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9454EFE3-EF3D-4CC7-BEED-82134CE25444}"
 EndProject
@@ -43,11 +43,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDCL", "DDCL", "{9A540BE3-E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolsShared", "..\DevilDaggersWebsite\Tools\ToolsShared\ToolsShared.csproj", "{60752989-2CD3-43AB-B19B-CA037304AB37}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersDiscordBot.Test", "..\DevilDaggersDiscordBot\DevilDaggersDiscordBot.Test\DevilDaggersDiscordBot.Test.csproj", "{8FE1F26A-C558-49C5-BEA8-C74D671D18BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBotDdInfo.Tests", "..\DiscordBotDdInfo\DiscordBotDdInfo.Tests\DiscordBotDdInfo.Tests.csproj", "{8FE1F26A-C558-49C5-BEA8-C74D671D18BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitemapGenerator", "..\SitemapGenerator\SitemapGenerator\SitemapGenerator.csproj", "{8E98D884-629D-4B1C-BF05-359003528BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitemapGenerator", "..\SitemapGenerator\SitemapGenerator\SitemapGenerator.csproj", "{8E98D884-629D-4B1C-BF05-359003528BB7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDDB", "DDDB", "{2DCC5F06-6937-4613-B452-AC7E4CF158DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBDI", "DBDI", "{2DCC5F06-6937-4613-B452-AC7E4CF158DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
