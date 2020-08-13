@@ -7,7 +7,7 @@ namespace DevilDaggersCore.Game
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Enemy : DevilDaggersEntity
 	{
-		public Enemy(GameVersion gameVersion, string name, string colorCode, int hp, int gems, int noFarmGems, byte? spawnsetType, Death death, float? homing3, float? homing4, bool registerKill, params Enemy[] spawnedBy)
+		public Enemy(GameVersion gameVersion, string name, string colorCode, int hp, int gems, int noFarmGems, byte? spawnsetType, Death? death, float? homing3, float? homing4, bool registerKill, params Enemy[] spawnedBy)
 			: base(gameVersion, name, colorCode)
 		{
 			Hp = hp;
@@ -34,7 +34,7 @@ namespace DevilDaggersCore.Game
 		public byte? SpawnsetType { get; set; }
 
 		[JsonProperty]
-		public Death Death { get; set; }
+		public Death? Death { get; set; }
 
 		[JsonProperty]
 		public float? Homing3 { get; set; }

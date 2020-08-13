@@ -17,7 +17,6 @@ namespace DevilDaggersCore.Game
 		public static readonly Upgrade V1Level2 = new Upgrade(GameVersion.V1, "Level 2", "FFAA00", 40, 20, null, null, "10 gems");
 		public static readonly Upgrade V1Level3 = new Upgrade(GameVersion.V1, "Level 3", "00FFFF", 80, 40, 40, 40, "70 gems"); // TODO: Figure out Level 3 homing spray.
 
-		public static readonly Death V1Unknown = new Death(GameVersion.V1, "N/A", "444444", -1);
 		public static readonly Death V1Fallen = new Death(GameVersion.V1, "FALLEN", "DDDDDD", 0);
 		public static readonly Death V1Swarmed = new Death(GameVersion.V1, "SWARMED", "352710", 1);
 		public static readonly Death V1Impaled = new Death(GameVersion.V1, "IMPALED", "433114", 2);
@@ -59,7 +58,6 @@ namespace DevilDaggersCore.Game
 		public static readonly Upgrade V2Level3 = new Upgrade(GameVersion.V2, "Level 3", "00FFFF", 80, 40, 40, 20, "70 gems");
 		public static readonly Upgrade V2Level4 = new Upgrade(GameVersion.V2, "Level 4", "FF0099", 106f + 2f / 3f, 60, 40, 30, "150 stored homing daggers");
 
-		public static readonly Death V2Unknown = new Death(GameVersion.V2, "N/A", "444444", -1);
 		public static readonly Death V2Fallen = new Death(GameVersion.V2, "FALLEN", "DDDDDD", 0);
 		public static readonly Death V2Swarmed = new Death(GameVersion.V2, "SWARMED", "352710", 1);
 		public static readonly Death V2Impaled = new Death(GameVersion.V2, "IMPALED", "433114", 2);
@@ -98,7 +96,7 @@ namespace DevilDaggersCore.Game
 		public static readonly Enemy V2SpiderEgg2 = new Enemy(GameVersion.V2, "Spider Egg II", "657A00", 3, 0, 0, null, V2Envenomated, 3, 3, false, V2Spider2);
 		public static readonly Enemy V2Spiderling = new Enemy(GameVersion.V2, "Spiderling", "DCCB00", 3, 0, 0, null, V2Stricken, 1, 1, true, V2SpiderEgg1, V2SpiderEgg2);
 
-		public static readonly Enemy V2Andras = new Enemy(GameVersion.V2, "Andras", "666666", 25, 1, 1, 0x7, V2Unknown, null, null, true);
+		public static readonly Enemy V2Andras = new Enemy(GameVersion.V2, "Andras", "666666", 25, 1, 1, 0x7, null, null, null, true);
 
 		public static readonly Dagger V3Default = new Dagger(GameVersion.V3, "Default", "444444", null);
 		public static readonly Dagger V3Bronze = new Dagger(GameVersion.V3, "Bronze", "CD7F32", 60);
@@ -111,7 +109,6 @@ namespace DevilDaggersCore.Game
 		public static readonly Upgrade V3Level3 = new Upgrade(GameVersion.V3, "Level 3", "00FFFF", 80, 40, 40, 20, "70 gems");
 		public static readonly Upgrade V3Level4 = new Upgrade(GameVersion.V3, "Level 4", "FF0099", 106f + 2f / 3f, 60, 40, 30, "150 stored homing daggers");
 
-		public static readonly Death V3Unknown = new Death(GameVersion.V3, "N/A", "444444", -1);
 		public static readonly Death V3Fallen = new Death(GameVersion.V3, "FALLEN", "DDDDDD", 0);
 		public static readonly Death V3Swarmed = new Death(GameVersion.V3, "SWARMED", "352710", 1);
 		public static readonly Death V3Impaled = new Death(GameVersion.V3, "IMPALED", "433114", 2);
@@ -158,7 +155,7 @@ namespace DevilDaggersCore.Game
 
 		public static readonly IEnumerable<DevilDaggersEntity> Entities = typeof(GameInfo).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null));
 
-		private static Dictionary<Enemy, string[]> enemyInfo = new Dictionary<Enemy, string[]>
+		private static readonly Dictionary<Enemy, string[]> enemyInfo = new Dictionary<Enemy, string[]>
 		{
 			{ V1Squid1, new[] { "Spawns at the edge of the arena", "Moves slowly and rotates clockwise", "Spawns 10 Skull Is and 1 Skull II every 20 seconds (starting 3 seconds after its initial appearance)" } },
 			{ V1Squid2, new[] { "Spawns at the edge of the arena", "Moves slowly and rotates clockwise", "Spawns 10 Skull Is and 1 Skull III every 20 seconds (starting 3 seconds after its initial appearance)" } },
@@ -251,10 +248,10 @@ namespace DevilDaggersCore.Game
 			return entities.ToList();
 		}
 
-		public static Death GetDeathByType(int deathType, GameVersion? gameVersion = null)
+		public static Death? GetDeathByType(int deathType, GameVersion? gameVersion = null)
 			=> GetEntities<Death>(gameVersion).FirstOrDefault(e => e.DeathType == deathType);
 
-		public static Death GetDeathByName(string deathName)
+		public static Death? GetDeathByName(string deathName)
 			=> GetEntities<Death>().FirstOrDefault(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
 
 		public static DateTime? GetReleaseDate(GameVersion gameVersion) => gameVersion switch
