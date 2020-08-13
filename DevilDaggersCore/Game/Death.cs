@@ -5,8 +5,8 @@ namespace DevilDaggersCore.Game
 	[JsonObject(MemberSerialization.OptIn)]
 	public class Death : DevilDaggersEntity
 	{
-		public Death(string name, string colorCode, int deathType)
-			: base(name, colorCode)
+		public Death(GameVersion gameVersion, string name, string colorCode, int deathType)
+			: base(gameVersion, name, colorCode)
 		{
 			DeathType = deathType;
 		}

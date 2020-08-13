@@ -2,8 +2,8 @@
 {
 	public class Dagger : DevilDaggersEntity
 	{
-		public Dagger(string name, string colorCode, int? unlockSecond)
-			: base(name, colorCode)
+		public Dagger(GameVersion gameVersion, string name, string colorCode, int? unlockSecond)
+			: base(gameVersion, name, colorCode)
 		{
 			UnlockSecond = unlockSecond;
 		}

@@ -4,7 +4,7 @@ namespace DevilDaggersCore.CustomLeaderboards
 {
 	public class CustomEntryBase
 	{
-		public CustomEntryBase(int playerId, string username, int time, int gems, int kills, int deathType, int shotsHit, int shotsFired, int enemiesAlive, int homing, int levelUpTime2, int levelUpTime3, int levelUpTime4, DateTime submitDate, string clientVersion)
+		public CustomEntryBase(int playerId, string username, int time, int gems, int kills, int deathType, int shotsHit, int shotsFired, int enemiesAlive, int homing, int levelUpTime2, int levelUpTime3, int levelUpTime4, DateTime submitDate, string? clientVersion)
 		{
 			PlayerId = playerId;
 			Username = username;
@@ -37,7 +37,7 @@ namespace DevilDaggersCore.CustomLeaderboards
 		public int LevelUpTime3 { get; set; }
 		public int LevelUpTime4 { get; set; }
 		public DateTime SubmitDate { get; set; }
-		public string ClientVersion { get; set; }
+		public string? ClientVersion { get; set; }
 
 		public double Accuracy => ShotsFired == 0 ? 0 : ShotsHit / (double)ShotsFired;
 

@@ -40,65 +40,34 @@ namespace DevilDaggersCore.Spawnsets
 			Brightness = brightness;
 		}
 
-		public static Dictionary<int, SpawnsetEnemy> Enemies { get; } = new Dictionary<int, SpawnsetEnemy>
-		{
-			{ -1, new SpawnsetEnemy("EMPTY", 0) },
-			{ 0, new SpawnsetEnemy("Squid I", 2) },
-			{ 1, new SpawnsetEnemy("Squid II", 3) },
-			{ 2, new SpawnsetEnemy("Centipede", 25) },
-			{ 3, new SpawnsetEnemy("Spider I", 1) },
-			{ 4, new SpawnsetEnemy("Leviathan", 6) },
-			{ 5, new SpawnsetEnemy("Gigapede", 50) },
-			{ 6, new SpawnsetEnemy("Squid III", 3) },
-			{ 7, new SpawnsetEnemy("Thorn", 0) },
-			{ 8, new SpawnsetEnemy("Spider II", 1) },
-			{ 9, new SpawnsetEnemy("Ghostpede", 10) },
-		};
-
 		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
 		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
 
 		public float ShrinkStart
 		{
 			get => shrinkStart;
-			set
-			{
-				shrinkStart = MathUtils.Clamp(value, 1, 100);
-			}
+			set => shrinkStart = MathUtils.Clamp(value, 1, 100);
 		}
 
 		public float ShrinkEnd
 		{
 			get => shrinkEnd;
-			set
-			{
-				shrinkEnd = MathUtils.Clamp(value, 1, 100);
-			}
+			set => shrinkEnd = MathUtils.Clamp(value, 1, 100);
 		}
 
 		public float ShrinkRate
 		{
 			get => shrinkRate;
-			set
-			{
-				shrinkRate = Math.Max(value, 0);
-			}
+			set => shrinkRate = Math.Max(value, 0);
 		}
 
 		public float Brightness
 		{
 			get => brightness;
-			set
-			{
-				brightness = Math.Max(value, 0);
-			}
+			set => brightness = Math.Max(value, 0);
 		}
 
 		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
-
-		public static SpawnsetEnemy GetEnemyByName(string name) => Enemies.Values.FirstOrDefault(e => e.Name == name);
-
-		public static int GetEnemyId(SpawnsetEnemy enemy) => Enemies.FirstOrDefault(e => e.Value == enemy).Key;
 
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
@@ -150,7 +119,7 @@ namespace DevilDaggersCore.Spawnsets
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					spawns.Add(spawnIndex++, new Spawn(Enemies[IsEmptySpawn(enemyType) ? -1 : enemyType], delay));
+					spawns.Add(spawnIndex++, new Spawn(GameInfo.GetEntities<Enemy>(GameVersion.V3).FirstOrDefault(e => e.SpawnsetType == enemyType), delay));
 				}
 
 				// Set the spawnset.
@@ -237,7 +206,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			foreach (Spawn spawn in Spawns.Values)
 			{
-				if (spawn.SpawnsetEnemy != Enemies[-1])
+				if (spawn.Enemy != null)
 					return false;
 			}
 
@@ -248,7 +217,7 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			for (int i = Spawns.Count - 1; i >= 0; i--)
 			{
-				if (Spawns[i].SpawnsetEnemy == Enemies[-1])
+				if (Spawns[i].Enemy == null)
 					return i;
 			}
 
@@ -274,7 +243,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves, GameVersion gameVersion)
+		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves)
 		{
 			List<AbstractEvent> events = new List<AbstractEvent>();
 
@@ -285,19 +254,16 @@ namespace DevilDaggersCore.Spawnsets
 			foreach (Spawn spawn in Spawns.Values)
 			{
 				seconds += spawn.Delay;
-				if (spawn.SpawnsetEnemy != Enemies[-1])
-					events.Add(new SpawnEvent(seconds, $"{spawn.SpawnsetEnemy.Name} spawns", spawn.SpawnsetEnemy));
+				if (spawn.Enemy != null)
+					events.Add(new SpawnEvent(seconds, $"{spawn.Enemy.Name} spawns", spawn.Enemy));
 
 				endLoop.Add(spawn);
-				if (spawn.SpawnsetEnemy == Enemies[-1])
+				if (spawn.Enemy == null)
 				{
 					foreach (Spawn s in endLoop)
 					{
-						if (s.SpawnsetEnemy != Enemies[-1])
-						{
-							int gems = s.SpawnsetEnemy.NoFarmGems;
-							totalGems += gems;
-						}
+						if (s.Enemy != null)
+							totalGems += s.Enemy.NoFarmGems;
 					}
 
 					endLoop.Clear();
@@ -305,7 +271,7 @@ namespace DevilDaggersCore.Spawnsets
 				}
 			}
 
-			if (endLoop.Count != 1 || endLoop.Count == 1 && endLoop[0].SpawnsetEnemy != Enemies[-1])
+			if (endLoop.Count != 1 || endLoop.Count == 1 && endLoop[0].Enemy != null)
 			{
 				double endGameSecond = seconds;
 				for (int i = 1; i < maxWaves; i++)
@@ -322,14 +288,13 @@ namespace DevilDaggersCore.Spawnsets
 							enemyTimer += 1f / 60f + waveMod;
 						}
 
-						if (spawn.SpawnsetEnemy != Enemies[-1])
+						if (spawn.Enemy != null)
 						{
-							SpawnsetEnemy finalEnemy = spawn.SpawnsetEnemy;
-							if (i % 3 == 2 && gameVersion == GameInfo.GameVersions["V3"] && finalEnemy == Enemies[5])
-								finalEnemy = Enemies[9];
+							Enemy finalEnemy = spawn.Enemy;
+							if (i % 3 == 2 && finalEnemy == GameInfo.V3Gigapede)
+								finalEnemy = GameInfo.V3Ghostpede;
 
-							int gems = finalEnemy.NoFarmGems;
-							totalGems += gems;
+							totalGems += finalEnemy.NoFarmGems;
 
 							events.Add(new SpawnEvent(endGameSecond, $"{finalEnemy.Name} spawns", finalEnemy));
 						}
@@ -340,30 +305,30 @@ namespace DevilDaggersCore.Spawnsets
 					=> 1f / 60f / 8f * waveIndex;
 			}
 
-			List<SpawnEvent> spawnEvents = events.Where(s => s.GetType() == typeof(SpawnEvent)).Cast<SpawnEvent>().ToList();
-			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy == Enemies[0] || s.Enemy == Enemies[1] || s.Enemy == Enemies[6]).ToList();
-			List<SpawnEvent> leviathans = spawnEvents.Where(s => s.Enemy == Enemies[4]).ToList();
-			List<SpawnEvent> spider1s = spawnEvents.Where(s => s.Enemy == Enemies[3]).ToList();
-			List<SpawnEvent> spider2s = spawnEvents.Where(s => s.Enemy == Enemies[8]).ToList();
-			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy == Enemies[2] || s.Enemy == Enemies[5] || s.Enemy == Enemies[7] || s.Enemy == Enemies[9]).ToList();
+			List<SpawnEvent> spawnEvents = events.OfType<SpawnEvent>().ToList();
+			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy.Name.Contains("Squid")).ToList();
+			List<SpawnEvent> leviathans = spawnEvents.Where(s => s.Enemy.Name == "Leviathan").ToList();
+			List<SpawnEvent> spider1s = spawnEvents.Where(s => s.Enemy.Name == "Spider I").ToList();
+			List<SpawnEvent> spider2s = spawnEvents.Where(s => s.Enemy.Name == "Spider II").ToList();
+			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy.Name == "Thorn" || s.Enemy.Name.Contains("pede")).ToList();
 
 			foreach (SpawnEvent squid in squids)
 			{
 				Dictionary<Enemy, int> skulls = new Dictionary<Enemy, int>();
-				if (squid.Enemy == Enemies[0])
+				if (squid.Enemy.Name == "Squid I")
 				{
-					skulls.Add(V3.Skull1, 10);
-					skulls.Add(V3.Skull2, 1);
+					skulls.Add(GameInfo.V3Skull1, 10);
+					skulls.Add(GameInfo.V3Skull2, 1);
 				}
-				else if (squid.Enemy == Enemies[1])
+				else if (squid.Enemy.Name == "Squid II")
 				{
-					skulls.Add(V3.Skull1, 10);
-					skulls.Add(V3.Skull3, 1);
+					skulls.Add(GameInfo.V3Skull1, 10);
+					skulls.Add(GameInfo.V3Skull3, 1);
 				}
-				else if (squid.Enemy == Enemies[6])
+				else if (squid.Enemy.Name == "Squid III")
 				{
-					skulls.Add(V3.Skull1, 15);
-					skulls.Add(V3.Skull4, 1);
+					skulls.Add(GameInfo.V3Skull1, 15);
+					skulls.Add(GameInfo.V3Skull4, 1);
 				}
 
 				StringBuilder gushText = new StringBuilder();
@@ -448,17 +413,7 @@ namespace DevilDaggersCore.Spawnsets
 
 				foreach (KeyValuePair<int, Spawn> kvp in Spawns)
 				{
-					int enemyType = -1;
-					for (int i = 0; i < Enemies.Count - 1; i++)
-					{
-						if (kvp.Value.SpawnsetEnemy == Enemies[i])
-						{
-							enemyType = i;
-							break;
-						}
-					}
-
-					byte[] enemyBytes = BitConverter.GetBytes(enemyType);
+					byte[] enemyBytes = BitConverter.GetBytes(kvp.Value.Enemy?.SpawnsetType ?? -1);
 					for (int i = 0; i < enemyBytes.Length; i++)
 						spawnsBuffer[SpawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + i] = enemyBytes[i];
 
@@ -499,7 +454,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			StringBuilder sb = new StringBuilder();
 			foreach (Spawn spawn in Spawns.Values)
-				sb.Append($"{GetEnemyId(spawn.SpawnsetEnemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
+				sb.Append($"{spawn.Enemy?.SpawnsetType ?? -1}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
 			for (int i = 0; i < ArenaWidth; i++)
 			{
