@@ -248,6 +248,9 @@ namespace DevilDaggersCore.Game
 			return entities.ToList();
 		}
 
+		public static Enemy? GetEnemyBySpawnsetType(int spawnsetType, GameVersion? gameVersion = null)
+			=> GetEntities<Enemy>(gameVersion).FirstOrDefault(e => e.SpawnsetType == spawnsetType);
+
 		public static Death? GetDeathByType(int deathType, GameVersion? gameVersion = null)
 			=> GetEntities<Death>(gameVersion).FirstOrDefault(e => e.DeathType == deathType);
 
