@@ -13,17 +13,17 @@ namespace DevilDaggersCore.Utils
 		public static Uri BaseUrl { get; } = new Uri("https://devildaggers.info");
 #endif
 
-		public static string ApiGetTools => $"{BaseUrl}Api/GetTools";
-		public static string ApiGetSpawnsets => $"{BaseUrl}Api/GetSpawnsets";
-		public static string ApiGetCustomLeaderboards => $"{BaseUrl}Api/GetCustomLeaderboards";
+		public static string ApiGetTools => $"{BaseUrl}api/tools";
+		public static string ApiGetSpawnsets => $"{BaseUrl}api/spawnsets";
+		public static string ApiGetCustomLeaderboards => $"{BaseUrl}api/custom-leaderboards";
 
 		public static string Spawnsets => $"{BaseUrl}Spawnsets";
 
 		public static string DiscordInviteLink => "https://discord.gg/NF32j8S";
 
-		public static string ApiGetSpawnset(string fileName) => $"{BaseUrl}Api/GetSpawnset?fileName={fileName}";
+		public static string ApiGetSpawnset(string fileName) => $"{BaseUrl}api/spawnsets/{fileName}";
 
-		public static string ApiGetTool(string toolName) => $"{BaseUrl}Api/GetTool?toolName={toolName}";
+		public static string ApiGetTool(string toolName) => $"{BaseUrl}api/tools/{toolName}";
 
 		public static string CustomLeaderboard(string spawnsetFileName) => $"{BaseUrl}CustomLeaderboards/Leaderboard?spawnset={spawnsetFileName}";
 
