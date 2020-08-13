@@ -291,8 +291,8 @@ namespace DevilDaggersCore.Spawnsets
 						if (spawn.Enemy != null)
 						{
 							Enemy finalEnemy = spawn.Enemy;
-							if (i % 3 == 2 && finalEnemy == GameData.V3Gigapede)
-								finalEnemy = GameData.V3Ghostpede;
+							if (i % 3 == 2 && finalEnemy == GameInfo.V3Gigapede)
+								finalEnemy = GameInfo.V3Ghostpede;
 
 							totalGems += finalEnemy.NoFarmGems;
 
@@ -317,18 +317,18 @@ namespace DevilDaggersCore.Spawnsets
 				Dictionary<Enemy, int> skulls = new Dictionary<Enemy, int>();
 				if (squid.Enemy.Name == "Squid I")
 				{
-					skulls.Add(GameData.V3Skull1, 10);
-					skulls.Add(GameData.V3Skull2, 1);
+					skulls.Add(GameInfo.V3Skull1, 10);
+					skulls.Add(GameInfo.V3Skull2, 1);
 				}
 				else if (squid.Enemy.Name == "Squid II")
 				{
-					skulls.Add(GameData.V3Skull1, 10);
-					skulls.Add(GameData.V3Skull3, 1);
+					skulls.Add(GameInfo.V3Skull1, 10);
+					skulls.Add(GameInfo.V3Skull3, 1);
 				}
 				else if (squid.Enemy.Name == "Squid III")
 				{
-					skulls.Add(GameData.V3Skull1, 15);
-					skulls.Add(GameData.V3Skull4, 1);
+					skulls.Add(GameInfo.V3Skull1, 15);
+					skulls.Add(GameInfo.V3Skull4, 1);
 				}
 
 				StringBuilder gushText = new StringBuilder();
