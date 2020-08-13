@@ -69,49 +69,6 @@ namespace DevilDaggersCore.Spawnsets
 
 		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
 
-		public static Enemy? GetEnemy(SpawnsetEnemy spawnsetEnemy) => spawnsetEnemy switch
-		{
-			SpawnsetEnemy.Squid1 => GameData.V3Squid1,
-			SpawnsetEnemy.Squid2 => GameData.V3Squid2,
-			SpawnsetEnemy.Centipede => GameData.V3Centipede,
-			SpawnsetEnemy.Spider1 => GameData.V3Spider1,
-			SpawnsetEnemy.Leviathan => GameData.V3Leviathan,
-			SpawnsetEnemy.Gigapede => GameData.V3Gigapede,
-			SpawnsetEnemy.Squid3 => GameData.V3Squid3,
-			SpawnsetEnemy.Thorn => GameData.V3Thorn,
-			SpawnsetEnemy.Spider2 => GameData.V3Spider2,
-			SpawnsetEnemy.Ghostpede => GameData.V3Ghostpede,
-			_ => null,
-		};
-
-		public static SpawnsetEnemy GetSpawnsetEnemy(Enemy? enemy)
-		{
-			if (enemy == GameData.V3Squid1)
-				return SpawnsetEnemy.Squid1;
-			if (enemy == GameData.V3Squid2)
-				return SpawnsetEnemy.Squid2;
-			if (enemy == GameData.V3Centipede)
-				return SpawnsetEnemy.Centipede;
-			if (enemy == GameData.V3Spider1)
-				return SpawnsetEnemy.Spider1;
-			if (enemy == GameData.V3Leviathan)
-				return SpawnsetEnemy.Leviathan;
-			if (enemy == GameData.V3Gigapede)
-				return SpawnsetEnemy.Gigapede;
-			if (enemy == GameData.V3Squid3)
-				return SpawnsetEnemy.Squid3;
-			if (enemy == GameData.V3Thorn)
-				return SpawnsetEnemy.Thorn;
-			if (enemy == GameData.V3Spider2)
-				return SpawnsetEnemy.Spider2;
-			if (enemy == GameData.V3Ghostpede)
-				return SpawnsetEnemy.Ghostpede;
-			if (enemy == null)
-				return SpawnsetEnemy.Empty;
-
-			throw new Exception($"Unsupported enemy: {enemy.Name} ({enemy.GameVersion})");
-		}
-
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
@@ -162,7 +119,7 @@ namespace DevilDaggersCore.Spawnsets
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					spawns.Add(spawnIndex++, new Spawn(GetEnemy((SpawnsetEnemy)enemyType), delay));
+					spawns.Add(spawnIndex++, new Spawn(GameInfo.GetEntities<Enemy>(GameVersion.V3).FirstOrDefault(e => e.SpawnsetType == enemyType), delay));
 				}
 
 				// Set the spawnset.
@@ -456,7 +413,7 @@ namespace DevilDaggersCore.Spawnsets
 
 				foreach (KeyValuePair<int, Spawn> kvp in Spawns)
 				{
-					byte[] enemyBytes = BitConverter.GetBytes((int)GetSpawnsetEnemy(kvp.Value.Enemy));
+					byte[] enemyBytes = BitConverter.GetBytes(kvp.Value.Enemy?.SpawnsetType ?? -1);
 					for (int i = 0; i < enemyBytes.Length; i++)
 						spawnsBuffer[SpawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + i] = enemyBytes[i];
 
@@ -497,7 +454,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			StringBuilder sb = new StringBuilder();
 			foreach (Spawn spawn in Spawns.Values)
-				sb.Append($"{(int)GetSpawnsetEnemy(spawn.Enemy)}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
+				sb.Append($"{spawn.Enemy?.SpawnsetType ?? -1}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
 
 			for (int i = 0; i < ArenaWidth; i++)
 			{
