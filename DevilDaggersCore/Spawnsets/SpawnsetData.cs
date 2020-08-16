@@ -6,13 +6,13 @@ namespace DevilDaggersCore.Spawnsets
 	public class SpawnsetData
 	{
 		[JsonProperty]
-		public int NonLoopSpawns { get; set; }
+		public int NonLoopSpawnCount { get; set; }
 		[JsonProperty]
-		public int LoopSpawns { get; set; }
+		public int LoopSpawnCount { get; set; }
 
 		[JsonProperty]
-		public float? NonLoopLengthNullable { get; set; }
+		public float? NonLoopLength { get; set; }
 		[JsonProperty]
-		public float? LoopLengthNullable { get; set; }
+		public float? LoopLength { get; set; }
 	}
 }
