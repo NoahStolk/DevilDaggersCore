@@ -2,12 +2,14 @@
 
 namespace DevilDaggersCore.CustomLeaderboards
 {
-	public class SubmissionInfo
+	public class UploadSuccess
 	{
+		public string Message { get; set; }
+
 		public int TotalPlayers { get; set; }
 		public CustomLeaderboardBase Leaderboard { get; set; }
 		public CustomLeaderboardCategoryBase Category { get; set; }
-		public IReadOnlyList<CustomEntryBase> Entries { get; set; }
+		public IEnumerable<CustomEntryBase> Entries { get; set; }
 		public bool IsNewUserOnThisLeaderboard { get; set; }
 
 		public int Rank { get; set; }
