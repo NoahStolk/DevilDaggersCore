@@ -4,6 +4,10 @@ namespace DevilDaggersCore.CustomLeaderboards
 {
 	public class CustomLeaderboardBase
 	{
+		public CustomLeaderboardBase()
+		{
+		}
+
 		public CustomLeaderboardBase(string spawnsetFileName, int bronze, int silver, int golden, int devil, int homing, DateTime? dateLastPlayed, DateTime? dateCreated)
 		{
 			SpawnsetFileName = spawnsetFileName;

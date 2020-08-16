@@ -2,6 +2,10 @@
 {
 	public class CustomLeaderboardCategoryBase
 	{
+		public CustomLeaderboardCategoryBase()
+		{
+		}
+
 		public CustomLeaderboardCategoryBase(string name, string sortingPropertyName, bool ascending, string layoutPartialName)
 		{
 			Name = name;
