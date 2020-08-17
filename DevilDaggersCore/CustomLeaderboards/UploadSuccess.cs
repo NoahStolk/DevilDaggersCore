@@ -9,7 +9,7 @@ namespace DevilDaggersCore.CustomLeaderboards
 		public int TotalPlayers { get; set; }
 		public CustomLeaderboardBase Leaderboard { get; set; }
 		public CustomLeaderboardCategoryBase Category { get; set; }
-		public IEnumerable<CustomEntryBase> Entries { get; set; }
+		public List<CustomEntryBase> Entries { get; set; }
 		public bool IsNewUserOnThisLeaderboard { get; set; }
 
 		public int Rank { get; set; }
