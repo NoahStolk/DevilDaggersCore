@@ -8,10 +8,9 @@ namespace DevilDaggersCore.CustomLeaderboards
 		{
 		}
 
-		public CustomEntryBase(int playerId, string username, int time, int gems, int kills, int deathType, int shotsHit, int shotsFired, int enemiesAlive, int homing, int levelUpTime2, int levelUpTime3, int levelUpTime4, DateTime submitDate, string? clientVersion)
+		public CustomEntryBase(int playerId, int time, int gems, int kills, int deathType, int shotsHit, int shotsFired, int enemiesAlive, int homing, int levelUpTime2, int levelUpTime3, int levelUpTime4, DateTime submitDate, string? clientVersion)
 		{
 			PlayerId = playerId;
-			Username = username;
 			Time = time;
 			Gems = gems;
 			Kills = kills;
@@ -28,7 +27,6 @@ namespace DevilDaggersCore.CustomLeaderboards
 		}
 
 		public int PlayerId { get; set; }
-		public string Username { get; set; }
 		public int Time { get; set; }
 		public int Gems { get; set; }
 		public int Kills { get; set; }
