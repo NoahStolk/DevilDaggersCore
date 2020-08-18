@@ -1,9 +1,9 @@
 ﻿using log4net;
 using System.Reflection;
 
-namespace DevilDaggersCore
+namespace DevilDaggersCore.Utils
 {
-	public static class Logging
+	public static class LogUtils
 	{
 		public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 	}

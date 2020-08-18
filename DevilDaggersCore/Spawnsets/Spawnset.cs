@@ -129,7 +129,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 			catch (Exception ex)
 			{
-				Logging.Log.Error($"Could not parse {nameof(Spawnset)}.", ex);
+				LogUtils.Log.Error($"Could not parse {nameof(Spawnset)}.", ex);
 
 				// Set an empty spawnset.
 				spawnset = new Spawnset();
@@ -191,7 +191,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 			catch (Exception ex)
 			{
-				Logging.Log.Error($"Could not parse {nameof(SpawnsetData)}.", ex);
+				LogUtils.Log.Error($"Could not parse {nameof(SpawnsetData)}.", ex);
 
 				spawnsetData = new SpawnsetData();
 
@@ -434,7 +434,7 @@ namespace DevilDaggersCore.Spawnsets
 			}
 			catch (Exception ex)
 			{
-				Logging.Log.Error($"Could not convert {nameof(Spawnset)} to binary.", ex);
+				LogUtils.Log.Error($"Could not convert {nameof(Spawnset)} to binary.", ex);
 
 				bytes = Array.Empty<byte>();
 
