@@ -31,5 +31,21 @@ namespace DevilDaggersCore.Utils
 
 			return timeStr.Reverse();
 		}
+
+		public static string FormatDaggersInt32(int hit, int fired, bool isHistory = false)
+			=> FormatDaggersUInt64((ulong)hit, (ulong)fired, isHistory);
+
+		public static string FormatDaggersUInt64(ulong hit, ulong fired, bool isHistory = false)
+		{
+			if (isHistory)
+			{
+				if (hit == 0)
+					return "No data";
+				if (fired == 10000)
+					return "Exact values not known";
+			}
+
+			return $"{hit:N0} / {fired:N0}";
+		}
 	}
 }

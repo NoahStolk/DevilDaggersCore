@@ -1,18 +1,10 @@
-﻿using Newtonsoft.Json;
-
-namespace DevilDaggersCore.Spawnsets
+﻿namespace DevilDaggersCore.Spawnsets
 {
-	[JsonObject(MemberSerialization.OptIn)]
 	public class SpawnsetData
 	{
-		[JsonProperty]
-		public int NonLoopSpawns { get; set; }
-		[JsonProperty]
-		public int LoopSpawns { get; set; }
-
-		[JsonProperty]
-		public float? NonLoopLengthNullable { get; set; }
-		[JsonProperty]
-		public float? LoopLengthNullable { get; set; }
+		public int NonLoopSpawnCount { get; set; }
+		public int LoopSpawnCount { get; set; }
+		public float? NonLoopLength { get; set; }
+		public float? LoopLength { get; set; }
 	}
 }
