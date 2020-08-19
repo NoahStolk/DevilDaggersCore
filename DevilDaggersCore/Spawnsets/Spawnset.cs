@@ -13,7 +13,7 @@ namespace DevilDaggersCore.Spawnsets
 {
 	public class Spawnset
 	{
-		public const int SettingsBufferSize = 36;
+		public const int HeaderBufferSize = 36;
 		public const int ArenaBufferSize = 10404; // ArenaWidth * ArenaHeight * TileBufferSize (51 * 51 * 4 = 10404)
 		public const int SpawnsHeaderBufferSize = 40; // The amount of bytes in the spawns buffer header (no idea what they are used for)
 		public const int SpawnBufferSize = 28; // The amount of bytes per spawn
@@ -73,24 +73,22 @@ namespace DevilDaggersCore.Spawnsets
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
 		/// </summary>
-		/// <param name="stream">The stream containing the spawnset file contents.</param>
+		/// <param name="bytes">The spawnset file contents.</param>
 		/// <param name="spawnset">The parsed <see cref="Spawnset"/>.</param>
-		public static bool TryParse(Stream stream, out Spawnset spawnset)
+		public static bool TryParse(byte[] bytes, out Spawnset spawnset)
 		{
 			try
 			{
 				// Set the file values for reading V3 spawnsets.
-				int spawnBufferSize = (int)stream.Length - (SettingsBufferSize + ArenaBufferSize);
-				byte[] headerBuffer = new byte[SettingsBufferSize];
+				int spawnBufferSize = bytes.Length - (HeaderBufferSize + ArenaBufferSize);
+				byte[] headerBuffer = new byte[HeaderBufferSize];
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
 				// Read the file and write the data into the buffers, then close the file since we do not need it anymore.
-				stream.Read(headerBuffer, 0, SettingsBufferSize);
-				stream.Read(arenaBuffer, 0, ArenaBufferSize);
-				stream.Read(spawnBuffer, 0, spawnBufferSize);
-
-				stream.Close();
+				Buffer.BlockCopy(bytes, 0, headerBuffer, 0, HeaderBufferSize);
+				Buffer.BlockCopy(bytes, HeaderBufferSize, arenaBuffer, 0, ArenaBufferSize);
+				Buffer.BlockCopy(bytes, HeaderBufferSize + ArenaBufferSize, spawnBuffer, 0, spawnBufferSize);
 
 				// Set the header values.
 				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
@@ -142,10 +140,10 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				int spawnBufferSize = (int)stream.Length - (SettingsBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize);
+				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize);
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
-				stream.Position += SettingsBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize;
+				stream.Position += HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize;
 				stream.Read(spawnBuffer, 0, spawnBufferSize);
 				stream.Close();
 
@@ -361,7 +359,7 @@ namespace DevilDaggersCore.Spawnsets
 			try
 			{
 				// Create the buffers.
-				byte[] settingsBuffer = new byte[SettingsBufferSize];
+				byte[] settingsBuffer = new byte[HeaderBufferSize];
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
 				byte[] spawnsBuffer = new byte[SpawnsHeaderBufferSize + Spawns.Count * SpawnBufferSize];
 
