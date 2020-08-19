@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore", "DevilDaggersCore\DevilDaggersCore.csproj", "{AFC09672-34F0-4BA0-BEE3-5F059A39516C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevilDaggersAssetEditor", "..\DevilDaggersAssetEditor\DevilDaggersAssetEditor\DevilDaggersAssetEditor.csproj", "{3F45D736-3FB7-4D12-AB9F-C584B7770957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersAssetEditor", "..\DevilDaggersAssetEditor\DevilDaggersAssetEditor\DevilDaggersAssetEditor.csproj", "{3F45D736-3FB7-4D12-AB9F-C584B7770957}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCustomLeaderboards", "..\DevilDaggersCustomLeaderboards\DevilDaggersCustomLeaderboards\DevilDaggersCustomLeaderboards.csproj", "{FD7FEA29-AB64-43B3-9CC6-09EC076E310C}"
 EndProject
