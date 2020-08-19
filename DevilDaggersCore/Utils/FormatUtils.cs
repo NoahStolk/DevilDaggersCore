@@ -32,10 +32,10 @@ namespace DevilDaggersCore.Utils
 			return timeStr.Reverse();
 		}
 
-		public static string FormatDaggers(int hit, int fired, bool isHistory = false)
-			=> FormatDaggers(hit, fired, isHistory);
+		public static string FormatDaggersInt32(int hit, int fired, bool isHistory = false)
+			=> FormatDaggersUInt64((ulong)hit, (ulong)fired, isHistory);
 
-		public static string FormatDaggers(ulong hit, ulong fired, bool isHistory = false)
+		public static string FormatDaggersUInt64(ulong hit, ulong fired, bool isHistory = false)
 		{
 			if (isHistory)
 			{
