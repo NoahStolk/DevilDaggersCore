@@ -5,7 +5,7 @@ namespace DevilDaggersCore.Utils
 	public static class UrlUtils
 	{
 #if TESTING
-        public static Uri BaseUrl { get; } = new Uri("http://localhost:2963");
+		public static Uri BaseUrl { get; } = new Uri("http://localhost:2963");
 #else
 		public static Uri BaseUrl { get; } = new Uri("https://devildaggers.info");
 #endif
