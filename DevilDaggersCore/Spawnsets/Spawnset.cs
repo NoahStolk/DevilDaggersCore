@@ -4,7 +4,6 @@ using DevilDaggersCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -73,22 +72,22 @@ namespace DevilDaggersCore.Spawnsets
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
 		/// This only works for V3 spawnsets.
 		/// </summary>
-		/// <param name="bytes">The spawnset file contents.</param>
+		/// <param name="spawnsetFileBytes">The spawnset file contents.</param>
 		/// <param name="spawnset">The parsed <see cref="Spawnset"/>.</param>
-		public static bool TryParse(byte[] bytes, out Spawnset spawnset)
+		public static bool TryParse(byte[] spawnsetFileBytes, out Spawnset spawnset)
 		{
 			try
 			{
 				// Set the file values for reading V3 spawnsets.
-				int spawnBufferSize = bytes.Length - (HeaderBufferSize + ArenaBufferSize);
+				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize);
 				byte[] headerBuffer = new byte[HeaderBufferSize];
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
 				// Read the file and write the data into the buffers, then close the file since we do not need it anymore.
-				Buffer.BlockCopy(bytes, 0, headerBuffer, 0, HeaderBufferSize);
-				Buffer.BlockCopy(bytes, HeaderBufferSize, arenaBuffer, 0, ArenaBufferSize);
-				Buffer.BlockCopy(bytes, HeaderBufferSize + ArenaBufferSize, spawnBuffer, 0, spawnBufferSize);
+				Buffer.BlockCopy(spawnsetFileBytes, 0, headerBuffer, 0, HeaderBufferSize);
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize, arenaBuffer, 0, ArenaBufferSize);
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnBuffer, 0, spawnBufferSize);
 
 				// Set the header values.
 				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
@@ -120,7 +119,6 @@ namespace DevilDaggersCore.Spawnsets
 					spawns.Add(spawnIndex++, new Spawn(GameInfo.GetEntities<Enemy>(GameVersion.V3).FirstOrDefault(e => e.SpawnsetType == enemyType), delay));
 				}
 
-				// Set the spawnset.
 				spawnset = new Spawnset(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
 
 				return true;
@@ -129,23 +127,20 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				LogUtils.Log.Error($"Could not parse {nameof(Spawnset)}.", ex);
 
-				// Set an empty spawnset.
 				spawnset = new Spawnset();
 
 				return false;
 			}
 		}
 
-		public static bool TryGetSpawnData(Stream stream, out SpawnsetData spawnsetData)
+		public static bool TryGetSpawnData(byte[] spawnsetFileBytes, out SpawnsetData spawnsetData)
 		{
 			try
 			{
-				int spawnBufferSize = (int)stream.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize);
+				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize);
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
-				stream.Position += HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize;
-				stream.Read(spawnBuffer, 0, spawnBufferSize);
-				stream.Close();
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize, spawnBuffer, 0, spawnBufferSize);
 
 				int loopBegin = 0;
 				for (int i = spawnBuffer.Length - SpawnBufferSize; i > 0; i -= SpawnBufferSize)
@@ -304,11 +299,11 @@ namespace DevilDaggersCore.Spawnsets
 			}
 
 			List<SpawnEvent> spawnEvents = events.OfType<SpawnEvent>().ToList();
-			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy.Name.Contains("Squid")).ToList();
+			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy.Name.Contains("Squid", StringComparison.InvariantCulture)).ToList();
 			List<SpawnEvent> leviathans = spawnEvents.Where(s => s.Enemy.Name == "Leviathan").ToList();
 			List<SpawnEvent> spider1s = spawnEvents.Where(s => s.Enemy.Name == "Spider I").ToList();
 			List<SpawnEvent> spider2s = spawnEvents.Where(s => s.Enemy.Name == "Spider II").ToList();
-			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy.Name == "Thorn" || s.Enemy.Name.Contains("pede")).ToList();
+			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy.Name == "Thorn" || s.Enemy.Name.Contains("pede", StringComparison.InvariantCulture)).ToList();
 
 			foreach (SpawnEvent squid in squids)
 			{
@@ -444,7 +439,7 @@ namespace DevilDaggersCore.Spawnsets
 		/// Creates a unique and constant string for this spawnset instance. Each value has a constant order and is separated using the ';' character.
 		/// WARNING: Modifying this method in such a way that it returns different values will require a re-compile or re-publish of every application that uses it and render any older versions as obsolete.
 		/// </summary>
-		public string GetUniqueString()
+		private string GetUniqueString()
 		{
 			CultureInfo culture = CultureInfo.InvariantCulture;
 			string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
