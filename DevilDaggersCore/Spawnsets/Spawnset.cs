@@ -192,19 +192,8 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public bool IsEmpty()
-		{
-			if (Spawns.Count == 0)
-				return true;
-
-			foreach (Spawn spawn in Spawns.Values)
-			{
-				if (spawn.Enemy != null)
-					return false;
-			}
-
-			return true;
-		}
+		public bool HasSpawns()
+			=> Spawns.Values.Any(s => s.Enemy != null);
 
 		public int GetEndLoopStartIndex()
 		{
