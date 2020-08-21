@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersWebsite.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersWebsite.Core", "..\DevilDaggersWebsite\DevilDaggersWebsite.Core\DevilDaggersWebsite.Core.csproj", "{1B1292FA-07F0-4719-A6E1-8B1027D4ED2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevilDaggersWebsite.Blazor", "..\DevilDaggersWebsite\DevilDaggersWebsite.Blazor\DevilDaggersWebsite.Blazor\DevilDaggersWebsite.Blazor.csproj", "{E370FD6D-CEBF-4E94-9D02-19C0A965C947}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevilDaggersWebsite.Blazor", "..\DevilDaggersWebsite\DevilDaggersWebsite.Blazor\DevilDaggersWebsite.Blazor.csproj", "{E370FD6D-CEBF-4E94-9D02-19C0A965C947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
