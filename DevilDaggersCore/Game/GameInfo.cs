@@ -7,6 +7,8 @@ namespace DevilDaggersCore.Game
 {
 	public static class GameInfo
 	{
+		#region V1
+
 		public static readonly Dagger V1Default = new Dagger(GameVersion.V1, "Default", "444444", null);
 		public static readonly Dagger V1Bronze = new Dagger(GameVersion.V1, "Bronze", "CD7F32", 60);
 		public static readonly Dagger V1Silver = new Dagger(GameVersion.V1, "Silver", "DDDDDD", 120);
@@ -46,6 +48,10 @@ namespace DevilDaggersCore.Game
 
 		public static readonly Enemy V1SpiderEgg1 = new Enemy(GameVersion.V1, "Spider Egg I", "99A100", 3, 0, 0, null, V1Infested, 3, null, false, V1Spider1);
 		public static readonly Enemy V1Spiderling = new Enemy(GameVersion.V1, "Spiderling", "DCCB00", 3, 0, 0, null, V1Stricken, 1, null, true, V1SpiderEgg1);
+
+		#endregion V1
+
+		#region V2
 
 		public static readonly Dagger V2Default = new Dagger(GameVersion.V2, "Default", "444444", null);
 		public static readonly Dagger V2Bronze = new Dagger(GameVersion.V2, "Bronze", "CD7F32", 60);
@@ -97,6 +103,10 @@ namespace DevilDaggersCore.Game
 		public static readonly Enemy V2Spiderling = new Enemy(GameVersion.V2, "Spiderling", "DCCB00", 3, 0, 0, null, V2Stricken, 1, 1, true, V2SpiderEgg1, V2SpiderEgg2);
 
 		public static readonly Enemy V2Andras = new Enemy(GameVersion.V2, "Andras", "666666", 25, 1, 1, 0x7, null, null, null, true);
+
+		#endregion V2
+
+		#region V3
 
 		public static readonly Dagger V3Default = new Dagger(GameVersion.V3, "Default", "444444", null);
 		public static readonly Dagger V3Bronze = new Dagger(GameVersion.V3, "Bronze", "CD7F32", 60);
@@ -152,6 +162,8 @@ namespace DevilDaggersCore.Game
 		public static readonly Enemy V3SpiderEgg1 = new Enemy(GameVersion.V3, "Spider Egg I", "99A100", 3, 0, 0, null, V3Intoxicated, 3, 3, false, V3Spider1);
 		public static readonly Enemy V3SpiderEgg2 = new Enemy(GameVersion.V3, "Spider Egg II", "657A00", 3, 0, 0, null, V3Envenomated, 3, 3, false, V3Spider2);
 		public static readonly Enemy V3Spiderling = new Enemy(GameVersion.V3, "Spiderling", "DCCB00", 3, 0, 0, null, V3Infested, 1, 1, true, V3SpiderEgg1, V3SpiderEgg2);
+
+		#endregion V3
 
 		public static readonly IEnumerable<DevilDaggersEntity> Entities = typeof(GameInfo).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null));
 
