@@ -19,7 +19,7 @@ namespace DevilDaggersCore.Utils
 		public static string FormatTimeInteger<T>(this T time, bool includeThousandSeparator = false)
 			where T : struct // C# does not have a type constraint for integer types.
 		{
-			string timeStr = time.ToString();
+			string timeStr = time.ToString() ?? "0";
 			timeStr = $"{new string('0', Math.Max(0, 5 - timeStr.Length))}{timeStr}";
 			timeStr = timeStr.Reverse().Insert(4, ".");
 
