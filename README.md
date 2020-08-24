@@ -1,5 +1,5 @@
 # DevilDaggersCore
-DevilDaggersCore is a .NET Core class library created for various Devil Daggers related applications. It provides logic for spawnsets, real-time application memory scanning, game data such as enemy types, and various other utility functionality and data structures for [devildaggers.info](https://devildaggers.info/) and the [@ddinfo Discord Bot](https://github.com/NoahStolk/DiscordBotDdInfo).
+DevilDaggersCore is a .NET Core class library created for various Devil Daggers related applications.
 
 ## Framework
 .NET Core 3.1
