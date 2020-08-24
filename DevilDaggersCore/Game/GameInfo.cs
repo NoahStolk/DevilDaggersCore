@@ -232,7 +232,7 @@ namespace DevilDaggersCore.Game
 			GameVersion[] gameVersions = (GameVersion[])Enum.GetValues(typeof(GameVersion));
 			for (int i = 0; i < gameVersions.Length; i++)
 			{
-				if (dateTime > GetReleaseDate(gameVersions[i]) && (i == gameVersions.Length - 1 || dateTime < GetReleaseDate(gameVersions[i + 1])))
+				if (dateTime >= GetReleaseDate(gameVersions[i]) && (i == gameVersions.Length - 1 || dateTime < GetReleaseDate(gameVersions[i + 1])))
 					return gameVersions[i];
 			}
 
