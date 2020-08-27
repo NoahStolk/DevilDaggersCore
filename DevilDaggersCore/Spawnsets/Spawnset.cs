@@ -20,10 +20,10 @@ namespace DevilDaggersCore.Spawnsets
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
 
-		private float shrinkStart = 50;
-		private float shrinkEnd = 20;
-		private float shrinkRate = 0.025f;
-		private float brightness = 60;
+		private float _shrinkStart = 50;
+		private float _shrinkEnd = 20;
+		private float _shrinkRate = 0.025f;
+		private float _brightness = 60;
 
 		public Spawnset()
 		{
@@ -44,26 +44,26 @@ namespace DevilDaggersCore.Spawnsets
 
 		public float ShrinkStart
 		{
-			get => shrinkStart;
-			set => shrinkStart = MathUtils.Clamp(value, 1, 100);
+			get => _shrinkStart;
+			set => _shrinkStart = Math.Clamp(value, 1, 100);
 		}
 
 		public float ShrinkEnd
 		{
-			get => shrinkEnd;
-			set => shrinkEnd = MathUtils.Clamp(value, 1, 100);
+			get => _shrinkEnd;
+			set => _shrinkEnd = Math.Clamp(value, 1, 100);
 		}
 
 		public float ShrinkRate
 		{
-			get => shrinkRate;
-			set => shrinkRate = Math.Max(value, 0);
+			get => _shrinkRate;
+			set => _shrinkRate = Math.Max(value, 0);
 		}
 
 		public float Brightness
 		{
-			get => brightness;
-			set => brightness = Math.Max(value, 0);
+			get => _brightness;
+			set => _brightness = Math.Max(value, 0);
 		}
 
 		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
