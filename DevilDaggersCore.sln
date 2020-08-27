@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitemapGenerator", "..\Site
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBDI", "DBDI", "{2DCC5F06-6937-4613-B452-AC7E4CF158DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersWebsite.Tests", "..\DevilDaggersWebsite\DevilDaggersWebsite.Tests\DevilDaggersWebsite.Tests.csproj", "{993A21B3-04FF-40A6-AE8B-DA55C257B9E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersWebsite.Core.Tests", "..\DevilDaggersWebsite\DevilDaggersWebsite.Core.Tests\DevilDaggersWebsite.Core.Tests.csproj", "{993A21B3-04FF-40A6-AE8B-DA55C257B9E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersWebsite.Core", "..\DevilDaggersWebsite\DevilDaggersWebsite.Core\DevilDaggersWebsite.Core.csproj", "{1B1292FA-07F0-4719-A6E1-8B1027D4ED2A}"
 EndProject
