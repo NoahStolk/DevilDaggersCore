@@ -4,13 +4,13 @@ namespace DevilDaggersCore.Wpf.Models
 {
 	public class Change
 	{
-		public Change(string description, List<Change> subChanges)
+		public Change(string description, List<Change>? subChanges)
 		{
 			Description = description;
 			SubChanges = subChanges;
 		}
 
 		public string Description { get; }
-		public List<Change> SubChanges { get; }
+		public List<Change>? SubChanges { get; }
 	}
 }
