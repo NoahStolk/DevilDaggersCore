@@ -7,6 +7,7 @@
         Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 	<StackPanel>
 		<TextBlock Name="Question" Style="{StaticResource ParagraphTextBlock}" HorizontalAlignment="Center" />
+		<CheckBox Visibility="Collapsed" Name="DoNotAskAgainCheckBox">Do not ask again</CheckBox>
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
