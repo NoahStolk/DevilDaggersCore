@@ -5,7 +5,7 @@ namespace DevilDaggersCore.Wpf.Windows
 {
 	public partial class ErrorWindow : Window
 	{
-		public ErrorWindow(string errorTitle, string errorMessage, Exception exception)
+		public ErrorWindow(string errorTitle, string errorMessage, Exception? exception)
 		{
 			InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace DevilDaggersCore.Wpf.Windows
 		}
 
 		public string ErrorMessage { get; set; }
-		public Exception Exception { get; set; }
+		public Exception? Exception { get; set; }
 
 		private void OkButton_Click(object sender, RoutedEventArgs e)
 		{
