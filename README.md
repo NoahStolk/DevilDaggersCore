@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/NoahStolk/DevilDaggersAssetEditor.svg?branch=master)](https://travis-ci.org/NoahStolk/DevilDaggersAssetEditor)
 [![NuGet Version](https://img.shields.io/nuget/v/DevilDaggersCore.svg)](https://www.nuget.org/packages/DevilDaggersCore/)
 [![NuGet Version](https://img.shields.io/nuget/v/DevilDaggersCore.Wpf.svg)](https://www.nuget.org/packages/DevilDaggersCore.Wpf/)
+[![Scc Count Badge](https://sloc.xyz/github/NoahStolk/DevilDaggersCore/)](https://github.com/NoahStolk/DevilDaggersCore/)
 
 # DevilDaggersCore
 DevilDaggersCore is a .NET Core class library created for various Devil Daggers related applications.
