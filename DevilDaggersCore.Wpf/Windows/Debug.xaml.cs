@@ -23,6 +23,12 @@ namespace DevilDaggersCore.Wpf.Windows
 				MessageWindow messageWindow = new MessageWindow("Test title", "Test message");
 				messageWindow.ShowDialog();
 			};
+
+			ShowConfirmationButton.Click += (sender, e) =>
+			{
+				ConfirmWindow confirmWindow = new ConfirmWindow("Test confirm", "Confirm?", true);
+				confirmWindow.ShowDialog();
+			};
 		}
 	}
 }

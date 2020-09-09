@@ -13,5 +13,6 @@
 		<Label Name="LabelError">Error</Label>
 		<Button Name="TestExceptionButton" Width="128">Test exception</Button>
 		<Button Name="ShowMessageButton" Width="128">Show message</Button>
+		<Button Name="ShowConfirmationButton" Width="128">Show confirmation</Button>
 	</StackPanel>
 </Window>
