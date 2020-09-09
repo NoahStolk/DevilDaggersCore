@@ -7,7 +7,7 @@
         Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
 		Foreground="#ddd" Background="#222">
 	<StackPanel x:Name="StackPanel">
-		<TextBlock Text="{Binding Message}" HorizontalAlignment="Center" />
+		<TextBlock Text="{Binding Message}" Margin="6" Padding="0" HorizontalAlignment="Center" />
 		<Button Name="OkButton" Click="OkButton_Click" IsDefault="True" Width="128">OK</Button>
 	</StackPanel>
 </Window>
