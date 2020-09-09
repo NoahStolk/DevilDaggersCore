@@ -4,7 +4,8 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		mc:Ignorable="d"
-        Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+		Foreground="#ddd" Background="#222">
 	<StackPanel>
 		<TextBlock Name="Question" Style="{StaticResource ParagraphTextBlock}" HorizontalAlignment="Center" />
 		<CheckBox Visibility="Collapsed" Name="DoNotAskAgainCheckBox">Do not ask again</CheckBox>

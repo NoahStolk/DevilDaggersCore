@@ -26,8 +26,6 @@ namespace DevilDaggersCore.Wpf.Windows
 		public Exception? Exception { get; set; }
 
 		private void OkButton_Click(object sender, RoutedEventArgs e)
-		{
-			DialogResult = true;
-		}
+			=> DialogResult = true;
 	}
 }

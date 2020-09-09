@@ -17,11 +17,11 @@ namespace DevilDaggersCore.Wpf.Windows
 			foreach (ChangelogEntry entry in changes)
 			{
 				bool isLocalCurrentVersion = entry.VersionNumber == localVersion;
-				SolidColorBrush color = new SolidColorBrush(isLocalCurrentVersion ? Color.FromRgb(207, 239, 207) : i++ % 2 == 0 ? Color.FromRgb(207, 207, 207) : Color.FromRgb(223, 223, 223));
+				SolidColorBrush color = new SolidColorBrush(isLocalCurrentVersion ? Color.FromRgb(63, 95, 63) : i++ % 2 == 0 ? Color.FromRgb(31, 31, 31) : Color.FromRgb(63, 63, 63));
 				Border border = new Border { Padding = new Thickness(8, 16, 8, 16), Background = color };
 				StackPanel entryStackPanel = new StackPanel { Background = color };
 				if (isLocalCurrentVersion)
-					entryStackPanel.Children.Add(new TextBlock { Text = "Currently running", FontSize = 12, FontWeight = FontWeights.Bold, Padding = new Thickness(6, 0, 0, 6), Foreground = new SolidColorBrush(Color.FromRgb(0, 127, 0)) });
+					entryStackPanel.Children.Add(new TextBlock { Text = "Currently running", FontSize = 12, FontWeight = FontWeights.Bold, Padding = new Thickness(6, 0, 0, 6), Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 127)) });
 				entryStackPanel.Children.Add(new TextBlock { Text = $"{entry.VersionNumber} - {entry.Date:MMMM dd, yyyy}", FontSize = 16, FontWeight = FontWeights.Bold, Padding = new Thickness(6, 0, 0, 6) });
 				foreach (Change change in entry.Changes)
 				{
