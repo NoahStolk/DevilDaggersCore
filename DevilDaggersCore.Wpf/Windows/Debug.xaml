@@ -1,0 +1,17 @@
+﻿<Window x:Class="DevilDaggersCore.Wpf.Windows.DebugWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d"
+        Title="Debug" Height="256" Width="256" ResizeMode="NoResize"
+		Foreground="#ddd" Background="#222">
+	<StackPanel>
+		<Label Name="LabelSuccess">Success</Label>
+		<Label Name="LabelSuggestion">Suggestion</Label>
+		<Label Name="LabelWarning">Warning</Label>
+		<Label Name="LabelError">Error</Label>
+		<Button Name="TestExceptionButton" Width="128">Test exception</Button>
+		<Button Name="ShowMessageButton" Width="128">Show message</Button>
+	</StackPanel>
+</Window>
