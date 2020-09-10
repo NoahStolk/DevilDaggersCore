@@ -4,8 +4,10 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		mc:Ignorable="d"
-        Title="Changelog" Height="750" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-		Foreground="#ddd" Background="#222">
+        Title="Changelog" Height="750" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+	<Window.Resources>
+		<ResourceDictionary Source="../Themes/Dark.xaml" />
+	</Window.Resources>
 	<ScrollViewer>
 		<StackPanel Name="Main" Style="{StaticResource PaddingStackPanel}" />
 	</ScrollViewer>

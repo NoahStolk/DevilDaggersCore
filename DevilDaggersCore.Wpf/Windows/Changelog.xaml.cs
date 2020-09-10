@@ -1,4 +1,5 @@
 ﻿using DevilDaggersCore.Wpf.Models;
+using DevilDaggersCore.Wpf.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace DevilDaggersCore.Wpf.Windows
 			foreach (ChangelogEntry entry in changes)
 			{
 				bool isLocalCurrentVersion = entry.VersionNumber == localVersion;
-				SolidColorBrush color = new SolidColorBrush(isLocalCurrentVersion ? Color.FromRgb(63, 95, 63) : i++ % 2 == 0 ? Color.FromRgb(34, 34, 34) : Color.FromRgb(68, 68, 68));
+				SolidColorBrush color = isLocalCurrentVersion ? new SolidColorBrush(Color.FromRgb(63, 95, 63)) : i++ % 2 == 0 ? ColorUtils.ThemeColors["Gray2"] : ColorUtils.ThemeColors["Gray4"];
 				Border border = new Border { Padding = new Thickness(8, 16, 8, 16), Background = color };
 				StackPanel entryStackPanel = new StackPanel { Background = color };
 				if (isLocalCurrentVersion)

@@ -4,15 +4,17 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		mc:Ignorable="d"
-        Height="256" Width="512" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-		Foreground="#ddd" Background="#222">
-	<StackPanel x:Name="Error" Background="#800" Margin="12">
+        Height="256" Width="512" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+	<Window.Resources>
+		<ResourceDictionary Source="../Themes/Dark.xaml" />
+	</Window.Resources>
+	<StackPanel x:Name="Error" Background="{StaticResource ErrorBackground}" Margin="12">
 		<Label Margin="6,6,0,6" FontWeight="Bold">Error</Label>
 		<TextBox Margin="6,0,6,0" Padding="0,0,0,0" TextWrapping="WrapWithOverflow" Text="{Binding ErrorMessage, Mode=OneTime}" IsReadOnly="True" />
 		<StackPanel x:Name="ExceptionStackPanel" Visibility="Hidden">
 			<Label Margin="6,6,0,6" FontWeight="Bold">Technical information</Label>
 			<TextBox Margin="6,0,6,0" Padding="0,0,0,0" Text="{Binding Message, Mode=OneTime}" TextWrapping="WrapWithOverflow" IsReadOnly="True" />
 		</StackPanel>
-		<Button Name="OkButton" Click="OkButton_Click" IsDefault="True" Width="128">OK</Button>
+		<Button Name="OkButton" Click="OkButton_Click" Style="{StaticResource OkButton}">OK</Button>
 	</StackPanel>
 </Window>

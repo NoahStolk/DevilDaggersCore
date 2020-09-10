@@ -17,8 +17,6 @@ namespace DevilDaggersCore.Wpf.Windows
 		public string Message { get; set; }
 
 		private void OkButton_Click(object sender, RoutedEventArgs e)
-		{
-			DialogResult = true;
-		}
+			=> DialogResult = true;
 	}
 }

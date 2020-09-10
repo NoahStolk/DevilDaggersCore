@@ -4,10 +4,12 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		mc:Ignorable="d"
-        Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-		Foreground="#ddd" Background="#222">
+        Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+	<Window.Resources>
+		<ResourceDictionary Source="../Themes/Dark.xaml" />
+	</Window.Resources>
 	<StackPanel x:Name="StackPanel">
 		<TextBlock Text="{Binding Message}" Margin="6" Padding="0" HorizontalAlignment="Center" />
-		<Button Name="OkButton" Click="OkButton_Click" IsDefault="True" Width="128">OK</Button>
+		<Button Name="OkButton" Click="OkButton_Click" Style="{StaticResource OkButton}">OK</Button>
 	</StackPanel>
 </Window>
