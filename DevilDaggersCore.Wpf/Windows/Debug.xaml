@@ -9,8 +9,13 @@
 		<ResourceDictionary Source="../Themes/Dark.xaml" />
 	</Window.Resources>
 	<StackPanel>
-		<Button Name="TestExceptionButton" Width="128">Test exception</Button>
-		<Button Name="ShowMessageButton" Width="128">Show message</Button>
-		<Button Name="ShowConfirmationButton" Width="128">Show confirmation</Button>
+		<Button Name="TestExceptionButton" Background="{StaticResource ErrorBackground}">Test exception</Button>
+		<Separator />
+		<Button Name="ShowChangelogButton">Show changelog</Button>
+		<Button Name="ShowCheckingForUpdatesButton">Show checking for updates</Button>
+		<Button Name="ShowConfirmButton">Show confirm</Button>
+		<Button Name="ShowErrorButton">Show error</Button>
+		<Button Name="ShowMessageButton">Show message</Button>
+		<Button Name="ShowUpdateRecommendedButton">Show update recommended</Button>
 	</StackPanel>
 </Window>

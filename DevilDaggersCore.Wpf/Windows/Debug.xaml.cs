@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevilDaggersCore.Wpf.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace DevilDaggersCore.Wpf.Windows
@@ -11,17 +14,27 @@ namespace DevilDaggersCore.Wpf.Windows
 
 			TestExceptionButton.Click += (sender, e) => throw new Exception("Test exception");
 
-			ShowMessageButton.Click += (sender, e) =>
-			{
-				MessageWindow messageWindow = new MessageWindow("Test title", "Test message");
-				messageWindow.ShowDialog();
-			};
+			ShowChangelogButton.Click += (sender, e) => ShowWindow(new ChangelogWindow(new List<ChangelogEntry> { new ChangelogEntry(new Version(1, 0, 0, 0), DateTime.Now, new List<Change> { new Change("Initial release", new List<Change> { new Change("Test", null) }) }) }, new Version(1, 0, 0, 0)));
 
-			ShowConfirmationButton.Click += (sender, e) =>
-			{
-				ConfirmWindow confirmWindow = new ConfirmWindow("Test confirm", "Confirm?", true);
-				confirmWindow.ShowDialog();
-			};
+			ShowCheckingForUpdatesButton.Click += (sender, e) => ShowWindow(new CheckingForUpdatesWindow(SimulateCheckingForUpdates));
+
+			ShowConfirmButton.Click += (sender, e) => ShowWindow(new ConfirmWindow("Test confirm", "Confirm?", true));
+
+			ShowErrorButton.Click += (sender, e) => ShowWindow(new ErrorWindow("Test error", "Test error", null));
+
+			ShowMessageButton.Click += (sender, e) => ShowWindow(new MessageWindow("Test title", "Test message"));
+
+			ShowUpdateRecommendedButton.Click += (sender, e) => ShowWindow(new UpdateRecommendedWindow("1.0.0.1", "1.0.0.0", "TestApp", "Test App"));
+		}
+
+		private static void ShowWindow(Window window)
+			=> window.ShowDialog();
+
+		public static async Task<bool> SimulateCheckingForUpdates()
+		{
+			await Task.Delay(1000);
+
+			return true;
 		}
 	}
 }
