@@ -9,10 +9,6 @@
 		<ResourceDictionary Source="../Themes/Dark.xaml" />
 	</Window.Resources>
 	<StackPanel>
-		<Label Name="LabelSuccess" HorizontalAlignment="Center">Success</Label>
-		<Label Name="LabelSuggestion" HorizontalAlignment="Center">Suggestion</Label>
-		<Label Name="LabelWarning" HorizontalAlignment="Center">Warning</Label>
-		<Label Name="LabelError" HorizontalAlignment="Center">Error</Label>
 		<Button Name="TestExceptionButton" Width="128">Test exception</Button>
 		<Button Name="ShowMessageButton" Width="128">Show message</Button>
 		<Button Name="ShowConfirmationButton" Width="128">Show confirmation</Button>

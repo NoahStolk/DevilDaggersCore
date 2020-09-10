@@ -17,6 +17,10 @@ namespace DevilDaggersCore.Wpf.Utils
 			AddBrushResource("Gray6");
 			AddBrushResource("Gray9");
 			AddBrushResource("Text");
+			AddBrushResource("ErrorText");
+			AddBrushResource("WarningText");
+			AddBrushResource("SuggestionText");
+			AddBrushResource("SuccessText");
 			AddBrushResource("ErrorBackground");
 			AddBrushResource("Hyperlink");
 			AddBrushResource("HyperlinkHover");
@@ -29,11 +33,6 @@ namespace DevilDaggersCore.Wpf.Utils
 			static void AddBrushResource(string key)
 				=> ThemeColors.Add(key, (SolidColorBrush)Application.Current.Resources[key]);
 		}
-
-		public static Color ColorSuccess { get; } = Color.FromRgb(0, 127, 63);
-		public static Color ColorSuggestion { get; } = Color.FromRgb(127, 127, 0);
-		public static Color ColorWarning { get; } = Color.FromRgb(191, 63, 0);
-		public static Color ColorError { get; } = Color.FromRgb(255, 0, 0);
 
 		public static Dictionary<string, SolidColorBrush> ThemeColors { get; } = new Dictionary<string, SolidColorBrush>();
 

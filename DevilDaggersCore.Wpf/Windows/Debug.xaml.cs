@@ -1,7 +1,5 @@
-﻿using DevilDaggersCore.Wpf.Utils;
-using System;
+﻿using System;
 using System.Windows;
-using System.Windows.Media;
 
 namespace DevilDaggersCore.Wpf.Windows
 {
@@ -10,11 +8,6 @@ namespace DevilDaggersCore.Wpf.Windows
 		public DebugWindow()
 		{
 			InitializeComponent();
-
-			LabelSuccess.Foreground = new SolidColorBrush(ColorUtils.ColorSuccess);
-			LabelSuggestion.Foreground = new SolidColorBrush(ColorUtils.ColorSuggestion);
-			LabelWarning.Foreground = new SolidColorBrush(ColorUtils.ColorWarning);
-			LabelError.Foreground = new SolidColorBrush(ColorUtils.ColorError);
 
 			TestExceptionButton.Click += (sender, e) => throw new Exception("Test exception");
 

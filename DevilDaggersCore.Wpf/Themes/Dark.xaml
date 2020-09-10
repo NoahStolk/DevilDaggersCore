@@ -11,6 +11,10 @@
 	<SolidColorBrush x:Key="Gray6" Color="#666" />
 	<SolidColorBrush x:Key="Gray9" Color="#999" />
 	<SolidColorBrush x:Key="Text" Color="#ddd" />
+	<SolidColorBrush x:Key="ErrorText" Color="#f00" />
+	<SolidColorBrush x:Key="WarningText" Color="#f60" />
+	<SolidColorBrush x:Key="SuggestionText" Color="#fc0" />
+	<SolidColorBrush x:Key="SuccessText" Color="#084" />
 	<SolidColorBrush x:Key="ErrorBackground" Color="#800" />
 	<SolidColorBrush x:Key="Hyperlink" Color="#08f" />
 	<SolidColorBrush x:Key="HyperlinkHover" Color="#0af" />
