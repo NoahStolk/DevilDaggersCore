@@ -30,9 +30,9 @@ namespace DevilDaggersCore.Wpf.Windows
 		private static void ShowWindow(Window window)
 			=> window.ShowDialog();
 
-		public static async Task<bool> SimulateCheckingForUpdates()
+		private static bool SimulateCheckingForUpdates()
 		{
-			await Task.Delay(1000);
+			Task.Delay(1000).Wait();
 
 			return true;
 		}
