@@ -28,6 +28,7 @@
 	<Style TargetType="Window">
 		<Style.Setters>
 			<Setter Property="Background" Value="{StaticResource Gray2}" />
+			<Setter Property="Foreground" Value="{StaticResource Text}" />
 		</Style.Setters>
 	</Style>
 	<Style TargetType="{x:Type windows:ChangelogWindow}" BasedOn="{StaticResource {x:Type Window}}" />
