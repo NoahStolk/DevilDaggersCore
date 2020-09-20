@@ -211,8 +211,7 @@ namespace DevilDaggersCore.Spawnsets
 			double enemyTimer = 0;
 			double delay = 0;
 
-			IEnumerable<Spawn> endLoop = Spawns.Values.Skip(GetEndLoopStartIndex());
-			foreach (Spawn spawn in endLoop)
+			foreach (Spawn spawn in Spawns.Values.Skip(GetEndLoopStartIndex()))
 			{
 				delay += spawn.Delay;
 				while (enemyTimer < delay)
