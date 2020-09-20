@@ -205,6 +205,12 @@
 		</Style.Setters>
 	</Style>
 
+	<Style TargetType="RadioButton">
+		<Style.Setters>
+			<Setter Property="Foreground" Value="{StaticResource Text}" />
+		</Style.Setters>
+	</Style>
+
 	<Style TargetType="RadioButton" x:Key="ToggleRadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
 		<Style.Setters>
 			<Setter Property="Margin" Value="2" />
