@@ -66,7 +66,8 @@ namespace DevilDaggersCore.Spawnsets
 			set => _brightness = Math.Max(value, 0);
 		}
 
-		public static bool IsEmptySpawn(int enemyType) => enemyType < 0 || enemyType > 9;
+		public static bool IsEmptySpawn(int enemyType)
+			=> enemyType < 0 || enemyType > 9;
 
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.

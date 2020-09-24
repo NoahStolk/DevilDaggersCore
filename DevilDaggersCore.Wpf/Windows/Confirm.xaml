@@ -16,8 +16,8 @@
 				<ColumnDefinition />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="0" Name="YesButton" Click="YesButton_Click" IsDefault="True">Yes</Button>
-			<Button Grid.Column="1" Name="NoButton" Click="NoButton_Click">No</Button>
+			<Button Grid.Column="0" Name="YesButton" Click="YesButton_Click" IsDefault="True" Margin="2,6,2,2" Width="128">Yes</Button>
+			<Button Grid.Column="1" Name="NoButton" Click="NoButton_Click" Margin="2,6,2,2" Width="128">No</Button>
 		</Grid>
 	</StackPanel>
 </Window>
