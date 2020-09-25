@@ -5,17 +5,6 @@ namespace DevilDaggersCore.Utils
 {
 	public static class HistoryUtils
 	{
-		public static string HistoryJsonFileNameToDateString(string dateString)
-		{
-			string year = dateString.Substring(0, 4);
-			string month = dateString.Substring(4, 2);
-			string day = dateString.Substring(6, 2);
-			string hour = dateString.Substring(8, 2);
-			string minute = dateString.Substring(10, 2);
-
-			return $"{year}-{month}-{day} {hour}:{minute}";
-		}
-
 		public static DateTime HistoryJsonFileNameToDateTime(string dateString)
 		{
 			int year = int.Parse(dateString.Substring(0, 4), CultureInfo.InvariantCulture);
@@ -33,6 +22,7 @@ namespace DevilDaggersCore.Utils
 			return new DateTime(year, month, day, hour, minute, 0);
 		}
 
-		public static string DateTimeToHistoryJsonFileName(DateTime dateTime) => $"{dateTime.Year:0000}{dateTime.Month:00}{dateTime.Day:00}{dateTime.Hour:00}{dateTime.Minute:00}";
+		public static string DateTimeToHistoryJsonFileName(DateTime dateTime)
+			=> $"{dateTime.Year:0000}{dateTime.Month:00}{dateTime.Day:00}{dateTime.Hour:00}{dateTime.Minute:00}";
 	}
 }
