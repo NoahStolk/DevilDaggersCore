@@ -14,7 +14,7 @@ namespace DevilDaggersCore.Utils
 
 		public static string SpawnsetsPage => $"{BaseUrl}Spawnsets";
 
-		public static string ApiGetTool(string toolName) => $"{BaseUrl}api/tools/{toolName}";
+		public static string ApiGetTool(string toolName) => $"{BaseUrl}api/tools/{toolName}/file";
 
 		public static Uri SourceCodeUrl(string toolName) => new Uri($"https://github.com/NoahStolk/{toolName}");
 
