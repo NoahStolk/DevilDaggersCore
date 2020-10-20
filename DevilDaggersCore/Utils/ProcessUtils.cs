@@ -4,14 +4,14 @@ namespace DevilDaggersCore.Utils
 {
 	public static class ProcessUtils
 	{
-		private const string processNameToFind = "dd";
-		private const string processMainWindowTitle = "Devil Daggers";
+		private const string _processNameToFind = "dd";
+		private const string _processMainWindowTitle = "Devil Daggers";
 
 		public static Process? GetDevilDaggersProcess()
 		{
-			foreach (Process process in Process.GetProcessesByName(processNameToFind))
+			foreach (Process process in Process.GetProcessesByName(_processNameToFind))
 			{
-				if (process.MainWindowTitle == processMainWindowTitle)
+				if (process.MainWindowTitle == _processMainWindowTitle)
 					return process;
 			}
 
