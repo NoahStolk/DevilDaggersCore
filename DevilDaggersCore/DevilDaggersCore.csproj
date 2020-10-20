@@ -7,7 +7,6 @@
     <Nullable>enable</Nullable>
     <PackageId>DevilDaggersCore</PackageId>
     <Version>1.0.1</Version>
-    <Authors>Noah Stolk</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
