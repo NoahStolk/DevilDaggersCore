@@ -18,11 +18,7 @@ namespace DevilDaggersCore.Utils
 			return null;
 		}
 
-#pragma warning disable CA1054 // Uri parameters should not be strings
-
 		public static void OpenUrl(string url)
 			=> Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-
-#pragma warning restore CA1054 // Uri parameters should not be strings
 	}
 }
