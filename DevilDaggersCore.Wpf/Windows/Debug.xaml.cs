@@ -1,6 +1,4 @@
-﻿using DevilDaggersCore.Wpf.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -12,9 +10,9 @@ namespace DevilDaggersCore.Wpf.Windows
 		{
 			InitializeComponent();
 
-			TestExceptionButton.Click += (sender, e) => throw new Exception("Test exception");
+			TestExceptionButton.Click += (sender, e) => throw new("Test exception");
 
-			ShowChangelogButton.Click += (sender, e) => ShowWindow(new ChangelogWindow(new List<ChangelogEntry> { new ChangelogEntry(new Version(1, 0, 0, 0), DateTime.Now, new List<Change> { new Change("Initial release", new List<Change> { new Change("Test", null) }) }) }, new Version(1, 0, 0, 0)));
+			ShowChangelogButton.Click += (sender, e) => ShowWindow(new ChangelogWindow(new() { new(new(1, 0, 0, 0), DateTime.Now, new() { new("Initial release", new() { new("Test", null) }) }) }, new(1, 0, 0, 0)));
 
 			ShowCheckingForUpdatesButton.Click += (sender, e) => ShowWindow(new CheckingForUpdatesWindow(SimulateCheckingForUpdates));
 

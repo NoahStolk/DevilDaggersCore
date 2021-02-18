@@ -20,6 +20,6 @@ namespace DevilDaggersCore.Game
 		public int? HomingShot { get; set; }
 		public string UnlocksAt { get; set; }
 
-		public int Level => int.Parse(Name[Name.Length - 1].ToString(), CultureInfo.InvariantCulture);
+		public int Level => int.Parse(Name[^1].ToString(), CultureInfo.InvariantCulture);
 	}
 }

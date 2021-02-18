@@ -18,7 +18,7 @@ namespace DevilDaggersCore.Spawnsets
 		public double Delay { get; set; }
 
 		public Spawn Copy()
-			=> new Spawn(Enemy, Delay);
+			=> new(Enemy, Delay);
 
 		public override string ToString()
 			=> $"{Delay:0.0000}: {Enemy?.Name ?? "EMPTY"}";

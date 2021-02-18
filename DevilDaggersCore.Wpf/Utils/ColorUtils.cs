@@ -34,7 +34,7 @@ namespace DevilDaggersCore.Wpf.Utils
 				=> ThemeColors.Add(key, (SolidColorBrush)Application.Current.Resources[key]);
 		}
 
-		public static Dictionary<string, SolidColorBrush> ThemeColors { get; } = new Dictionary<string, SolidColorBrush>();
+		public static Dictionary<string, SolidColorBrush> ThemeColors { get; } = new();
 
 		/// <summary>
 		/// Returns an integer between 0 and 255 representing the perceived brightness of the color.

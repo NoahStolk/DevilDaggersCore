@@ -39,7 +39,7 @@ namespace DevilDaggersCore.Spawnsets
 			Brightness = brightness;
 		}
 
-		public SortedDictionary<int, Spawn> Spawns { get; set; } = new SortedDictionary<int, Spawn>();
+		public SortedDictionary<int, Spawn> Spawns { get; set; } = new();
 		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
 
 		public float ShrinkStart
@@ -106,7 +106,7 @@ namespace DevilDaggersCore.Spawnsets
 				}
 
 				// Set the spawn values.
-				SortedDictionary<int, Spawn> spawns = new SortedDictionary<int, Spawn>();
+				SortedDictionary<int, Spawn> spawns = new();
 				int spawnIndex = 0;
 
 				int bytePosition = SpawnsHeaderBufferSize;
@@ -117,10 +117,10 @@ namespace DevilDaggersCore.Spawnsets
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					spawns.Add(spawnIndex++, new Spawn(GameInfo.GetEntities<Enemy>(GameVersion.V3).FirstOrDefault(e => e.SpawnsetType == enemyType), delay));
+					spawns.Add(spawnIndex++, new(GameInfo.GetEntities<Enemy>(GameVersion.V3).Find(e => e.SpawnsetType == enemyType), delay));
 				}
 
-				spawnset = new Spawnset(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
+				spawnset = new(spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness);
 
 				return true;
 			}
@@ -128,7 +128,7 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				LogUtils.Log.Error($"Could not parse {nameof(Spawnset)}.", ex);
 
-				spawnset = new Spawnset();
+				spawnset = new();
 
 				return false;
 			}
@@ -173,7 +173,7 @@ namespace DevilDaggersCore.Spawnsets
 					}
 				}
 
-				spawnsetData = new SpawnsetData
+				spawnsetData = new()
 				{
 					NonLoopSpawnCount = nonLoopSpawns,
 					LoopSpawnCount = loopSpawns,
@@ -187,7 +187,7 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				LogUtils.Log.Error($"Could not parse {nameof(SpawnsetData)}.", ex);
 
-				spawnsetData = new SpawnsetData();
+				spawnsetData = new();
 
 				return false;
 			}
@@ -227,11 +227,11 @@ namespace DevilDaggersCore.Spawnsets
 
 		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves)
 		{
-			List<AbstractEvent> events = new List<AbstractEvent>();
+			List<AbstractEvent> events = new();
 
 			double seconds = 0;
 			int totalGems = 0;
-			List<Spawn> endLoop = new List<Spawn>();
+			List<Spawn> endLoop = new();
 
 			foreach (Spawn spawn in Spawns.Values)
 			{
@@ -296,7 +296,7 @@ namespace DevilDaggersCore.Spawnsets
 
 			foreach (SpawnEvent squid in squids)
 			{
-				Dictionary<Enemy, int> skulls = new Dictionary<Enemy, int>();
+				Dictionary<Enemy, int> skulls = new();
 				if (squid.Enemy.Name == "Squid I")
 				{
 					skulls.Add(GameInfo.V3Skull1, 10);
@@ -313,9 +313,9 @@ namespace DevilDaggersCore.Spawnsets
 					skulls.Add(GameInfo.V3Skull4, 1);
 				}
 
-				StringBuilder gushText = new StringBuilder();
+				StringBuilder gushText = new();
 				foreach (KeyValuePair<Enemy, int> kvp in skulls)
-					gushText.Append($"{kvp.Value} {kvp.Key.Name}{(kvp.Value == 1 ? string.Empty : "s")} and ");
+					gushText.Append(kvp.Value).Append(' ').Append(kvp.Key.Name).Append(kvp.Value == 1 ? string.Empty : "s").Append(" and ");
 
 				for (int i = 0; i < gushes; i++)
 					events.Add(new GushEvent(squid.Seconds + 3 + i * 20, $"{squid.Enemy.Name} gushes {gushText.ToString().Substring(0, gushText.Length - " and ".Length)}", squid, skulls));
@@ -431,23 +431,23 @@ namespace DevilDaggersCore.Spawnsets
 		private string GetUniqueString()
 		{
 			CultureInfo culture = CultureInfo.InvariantCulture;
-			string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
-			char separator = ';';
+			const string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
+			const char separator = ';';
 
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sb = new();
 			foreach (Spawn spawn in Spawns.Values)
-				sb.Append($"{spawn.Enemy?.SpawnsetType ?? -1}{separator}{spawn.Delay.ToString(floatFormat, culture)}{separator}");
+				sb.Append(spawn.Enemy?.SpawnsetType ?? -1).Append(separator).Append(spawn.Delay.ToString(floatFormat, culture)).Append(separator);
 
 			for (int i = 0; i < ArenaWidth; i++)
 			{
 				for (int j = 0; j < ArenaHeight; j++)
-					sb.Append($"{ArenaTiles[i, j].ToString(floatFormat, culture)}{separator}");
+					sb.Append(ArenaTiles[i, j].ToString(floatFormat, culture)).Append(separator);
 			}
 
-			sb.Append($"{ShrinkStart.ToString(floatFormat, culture)}{separator}");
-			sb.Append($"{ShrinkEnd.ToString(floatFormat, culture)}{separator}");
-			sb.Append($"{ShrinkRate.ToString(floatFormat, culture)}{separator}");
-			sb.Append($"{Brightness.ToString(floatFormat, culture)}{separator}");
+			sb.Append(ShrinkStart.ToString(floatFormat, culture)).Append(separator);
+			sb.Append(ShrinkEnd.ToString(floatFormat, culture)).Append(separator);
+			sb.Append(ShrinkRate.ToString(floatFormat, culture)).Append(separator);
+			sb.Append(Brightness.ToString(floatFormat, culture)).Append(separator);
 
 			return sb.ToString();
 		}
@@ -460,7 +460,7 @@ namespace DevilDaggersCore.Spawnsets
 
 		public string GetHashString()
 		{
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sb = new();
 			foreach (byte b in GetHash())
 				sb.Append(b.ToString("X2", CultureInfo.InvariantCulture));
 			return sb.ToString();

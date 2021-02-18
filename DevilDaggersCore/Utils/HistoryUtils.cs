@@ -16,10 +16,10 @@ namespace DevilDaggersCore.Utils
 			if (dateString.Length == 14)
 			{
 				int second = int.Parse(dateString.Substring(12, 2), CultureInfo.InvariantCulture);
-				return new DateTime(year, month, day, hour, minute, second);
+				return new(year, month, day, hour, minute, second);
 			}
 
-			return new DateTime(year, month, day, hour, minute, 0);
+			return new(year, month, day, hour, minute, 0);
 		}
 
 		public static string DateTimeToHistoryJsonFileName(DateTime dateTime)

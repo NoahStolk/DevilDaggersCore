@@ -54,6 +54,6 @@ namespace DevilDaggersCore.Game
 			=> $"({GemHp} x {Gems})";
 
 		public Enemy Copy()
-			=> new Enemy(GameVersion, Name, ColorCode, Hp, Gems, NoFarmGems, SpawnsetType, Death, Homing3, Homing4, RegisterKill, SpawnedBy.ToArray());
+			=> new(GameVersion, Name, ColorCode, Hp, Gems, NoFarmGems, SpawnsetType, Death, Homing3, Homing4, RegisterKill, SpawnedBy.ToArray());
 	}
 }

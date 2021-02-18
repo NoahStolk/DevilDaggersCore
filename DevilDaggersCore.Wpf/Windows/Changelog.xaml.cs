@@ -18,12 +18,12 @@ namespace DevilDaggersCore.Wpf.Windows
 			foreach (ChangelogEntry entry in changes)
 			{
 				bool isLocalCurrentVersion = entry.VersionNumber == localVersion;
-				SolidColorBrush color = isLocalCurrentVersion ? new SolidColorBrush(Color.FromRgb(63, 95, 63)) : i++ % 2 == 0 ? ColorUtils.ThemeColors["Gray2"] : ColorUtils.ThemeColors["Gray4"];
-				Border border = new Border { Padding = new Thickness(8, 16, 8, 16), Background = color };
-				StackPanel entryStackPanel = new StackPanel { Background = color };
+				SolidColorBrush color = isLocalCurrentVersion ? new(Color.FromRgb(63, 95, 63)) : i++ % 2 == 0 ? ColorUtils.ThemeColors["Gray2"] : ColorUtils.ThemeColors["Gray4"];
+				Border border = new() { Padding = new(8, 16, 8, 16), Background = color };
+				StackPanel entryStackPanel = new() { Background = color };
 				if (isLocalCurrentVersion)
-					entryStackPanel.Children.Add(new TextBlock { Text = "Currently running", FontSize = 12, FontWeight = FontWeights.Bold, Padding = new Thickness(6, 0, 0, 6), Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 127)) });
-				entryStackPanel.Children.Add(new TextBlock { Text = $"{entry.VersionNumber} - {entry.Date:MMMM dd, yyyy}", FontSize = 16, FontWeight = FontWeights.Bold, Padding = new Thickness(6, 0, 0, 6) });
+					entryStackPanel.Children.Add(new TextBlock { Text = "Currently running", FontSize = 12, FontWeight = FontWeights.Bold, Padding = new(6, 0, 0, 6), Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 127)) });
+				entryStackPanel.Children.Add(new TextBlock { Text = $"{entry.VersionNumber} - {entry.Date:MMMM dd, yyyy}", FontSize = 16, FontWeight = FontWeights.Bold, Padding = new(6, 0, 0, 6) });
 				foreach (Change change in entry.Changes)
 				{
 					foreach (Grid stackPanel in GetGrids(change, 1))
@@ -37,13 +37,13 @@ namespace DevilDaggersCore.Wpf.Windows
 
 		private IEnumerable<Grid> GetGrids(Change change, int level)
 		{
-			Grid changeGrid = new Grid();
-			changeGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(level++ * 32) });
-			changeGrid.ColumnDefinitions.Add(new ColumnDefinition());
+			Grid changeGrid = new();
+			changeGrid.ColumnDefinitions.Add(new() { Width = new(level++ * 32) });
+			changeGrid.ColumnDefinitions.Add(new());
 
 			changeGrid.Children.Add(new TextBlock { Text = "• ", TextAlignment = TextAlignment.Right });
 
-			TextBlock descriptionTextBlock = new TextBlock { Text = change.Description, TextWrapping = TextWrapping.WrapWithOverflow };
+			TextBlock descriptionTextBlock = new() { Text = change.Description, TextWrapping = TextWrapping.WrapWithOverflow };
 			Grid.SetColumn(descriptionTextBlock, 1);
 			changeGrid.Children.Add(descriptionTextBlock);
 

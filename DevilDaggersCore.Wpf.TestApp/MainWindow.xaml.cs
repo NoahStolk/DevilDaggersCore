@@ -12,7 +12,7 @@ namespace DevilDaggersCore.Wpf.TestApp
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			DebugWindow dw = new DebugWindow();
+			DebugWindow dw = new();
 			dw.ShowDialog();
 		}
 	}

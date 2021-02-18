@@ -10,7 +10,7 @@ namespace DevilDaggersCore.Wpf.Windows
 		{
 			InitializeComponent();
 
-			using BackgroundWorker thread = new BackgroundWorker();
+			using BackgroundWorker thread = new();
 			thread.DoWork += (sender, e) => getOnlineToolFunction();
 			thread.RunWorkerCompleted += (sender, e) => Close();
 

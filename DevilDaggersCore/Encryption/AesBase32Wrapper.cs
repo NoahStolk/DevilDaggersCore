@@ -1,5 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace DevilDaggersCore.Encryption
@@ -9,15 +8,15 @@ namespace DevilDaggersCore.Encryption
 	/// </summary>
 	public class AesBase32Wrapper
 	{
-		private readonly string initializationVector;
-		private readonly string password;
-		private readonly string salt;
+		private readonly string _initializationVector;
+		private readonly string _password;
+		private readonly string _salt;
 
 		public AesBase32Wrapper(string initializationVector, string password, string salt)
 		{
-			this.initializationVector = initializationVector;
-			this.password = password;
-			this.salt = salt;
+			_initializationVector = initializationVector;
+			_password = password;
+			_salt = salt;
 		}
 
 		private enum TransformType
@@ -31,7 +30,7 @@ namespace DevilDaggersCore.Encryption
 			// The raw input is in UTF-8 format.
 			byte[] buffer = Encoding.UTF8.GetBytes(inputRaw);
 
-			using AesCryptoServiceProvider csp = new AesCryptoServiceProvider();
+			using AesCryptoServiceProvider csp = new();
 			ICryptoTransform encryptor = GetCryptoTransform(csp, TransformType.Encrypt);
 			byte[] encrypted = encryptor.TransformFinalBlock(buffer, 0, buffer.Length);
 
@@ -44,7 +43,7 @@ namespace DevilDaggersCore.Encryption
 			// The encrypted input is in Base32 format.
 			byte[] buffer = Base32Encoding.ToBytes(inputEncrypted);
 
-			using AesCryptoServiceProvider csp = new AesCryptoServiceProvider();
+			using AesCryptoServiceProvider csp = new();
 			ICryptoTransform decryptor = GetCryptoTransform(csp, TransformType.Decrypt);
 			byte[] decrypted = decryptor.TransformFinalBlock(buffer, 0, buffer.Length);
 
@@ -56,17 +55,16 @@ namespace DevilDaggersCore.Encryption
 		{
 			csp.Mode = CipherMode.CBC;
 			csp.Padding = PaddingMode.PKCS7;
-			csp.IV = Encoding.UTF8.GetBytes(initializationVector);
+			csp.IV = Encoding.UTF8.GetBytes(_initializationVector);
 
-			using Rfc2898DeriveBytes spec = new Rfc2898DeriveBytes(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(salt), 65536);
-			byte[] key = spec.GetBytes(16);
-			csp.Key = key;
+			using Rfc2898DeriveBytes spec = new(Encoding.UTF8.GetBytes(_password), Encoding.UTF8.GetBytes(_salt), 65536);
+			csp.Key = spec.GetBytes(16);
 
 			return transformType switch
 			{
 				TransformType.Encrypt => csp.CreateEncryptor(),
 				TransformType.Decrypt => csp.CreateDecryptor(),
-				_ => throw new Exception($"Unknown {nameof(TransformType)} '{transformType}'."),
+				_ => throw new($"Unknown {nameof(TransformType)} '{transformType}'."),
 			};
 		}
 	}
