@@ -7,10 +7,10 @@
 DevilDaggersCore is a .NET Core class library created for various Devil Daggers related applications.
 
 ## Framework
-.NET Core 3.1
+.NET 5.0
 
 ## Language
-C# 8.0
+C# 9.0
 
 ## Used in
 - [devildaggers.info](https://devildaggers.info/)
