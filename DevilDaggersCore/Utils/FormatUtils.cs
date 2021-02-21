@@ -21,7 +21,7 @@ namespace DevilDaggersCore.Utils
 			where T : struct // C# does not have a type constraint for integer types.
 		{
 			string timeStr = time.ToString() ?? "0";
-			timeStr = $"{new string('0', Math.Max(0, 5 - timeStr.Length))}{timeStr}";
+			timeStr = new string('0', Math.Max(0, 5 - timeStr.Length)) + timeStr;
 			timeStr = timeStr.Reverse().Insert(4, ".");
 
 			if (includeThousandSeparator)
