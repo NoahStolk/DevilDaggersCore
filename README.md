@@ -4,7 +4,7 @@
 [![Scc Count Badge](https://sloc.xyz/github/NoahStolk/DevilDaggersCore/)](https://github.com/NoahStolk/DevilDaggersCore/)
 
 # DevilDaggersCore
-DevilDaggersCore is a .NET Core class library created for various Devil Daggers related applications.
+DevilDaggersCore is a .NET 5.0 class library created for various Devil Daggers related applications.
 
 ## Framework
 .NET 5.0
