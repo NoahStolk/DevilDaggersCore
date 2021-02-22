@@ -175,7 +175,9 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize);
+				byte version = spawnsetFileBytes[0];
+
+				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize + (version == 0x05 ? PracticeBufferSize : 0));
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
 				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize, spawnBuffer, 0, spawnBufferSize);
