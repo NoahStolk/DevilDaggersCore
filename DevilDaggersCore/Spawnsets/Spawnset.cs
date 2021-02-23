@@ -3,9 +3,7 @@ using DevilDaggersCore.Spawnsets.Events;
 using DevilDaggersCore.Utils;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace DevilDaggersCore.Spawnsets
@@ -480,48 +478,6 @@ namespace DevilDaggersCore.Spawnsets
 
 				return false;
 			}
-		}
-
-		/// <summary>
-		/// Creates a unique and constant string for this spawnset instance. Each value has a constant order and is separated using the ';' character.
-		/// WARNING: Modifying this method in such a way that it returns different values will require a re-compile or re-publish of every application that uses it and render any older versions as obsolete.
-		/// </summary>
-		private string GetUniqueString()
-		{
-			CultureInfo culture = CultureInfo.InvariantCulture;
-			const string floatFormat = "0.0000"; // Keep this variable local to preserve integrity of the method.
-			const char separator = ';';
-
-			StringBuilder sb = new();
-			foreach (Spawn spawn in Spawns.Values)
-				sb.Append(spawn.Enemy?.SpawnsetType ?? -1).Append(separator).Append(spawn.Delay.ToString(floatFormat, culture)).Append(separator);
-
-			for (int i = 0; i < ArenaWidth; i++)
-			{
-				for (int j = 0; j < ArenaHeight; j++)
-					sb.Append(ArenaTiles[i, j].ToString(floatFormat, culture)).Append(separator);
-			}
-
-			sb.Append(ShrinkStart.ToString(floatFormat, culture)).Append(separator);
-			sb.Append(ShrinkEnd.ToString(floatFormat, culture)).Append(separator);
-			sb.Append(ShrinkRate.ToString(floatFormat, culture)).Append(separator);
-			sb.Append(Brightness.ToString(floatFormat, culture)).Append(separator);
-
-			return sb.ToString();
-		}
-
-		private byte[] GetHash()
-		{
-			using HashAlgorithm algorithm = SHA256.Create();
-			return algorithm.ComputeHash(Encoding.UTF8.GetBytes(GetUniqueString()));
-		}
-
-		public string GetHashString()
-		{
-			StringBuilder sb = new();
-			foreach (byte b in GetHash())
-				sb.Append(b.ToString("X2", CultureInfo.InvariantCulture));
-			return sb.ToString();
 		}
 	}
 }
