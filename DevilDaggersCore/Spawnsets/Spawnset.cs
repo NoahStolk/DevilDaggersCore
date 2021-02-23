@@ -1,10 +1,8 @@
 ﻿using DevilDaggersCore.Game;
-using DevilDaggersCore.Spawnsets.Events;
 using DevilDaggersCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DevilDaggersCore.Spawnsets
 {
@@ -260,119 +258,6 @@ namespace DevilDaggersCore.Spawnsets
 
 				yield return endGameSecond;
 			}
-		}
-
-		public List<AbstractEvent> GenerateSpawnsetEventList(int gushes, int beckons, int maxWaves)
-		{
-			List<AbstractEvent> events = new();
-
-			double seconds = 0;
-			int totalGems = 0;
-			List<Spawn> endLoop = new();
-
-			foreach (Spawn spawn in Spawns.Values)
-			{
-				seconds += spawn.Delay;
-				if (spawn.Enemy != null)
-					events.Add(new SpawnEvent(seconds, $"{spawn.Enemy.Name} spawns", spawn.Enemy));
-
-				endLoop.Add(spawn);
-				if (spawn.Enemy == null)
-				{
-					foreach (Spawn s in endLoop)
-					{
-						if (s.Enemy != null)
-							totalGems += s.Enemy.NoFarmGems;
-					}
-
-					endLoop.Clear();
-					endLoop.Add(spawn);
-				}
-			}
-
-			if (endLoop.Count != 1 || endLoop.Count == 1 && endLoop[0].Enemy != null)
-			{
-				double endGameSecond = seconds;
-				for (int i = 1; i < maxWaves; i++)
-				{
-					double waveMod = GetWaveMod(i);
-					double enemyTimer = 0;
-					double delay = 0;
-					foreach (Spawn spawn in endLoop)
-					{
-						delay += spawn.Delay;
-						while (enemyTimer < delay)
-						{
-							endGameSecond += 1f / 60f;
-							enemyTimer += 1f / 60f + waveMod;
-						}
-
-						if (spawn.Enemy != null)
-						{
-							Enemy finalEnemy = spawn.Enemy;
-							if (i % 3 == 2 && finalEnemy == GameInfo.V3Gigapede)
-								finalEnemy = GameInfo.V3Ghostpede;
-
-							totalGems += finalEnemy.NoFarmGems;
-
-							events.Add(new SpawnEvent(endGameSecond, $"{finalEnemy.Name} spawns", finalEnemy));
-						}
-					}
-				}
-
-				static double GetWaveMod(int waveIndex)
-					=> 1f / 60f / 8f * waveIndex;
-			}
-
-			List<SpawnEvent> spawnEvents = events.OfType<SpawnEvent>().ToList();
-			List<SpawnEvent> squids = spawnEvents.Where(s => s.Enemy.Name.Contains("Squid", StringComparison.InvariantCulture)).ToList();
-			List<SpawnEvent> leviathans = spawnEvents.Where(s => s.Enemy.Name == "Leviathan").ToList();
-			List<SpawnEvent> spider1s = spawnEvents.Where(s => s.Enemy.Name == "Spider I").ToList();
-			List<SpawnEvent> spider2s = spawnEvents.Where(s => s.Enemy.Name == "Spider II").ToList();
-			List<SpawnEvent> emergers = spawnEvents.Where(s => s.Enemy.Name == "Thorn" || s.Enemy.Name.Contains("pede", StringComparison.InvariantCulture)).ToList();
-
-			foreach (SpawnEvent squid in squids)
-			{
-				Dictionary<Enemy, int> skulls = new();
-				if (squid.Enemy.Name == "Squid I")
-				{
-					skulls.Add(GameInfo.V3Skull1, 10);
-					skulls.Add(GameInfo.V3Skull2, 1);
-				}
-				else if (squid.Enemy.Name == "Squid II")
-				{
-					skulls.Add(GameInfo.V3Skull1, 10);
-					skulls.Add(GameInfo.V3Skull3, 1);
-				}
-				else if (squid.Enemy.Name == "Squid III")
-				{
-					skulls.Add(GameInfo.V3Skull1, 15);
-					skulls.Add(GameInfo.V3Skull4, 1);
-				}
-
-				StringBuilder gushText = new();
-				foreach (KeyValuePair<Enemy, int> kvp in skulls)
-					gushText.Append(kvp.Value).Append(' ').Append(kvp.Key.Name).Append(kvp.Value == 1 ? string.Empty : "s").Append(" and ");
-
-				for (int i = 0; i < gushes; i++)
-					events.Add(new GushEvent(squid.Seconds + 3 + i * 20, $"{squid.Enemy.Name} gushes {gushText.ToString().Substring(0, gushText.Length - " and ".Length)}", squid, skulls));
-			}
-
-			foreach (SpawnEvent leviathan in leviathans)
-			{
-				for (int i = 0; i < beckons; i++)
-					events.Add(new SubEvent(leviathan.Seconds + 13.5333f + i * 20, $"{leviathan.Enemy.Name} beckons", leviathan));
-			}
-
-			foreach (SpawnEvent spider1 in spider1s)
-				events.Add(new SubEvent(spider1.Seconds + 3, $"{spider1.Enemy.Name} lifts head", spider1));
-			foreach (SpawnEvent spider2 in spider2s)
-				events.Add(new SubEvent(spider2.Seconds + 9, $"{spider2.Enemy.Name} lifts head", spider2));
-
-			foreach (SpawnEvent emerger in emergers)
-				events.Add(new SubEvent(emerger.Seconds + 3, $"{emerger.Enemy.Name} emerges", emerger));
-
-			return events.OrderBy(e => e.Seconds).ToList();
 		}
 
 		public bool TryGetBytes(out byte[] bytes)
