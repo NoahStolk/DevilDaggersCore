@@ -12,24 +12,25 @@ namespace DevilDaggersCore.Spawnsets
 		public const int ArenaBufferSize = 10404; // ArenaWidth * ArenaHeight * TileBufferSize (51 * 51 * 4 = 10404)
 		public const int SpawnsHeaderBufferSize = 40; // The amount of bytes in the spawns buffer header (no idea what they are used for)
 		public const int SpawnBufferSize = 28; // The amount of bytes per spawn
-		public const int PracticeBufferSize = 5;
+		public const int PracticeBufferSize = 9; // Byte Hand, int AdditionalGems, float TimerStart
 
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
 
-		private byte _version = 5;
+		private byte _version = 6;
 		private float _shrinkStart = 50;
 		private float _shrinkEnd = 20;
 		private float _shrinkRate = 0.025f;
 		private float _brightness = 60;
 		private byte _hand = 1;
 		private int _additionalGems;
+		private float _timerStart;
 
 		public Spawnset()
 		{
 		}
 
-		public Spawnset(byte version, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, byte hand, int additionalGems)
+		public Spawnset(byte version, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, byte hand, int additionalGems, float timerStart)
 		{
 			Version = version;
 			Spawns = spawns;
@@ -40,6 +41,7 @@ namespace DevilDaggersCore.Spawnsets
 			Brightness = brightness;
 			Hand = hand;
 			AdditionalGems = additionalGems;
+			TimerStart = timerStart;
 		}
 
 		public SortedDictionary<int, Spawn> Spawns { get; set; } = new();
@@ -48,7 +50,7 @@ namespace DevilDaggersCore.Spawnsets
 		public byte Version
 		{
 			get => _version;
-			set => _version = Math.Clamp(value, (byte)4, (byte)5);
+			set => _version = GetSupportedVersion(value);
 		}
 
 		public float ShrinkStart
@@ -87,6 +89,18 @@ namespace DevilDaggersCore.Spawnsets
 			set => _additionalGems = Math.Clamp(value, 0, 1000000);
 		}
 
+		public float TimerStart
+		{
+			get => _timerStart;
+			set => _timerStart = Math.Clamp(value, 0, 1000000);
+		}
+
+		/// <summary>
+		/// Only support version 4 (original V3 spawnset) and version 6 (V3.1 updates). Version 5 is deprecated.
+		/// </summary>
+		public static byte GetSupportedVersion(byte version)
+			=> version == 0x05 || version == 0x06 ? 0x06 : 0x04;
+
 		public static bool IsEmptySpawn(int enemyType)
 			=> enemyType < 0 || enemyType > 9;
 
@@ -113,7 +127,7 @@ namespace DevilDaggersCore.Spawnsets
 				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnBuffer, 0, spawnsBufferSize);
 
 				// Set the header values.
-				byte version = headerBuffer[0];
+				byte version = GetSupportedVersion(headerBuffer[0]);
 				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
 				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
 				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
@@ -146,14 +160,16 @@ namespace DevilDaggersCore.Spawnsets
 				// Set the practice values.
 				byte hand = 1;
 				int additionalGems = 0;
-				if (version == 0x05)
+				float timerStart = 0;
+				if (version == 0x06)
 				{
 					Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsBufferSize, practiceBuffer, 0, PracticeBufferSize);
 					hand = practiceBuffer[0];
 					additionalGems = BitConverter.ToInt32(practiceBuffer, 1);
+					timerStart = BitConverter.ToSingle(practiceBuffer, 5);
 				}
 
-				spawnset = new(version, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, hand, additionalGems);
+				spawnset = new(version, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, hand, additionalGems, timerStart);
 
 				return true;
 			}
@@ -171,9 +187,9 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				byte version = spawnsetFileBytes[0];
+				byte version = GetSupportedVersion(spawnsetFileBytes[0]);
 
-				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize + (version == 0x05 ? PracticeBufferSize : 0));
+				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize + (version == 0x06 ? PracticeBufferSize : 0));
 				byte[] spawnBuffer = new byte[spawnBufferSize];
 
 				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize, spawnBuffer, 0, spawnBufferSize);
@@ -342,7 +358,7 @@ namespace DevilDaggersCore.Spawnsets
 					Buffer.BlockCopy(arenaBuffer, 0, fileBuffer, settingsBuffer.Length, arenaBuffer.Length);
 					Buffer.BlockCopy(spawnsBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length, spawnsBuffer.Length);
 				}
-				else
+				else if (Version == 0x06)
 				{
 					fileBuffer = new byte[settingsBuffer.Length + arenaBuffer.Length + spawnsBuffer.Length + practiceBuffer.Length];
 
@@ -350,6 +366,10 @@ namespace DevilDaggersCore.Spawnsets
 					Buffer.BlockCopy(arenaBuffer, 0, fileBuffer, settingsBuffer.Length, arenaBuffer.Length);
 					Buffer.BlockCopy(spawnsBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length, spawnsBuffer.Length);
 					Buffer.BlockCopy(practiceBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length + spawnsBuffer.Length, practiceBuffer.Length);
+				}
+				else
+				{
+					throw new($"The format version '{Version}' is unsupported. Please use either version 4 or 6.");
 				}
 
 				bytes = fileBuffer;
