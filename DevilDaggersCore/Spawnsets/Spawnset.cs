@@ -347,6 +347,9 @@ namespace DevilDaggersCore.Spawnsets
 				byte[] additionalGemsBytes = BitConverter.GetBytes(AdditionalGems);
 				for (int i = 0; i < additionalGemsBytes.Length; i++)
 					practiceBuffer[1 + i] = additionalGemsBytes[i];
+				byte[] timerStartBytes = BitConverter.GetBytes(TimerStart);
+				for (int i = 0; i < timerStartBytes.Length; i++)
+					practiceBuffer[5 + i] = timerStartBytes[i];
 
 				// Create the file buffer.
 				byte[] fileBuffer;
