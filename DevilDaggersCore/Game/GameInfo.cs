@@ -312,30 +312,25 @@ namespace DevilDaggersCore.Game
 			{ V31TheOrb, new[] { "Activates 10 seconds after Leviathan's death", "Behaves like an eyeball, will look at the player, then attract and transmute all skulls by beckoning every 2.5333 seconds", "Becomes stunned under constant fire, cannot look or attract skulls while stunned" } },
 		};
 
-		public static readonly List<Dagger> AllDaggers = _entities.OfType<Dagger>().ToList();
-		public static readonly List<Death> AllDeaths = _entities.OfType<Death>().ToList();
-		public static readonly List<Enemy> AllEnemies = _entities.OfType<Enemy>().ToList();
-		public static readonly List<Upgrade> AllUpgrades = _entities.OfType<Upgrade>().ToList();
+		private static readonly List<Dagger> _v1Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V1).ToList();
+		private static readonly List<Death> _v1Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V1).ToList();
+		private static readonly List<Enemy> _v1Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V1).ToList();
+		private static readonly List<Upgrade> _v1Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V1).ToList();
 
-		public static readonly List<Dagger> V1Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V1).ToList();
-		public static readonly List<Death> V1Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V1).ToList();
-		public static readonly List<Enemy> V1Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V1).ToList();
-		public static readonly List<Upgrade> V1Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V1).ToList();
+		private static readonly List<Dagger> _v2Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V2).ToList();
+		private static readonly List<Death> _v2Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V2).ToList();
+		private static readonly List<Enemy> _v2Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V2).ToList();
+		private static readonly List<Upgrade> _v2Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V2).ToList();
 
-		public static readonly List<Dagger> V2Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V2).ToList();
-		public static readonly List<Death> V2Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V2).ToList();
-		public static readonly List<Enemy> V2Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V2).ToList();
-		public static readonly List<Upgrade> V2Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V2).ToList();
+		private static readonly List<Dagger> _v3Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V3).ToList();
+		private static readonly List<Death> _v3Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V3).ToList();
+		private static readonly List<Enemy> _v3Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V3).ToList();
+		private static readonly List<Upgrade> _v3Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V3).ToList();
 
-		public static readonly List<Dagger> V3Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V3).ToList();
-		public static readonly List<Death> V3Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V3).ToList();
-		public static readonly List<Enemy> V3Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V3).ToList();
-		public static readonly List<Upgrade> V3Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V3).ToList();
-
-		public static readonly List<Dagger> V31Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V31).ToList();
-		public static readonly List<Death> V31Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V31).ToList();
-		public static readonly List<Enemy> V31Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V31).ToList();
-		public static readonly List<Upgrade> V31Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		private static readonly List<Dagger> _v31Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		private static readonly List<Death> _v31Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		private static readonly List<Enemy> _v31Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		private static readonly List<Upgrade> _v31Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V31).ToList();
 
 		public static GameVersion? GetGameVersionFromDate(DateTime dateTime)
 		{
@@ -368,28 +363,62 @@ namespace DevilDaggersCore.Game
 			throw new($"Could not find enemy info for {nameof(Enemy)} with name '{enemy.Name}' and version '{enemy.GameVersion}'.");
 		}
 
-		[Obsolete("This method has degraded performance. Use the predefined lists to retrieve entities instead.")]
-		public static List<TEntity> GetEntities<TEntity>(GameVersion? gameVersion = null)
-			where TEntity : DevilDaggersEntity
+		public static List<Dagger> GetDaggers(GameVersion gameVersion)
 		{
-			IEnumerable<TEntity> entities = _entities.OfType<TEntity>();
-			if (gameVersion != null)
-				entities = entities.Where(e => e.GameVersion == gameVersion);
-
-			return entities.ToList();
+			return gameVersion switch
+			{
+				GameVersion.V1 => _v1Daggers,
+				GameVersion.V2 => _v2Daggers,
+				GameVersion.V3 => _v3Daggers,
+				_ => _v31Daggers,
+			};
 		}
 
-		public static Enemy? GetEnemyBySpawnsetType(List<Enemy> enemies, int spawnsetType)
-			=> enemies.Find(e => e.SpawnsetType == spawnsetType);
-
-		public static Death? GetDeathByType(List<Death> deaths, int deathType)
-			=> deaths.Find(e => e.DeathType == deathType);
-
-		public static Death? GetDeathByName(List<Death> deaths, string deathName)
-			=> deaths.Find(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
-
-		public static Dagger GetDaggerFromTime(List<Dagger> daggers, int timeInTenthsOfMilliseconds)
+		public static List<Death> GetDeaths(GameVersion gameVersion)
 		{
+			return gameVersion switch
+			{
+				GameVersion.V1 => _v1Deaths,
+				GameVersion.V2 => _v2Deaths,
+				GameVersion.V3 => _v3Deaths,
+				_ => _v31Deaths,
+			};
+		}
+
+		public static List<Enemy> GetEnemies(GameVersion gameVersion)
+		{
+			return gameVersion switch
+			{
+				GameVersion.V1 => _v1Enemies,
+				GameVersion.V2 => _v2Enemies,
+				GameVersion.V3 => _v3Enemies,
+				_ => _v31Enemies,
+			};
+		}
+
+		public static List<Upgrade> GetUpgrades(GameVersion gameVersion)
+		{
+			return gameVersion switch
+			{
+				GameVersion.V1 => _v1Upgrades,
+				GameVersion.V2 => _v2Upgrades,
+				GameVersion.V3 => _v3Upgrades,
+				_ => _v31Upgrades,
+			};
+		}
+
+		public static Enemy? GetEnemyBySpawnsetType(GameVersion gameVersion, int spawnsetType)
+			=> GetEnemies(gameVersion).Find(e => e.SpawnsetType == spawnsetType);
+
+		public static Death? GetDeathByType(GameVersion gameVersion, int deathType)
+			=> GetDeaths(gameVersion).Find(e => e.DeathType == deathType);
+
+		public static Death? GetDeathByName(GameVersion gameVersion, string deathName)
+			=> GetDeaths(gameVersion).Find(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
+
+		public static Dagger GetDaggerFromTime(GameVersion gameVersion, int timeInTenthsOfMilliseconds)
+		{
+			List<Dagger> daggers = GetDaggers(gameVersion);
 			for (int i = daggers.Count - 1; i >= 0; i--)
 			{
 				if (timeInTenthsOfMilliseconds >= (daggers[i].UnlockSecond ?? 0) * 10000)
