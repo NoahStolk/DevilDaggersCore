@@ -5,7 +5,7 @@ namespace DevilDaggersCore.Game
 	[JsonObject(MemberSerialization.OptIn)]
 	public abstract class DevilDaggersEntity
 	{
-		public DevilDaggersEntity(GameVersion gameVersion, string name, string colorCode)
+		protected DevilDaggersEntity(GameVersion gameVersion, string name, string colorCode)
 		{
 			GameVersion = gameVersion;
 			Name = name;
