@@ -226,7 +226,7 @@ namespace DevilDaggersCore.Game
 
 		#endregion V3.1
 
-		public static readonly IEnumerable<DevilDaggersEntity> Entities = typeof(GameInfo).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null)!);
+		private static readonly IEnumerable<DevilDaggersEntity> _entities = typeof(GameInfo).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null)!);
 
 		private static readonly Dictionary<Enemy, string[]> _enemyInfo = new()
 		{
@@ -310,6 +310,11 @@ namespace DevilDaggersCore.Game
 			{ V31TheOrb, new[] { "Activates 10 seconds after Leviathan's death", "Behaves like an eyeball, will look at the player, then attract and transmute all skulls by beckoning every 2.5333 seconds", "Becomes stunned under constant fire, cannot look or attract skulls while stunned" } },
 		};
 
+		public static readonly List<Dagger> V31Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		public static readonly List<Death> V31Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		public static readonly List<Enemy> V31Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+		public static readonly List<Upgrade> V31Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V31).ToList();
+
 		public static GameVersion? GetGameVersionFromDate(DateTime dateTime)
 		{
 			GameVersion[] gameVersions = (GameVersion[])Enum.GetValues(typeof(GameVersion));
@@ -321,6 +326,15 @@ namespace DevilDaggersCore.Game
 
 			return null;
 		}
+
+		public static DateTime? GetReleaseDate(GameVersion gameVersion) => gameVersion switch
+		{
+			GameVersion.V1 => new(2016, 2, 18),
+			GameVersion.V2 => new(2016, 7, 5),
+			GameVersion.V3 => new(2016, 9, 19),
+			GameVersion.V31 => new(2021, 2, 19),
+			_ => null,
+		};
 
 		public static string[] GetEnemyInfo(Enemy enemy)
 		{
@@ -336,7 +350,7 @@ namespace DevilDaggersCore.Game
 		public static List<TEntity> GetEntities<TEntity>(GameVersion? gameVersion = null)
 			where TEntity : DevilDaggersEntity
 		{
-			IEnumerable<TEntity> entities = Entities.OfType<TEntity>();
+			IEnumerable<TEntity> entities = _entities.OfType<TEntity>();
 			if (gameVersion != null)
 				entities = entities.Where(e => e.GameVersion == gameVersion);
 
@@ -344,26 +358,28 @@ namespace DevilDaggersCore.Game
 		}
 
 		public static Enemy? GetEnemyBySpawnsetType(int spawnsetType, GameVersion? gameVersion = null)
-			=> GetEntities<Enemy>(gameVersion).Find(e => e.SpawnsetType == spawnsetType);
+			=> GetEnemyBySpawnsetType(GetEntities<Enemy>(gameVersion), spawnsetType);
+
+		public static Enemy? GetEnemyBySpawnsetType(List<Enemy> enemies, int spawnsetType)
+			=> enemies.Find(e => e.SpawnsetType == spawnsetType);
 
 		public static Death? GetDeathByType(int deathType, GameVersion? gameVersion = null)
-			=> GetEntities<Death>(gameVersion).Find(e => e.DeathType == deathType);
+			=> GetDeathByType(GetEntities<Death>(gameVersion), deathType);
+
+		public static Death? GetDeathByType(List<Death> deaths, int deathType)
+			=> deaths.Find(e => e.DeathType == deathType);
 
 		public static Death? GetDeathByName(string deathName)
-			=> GetEntities<Death>().Find(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
+			=> GetDeathByName(GetEntities<Death>(), deathName);
 
-		public static DateTime? GetReleaseDate(GameVersion gameVersion) => gameVersion switch
-		{
-			GameVersion.V1 => new(2016, 2, 18),
-			GameVersion.V2 => new(2016, 7, 5),
-			GameVersion.V3 => new(2016, 9, 19),
-			GameVersion.V31 => new(2021, 2, 19),
-			_ => null,
-		};
+		public static Death? GetDeathByName(List<Death> deaths, string deathName)
+			=> deaths.Find(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
 
 		public static Dagger GetDaggerFromTime(int timeInTenthsOfMilliseconds)
+			=> GetDaggerFromTime(GetEntities<Dagger>(GameVersion.V31), timeInTenthsOfMilliseconds);
+
+		public static Dagger GetDaggerFromTime(List<Dagger> daggers, int timeInTenthsOfMilliseconds)
 		{
-			List<Dagger> daggers = GetEntities<Dagger>(GameVersion.V31);
 			for (int i = daggers.Count - 1; i >= 0; i--)
 			{
 				if (timeInTenthsOfMilliseconds >= (daggers[i].UnlockSecond ?? 0) * 10000)
@@ -374,6 +390,6 @@ namespace DevilDaggersCore.Game
 		}
 
 		public static IEnumerable<GameVersion> GetAppearances(string entityName)
-			=> Entities.Where(e => e.Name == entityName && e.GameVersion != GameVersion.V31).Select(e => e.GameVersion);
+			=> _entities.Where(e => e.Name == entityName && e.GameVersion != GameVersion.V31).Select(e => e.GameVersion);
 	}
 }
