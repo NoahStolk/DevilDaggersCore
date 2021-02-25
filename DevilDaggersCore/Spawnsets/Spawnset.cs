@@ -154,7 +154,7 @@ namespace DevilDaggersCore.Spawnsets
 					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
 					bytePosition += 24;
 
-					spawns.Add(spawnIndex++, new(GameInfo.GetEntities<Enemy>(GameVersion.V31).Find(e => e.SpawnsetType == enemyType), delay));
+					spawns.Add(spawnIndex++, new(GameInfo.V31Enemies.Find(e => e.SpawnsetType == enemyType), delay));
 				}
 
 				// Set the practice values.
