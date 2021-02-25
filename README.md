@@ -17,7 +17,6 @@ C# 9.0
 - [DevilDaggersSurvivalEditor](https://github.com/NoahStolk/DevilDaggersSurvivalEditor)
 - [DevilDaggersCustomLeaderboards](https://github.com/NoahStolk/DevilDaggersCustomLeaderboards)
 - [DevilDaggersAssetEditor](https://github.com/NoahStolk/DevilDaggersAssetEditor)
-- [DiscordBotDdInfo](https://github.com/NoahStolk/DiscordBotDdInfo)
 
 ## License
 MIT License
