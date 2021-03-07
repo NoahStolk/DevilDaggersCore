@@ -99,10 +99,18 @@ namespace DevilDaggersCore.Spawnsets
 		/// Only support version 4 (original V3 spawnset) and version 6 (V3.1 updates). Version 5 is deprecated.
 		/// </summary>
 		public static byte GetSupportedVersion(byte version)
-			=> version == 0x05 || version == 0x06 ? 0x06 : 0x04;
+			=> version == 0x05 || version == 0x06 ? (byte)0x06 : (byte)0x04;
 
 		public static bool IsEmptySpawn(int enemyType)
 			=> enemyType < 0 || enemyType > 9;
+
+		public int GetInitialGems() => AdditionalGems + Hand switch
+		{
+			2 => 10,
+			3 => 70,
+			4 => 220,
+			_ => 0,
+		};
 
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
