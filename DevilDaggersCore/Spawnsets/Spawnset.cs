@@ -211,7 +211,7 @@ namespace DevilDaggersCore.Spawnsets
 				float timerStart = 0;
 				if (spawnVersion >= 5)
 				{
-					Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsBufferSize, practiceBuffer, 0, settingsBufferSize);
+					Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsHeaderBufferSize + spawnsBufferSize, practiceBuffer, 0, settingsBufferSize);
 					hand = practiceBuffer[0];
 					additionalGems = BitConverter.ToInt32(practiceBuffer, 1);
 
