@@ -10,14 +10,10 @@ namespace DevilDaggersCore.Spawnsets
 	{
 		public const int HeaderBufferSize = 36;
 		public const int ArenaBufferSize = 10404; // ArenaWidth * ArenaHeight * TileBufferSize (51 * 51 * 4 = 10404)
-		public const int SpawnsHeaderBufferSize = 40; // The amount of bytes in the spawns buffer header (no idea what they are used for)
 		public const int SpawnBufferSize = 28; // The amount of bytes per spawn
-		public const int PracticeBufferSize = 9; // Byte Hand, int AdditionalGems, float TimerStart
 
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
-
-		private byte _version = 6;
 		private float _shrinkStart = 50;
 		private float _shrinkEnd = 20;
 		private float _shrinkRate = 0.025f;
@@ -30,9 +26,10 @@ namespace DevilDaggersCore.Spawnsets
 		{
 		}
 
-		public Spawnset(byte version, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, byte hand, int additionalGems, float timerStart)
+		public Spawnset(int spawnVersion, int worldVersion, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, byte hand, int additionalGems, float timerStart)
 		{
-			Version = version;
+			SpawnVersion = spawnVersion;
+			WorldVersion = worldVersion;
 			Spawns = spawns;
 			ArenaTiles = arenaTiles;
 			ShrinkStart = shrinkStart;
@@ -47,11 +44,8 @@ namespace DevilDaggersCore.Spawnsets
 		public SortedDictionary<int, Spawn> Spawns { get; set; } = new();
 		public float[,] ArenaTiles { get; set; } = new float[ArenaWidth, ArenaHeight];
 
-		public byte Version
-		{
-			get => _version;
-			set => _version = GetSupportedVersion(value);
-		}
+		public int SpawnVersion { get; set; } = 6;
+		public int WorldVersion { get; set; } = 9;
 
 		public float ShrinkStart
 		{
@@ -95,11 +89,52 @@ namespace DevilDaggersCore.Spawnsets
 			set => _timerStart = Math.Clamp(value, 0, 1000000);
 		}
 
-		/// <summary>
-		/// Only support version 4 (original V3 spawnset) and version 6 (V3.1 updates). Version 5 is deprecated.
-		/// </summary>
-		public static byte GetSupportedVersion(byte version)
-			=> version == 0x05 || version == 0x06 ? (byte)0x06 : (byte)0x04;
+		#region Utilities
+
+		public static int GetSpawnsHeaderBufferSize(int worldVersion) => worldVersion switch
+		{
+			8 => 36,
+			_ => 40,
+		};
+
+		public static int GetSettingsBufferSize(int spawnVersion) => spawnVersion switch
+		{
+			5 => 5,
+			6 => 9,
+			_ => 0,
+		};
+
+		public bool HasSpawns()
+			=> Spawns.Values.Any(s => s.Enemy != null);
+
+		public int GetEndLoopStartIndex()
+		{
+			for (int i = Spawns.Count - 1; i >= 0; i--)
+			{
+				if (Spawns[i].Enemy == null)
+					return i;
+			}
+
+			return 0;
+		}
+
+		public IEnumerable<double> GenerateEndWaveTimes(double endGameSecond, int waveIndex)
+		{
+			double enemyTimer = 0;
+			double delay = 0;
+
+			foreach (Spawn spawn in Spawns.Values.Skip(GetEndLoopStartIndex()))
+			{
+				delay += spawn.Delay;
+				while (enemyTimer < delay)
+				{
+					endGameSecond += 1f / 60f;
+					enemyTimer += 1f / 60f + 1f / 60f / 8f * waveIndex;
+				}
+
+				yield return endGameSecond;
+			}
+		}
 
 		public static bool IsEmptySpawn(int enemyType)
 			=> enemyType < 0 || enemyType > 9;
@@ -112,9 +147,12 @@ namespace DevilDaggersCore.Spawnsets
 			_ => 0,
 		};
 
+		#endregion Utilities
+
+		#region Parsing
+
 		/// <summary>
 		/// Tries to parse the contents of a spawnset file into a <see cref="Spawnset"/> instance.
-		/// This only works for V3 spawnsets.
 		/// </summary>
 		/// <param name="spawnsetFileBytes">The spawnset file contents.</param>
 		/// <param name="spawnset">The parsed <see cref="Spawnset"/>.</param>
@@ -122,26 +160,20 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				// Set the file values for reading V3 spawnsets.
-				int spawnsBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + PracticeBufferSize);
+				// Read header.
 				byte[] headerBuffer = new byte[HeaderBufferSize];
-				byte[] arenaBuffer = new byte[ArenaBufferSize];
-				byte[] spawnBuffer = new byte[spawnsBufferSize];
-				byte[] practiceBuffer = new byte[PracticeBufferSize];
-
-				// Read the file and write the data into the buffers, then close the file since we do not need it anymore.
 				Buffer.BlockCopy(spawnsetFileBytes, 0, headerBuffer, 0, HeaderBufferSize);
-				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize, arenaBuffer, 0, ArenaBufferSize);
-				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnBuffer, 0, spawnsBufferSize);
-
-				// Set the header values.
-				byte version = GetSupportedVersion(headerBuffer[0]);
+				int spawnVersion = BitConverter.ToInt32(headerBuffer, 0);
+				int worldVersion = BitConverter.ToInt32(headerBuffer, 4);
 				float shrinkEnd = BitConverter.ToSingle(headerBuffer, 8);
 				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
 				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
 				float brightness = BitConverter.ToSingle(headerBuffer, 20);
 
-				// Set the arena values.
+				// Read arena.
+				byte[] arenaBuffer = new byte[ArenaBufferSize];
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize, arenaBuffer, 0, ArenaBufferSize);
+
 				float[,] arenaTiles = new float[ArenaWidth, ArenaHeight];
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
@@ -150,34 +182,44 @@ namespace DevilDaggersCore.Spawnsets
 					arenaTiles[x, y] = BitConverter.ToSingle(arenaBuffer, i);
 				}
 
-				// Set the spawn values.
+				// Read spawns header.
+				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(worldVersion);
+				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnsHeaderBuffer, 0, spawnsHeaderBufferSize);
+				int spawnCount = BitConverter.ToInt32(spawnsHeaderBuffer, spawnsHeaderBufferSize - sizeof(int));
+
+				// Read spawns.
+				int spawnsBufferSize = SpawnBufferSize * spawnCount;
+				byte[] spawnBuffer = new byte[spawnsBufferSize];
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsHeaderBufferSize, spawnBuffer, 0, spawnsBufferSize);
+
 				SortedDictionary<int, Spawn> spawns = new();
 				int spawnIndex = 0;
 
-				int bytePosition = SpawnsHeaderBufferSize;
-				while (bytePosition < spawnsBufferSize)
+				for (int i = 0; i < spawnCount; i++)
 				{
-					int enemyType = BitConverter.ToInt32(spawnBuffer, bytePosition);
-					bytePosition += 4;
-					float delay = BitConverter.ToSingle(spawnBuffer, bytePosition);
-					bytePosition += 24;
-
+					int enemyType = BitConverter.ToInt32(spawnBuffer, i * SpawnBufferSize);
+					float delay = BitConverter.ToSingle(spawnBuffer, i * SpawnBufferSize + 4);
 					spawns.Add(spawnIndex++, new(GameInfo.GetEnemies(GameVersion.V31).Find(e => e.SpawnsetType == enemyType), delay));
 				}
 
-				// Set the practice values.
+				// Read settings.
+				int settingsBufferSize = GetSettingsBufferSize(spawnVersion);
+				byte[] practiceBuffer = new byte[settingsBufferSize];
 				byte hand = 1;
 				int additionalGems = 0;
 				float timerStart = 0;
-				if (version == 0x06)
+				if (spawnVersion >= 5)
 				{
-					Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsBufferSize, practiceBuffer, 0, PracticeBufferSize);
+					Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsBufferSize, practiceBuffer, 0, settingsBufferSize);
 					hand = practiceBuffer[0];
 					additionalGems = BitConverter.ToInt32(practiceBuffer, 1);
-					timerStart = BitConverter.ToSingle(practiceBuffer, 5);
+
+					if (spawnVersion >= 6)
+						timerStart = BitConverter.ToSingle(practiceBuffer, 5);
 				}
 
-				spawnset = new(version, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, hand, additionalGems, timerStart);
+				spawnset = new(spawnVersion, worldVersion, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, hand, additionalGems, timerStart);
 
 				return true;
 			}
@@ -195,12 +237,15 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			try
 			{
-				byte version = GetSupportedVersion(spawnsetFileBytes[0]);
+				int worldVersion = BitConverter.ToInt32(spawnsetFileBytes, 4);
+				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(worldVersion);
+				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnsHeaderBuffer, 0, spawnsHeaderBufferSize);
+				int spawnCount = BitConverter.ToInt32(spawnsHeaderBuffer, spawnsHeaderBufferSize - sizeof(int));
+				int spawnsBufferSize = SpawnBufferSize * spawnCount;
+				byte[] spawnBuffer = new byte[spawnsBufferSize];
 
-				int spawnBufferSize = spawnsetFileBytes.Length - (HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize + (version == 0x06 ? PracticeBufferSize : 0));
-				byte[] spawnBuffer = new byte[spawnBufferSize];
-
-				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + SpawnsHeaderBufferSize, spawnBuffer, 0, spawnBufferSize);
+				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize + spawnsHeaderBufferSize, spawnBuffer, 0, spawnsBufferSize);
 
 				int loopBegin = 0;
 				for (int i = spawnBuffer.Length - SpawnBufferSize; i > 0; i -= SpawnBufferSize)
@@ -236,8 +281,8 @@ namespace DevilDaggersCore.Spawnsets
 				{
 					NonLoopSpawnCount = nonLoopSpawns,
 					LoopSpawnCount = loopSpawns,
-					NonLoopLength = nonLoopSpawns == 0 ? null : (float?)nonLoopSeconds,
-					LoopLength = loopSpawns == 0 ? null : (float?)loopSeconds,
+					NonLoopLength = nonLoopSpawns == 0 ? null : nonLoopSeconds,
+					LoopLength = loopSpawns == 0 ? null : loopSeconds,
 				};
 
 				return true;
@@ -252,71 +297,27 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public bool HasSpawns()
-			=> Spawns.Values.Any(s => s.Enemy != null);
+		#endregion Parsing
 
-		public int GetEndLoopStartIndex()
-		{
-			for (int i = Spawns.Count - 1; i >= 0; i--)
-			{
-				if (Spawns[i].Enemy == null)
-					return i;
-			}
-
-			return 0;
-		}
-
-		public IEnumerable<double> GenerateEndWaveTimes(double endGameSecond, int waveIndex)
-		{
-			double enemyTimer = 0;
-			double delay = 0;
-
-			foreach (Spawn spawn in Spawns.Values.Skip(GetEndLoopStartIndex()))
-			{
-				delay += spawn.Delay;
-				while (enemyTimer < delay)
-				{
-					endGameSecond += 1f / 60f;
-					enemyTimer += 1f / 60f + 1f / 60f / 8f * waveIndex;
-				}
-
-				yield return endGameSecond;
-			}
-		}
+		#region Converting
 
 		public bool TryGetBytes(out byte[] bytes)
 		{
 			try
 			{
-				// Create the buffers.
-				byte[] settingsBuffer = new byte[HeaderBufferSize];
+				// Create header.
+				byte[] headerBuffer = new byte[HeaderBufferSize];
+				Buffer.BlockCopy(BitConverter.GetBytes(SpawnVersion), 0, headerBuffer, 0, sizeof(int));
+				Buffer.BlockCopy(BitConverter.GetBytes(WorldVersion), 0, headerBuffer, 4, sizeof(int));
+				Buffer.BlockCopy(BitConverter.GetBytes(ShrinkEnd), 0, headerBuffer, 8, sizeof(float));
+				Buffer.BlockCopy(BitConverter.GetBytes(ShrinkStart), 0, headerBuffer, 12, sizeof(float));
+				Buffer.BlockCopy(BitConverter.GetBytes(ShrinkRate), 0, headerBuffer, 16, sizeof(float));
+				Buffer.BlockCopy(BitConverter.GetBytes(Brightness), 0, headerBuffer, 20, sizeof(float));
+				headerBuffer[28] = 0x33;
+				headerBuffer[32] = 0x01;
+
+				// Create arena.
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
-				byte[] spawnsBuffer = new byte[SpawnsHeaderBufferSize + Spawns.Count * SpawnBufferSize];
-				byte[] practiceBuffer = new byte[PracticeBufferSize];
-
-				// Get the settings bytes and copy them into the header buffer.
-				settingsBuffer[0] = Version;
-				settingsBuffer[4] = 0x09;
-				settingsBuffer[28] = 0x33;
-				settingsBuffer[32] = 0x01;
-
-				byte[] shrinkEndBytes = BitConverter.GetBytes(ShrinkEnd);
-				for (int i = 0; i < shrinkEndBytes.Length; i++)
-					settingsBuffer[8 + i] = shrinkEndBytes[i];
-
-				byte[] shrinkStartBytes = BitConverter.GetBytes(ShrinkStart);
-				for (int i = 0; i < shrinkStartBytes.Length; i++)
-					settingsBuffer[12 + i] = shrinkStartBytes[i];
-
-				byte[] shrinkRateBytes = BitConverter.GetBytes(ShrinkRate);
-				for (int i = 0; i < shrinkRateBytes.Length; i++)
-					settingsBuffer[16 + i] = shrinkRateBytes[i];
-
-				byte[] brightnessBytes = BitConverter.GetBytes(Brightness);
-				for (int i = 0; i < brightnessBytes.Length; i++)
-					settingsBuffer[20 + i] = brightnessBytes[i];
-
-				// Get the arena bytes and copy them into the arena buffer.
 				for (int i = 0; i < arenaBuffer.Length; i += 4)
 				{
 					int x = i / 4 % ArenaHeight;
@@ -328,60 +329,44 @@ namespace DevilDaggersCore.Spawnsets
 						arenaBuffer[i + j] = tileBytes[j];
 				}
 
-				// Get the spawn bytes and copy them into the spawn buffer.
-				spawnsBuffer[12] = 0x01;
-				spawnsBuffer[16] = 0xF4;
-				spawnsBuffer[17] = 0x01;
-				spawnsBuffer[20] = 0xFA;
-				spawnsBuffer[24] = 0x78;
-				spawnsBuffer[28] = 0x3C;
+				// Create spawns header.
+				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(WorldVersion);
+				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
+				spawnsHeaderBuffer[12] = 0x01;
+				spawnsHeaderBuffer[16] = 0xF4;
+				spawnsHeaderBuffer[17] = 0x01;
+				spawnsHeaderBuffer[20] = 0xFA;
+				spawnsHeaderBuffer[24] = 0x78;
+				spawnsHeaderBuffer[28] = 0x3C;
+				Buffer.BlockCopy(BitConverter.GetBytes(Spawns.Count), 0, spawnsHeaderBuffer, spawnsHeaderBufferSize - sizeof(int), sizeof(int));
 
-				byte[] spawnCountBytes = BitConverter.GetBytes(Spawns.Count);
-				for (int i = 0; i < spawnCountBytes.Length; i++)
-					spawnsBuffer[36 + i] = spawnCountBytes[i];
-
+				// Create spawns.
+				byte[] spawnsBuffer = new byte[Spawns.Count * SpawnBufferSize];
 				foreach (KeyValuePair<int, Spawn> kvp in Spawns)
 				{
-					byte[] enemyBytes = BitConverter.GetBytes(kvp.Value.Enemy?.SpawnsetType ?? -1);
-					for (int i = 0; i < enemyBytes.Length; i++)
-						spawnsBuffer[SpawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + i] = enemyBytes[i];
-
-					byte[] delayBytes = BitConverter.GetBytes((float)kvp.Value.Delay);
-					for (int i = 0; i < delayBytes.Length; i++)
-						spawnsBuffer[SpawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + 4 + i] = delayBytes[i];
+					Buffer.BlockCopy(BitConverter.GetBytes(kvp.Value.Enemy?.SpawnsetType ?? -1), 0, spawnsBuffer, spawnsHeaderBufferSize + kvp.Key * SpawnBufferSize, sizeof(int));
+					Buffer.BlockCopy(BitConverter.GetBytes((float)kvp.Value.Delay), 0, spawnsBuffer, spawnsHeaderBufferSize + kvp.Key * SpawnBufferSize + 4, sizeof(float));
 				}
 
-				practiceBuffer[0] = Hand;
-				byte[] additionalGemsBytes = BitConverter.GetBytes(AdditionalGems);
-				for (int i = 0; i < additionalGemsBytes.Length; i++)
-					practiceBuffer[1 + i] = additionalGemsBytes[i];
-				byte[] timerStartBytes = BitConverter.GetBytes(TimerStart);
-				for (int i = 0; i < timerStartBytes.Length; i++)
-					practiceBuffer[5 + i] = timerStartBytes[i];
+				// Create settings.
+				int settingsBufferSize = GetSettingsBufferSize(SpawnVersion);
+				byte[] settingsBuffer = new byte[settingsBufferSize];
+
+				if (SpawnVersion >= 5)
+				{
+					Buffer.BlockCopy(new[] { Hand }, 0, settingsBuffer, 0, sizeof(byte));
+					Buffer.BlockCopy(BitConverter.GetBytes(AdditionalGems), 0, settingsBuffer, 1, sizeof(int));
+					if (SpawnVersion >= 6)
+						Buffer.BlockCopy(BitConverter.GetBytes(TimerStart), 0, settingsBuffer, 5, sizeof(float));
+				}
 
 				// Create the file buffer.
-				byte[] fileBuffer;
-				if (Version == 0x04)
-				{
-					fileBuffer = new byte[settingsBuffer.Length + arenaBuffer.Length + spawnsBuffer.Length];
-
-					Buffer.BlockCopy(settingsBuffer, 0, fileBuffer, 0, settingsBuffer.Length);
-					Buffer.BlockCopy(arenaBuffer, 0, fileBuffer, settingsBuffer.Length, arenaBuffer.Length);
-					Buffer.BlockCopy(spawnsBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length, spawnsBuffer.Length);
-				}
-				else if (Version == 0x06)
-				{
-					fileBuffer = new byte[settingsBuffer.Length + arenaBuffer.Length + spawnsBuffer.Length + practiceBuffer.Length];
-
-					Buffer.BlockCopy(settingsBuffer, 0, fileBuffer, 0, settingsBuffer.Length);
-					Buffer.BlockCopy(arenaBuffer, 0, fileBuffer, settingsBuffer.Length, arenaBuffer.Length);
-					Buffer.BlockCopy(spawnsBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length, spawnsBuffer.Length);
-					Buffer.BlockCopy(practiceBuffer, 0, fileBuffer, settingsBuffer.Length + arenaBuffer.Length + spawnsBuffer.Length, practiceBuffer.Length);
-				}
-				else
-				{
-					throw new($"The format version '{Version}' is unsupported. Please use either version 4 or 6.");
-				}
+				byte[] fileBuffer = new byte[headerBuffer.Length + arenaBuffer.Length + spawnsHeaderBuffer.Length + spawnsBuffer.Length + settingsBuffer.Length];
+				Buffer.BlockCopy(headerBuffer, 0, fileBuffer, 0, headerBuffer.Length);
+				Buffer.BlockCopy(arenaBuffer, 0, fileBuffer, headerBuffer.Length, arenaBuffer.Length);
+				Buffer.BlockCopy(spawnsHeaderBuffer, 0, fileBuffer, headerBuffer.Length + arenaBuffer.Length, spawnsHeaderBuffer.Length);
+				Buffer.BlockCopy(spawnsBuffer, 0, fileBuffer, headerBuffer.Length + arenaBuffer.Length + spawnsHeaderBuffer.Length, spawnsBuffer.Length);
+				Buffer.BlockCopy(settingsBuffer, 0, fileBuffer, headerBuffer.Length + arenaBuffer.Length + spawnsHeaderBuffer.Length + spawnsBuffer.Length, settingsBuffer.Length);
 
 				bytes = fileBuffer;
 				return true;
@@ -395,5 +380,7 @@ namespace DevilDaggersCore.Spawnsets
 				return false;
 			}
 		}
+
+		#endregion Converting
 	}
 }
