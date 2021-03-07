@@ -14,7 +14,7 @@ namespace DevilDaggersCore.Wpf.Windows
 				DoNotAskAgainCheckBox.Visibility = Visibility.Visible;
 		}
 
-		public bool IsConfirmed { get; set; }
+		public bool? IsConfirmed { get; set; }
 		public bool DoNotAskAgain { get; set; }
 
 		private void YesButton_Click(object sender, RoutedEventArgs e)
@@ -25,6 +25,9 @@ namespace DevilDaggersCore.Wpf.Windows
 		}
 
 		private void NoButton_Click(object sender, RoutedEventArgs e)
-			=> Close();
+		{
+			IsConfirmed = false;
+			Close();
+		}
 	}
 }
