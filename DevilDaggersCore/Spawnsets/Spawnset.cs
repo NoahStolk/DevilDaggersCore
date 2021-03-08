@@ -346,6 +346,11 @@ namespace DevilDaggersCore.Spawnsets
 				{
 					Buffer.BlockCopy(BitConverter.GetBytes(kvp.Value.Enemy?.SpawnsetType ?? -1), 0, spawnsBuffer, kvp.Key * SpawnBufferSize, sizeof(int));
 					Buffer.BlockCopy(BitConverter.GetBytes((float)kvp.Value.Delay), 0, spawnsBuffer, kvp.Key * SpawnBufferSize + 4, sizeof(float));
+
+					spawnsBuffer[kvp.Key * SpawnBufferSize + 12] = 0x03;
+					spawnsBuffer[kvp.Key * SpawnBufferSize + 22] = 0xF0;
+					spawnsBuffer[kvp.Key * SpawnBufferSize + 23] = 0x41;
+					spawnsBuffer[kvp.Key * SpawnBufferSize + 24] = 0x0A;
 				}
 
 				// Create settings.
