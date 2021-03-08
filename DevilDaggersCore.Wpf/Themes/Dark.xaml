@@ -197,14 +197,6 @@
 		</Style.Setters>
 	</Style>
 
-	<Style TargetType="Image" x:Key="Logo">
-		<Style.Setters>
-			<Setter Property="Width" Value="96" />
-			<Setter Property="Source" Value="/Content/Images/Icon/Icon32.png" />
-			<Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
-		</Style.Setters>
-	</Style>
-
 	<Style TargetType="RadioButton">
 		<Style.Setters>
 			<Setter Property="Foreground" Value="{StaticResource Text}" />
