@@ -333,7 +333,7 @@ namespace DevilDaggersCore.Spawnsets
 				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(WorldVersion);
 				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
 				spawnsHeaderBuffer[12] = 0x01;
-				spawnsHeaderBuffer[16] = 0xF4;
+				spawnsHeaderBuffer[16] = WorldVersion == 8 ? (byte)0x90 : (byte)0xF4;
 				spawnsHeaderBuffer[17] = 0x01;
 				spawnsHeaderBuffer[20] = 0xFA;
 				spawnsHeaderBuffer[24] = 0x78;
