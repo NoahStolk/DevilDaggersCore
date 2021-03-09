@@ -142,11 +142,6 @@
 			<Setter Property="Foreground" Value="{StaticResource Text}" />
 		</Style.Setters>
 	</Style>
-	<Style TargetType="Label" x:Key="TitleLabel" BasedOn="{StaticResource {x:Type Label}}">
-		<Style.Setters>
-			<Setter Property="FontSize" Value="20" />
-		</Style.Setters>
-	</Style>
 	<Style TargetType="Label" x:Key="BoldLabel" BasedOn="{StaticResource {x:Type Label}}">
 		<Style.Setters>
 			<Setter Property="Margin" Value="0,0,0,6" />
