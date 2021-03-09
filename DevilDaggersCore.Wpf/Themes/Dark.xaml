@@ -4,8 +4,11 @@
 					xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 	<!-- COLORS -->
 	<SolidColorBrush x:Key="Gray1" Color="#111" />
+	<SolidColorBrush x:Key="Gray18" Color="#181818" />
 	<SolidColorBrush x:Key="Gray2" Color="#222" />
+	<SolidColorBrush x:Key="Gray28" Color="#282828" />
 	<SolidColorBrush x:Key="Gray3" Color="#333" />
+	<SolidColorBrush x:Key="Gray38" Color="#383838" />
 	<SolidColorBrush x:Key="Gray4" Color="#444" />
 	<SolidColorBrush x:Key="Gray5" Color="#555" />
 	<SolidColorBrush x:Key="Gray6" Color="#666" />
