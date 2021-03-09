@@ -233,10 +233,11 @@ namespace DevilDaggersCore.Spawnsets
 			}
 		}
 
-		public static bool TryGetSpawnData(byte[] spawnsetFileBytes, out SpawnsetData spawnsetData)
+		public static bool TryGetSpawnsetData(byte[] spawnsetFileBytes, out SpawnsetData spawnsetData)
 		{
 			try
 			{
+				int spawnVersion = BitConverter.ToInt32(spawnsetFileBytes, 0);
 				int worldVersion = BitConverter.ToInt32(spawnsetFileBytes, 4);
 				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(worldVersion);
 				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
@@ -277,12 +278,28 @@ namespace DevilDaggersCore.Spawnsets
 					}
 				}
 
+				byte? hand = null;
+				int? additionalGems = null;
+				float? timerStart = null;
+				int settingsBufferSize = GetSettingsBufferSize(spawnVersion);
+				int settingsBufferStart = spawnsetFileBytes.Length - settingsBufferSize;
+				if (spawnVersion > 4)
+				{
+					hand = spawnsetFileBytes[settingsBufferStart];
+					additionalGems = BitConverter.ToInt32(spawnsetFileBytes, settingsBufferStart + sizeof(byte));
+					if (spawnVersion > 5)
+						timerStart = BitConverter.ToSingle(spawnsetFileBytes, settingsBufferStart + sizeof(byte) + sizeof(int));
+				}
+
 				spawnsetData = new()
 				{
 					NonLoopSpawnCount = nonLoopSpawns,
 					LoopSpawnCount = loopSpawns,
 					NonLoopLength = nonLoopSpawns == 0 ? null : nonLoopSeconds,
 					LoopLength = loopSpawns == 0 ? null : loopSeconds,
+					Hand = hand,
+					AdditionalGems = additionalGems,
+					TimerStart = timerStart,
 				};
 
 				return true;
