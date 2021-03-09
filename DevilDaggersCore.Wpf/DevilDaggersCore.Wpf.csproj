@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>DevilDaggersCore.Wpf</PackageId>
-    <Version>1.3.16</Version>
+    <Version>1.3.17</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
   </PropertyGroup>

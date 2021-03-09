@@ -10,8 +10,11 @@ namespace DevilDaggersCore.Wpf.Utils
 		static ColorUtils()
 		{
 			AddBrushResource("Gray1");
+			AddBrushResource("Gray18");
 			AddBrushResource("Gray2");
+			AddBrushResource("Gray28");
 			AddBrushResource("Gray3");
+			AddBrushResource("Gray38");
 			AddBrushResource("Gray4");
 			AddBrushResource("Gray5");
 			AddBrushResource("Gray6");
