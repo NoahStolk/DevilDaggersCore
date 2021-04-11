@@ -80,7 +80,9 @@ namespace DevilDaggersCore.Spawnsets
 		public int AdditionalGems
 		{
 			get => _additionalGems;
-			set => _additionalGems = Math.Clamp(value, 0, 1000000);
+
+			// Gem collection will be "disabled" in-game when this field is set to int.MinValue.
+			set => _additionalGems = value == int.MinValue ? int.MinValue : Math.Clamp(value, 0, 1000000);
 		}
 
 		public float TimerStart
@@ -139,7 +141,7 @@ namespace DevilDaggersCore.Spawnsets
 		public static bool IsEmptySpawn(int enemyType)
 			=> enemyType < 0 || enemyType > 9;
 
-		public int GetInitialGems() => AdditionalGems + Hand switch
+		public int GetInitialGems() => Math.Clamp(AdditionalGems, 0, 1000000) + Hand switch
 		{
 			2 => 10,
 			3 => 70,
