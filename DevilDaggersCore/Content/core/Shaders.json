@@ -15,6 +15,14 @@
 		]
 	},
 	{
+		"AssetName": "guifontcolour",
+		"Description": "?",
+		"Tags": [
+			"Font",
+			"UI"
+		]
+	},
+	{
 		"AssetName": "guifontlev",
 		"Description": "?",
 		"Tags": [
