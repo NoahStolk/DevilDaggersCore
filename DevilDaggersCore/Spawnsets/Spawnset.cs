@@ -18,7 +18,6 @@ namespace DevilDaggersCore.Spawnsets
 		private float _shrinkEnd = 20;
 		private float _shrinkRate = 0.025f;
 		private float _brightness = 60;
-		private GameMode _gameMode;
 		private byte _hand = 1;
 		private int _additionalGems;
 		private float _timerStart;
@@ -73,11 +72,7 @@ namespace DevilDaggersCore.Spawnsets
 			set => _brightness = Math.Max(value, 0);
 		}
 
-		public GameMode GameMode
-		{
-			get => _gameMode;
-			set => _gameMode = value;
-		}
+		public GameMode GameMode { get; set; }
 
 		public byte Hand
 		{
@@ -158,7 +153,10 @@ namespace DevilDaggersCore.Spawnsets
 		};
 
 		public string GetGameVersionString()
-			=> WorldVersion == 8 ? "Pre-release / V1" : SpawnVersion == 4 ? "V2 / V3" : "V3.1";
+			=> GetGameVersionString(WorldVersion, SpawnVersion);
+
+		public static string GetGameVersionString(int worldVersion, int spawnVersion)
+			=> worldVersion == 8 ? "Pre-release / V1" : spawnVersion == 4 ? "V2 / V3" : "V3.1";
 
 		public (double LoopLength, double EndLoopSpawns) GetEndLoopData()
 		{
