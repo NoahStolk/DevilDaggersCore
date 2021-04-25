@@ -157,6 +157,28 @@ namespace DevilDaggersCore.Spawnsets
 			_ => 0,
 		};
 
+		public string GetGameVersionString()
+			=> WorldVersion == 8 ? "Pre-release / V1" : SpawnVersion == 4 ? "V2 / V3" : "V3.1";
+
+		public (double LoopLength, double EndLoopSpawns) GetEndLoopData()
+		{
+			double loopLength = 0;
+			int endLoopSpawns = 0;
+			for (int i = Spawns.Count - 1; i >= 0; i--)
+			{
+				loopLength += Spawns[i].Delay;
+				if (Spawns[i].Enemy == null || i == 0)
+					break;
+
+				endLoopSpawns++;
+			}
+
+			if (!Spawns.Any(s => s.Value.Enemy == null) && Spawns.Count > 0)
+				endLoopSpawns++;
+
+			return (loopLength, endLoopSpawns);
+		}
+
 		#endregion Utilities
 
 		#region Parsing
