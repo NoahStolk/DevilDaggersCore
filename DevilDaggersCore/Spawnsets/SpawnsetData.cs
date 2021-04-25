@@ -6,6 +6,7 @@
 		public int LoopSpawnCount { get; set; }
 		public float? NonLoopLength { get; set; }
 		public float? LoopLength { get; set; }
+		public GameMode GameMode { get; set; }
 		public byte? Hand { get; set; }
 		public int? AdditionalGems { get; set; }
 		public float? TimerStart { get; set; }

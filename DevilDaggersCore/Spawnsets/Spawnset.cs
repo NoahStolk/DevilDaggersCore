@@ -18,6 +18,7 @@ namespace DevilDaggersCore.Spawnsets
 		private float _shrinkEnd = 20;
 		private float _shrinkRate = 0.025f;
 		private float _brightness = 60;
+		private GameMode _gameMode;
 		private byte _hand = 1;
 		private int _additionalGems;
 		private float _timerStart;
@@ -26,7 +27,7 @@ namespace DevilDaggersCore.Spawnsets
 		{
 		}
 
-		public Spawnset(int spawnVersion, int worldVersion, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, byte hand, int additionalGems, float timerStart)
+		public Spawnset(int spawnVersion, int worldVersion, SortedDictionary<int, Spawn> spawns, float[,] arenaTiles, float shrinkStart, float shrinkEnd, float shrinkRate, float brightness, GameMode gameMode, byte hand, int additionalGems, float timerStart)
 		{
 			SpawnVersion = spawnVersion;
 			WorldVersion = worldVersion;
@@ -36,6 +37,7 @@ namespace DevilDaggersCore.Spawnsets
 			ShrinkEnd = shrinkEnd;
 			ShrinkRate = shrinkRate;
 			Brightness = brightness;
+			GameMode = gameMode;
 			Hand = hand;
 			AdditionalGems = additionalGems;
 			TimerStart = timerStart;
@@ -69,6 +71,12 @@ namespace DevilDaggersCore.Spawnsets
 		{
 			get => _brightness;
 			set => _brightness = Math.Max(value, 0);
+		}
+
+		public GameMode GameMode
+		{
+			get => _gameMode;
+			set => _gameMode = value;
 		}
 
 		public byte Hand
@@ -171,6 +179,7 @@ namespace DevilDaggersCore.Spawnsets
 				float shrinkStart = BitConverter.ToSingle(headerBuffer, 12);
 				float shrinkRate = BitConverter.ToSingle(headerBuffer, 16);
 				float brightness = BitConverter.ToSingle(headerBuffer, 20);
+				GameMode gameMode = (GameMode)BitConverter.ToInt32(headerBuffer, 24);
 
 				// Read arena.
 				byte[] arenaBuffer = new byte[ArenaBufferSize];
@@ -221,7 +230,7 @@ namespace DevilDaggersCore.Spawnsets
 						timerStart = BitConverter.ToSingle(practiceBuffer, 5);
 				}
 
-				spawnset = new(spawnVersion, worldVersion, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, hand, additionalGems, timerStart);
+				spawnset = new(spawnVersion, worldVersion, spawns, arenaTiles, shrinkStart, shrinkEnd, shrinkRate, brightness, gameMode, hand, additionalGems, timerStart);
 
 				return true;
 			}
@@ -241,6 +250,7 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				int spawnVersion = BitConverter.ToInt32(spawnsetFileBytes, 0);
 				int worldVersion = BitConverter.ToInt32(spawnsetFileBytes, 4);
+				GameMode gameMode = (GameMode)BitConverter.ToInt32(spawnsetFileBytes, 24);
 				int spawnsHeaderBufferSize = GetSpawnsHeaderBufferSize(worldVersion);
 				byte[] spawnsHeaderBuffer = new byte[spawnsHeaderBufferSize];
 				Buffer.BlockCopy(spawnsetFileBytes, HeaderBufferSize + ArenaBufferSize, spawnsHeaderBuffer, 0, spawnsHeaderBufferSize);
@@ -299,6 +309,7 @@ namespace DevilDaggersCore.Spawnsets
 					LoopSpawnCount = loopSpawns,
 					NonLoopLength = nonLoopSpawns == 0 ? null : nonLoopSeconds,
 					LoopLength = loopSpawns == 0 ? null : loopSeconds,
+					GameMode = gameMode,
 					Hand = hand,
 					AdditionalGems = additionalGems,
 					TimerStart = timerStart,
@@ -332,6 +343,7 @@ namespace DevilDaggersCore.Spawnsets
 				Buffer.BlockCopy(BitConverter.GetBytes(ShrinkStart), 0, headerBuffer, 12, sizeof(float));
 				Buffer.BlockCopy(BitConverter.GetBytes(ShrinkRate), 0, headerBuffer, 16, sizeof(float));
 				Buffer.BlockCopy(BitConverter.GetBytes(Brightness), 0, headerBuffer, 20, sizeof(float));
+				Buffer.BlockCopy(BitConverter.GetBytes((int)GameMode), 0, headerBuffer, 24, sizeof(int));
 				headerBuffer[28] = 0x33;
 				headerBuffer[32] = 0x01;
 
