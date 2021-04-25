@@ -305,11 +305,13 @@ namespace DevilDaggersCore.Spawnsets
 
 				spawnsetData = new()
 				{
+					SpawnVersion = spawnVersion,
+					WorldVersion = worldVersion,
+					GameMode = gameMode,
 					NonLoopSpawnCount = nonLoopSpawns,
 					LoopSpawnCount = loopSpawns,
 					NonLoopLength = nonLoopSpawns == 0 ? null : nonLoopSeconds,
 					LoopLength = loopSpawns == 0 ? null : loopSeconds,
-					GameMode = gameMode,
 					Hand = hand,
 					AdditionalGems = additionalGems,
 					TimerStart = timerStart,
