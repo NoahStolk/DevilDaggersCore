@@ -156,7 +156,7 @@ namespace DevilDaggersCore.Spawnsets
 			=> GetGameVersionString(WorldVersion, SpawnVersion);
 
 		public static string GetGameVersionString(int worldVersion, int spawnVersion)
-			=> worldVersion == 8 ? "Pre-release / V1" : spawnVersion == 4 ? "V2 / V3" : "V3.1";
+			=> worldVersion == 8 ? "V0 / V1" : spawnVersion == 4 ? "V2 / V3" : "V3.1";
 
 		public (double LoopLength, double EndLoopSpawns) GetEndLoopData()
 		{
