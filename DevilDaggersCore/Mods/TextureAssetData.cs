@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace DevilDaggersCore.Mods
+﻿namespace DevilDaggersCore.Mods
 {
 	public class TextureAssetData : AssetData
 	{
-		public TextureAssetData(string assetName, string description, bool isProhibited, List<string> tags, int defaultWidth, int defaultHeight, bool isModelTexture, string modelBinding)
-			: base(assetName, description, isProhibited, tags)
+		public TextureAssetData(string assetName, bool isProhibited, int defaultWidth, int defaultHeight, bool isModelTexture, string modelBinding)
+			: base(assetName, isProhibited)
 		{
 			DefaultWidth = defaultWidth;
 			DefaultHeight = defaultHeight;

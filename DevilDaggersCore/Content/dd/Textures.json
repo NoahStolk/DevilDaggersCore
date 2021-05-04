@@ -4,3454 +4,1947 @@
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "blood",
-		"Description": "Blood decals",
-		"Tags": [
-			"Particles"
-		]
+		"AssetName": "blood"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid",
-		"Description": "Skull I base texture",
-		"Tags": [
-			"Enemy",
-			"Skull I"
-		]
+		"AssetName": "boid"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2",
-		"Description": "Skull II base texture",
-		"Tags": [
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2gib",
-		"Description": "Skull II death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2hit",
-		"Description": "Skull II damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2hit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2horns",
-		"Description": "Skull II horns",
-		"Tags": [
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2horns"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2hornsgib",
-		"Description": "Skull II horns death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2hornsgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2hornshit",
-		"Description": "Skull II horns damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull II"
-		]
+		"AssetName": "boid2hornshit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2hornslev",
-		"Description": "Transmuted Skull II horns",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull II"
-		]
+		"AssetName": "boid2hornslev"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2lev",
-		"Description": "Transmuted Skull II base texture",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull II"
-		]
+		"AssetName": "boid2lev"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid2levgib",
-		"Description": "Transmuted Skull II death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Transmuted Skull II"
-		]
+		"AssetName": "boid2levgib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3",
-		"Description": "Skull III base texture",
-		"Tags": [
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3gib",
-		"Description": "Skull III death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3hit",
-		"Description": "Skull III damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3hit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3horns",
-		"Description": "Skull III horns",
-		"Tags": [
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3horns"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3hornsgib",
-		"Description": "Skull III horns death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3hornsgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3hornshit",
-		"Description": "Skull III horns damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3hornshit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3hornslev",
-		"Description": "Transmuted Skull III horns",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull III"
-		]
+		"AssetName": "boid3hornslev"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3jaw",
-		"Description": "Skull III jaw",
-		"Tags": [
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3jaw"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3jawgib",
-		"Description": "Skull III jaw death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3jawgib"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3jawhit",
-		"Description": "Skull III jaw damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull III"
-		]
+		"AssetName": "boid3jawhit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3jawlev",
-		"Description": "Transmuted Skull III jaw",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull III"
-		]
+		"AssetName": "boid3jawlev"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid3lev",
-		"Description": "Transmuted Skull III base texture",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull III"
-		]
+		"AssetName": "boid3lev"
 	},
 	{
 		"DefaultWidth": 512,
 		"DefaultHeight": 512,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4",
-		"Description": "Skull IV base texture",
-		"Tags": [
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4gib",
-		"Description": "Skull IV death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4gib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4hit",
-		"Description": "Skull IV damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4hit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4jaw",
-		"Description": "Skull IV jaw",
-		"Tags": [
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4jaw"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4jawgib",
-		"Description": "Skull IV jaw death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4jawgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4jawhit",
-		"Description": "Skull IV jaw damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull IV"
-		]
+		"AssetName": "boid4jawhit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4jawlev",
-		"Description": "Transmuted Skull IV jaw",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull IV"
-		]
+		"AssetName": "boid4jawlev"
 	},
 	{
 		"DefaultWidth": 512,
 		"DefaultHeight": 512,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boid4lev",
-		"Description": "Transmuted Skull IV base texture",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull IV"
-		]
+		"AssetName": "boid4lev"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boidgib",
-		"Description": "Skull I death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Skull I"
-		]
+		"AssetName": "boidgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boidhit",
-		"Description": "Skull I damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Skull I"
-		]
+		"AssetName": "boidhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "boidlev",
-		"Description": "Transmuted Skull I",
-		"Tags": [
-			"Enemy",
-			"Transmuted Skull I"
-		]
+		"AssetName": "boidlev"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "tile2",
-		"AssetName": "bottom",
-		"Description": "Tile bottom?",
-		"Tags": [
-			"Arena"
-		]
+		"AssetName": "bottom"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "crystal",
-		"Description": "Unused",
-		"Tags": [
-			"Unused"
-		]
+		"AssetName": "crystal"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger1",
-		"AssetName": "dagger",
-		"Description": "Level 1 Dagger",
-		"Tags": [
-			"Dagger"
-		]
+		"AssetName": "dagger"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger",
-		"AssetName": "dagger0",
-		"Description": "Pleb Lobby Dagger",
-		"Tags": [
-			"Dagger",
-			"Pleb"
-		]
+		"AssetName": "dagger0"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger2",
-		"AssetName": "dagger2",
-		"Description": "Level 2 Dagger",
-		"Tags": [
-			"Dagger"
-		]
+		"AssetName": "dagger2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger3",
-		"AssetName": "dagger3",
-		"Description": "Level 3 Dagger / Devil Lobby Dagger",
-		"Tags": [
-			"Dagger",
-			"Devil"
-		]
+		"AssetName": "dagger3"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger4",
-		"AssetName": "dagger4",
-		"Description": "Level 3 Homing Dagger",
-		"Tags": [
-			"Dagger"
-		]
+		"AssetName": "dagger4"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger5",
-		"AssetName": "dagger5",
-		"Description": "Level 4 Dagger",
-		"Tags": [
-			"Dagger"
-		]
+		"AssetName": "dagger5"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "dagger6",
-		"AssetName": "dagger6",
-		"Description": "Level 4 Homing Dagger",
-		"Tags": [
-			"Dagger"
-		]
+		"AssetName": "dagger6"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "daggerbronze",
-		"AssetName": "daggerbronze",
-		"Description": "Bronze Lobby Dagger",
-		"Tags": [
-			"Bronze",
-			"Dagger"
-		]
+		"AssetName": "daggerbronze"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "daggergold",
-		"AssetName": "daggergold",
-		"Description": "Golden Lobby Dagger",
-		"Tags": [
-			"Dagger",
-			"Golden"
-		]
+		"AssetName": "daggergold"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "daggersilver",
-		"AssetName": "daggersilver",
-		"Description": "Silver Lobby Dagger",
-		"Tags": [
-			"Dagger",
-			"Silver"
-		]
+		"AssetName": "daggersilver"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "emberflame",
-		"Description": "Primary fire after-embers / Decals base texture",
-		"Tags": [
-			"Particles"
-		]
+		"AssetName": "emberflame"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "feather",
-		"Description": "Unused",
-		"Tags": [
-			"Unused"
-		]
+		"AssetName": "feather"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontbronze",
-		"Description": "Bronze font",
-		"Tags": [
-			"Bronze",
-			"Font",
-			"UI"
-		]
+		"AssetName": "fontbronze"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontbronzeover",
-		"Description": "Bronze font hover",
-		"Tags": [
-			"Bronze",
-			"Font",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontbronzeover"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontdevil",
-		"Description": "Devil font",
-		"Tags": [
-			"Devil",
-			"Font",
-			"UI"
-		]
+		"AssetName": "fontdevil"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontdevilover",
-		"Description": "Devil font hover",
-		"Tags": [
-			"Devil",
-			"Font",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontdevilover"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontgold",
-		"Description": "Golden font",
-		"Tags": [
-			"Font",
-			"Golden",
-			"UI"
-		]
+		"AssetName": "fontgold"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontgoldover",
-		"Description": "Golden font hover",
-		"Tags": [
-			"Font",
-			"Golden",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontgoldover"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontgrad",
-		"Description": "Default UI font",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "fontgrad"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontgrad2",
-		"Description": "Default UI colored font",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "fontgrad2"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontgrad3",
-		"Description": "Default UI colored font over",
-		"Tags": [
-			"Font",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontgrad3"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontlevi",
-		"Description": "Leviathan font",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "fontlevi"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontlevibg",
-		"Description": "Leviathan font mask",
-		"Tags": [
-			"Font",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontlevibg"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontleviover",
-		"Description": "Leviathan font over",
-		"Tags": [
-			"Font",
-			"Hover",
-			"UI"
-		]
+		"AssetName": "fontleviover"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontpleb",
-		"Description": "Pleb font",
-		"Tags": [
-			"Font",
-			"Pleb",
-			"UI"
-		]
+		"AssetName": "fontpleb"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontplebover",
-		"Description": "Pleb font hover",
-		"Tags": [
-			"Font",
-			"Hover",
-			"Pleb",
-			"UI"
-		]
+		"AssetName": "fontplebover"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontsilver",
-		"Description": "Silver font",
-		"Tags": [
-			"Font",
-			"Silver",
-			"UI"
-		]
+		"AssetName": "fontsilver"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "fontsilverover",
-		"Description": "Silver font hover",
-		"Tags": [
-			"Font",
-			"Hover",
-			"Silver",
-			"UI"
-		]
+		"AssetName": "fontsilverover"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib",
-		"Description": "Gem (including gems in Squids)",
-		"Tags": [
-			"Gem"
-		]
+		"AssetName": "gib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib1a",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib1a"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib1b",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib1b"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib1c",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib1c"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib1d",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib1d"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "gib",
-		"AssetName": "gib2",
-		"Description": "Alternate Gem (unused)",
-		"Tags": [
-			"Gem"
-		]
+		"AssetName": "gib2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib2a",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib2a"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib2b",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib2b"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib2c",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib2c"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib2d",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib2d"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib3a",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib3a"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib3b",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib3b"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib3c",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib3c"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gib3d",
-		"Description": "Meat piece base texture",
-		"Tags": [
-			"Gore"
-		]
+		"AssetName": "gib3d"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaegg",
-		"Description": "Spider Egg II base texture",
-		"Tags": [
-			"Enemy",
-			"Spider Egg II"
-		]
+		"AssetName": "gigaegg"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderbody",
-		"Description": "Spider II",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderbody"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspidercrest",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspidercrest"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspidercrestgib",
-		"Description": "Spider II death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspidercrestgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspidercresthit",
-		"Description": "Spider II damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspidercresthit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderfangs",
-		"Description": "Spider II Primary Fangs",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderfangs"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderfangs2",
-		"Description": "Spider II Secondary Fangs",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderfangs2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderfangs2gib",
-		"Description": "Spider II Fangs death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderfangs2gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderfangs2hit",
-		"Description": "Spider II Fangs damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderfangs2hit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderhead",
-		"Description": "Spider II Gem Holder",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderhead"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderhorns",
-		"Description": "Spider II Horns",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderhorns"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderhornsgib",
-		"Description": "Spider II Horns death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderhornsgib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderhornshit",
-		"Description": "Spider II Horns damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderhornshit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderjaw",
-		"Description": "Spider II Mouth",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderjaw"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderleg1",
-		"Description": "Spider II Leg 1",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderleg1"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderleg2",
-		"Description": "Spider II Leg 2",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderleg2"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderleg3",
-		"Description": "Spider II Leg 3",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderleg3"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "gigaspiderpalm",
-		"Description": "Spider II Palm",
-		"Tags": [
-			"Enemy",
-			"Spider II"
-		]
+		"AssetName": "gigaspiderpalm"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand",
-		"AssetName": "hand",
-		"Description": "Level 1 Hand",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand0",
-		"AssetName": "hand0",
-		"Description": "Lobby Hand",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand0"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand2",
-		"AssetName": "hand2",
-		"Description": "Level 2 Hand",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand2"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand3",
-		"AssetName": "hand3",
-		"Description": "Level 3 Hand",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand3"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand4",
-		"AssetName": "hand4",
-		"Description": "Level 3 Hand Flash",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand4"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand5",
-		"AssetName": "hand5",
-		"Description": "Level 4 Hand",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand5"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "hand6",
-		"AssetName": "hand6",
-		"Description": "Level 4 Hand Flash",
-		"Tags": [
-			"Player"
-		]
+		"AssetName": "hand6"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconcrosshair",
-		"Description": "Accuracy Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconcrosshair"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "icondagger",
-		"Description": "Enemies Killed Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "icondagger"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "icondd",
-		"Description": "Application Icon",
-		"Tags": [
-			"Icon"
-		]
+		"AssetName": "icondd"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconeye",
-		"Description": "Replay Recorded Run Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconeye"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconeye2",
-		"Description": "Replay Recorded Run Icon hover",
-		"Tags": [
-			"Hover",
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconeye2"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "icongem",
-		"Description": "Gems Collected Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "icongem"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskcrosshair",
-		"Description": "Accuracy Timeline Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskcrosshair"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskdagger",
-		"Description": "Enemies Killed Timeline Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskdagger"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskgem",
-		"Description": "Gems Collected Timeline Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskgem"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskhoming",
-		"Description": "Homing Daggers Timeline Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskhoming"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskskull",
-		"Description": "Enemies Alive Timeline Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskskull"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconmaskstopwatch",
-		"Description": "Scrubber Time Mark Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconmaskstopwatch"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconreplay",
-		"Description": "Unused icon",
-		"Tags": [
-			"Icon",
-			"UI",
-			"Unused"
-		]
+		"AssetName": "iconreplay"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconreplay2",
-		"Description": "Unused icon",
-		"Tags": [
-			"Icon",
-			"UI",
-			"Unused"
-		]
+		"AssetName": "iconreplay2"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconskull",
-		"Description": "Death Type / Total Deaths Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconskull"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"ModelBinding": "",
-		"AssetName": "iconstopwatch",
-		"Description": "Run Time Icon",
-		"Tags": [
-			"Icon",
-			"UI"
-		]
+		"AssetName": "iconstopwatch"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levicrown",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levicrown"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levicrown2",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levicrown2"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levicrown2jaw",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levicrown2jaw"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levicrownjaw",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levicrownjaw"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levideath",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levideath"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levidividerskull",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levidividerskull"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levileg1",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levileg1"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levileg2",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levileg2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levileg3",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levileg3"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "leviskull",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "leviskull"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "leviskull2",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "leviskull2"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "leviskulljaw",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "leviskulljaw"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levitent",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levitent"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levitent2",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levitent2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levitentgib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levitentgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "levitenthit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "levitenthit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "leviwarp",
-		"Description": "Leviathan Secondary Dome effect",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "leviwarp"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "leviwarpover",
-		"Description": "Leviathan Dome effect / Beckoned Skulls override",
-		"Tags": [
-			"Enemy",
-			"Leviathan"
-		]
+		"AssetName": "leviwarpover"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "logodagger",
-		"AssetName": "logodagger",
-		"Description": "Splash Screen Dagger",
-		"Tags": [
-			"UI"
-		]
+		"AssetName": "logodagger"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "logodagger2",
-		"Description": "Unused",
-		"Tags": [
-			"UI"
-		]
+		"AssetName": "logodagger2"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "logohand",
-		"AssetName": "logohand",
-		"Description": "Splash Screen Hand",
-		"Tags": [
-			"UI"
-		]
+		"AssetName": "logohand"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 64,
 		"ModelBinding": "",
-		"AssetName": "logotext",
-		"Description": "Splash Screen Text",
-		"Tags": [
-			"UI"
-		]
+		"AssetName": "logotext"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "lut",
-		"Description": "Unused post filter",
-		"Tags": [
-			"Post-processing",
-			"Unused"
-		]
+		"AssetName": "lut"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidarm",
-		"Description": "Squid I Tentacle",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidarm"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidcrest",
-		"Description": "Squid I Body texture",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidcrest"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidcrestskull",
-		"Description": "Squid I Gem Holder",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidcrestskull"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidhorns",
-		"Description": "Squid I Gem Holder Horns",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidhorns"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidjaw",
-		"Description": "Squid I Gem Holder Skull Jaw",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidjaw"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "minisquidjawskull",
-		"Description": "Squid I Gem Holder Skull",
-		"Tags": [
-			"Enemy",
-			"Squid I"
-		]
+		"AssetName": "minisquidjawskull"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackbody",
-		"Description": "Gigapede Segment texture",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackbody"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackhead",
-		"Description": "Gigapede Head texture",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackhead"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackjaw",
-		"Description": "Gigapede Jaw",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackjaw"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackleg1",
-		"Description": "Gigapede Leg 1",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackleg1"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackleg2",
-		"Description": "Gigapede Leg 2",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackleg2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblackleg3",
-		"Description": "Gigapede Leg 3",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblackleg3"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblacktail",
-		"Description": "Gigapede Tail",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblacktail"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeblacktaillegs",
-		"Description": "Gigapede Tail Legs",
-		"Tags": [
-			"Enemy",
-			"Gigapede"
-		]
+		"AssetName": "pedeblacktaillegs"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedebody",
-		"Description": "Centipede Body",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedebody"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedebodyfragged",
-		"Description": "Centipede / Gigapede / Ghostpede Segment without gem",
-		"Tags": [
-			"Centipede",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedebodyfragged"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedebodygib",
-		"Description": "Centipede / Gigapede / Ghostpede Segment death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedebodygib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedebodyhit",
-		"Description": "Centipede / Gigapede / Ghostpede Segment damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedebodyhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedehead",
-		"Description": "Centipede Head texture",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedehead"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeheadgib",
-		"Description": "Centipede / Gigapede / Ghostpede Head death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeheadgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeheadhit",
-		"Description": "Centipede / Gigapede / Ghostpede Head damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeheadhit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedejaw",
-		"Description": "Centipede Jaw",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedejaw"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedejawgib",
-		"Description": "Centipede / Gigapede / Ghostpede Jaw death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedejawgib"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 16,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedejawhit",
-		"Description": "Centipede / Gigapede / Ghostpede Jaw damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedejawhit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg1",
-		"Description": "Centipede Leg 1",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedeleg1"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg1gib",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 1 death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg1gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg1hit",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 1 damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg1hit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg2",
-		"Description": "Centipede Leg 2",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedeleg2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg2gib",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 2 death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg2gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg2hit",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 2 damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg2hit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg3",
-		"Description": "Centipede Leg 3",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedeleg3"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg3gib",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 3 death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg3gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedeleg3hit",
-		"Description": "Centipede / Gigapede / Ghostpede Leg 3 damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedeleg3hit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetail",
-		"Description": "Centipede Tail",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedetail"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetailgib",
-		"Description": "Centipede / Gigapede / Ghostpede Tail death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedetailgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetailhit",
-		"Description": "Centipede / Gigapede / Ghostpede Tail damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedetailhit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetaillegs",
-		"Description": "Centipede Tail Legs",
-		"Tags": [
-			"Centipede",
-			"Enemy"
-		]
+		"AssetName": "pedetaillegs"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetaillegsgib",
-		"Description": "Centipede / Gigapede / Ghostpede Tail Leg death",
-		"Tags": [
-			"Centipede",
-			"Death",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedetaillegsgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "pedetaillegshit",
-		"Description": "Centipede / Gigapede / Ghostpede Tail Leg damage",
-		"Tags": [
-			"Centipede",
-			"Damage",
-			"Enemy",
-			"Ghostpede",
-			"Gigapede"
-		]
+		"AssetName": "pedetaillegshit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "tile2",
-		"AssetName": "pillar",
-		"Description": "Tile sides texture",
-		"Tags": [
-			"Arena"
-		]
+		"AssetName": "pillar"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut",
-		"Description": "Arena In-game post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_bronzeflash",
-		"Description": "Bronze Score post filter",
-		"Tags": [
-			"Bronze",
-			"Post-processing"
-		]
+		"AssetName": "post_lut_bronzeflash"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_collect",
-		"Description": "Gem Collected post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut_collect"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_dagger",
-		"Description": "Lobby post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut_dagger"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_death",
-		"Description": "Post Death post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut_death"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_devilflash",
-		"Description": "Devil Score post filter",
-		"Tags": [
-			"Devil",
-			"Post-processing"
-		]
+		"AssetName": "post_lut_devilflash"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_goldflash",
-		"Description": "Golden Score post filter",
-		"Tags": [
-			"Golden",
-			"Post-processing"
-		]
+		"AssetName": "post_lut_goldflash"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_leveldown",
-		"Description": "Death fade out/flash post filter",
-		"Tags": [
-			"Death",
-			"Post-processing"
-		]
+		"AssetName": "post_lut_leveldown"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_levelup",
-		"Description": "Level Up post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut_levelup"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_levi",
-		"Description": "Leviathan Spawn post filter",
-		"Tags": [
-			"Post-processing"
-		]
+		"AssetName": "post_lut_levi"
 	},
 	{
 		"DefaultWidth": 16,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "post_lut_silverflash",
-		"Description": "Silver Score post filter",
-		"Tags": [
-			"Post-processing",
-			"Silver"
-		]
+		"AssetName": "post_lut_silverflash"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "rubble",
-		"Description": "Thorn Tile Destruction texture",
-		"Tags": [
-			"Enemy",
-			"Thorn"
-		]
+		"AssetName": "rubble"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "skulltile",
-		"Description": "Unused",
-		"Tags": [
-			"Unused"
-		]
+		"AssetName": "skulltile"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "smokeblob",
-		"Description": "Emerging Enemies texture",
-		"Tags": [
-			"Particles"
-		]
+		"AssetName": "smokeblob"
 	},
 	{
 		"DefaultWidth": 240,
 		"DefaultHeight": 240,
 		"ModelBinding": "",
-		"AssetName": "sorathmask",
-		"Description": "Sorath Logo texture mask",
-		"Tags": [
-			"Splash Screen"
-		]
+		"AssetName": "sorathmask"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "sorathstone",
-		"Description": "Sorath Stone base texture",
-		"Tags": [
-			"Easter Egg"
-		]
+		"AssetName": "sorathstone"
 	},
 	{
 		"DefaultWidth": 240,
 		"DefaultHeight": 240,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "sorathtexture",
-		"Description": "Sorath Logo base texture",
-		"Tags": [
-			"Splash Screen"
-		]
+		"AssetName": "sorathtexture"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"ModelBinding": "",
-		"AssetName": "sorathvector",
-		"Description": "Sorath Logo texture filter",
-		"Tags": [
-			"Splash Screen"
-		]
+		"AssetName": "sorathvector"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderbody",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderbody"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderbodygib",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderbodygib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderbodyhit",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderbodyhit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spideregg1",
-		"Description": "Spider Egg I Goo base texture",
-		"Tags": [
-			"Enemy",
-			"Spider Egg I"
-		]
+		"AssetName": "spideregg1"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spideregg2",
-		"Description": "Spider Egg I base texture",
-		"Tags": [
-			"Enemy",
-			"Spider Egg I"
-		]
+		"AssetName": "spideregg2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spidereggflash",
-		"Description": "Spider Egg I flashing texture",
-		"Tags": [
-			"Enemy",
-			"Spider Egg I"
-		]
+		"AssetName": "spidereggflash"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderfangs",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderfangs"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderfangsgib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderfangsgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderfangshit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderfangshit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderhead",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderhead"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderheadgib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderheadgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderheadhit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderheadhit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderjaw",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderjaw"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderjawgib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderjawgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderjawhit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderjawhit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg1",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg1"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg1gib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg1gib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg1hit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg1hit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg2",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg2"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg2gib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg2gib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg2hit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg2hit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg3",
-		"Description": "?",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg3"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg3gib",
-		"Description": "?",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg3gib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderleg3hit",
-		"Description": "?",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderleg3hit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderling",
-		"Description": "Spiderling Body base texture",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderling"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlinggib",
-		"Description": "Spiderling Body death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlinggib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlinghit",
-		"Description": "Spiderling Body damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlinghit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg1",
-		"Description": "Spiderling Leg 1",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg1"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg1gib",
-		"Description": "Spiderling Leg 1 death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg1gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg1hit",
-		"Description": "Spiderling Leg 1",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg1hit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg2",
-		"Description": "Spiderling Leg 2",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg2gib",
-		"Description": "Spiderling Leg 2 death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg2gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg2hit",
-		"Description": "Spiderling Leg 2 damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg2hit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg3",
-		"Description": "Spiderling Leg 3",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg3"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg3gib",
-		"Description": "Spiderling Leg 3 death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg3gib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingleg3hit",
-		"Description": "Spiderling Leg 3 damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingleg3hit"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingpalm",
-		"Description": "Spiderling Palm",
-		"Tags": [
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingpalm"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingpalmgib",
-		"Description": "Spiderling Palm death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingpalmgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderlingpalmhit",
-		"Description": "Spiderling Palm damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spiderling"
-		]
+		"AssetName": "spiderlingpalmhit"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderpalm",
-		"Description": "Spider I Palm",
-		"Tags": [
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderpalm"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderpalmgib",
-		"Description": "Spider I Palm death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderpalmgib"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "spiderpalmhit",
-		"Description": "Spider I Palm damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Spider I"
-		]
+		"AssetName": "spiderpalmhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidarm",
-		"Description": "Squid II Tentacle",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidarm"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidarmgib",
-		"Description": "Squid II Tentacle death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidarmgib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidarmhit",
-		"Description": "Squid II Tentacle damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidarmhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcrest",
-		"Description": "Squid II Body texture",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcrest"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcrestgib",
-		"Description": "Squid II Body damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcrestgib"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcresthit",
-		"Description": "Squid II Body death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcresthit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcrestskull",
-		"Description": "Squid II Gem Holder Skull",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcrestskull"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcrestskullgib",
-		"Description": "Squid II Gem Holder Skull death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcrestskullgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidcrestskullhit",
-		"Description": "Squid II Gem Holder Skull damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidcrestskullhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidhorns",
-		"Description": "Squid II Horns",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidhorns"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjaws",
-		"Description": "Squid II Gem Holder Skull Jaw",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjaws"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawsgib",
-		"Description": "Squid II Gem Holder Skull Jaw death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawsgib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawshit",
-		"Description": "Squid II Gem Holder Skull Jaw damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawshit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawskull",
-		"Description": "Squid II",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawskull"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawskullfragged",
-		"Description": "Squid II Gem Holder Without Gem",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawskullfragged"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawskullgib",
-		"Description": "Squid II Gem Holder Skull Jaw",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawskullgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidjawskullhit",
-		"Description": "Squid II Gem Holder Skull Jaw death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidjawskullhit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidteeth",
-		"Description": "Squid II Bottom Teeth",
-		"Tags": [
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidteeth"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidteethgib",
-		"Description": "Squid II Bottom Teeth death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidteethgib"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "squidteethhit",
-		"Description": "Squid II Bottom Teeth damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Squid II"
-		]
+		"AssetName": "squidteethhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "statue1",
-		"Description": "Player Number 3",
-		"Tags": [
-			"Easter Egg"
-		]
+		"AssetName": "statue1"
 	},
 	{
 		"DefaultWidth": 512,
 		"DefaultHeight": 512,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "statue2",
-		"Description": "Player Number 2",
-		"Tags": [
-			"Easter Egg"
-		]
+		"AssetName": "statue2"
 	},
 	{
 		"DefaultWidth": 512,
 		"DefaultHeight": 512,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "statue3",
-		"Description": "Player Number 1",
-		"Tags": [
-			"Easter Egg"
-		]
+		"AssetName": "statue3"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "thorn",
-		"AssetName": "thorn",
-		"Description": "Thorn Body base texture",
-		"Tags": [
-			"Enemy",
-			"Thorn"
-		]
+		"AssetName": "thorn"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "thorn",
-		"AssetName": "thorngib",
-		"Description": "Thorn Body death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Thorn"
-		]
+		"AssetName": "thorngib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "thornhit",
-		"AssetName": "thornhit",
-		"Description": "Thorn Body damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Thorn"
-		]
+		"AssetName": "thornhit"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "tile2",
-		"AssetName": "tile",
-		"Description": "Floor texture",
-		"Tags": [
-			"Arena"
-		]
+		"AssetName": "tile"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedebody",
-		"Description": "Ghostpede segment",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedebody"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedebodyfragged",
-		"Description": "Ghostpede segment without gem",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedebodyfragged"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedecrown",
-		"Description": "Ghostpede extra horns",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedecrown"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedecrowngib",
-		"Description": "Ghostpede extra horns death",
-		"Tags": [
-			"Death",
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedecrowngib"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedecrownhit",
-		"Description": "Ghostpede extra horns damage",
-		"Tags": [
-			"Damage",
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedecrownhit"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedehead",
-		"Description": "Ghostpede head",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedehead"
 	},
 	{
 		"DefaultWidth": 64,
 		"DefaultHeight": 64,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedejaw",
-		"Description": "Ghostpede jaw",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedejaw"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedeleg1",
-		"Description": "Ghostpede leg texture?",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedeleg1"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedeleg2",
-		"Description": "Ghostpede leg texture?",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedeleg2"
 	},
 	{
 		"DefaultWidth": 32,
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedeleg3",
-		"Description": "Ghostpede leg texture?",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedeleg3"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrapedetail",
-		"Description": "Ghostpede tail texture",
-		"Tags": [
-			"Enemy",
-			"Ghostpede"
-		]
+		"AssetName": "ultrapedetail"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrasquidcrest",
-		"Description": "Squid III body",
-		"Tags": [
-			"Enemy",
-			"Squid III"
-		]
+		"AssetName": "ultrasquidcrest"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrasquidcrestskull",
-		"Description": "Squid III body skull",
-		"Tags": [
-			"Enemy",
-			"Squid III"
-		]
+		"AssetName": "ultrasquidcrestskull"
 	},
 	{
 		"DefaultWidth": 512,
 		"DefaultHeight": 512,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrasquidhorns",
-		"Description": "Squid III skull gem holder horns",
-		"Tags": [
-			"Enemy",
-			"Squid III"
-		]
+		"AssetName": "ultrasquidhorns"
 	},
 	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrasquidjaw",
-		"Description": "Squid III skull jaw gem holder",
-		"Tags": [
-			"Enemy",
-			"Squid III"
-		]
+		"AssetName": "ultrasquidjaw"
 	},
 	{
 		"DefaultWidth": 128,
 		"DefaultHeight": 128,
 		"IsModelTexture": true,
 		"ModelBinding": "",
-		"AssetName": "ultrasquidjawskull",
-		"Description": "Squid III skull gem holder",
-		"Tags": [
-			"Enemy",
-			"Squid III"
-		]
+		"AssetName": "ultrasquidjawskull"
 	}
 ]

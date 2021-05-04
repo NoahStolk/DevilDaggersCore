@@ -1,40 +1,17 @@
 [
 	{
-		"AssetName": "gui",
-		"Description": "?",
-		"Tags": [
-			"UI"
-		]
+		"AssetName": "gui"
 	},
 	{
-		"AssetName": "guifont",
-		"Description": "?",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "guifont"
 	},
 	{
-		"AssetName": "guifontcolour",
-		"Description": "?",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "guifontcolour"
 	},
 	{
-		"AssetName": "guifontlev",
-		"Description": "?",
-		"Tags": [
-			"Font",
-			"UI"
-		]
+		"AssetName": "guifontlev"
 	},
 	{
-		"AssetName": "test",
-		"Description": "?",
-		"Tags": [
-			"?"
-		]
+		"AssetName": "test"
 	}
 ]
