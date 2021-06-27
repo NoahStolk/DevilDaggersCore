@@ -362,49 +362,37 @@ namespace DevilDaggersCore.Game
 			throw new($"Could not find enemy info for {nameof(Enemy)} with name '{enemy.Name}' and version '{enemy.GameVersion}'.");
 		}
 
-		public static List<Dagger> GetDaggers(GameVersion gameVersion)
+		public static List<Dagger> GetDaggers(GameVersion gameVersion) => gameVersion switch
 		{
-			return gameVersion switch
-			{
-				GameVersion.V1 => _v1Daggers,
-				GameVersion.V2 => _v2Daggers,
-				GameVersion.V3 => _v3Daggers,
-				_ => _v31Daggers,
-			};
-		}
+			GameVersion.V1 => _v1Daggers,
+			GameVersion.V2 => _v2Daggers,
+			GameVersion.V3 => _v3Daggers,
+			_ => _v31Daggers,
+		};
 
-		public static List<Death> GetDeaths(GameVersion gameVersion)
+		public static List<Death> GetDeaths(GameVersion gameVersion) => gameVersion switch
 		{
-			return gameVersion switch
-			{
-				GameVersion.V1 => _v1Deaths,
-				GameVersion.V2 => _v2Deaths,
-				GameVersion.V3 => _v3Deaths,
-				_ => _v31Deaths,
-			};
-		}
+			GameVersion.V1 => _v1Deaths,
+			GameVersion.V2 => _v2Deaths,
+			GameVersion.V3 => _v3Deaths,
+			_ => _v31Deaths,
+		};
 
-		public static List<Enemy> GetEnemies(GameVersion gameVersion)
+		public static List<Enemy> GetEnemies(GameVersion gameVersion) => gameVersion switch
 		{
-			return gameVersion switch
-			{
-				GameVersion.V1 => _v1Enemies,
-				GameVersion.V2 => _v2Enemies,
-				GameVersion.V3 => _v3Enemies,
-				_ => _v31Enemies,
-			};
-		}
+			GameVersion.V1 => _v1Enemies,
+			GameVersion.V2 => _v2Enemies,
+			GameVersion.V3 => _v3Enemies,
+			_ => _v31Enemies,
+		};
 
-		public static List<Upgrade> GetUpgrades(GameVersion gameVersion)
+		public static List<Upgrade> GetUpgrades(GameVersion gameVersion) => gameVersion switch
 		{
-			return gameVersion switch
-			{
-				GameVersion.V1 => _v1Upgrades,
-				GameVersion.V2 => _v2Upgrades,
-				GameVersion.V3 => _v3Upgrades,
-				_ => _v31Upgrades,
-			};
-		}
+			GameVersion.V1 => _v1Upgrades,
+			GameVersion.V2 => _v2Upgrades,
+			GameVersion.V3 => _v3Upgrades,
+			_ => _v31Upgrades,
+		};
 
 		public static Enemy? GetEnemyBySpawnsetType(GameVersion gameVersion, int spawnsetType)
 			=> GetEnemies(gameVersion).Find(e => e.SpawnsetType == spawnsetType);
