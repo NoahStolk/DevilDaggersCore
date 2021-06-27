@@ -1,40 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DevilDaggersCore.Game
 {
-	public class Enemy : DevilDaggersEntity
+	public record Enemy(GameVersion GameVersion, string Name, string ColorCode, int Hp, int Gems, int NoFarmGems, byte? SpawnsetType, Death? Death, float? Homing3, float? Homing4, params Enemy[] SpawnedBy)
+		: DevilDaggersEntity(GameVersion, Name, ColorCode)
 	{
-		public Enemy(GameVersion gameVersion, string name, string colorCode, int hp, int gems, int noFarmGems, byte? spawnsetType, Death? death, float? homing3, float? homing4, params Enemy[] spawnedBy)
-			: base(gameVersion, name, colorCode)
-		{
-			Hp = hp;
-			Gems = gems;
-			NoFarmGems = noFarmGems;
-			SpawnsetType = spawnsetType;
-			Death = death;
-			Homing3 = homing3;
-			Homing4 = homing4;
-			SpawnedBy = spawnedBy;
-		}
-
-		public int Hp { get; set; }
-
-		public int Gems { get; set; }
-
-		public int NoFarmGems { get; set; }
-
-		public byte? SpawnsetType { get; set; }
-
-		public Death? Death { get; set; }
-
-		public float? Homing3 { get; set; }
-
-		public float? Homing4 { get; set; }
-
-		public IReadOnlyList<Enemy> SpawnedBy { get; set; }
-
 		[JsonIgnore]
 		public int GemHp => Hp / Gems;
 
@@ -42,6 +12,6 @@ namespace DevilDaggersCore.Game
 			=> $"({GemHp} x {Gems})";
 
 		public Enemy Copy()
-			=> new(GameVersion, Name, ColorCode, Hp, Gems, NoFarmGems, SpawnsetType, Death, Homing3, Homing4, SpawnedBy.ToArray());
+			=> new(GameVersion, Name, ColorCode, Hp, Gems, NoFarmGems, SpawnsetType, Death, Homing3, Homing4, SpawnedBy);
 	}
 }
