@@ -6,10 +6,10 @@ namespace DevilDaggersCore.Extensions
 	{
 		public static string TrimEnd(this string s, string value)
 		{
-			if (!s.EndsWith(value, StringComparison.InvariantCulture))
+			if (!s.EndsWith(value))
 				return s;
 
-			return s.Remove(s.LastIndexOf(value, StringComparison.InvariantCulture));
+			return s.Remove(s.LastIndexOf(value));
 		}
 
 		public static string Reverse(this string s)

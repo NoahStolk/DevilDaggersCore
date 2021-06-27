@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace DevilDaggersCore.Game
@@ -414,7 +413,7 @@ namespace DevilDaggersCore.Game
 			=> GetDeaths(gameVersion).Find(e => e.DeathType == deathType);
 
 		public static Death? GetDeathByName(GameVersion gameVersion, string deathName)
-			=> GetDeaths(gameVersion).Find(e => e.Name.ToLower(CultureInfo.InvariantCulture) == deathName.ToLower(CultureInfo.InvariantCulture));
+			=> GetDeaths(gameVersion).Find(e => string.Equals(e.Name, deathName, StringComparison.InvariantCultureIgnoreCase));
 
 		public static Dagger GetDaggerFromTime(GameVersion gameVersion, int timeInTenthsOfMilliseconds)
 		{
