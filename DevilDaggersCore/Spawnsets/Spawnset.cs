@@ -14,6 +14,7 @@ namespace DevilDaggersCore.Spawnsets
 
 		public const int ArenaWidth = 51;
 		public const int ArenaHeight = 51;
+
 		private float _shrinkStart = 50;
 		private float _shrinkEnd = 20;
 		private float _shrinkRate = 0.025f;
