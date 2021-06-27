@@ -2,24 +2,11 @@
 
 namespace DevilDaggersCore.Spawnsets
 {
-	public class Spawn
+	/// <summary>
+	/// Represents an instance of a spawn in a <see cref="Spawnset"/>, which consists of an enemy (<see langword="null"/> if it is an EMPTY spawn) and a delay value.
+	/// </summary>
+	public record Spawn(Enemy? Enemy, double Delay)
 	{
-		public Spawn(Enemy? enemy, double delay)
-		{
-			Enemy = enemy;
-			Delay = delay;
-		}
-
-		/// <summary>
-		/// Represents the enemy in this spawn, or <see langword="null"/> if it is an EMPTY spawn.
-		/// </summary>
-		public Enemy? Enemy { get; set; }
-
-		public double Delay { get; set; }
-
-		public Spawn Copy()
-			=> new(Enemy, Delay);
-
 		public override string ToString()
 			=> $"{Delay:0.0000}: {Enemy?.Name ?? "EMPTY"}";
 	}
