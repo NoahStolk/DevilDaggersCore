@@ -323,19 +323,7 @@ namespace DevilDaggersCore.Spawnsets
 						timerStart = BitConverter.ToSingle(spawnsetFileBytes, settingsBufferStart + sizeof(byte) + sizeof(int));
 				}
 
-				spawnsetData = new()
-				{
-					SpawnVersion = spawnVersion,
-					WorldVersion = worldVersion,
-					GameMode = gameMode,
-					NonLoopSpawnCount = nonLoopSpawns,
-					LoopSpawnCount = loopSpawns,
-					NonLoopLength = nonLoopSpawns == 0 ? null : nonLoopSeconds,
-					LoopLength = loopSpawns == 0 ? null : loopSeconds,
-					Hand = hand,
-					AdditionalGems = additionalGems,
-					TimerStart = timerStart,
-				};
+				spawnsetData = new(spawnVersion, worldVersion, gameMode, nonLoopSpawns, loopSpawns, nonLoopSpawns == 0 ? null : nonLoopSeconds, loopSpawns == 0 ? null : loopSeconds, hand, additionalGems, timerStart);
 
 				return true;
 			}
@@ -343,7 +331,7 @@ namespace DevilDaggersCore.Spawnsets
 			{
 				LogUtils.Log.Error($"Could not parse {nameof(SpawnsetData)}.", ex);
 
-				spawnsetData = new();
+				spawnsetData = new(default, default, default, default, default, default, default, default, default, default);
 
 				return false;
 			}
