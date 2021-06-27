@@ -10,8 +10,5 @@ namespace DevilDaggersCore.Game
 
 		public string GetGemHpString()
 			=> $"({GemHp} x {Gems})";
-
-		public Enemy Copy()
-			=> new(GameVersion, Name, ColorCode, Hp, Gems, NoFarmGems, SpawnsetType, Death, Homing3, Homing4, SpawnedBy);
 	}
 }
