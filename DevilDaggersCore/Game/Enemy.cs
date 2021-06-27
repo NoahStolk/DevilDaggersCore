@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace DevilDaggersCore.Game
 {
-	[JsonObject(MemberSerialization.OptIn)]
 	public class Enemy : DevilDaggersEntity
 	{
 		public Enemy(GameVersion gameVersion, string name, string colorCode, int hp, int gems, int noFarmGems, byte? spawnsetType, Death? death, float? homing3, float? homing4, params Enemy[] spawnedBy)
@@ -20,30 +19,23 @@ namespace DevilDaggersCore.Game
 			SpawnedBy = spawnedBy;
 		}
 
-		[JsonProperty]
 		public int Hp { get; set; }
 
-		[JsonProperty]
 		public int Gems { get; set; }
 
-		[JsonProperty]
 		public int NoFarmGems { get; set; }
 
-		[JsonProperty]
 		public byte? SpawnsetType { get; set; }
 
-		[JsonProperty]
 		public Death? Death { get; set; }
 
-		[JsonProperty]
 		public float? Homing3 { get; set; }
 
-		[JsonProperty]
 		public float? Homing4 { get; set; }
 
-		[JsonProperty]
 		public IReadOnlyList<Enemy> SpawnedBy { get; set; }
 
+		[JsonIgnore]
 		public int GemHp => Hp / Gems;
 
 		public string GetGemHpString()

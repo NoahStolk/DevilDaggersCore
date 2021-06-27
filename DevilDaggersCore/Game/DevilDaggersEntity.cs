@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-
-namespace DevilDaggersCore.Game
+﻿namespace DevilDaggersCore.Game
 {
-	[JsonObject(MemberSerialization.OptIn)]
 	public abstract class DevilDaggersEntity
 	{
 		protected DevilDaggersEntity(GameVersion gameVersion, string name, string colorCode)
@@ -12,13 +9,10 @@ namespace DevilDaggersCore.Game
 			ColorCode = colorCode;
 		}
 
-		[JsonProperty]
 		public GameVersion GameVersion { get; set; }
 
-		[JsonProperty]
 		public string Name { get; set; }
 
-		[JsonProperty]
 		public string ColorCode { get; set; }
 	}
 }
