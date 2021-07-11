@@ -403,16 +403,19 @@ namespace DevilDaggersCore.Game
 		public static Death? GetDeathByName(GameVersion gameVersion, string deathName)
 			=> GetDeaths(gameVersion).Find(e => string.Equals(e.Name, deathName, StringComparison.InvariantCultureIgnoreCase));
 
-		public static Dagger GetDaggerFromTime(GameVersion gameVersion, int timeInTenthsOfMilliseconds)
+		public static Dagger GetDaggerFromTenthsOfMilliseconds(GameVersion gameVersion, int timeInTenthsOfMilliseconds)
+			=> GetDaggerFromSeconds(gameVersion, timeInTenthsOfMilliseconds / 10000.0);
+
+		public static Dagger GetDaggerFromSeconds(GameVersion gameVersion, double timeInSeconds)
 		{
 			List<Dagger> daggers = GetDaggers(gameVersion);
 			for (int i = daggers.Count - 1; i >= 0; i--)
 			{
-				if (timeInTenthsOfMilliseconds >= (daggers[i].UnlockSecond ?? 0) * 10000)
+				if (timeInSeconds >= (daggers[i].UnlockSecond ?? 0))
 					return daggers[i];
 			}
 
-			throw new($"Could not determine dagger based on time '{timeInTenthsOfMilliseconds}'.");
+			throw new ArgumentOutOfRangeException(nameof(timeInSeconds), $"Could not determine dagger based on time '{timeInSeconds:0.0000}'.");
 		}
 
 		public static IEnumerable<GameVersion> GetAppearances(string entityName)
