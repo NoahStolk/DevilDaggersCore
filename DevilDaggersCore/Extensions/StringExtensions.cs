@@ -20,13 +20,13 @@ namespace DevilDaggersCore.Extensions
 			return new string(charArray);
 		}
 
-		public static string TrimAfter(this string s, int count, bool includeThreePeriods = false)
+		public static string TrimAfter(this string s, int count, bool appendThreePeriods = false)
 		{
 			if (s.Length <= count)
 				return s;
 
 			string subString = s.Substring(0, count);
-			return includeThreePeriods ? $"{subString}..." : subString;
+			return appendThreePeriods ? $"{subString}..." : subString;
 		}
 	}
 }
