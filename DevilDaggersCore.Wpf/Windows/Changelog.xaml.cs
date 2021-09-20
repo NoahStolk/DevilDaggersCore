@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Wpf.Models;
+using DevilDaggersCore.Wpf.Models;
 using DevilDaggersCore.Wpf.Utils;
 using System;
 using System.Collections.Generic;

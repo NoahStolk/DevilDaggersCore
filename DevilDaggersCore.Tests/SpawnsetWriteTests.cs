@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Spawnsets;
+using DevilDaggersCore.Spawnsets;
 using JetBrains.Annotations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;

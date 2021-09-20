@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Mods
+namespace DevilDaggersCore.Mods
 {
 	public class AssetData
 	{

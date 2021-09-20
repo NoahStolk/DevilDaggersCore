@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Utils;
+using DevilDaggersCore.Utils;
 using System.Windows;
 
 namespace DevilDaggersCore.Wpf.Windows

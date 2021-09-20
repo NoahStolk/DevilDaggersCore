@@ -1,4 +1,4 @@
-﻿using DevilDaggersCore.Game;
+using DevilDaggersCore.Game;
 
 namespace DevilDaggersCore.Spawnsets
 {

@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Game
+namespace DevilDaggersCore.Game
 {
 	public enum GameVersion
 	{

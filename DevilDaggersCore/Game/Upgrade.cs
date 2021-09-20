@@ -1,4 +1,4 @@
-﻿namespace DevilDaggersCore.Game
+namespace DevilDaggersCore.Game
 {
 	public record Upgrade(GameVersion GameVersion, string Name, string ColorCode, float DefaultSpray, int DefaultShot, float? HomingSpray, int? HomingShot, string UnlocksAt)
 		: DevilDaggersEntity(GameVersion, Name, ColorCode)
