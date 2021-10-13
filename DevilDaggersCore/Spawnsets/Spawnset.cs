@@ -102,7 +102,7 @@ namespace DevilDaggersCore.Spawnsets
 		public static bool IsEmptySpawn(int enemyType)
 			=> enemyType < 0 || enemyType > 9;
 
-		public int GetInitialGems() => Math.Clamp(AdditionalGems, 0, 1000000) + Hand switch
+		public int GetInitialGems() => AdditionalGems + Hand switch
 		{
 			2 => 10,
 			3 => 70,
