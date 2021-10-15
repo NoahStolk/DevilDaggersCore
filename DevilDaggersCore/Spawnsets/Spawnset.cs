@@ -103,36 +103,39 @@ namespace DevilDaggersCore.Spawnsets
 			=> enemyType < 0 || enemyType > 9;
 
 		public (byte EffectiveHand, int EffectiveGemsOrHoming, byte HandModel) GetEffectivePlayerSettings()
+			=> GetEffectivePlayerSettings(Hand, AdditionalGems);
+
+		public static (byte EffectiveHand, int EffectiveGemsOrHoming, byte HandModel) GetEffectivePlayerSettings(byte hand, int additionalGems)
 		{
-			if (Hand <= 1)
+			if (hand <= 1)
 			{
-				if (AdditionalGems < 10)
-					return (1, AdditionalGems, 1);
+				if (additionalGems < 10)
+					return (1, additionalGems, 1);
 
-				if (AdditionalGems < 70)
-					return (2, AdditionalGems, 2);
+				if (additionalGems < 70)
+					return (2, additionalGems, 2);
 
-				if (AdditionalGems == 70)
+				if (additionalGems == 70)
 					return (3, 0, 3);
 
-				if (AdditionalGems == 71)
+				if (additionalGems == 71)
 					return (4, 0, 4);
 
 				return (4, 0, 3);
 			}
 
-			if (Hand == 2)
+			if (hand == 2)
 			{
-				if (AdditionalGems < 0)
-					return (1, AdditionalGems + 10, 1);
+				if (additionalGems < 0)
+					return (1, additionalGems + 10, 1);
 
-				return (2, Math.Min(69, AdditionalGems + 10), 2);
+				return (2, Math.Min(69, additionalGems + 10), 2);
 			}
 
-			if (Hand == 3)
-				return (3, Math.Min(149, AdditionalGems), 3);
+			if (hand == 3)
+				return (3, Math.Min(149, additionalGems), 3);
 
-			return (4, AdditionalGems, 4);
+			return (4, additionalGems, 4);
 		}
 
 		public string GetGameVersionString()
