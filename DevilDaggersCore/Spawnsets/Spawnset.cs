@@ -129,7 +129,7 @@ namespace DevilDaggersCore.Spawnsets
 				if (additionalGems < 0)
 					return (1, additionalGems + 10, 1);
 
-				return (2, Math.Min(69, additionalGems + 10), 2);
+				return (2, Math.Min(59, additionalGems) + 10, 2);
 			}
 
 			if (hand == 3)
