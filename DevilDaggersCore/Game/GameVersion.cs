@@ -6,5 +6,6 @@ namespace DevilDaggersCore.Game
 		V2 = 2,
 		V3 = 3,
 		V31 = 4,
+		V32 = 5,
 	}
 }

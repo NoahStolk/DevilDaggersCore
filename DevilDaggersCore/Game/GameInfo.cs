@@ -225,6 +225,67 @@ namespace DevilDaggersCore.Game
 
 		#endregion V3.1
 
+		#region V3.2
+
+		public static readonly Dagger V32Default = new(GameVersion.V32, "Default", "444444", null);
+		public static readonly Dagger V32Bronze = new(GameVersion.V32, "Bronze", "CD7F32", 60);
+		public static readonly Dagger V32Silver = new(GameVersion.V32, "Silver", "DDDDDD", 120);
+		public static readonly Dagger V32Golden = new(GameVersion.V32, "Golden", "FFDF00", 250);
+		public static readonly Dagger V32Devil = new(GameVersion.V32, "Devil", "FF0000", 500);
+		public static readonly Dagger V32LeviathanDagger = new(GameVersion.V32, "Leviathan", "A00000", 1000);
+
+		public static readonly Upgrade V32Level1 = new(GameVersion.V32, "Level 1", "BB5500", 20, 10, null, null, "N/A");
+		public static readonly Upgrade V32Level2 = new(GameVersion.V32, "Level 2", "FFAA00", 40, 20, null, null, "10 gems");
+		public static readonly Upgrade V32Level3 = new(GameVersion.V32, "Level 3", "00FFFF", 80, 40, 40, 20, "70 gems");
+		public static readonly Upgrade V32Level4 = new(GameVersion.V32, "Level 4", "FF0099", 106f + 2f / 3f, 60, 40, 30, "150 stored homing daggers");
+
+		public static readonly Death V32Fallen = new(GameVersion.V32, "FALLEN", "DDDDDD", 0);
+		public static readonly Death V32Swarmed = new(GameVersion.V32, "SWARMED", "352710", 1);
+		public static readonly Death V32Impaled = new(GameVersion.V32, "IMPALED", "433114", 2);
+		public static readonly Death V32Gored = new(GameVersion.V32, "GORED", "6E5021", 3);
+		public static readonly Death V32Infested = new(GameVersion.V32, "INFESTED", "DCCB00", 4);
+		public static readonly Death V32Opened = new(GameVersion.V32, "OPENED", "976E2E", 5);
+		public static readonly Death V32Purged = new(GameVersion.V32, "PURGED", "4E3000", 6);
+		public static readonly Death V32Desecrated = new(GameVersion.V32, "DESECRATED", "804E00", 7);
+		public static readonly Death V32Sacrificed = new(GameVersion.V32, "SACRIFICED", "AF6B00", 8);
+		public static readonly Death V32Eviscerated = new(GameVersion.V32, "EVISCERATED", "837E75", 9);
+		public static readonly Death V32Annihilated = new(GameVersion.V32, "ANNIHILATED", "478B41", 10);
+		public static readonly Death V32Intoxicated = new(GameVersion.V32, "INTOXICATED", "99A100", 11);
+		public static readonly Death V32Envenomated = new(GameVersion.V32, "ENVENOMATED", "657A00", 12);
+		public static readonly Death V32Incarnated = new(GameVersion.V32, "INCARNATED", "FF0000", 13);
+		public static readonly Death V32Discarnated = new(GameVersion.V32, "DISCARNATED", "FF3131", 14);
+		public static readonly Death V32Entangled = new(GameVersion.V32, "ENTANGLED", "771D00", 15);
+		public static readonly Death V32Haunted = new(GameVersion.V32, "HAUNTED", "C8A2C8", 16);
+
+		public static readonly Enemy V32Squid1 = new(GameVersion.V32, "Squid I", "4E3000", 10, 1, 2, 0x0, V32Purged, 1, 1, 3);
+		public static readonly Enemy V32Squid2 = new(GameVersion.V32, "Squid II", "804E00", 20, 2, 3, 0x1, V32Desecrated, 2, 1, 39);
+		public static readonly Enemy V32Squid3 = new(GameVersion.V32, "Squid III", "AF6B00", 90, 3, 3, 0x6, V32Sacrificed, 3, 9, 244);
+		public static readonly Enemy V32Centipede = new(GameVersion.V32, "Centipede", "837E75", 75, 25, 25, 0x2, V32Eviscerated, 25, 25, 114);
+		public static readonly Enemy V32Gigapede = new(GameVersion.V32, "Gigapede", "478B41", 250, 50, 50, 0x5, V32Annihilated, 50, 50, 259);
+		public static readonly Enemy V32Ghostpede = new(GameVersion.V32, "Ghostpede", "C8A2C8", 500, 10, 10, 0x9, V32Haunted, null, null, 442);
+		public static readonly Enemy V32Leviathan = new(GameVersion.V32, "Leviathan", "FF0000", 1500, 6, 6, 0x4, V32Incarnated, 1500, 1500, 350);
+		public static readonly Enemy V32Thorn = new(GameVersion.V32, "Thorn", "771D00", 120, 0, 0, 0x7, V32Entangled, 12, 12, 447);
+		public static readonly Enemy V32Spider1 = new(GameVersion.V32, "Spider I", "097A00", 25, 1, 1, 0x3, V32Intoxicated, 3, 3, 39);
+		public static readonly Enemy V32Spider2 = new(GameVersion.V32, "Spider II", "13FF00", 200, 1, 1, 0x8, V32Envenomated, 20, 20, 274);
+
+		public static readonly Enemy V32TheOrb = new(GameVersion.V32, "The Orb", "FF3131", 2400, 0, 0, null, V32Discarnated, 2400, 2400, null, V32Leviathan);
+
+		public static readonly Enemy V32Skull1 = new(GameVersion.V32, "Skull I", "352710", 1, 0, 0, null, V32Swarmed, 0.25f, 0.25f, null, V32Squid1, V32Squid2, V32Squid3);
+		public static readonly Enemy V32Skull2 = new(GameVersion.V32, "Skull II", "433114", 5, 1, 1, null, V32Impaled, 1, 1, null, V32Squid1);
+		public static readonly Enemy V32Skull3 = new(GameVersion.V32, "Skull III", "6E5021", 10, 1, 1, null, V32Gored, 1, 1, null, V32Squid2);
+		public static readonly Enemy V32Skull4 = new(GameVersion.V32, "Skull IV", "976E2E", 100, 0, 0, null, V32Opened, 10, 10, null, V32Squid3);
+
+		public static readonly Enemy V32TransmutedSkull1 = new(GameVersion.V32, "Transmuted Skull I", "4C110C", 10, 0, 0, null, V32Swarmed, 1, 1, null, V32Leviathan, V32TheOrb);
+		public static readonly Enemy V32TransmutedSkull2 = new(GameVersion.V32, "Transmuted Skull II", "721A13", 20, 1, 1, null, V32Impaled, 2, 2, null, V32Leviathan, V32TheOrb);
+		public static readonly Enemy V32TransmutedSkull3 = new(GameVersion.V32, "Transmuted Skull III", "982319", 100, 1, 1, null, V32Gored, 10, 10, null, V32Leviathan, V32TheOrb);
+		public static readonly Enemy V32TransmutedSkull4 = new(GameVersion.V32, "Transmuted Skull IV", "BE2C20", 300, 0, 0, null, V32Opened, 30, 30, null, V32Leviathan, V32TheOrb);
+
+		public static readonly Enemy V32SpiderEgg1 = new(GameVersion.V32, "Spider Egg I", "99A100", 3, 0, 0, null, V32Intoxicated, 1, 1, null, V32Spider1);
+		public static readonly Enemy V32SpiderEgg2 = new(GameVersion.V32, "Spider Egg II", "657A00", 3, 0, 0, null, V32Envenomated, 1, 1, null, V32Spider2);
+		public static readonly Enemy V32Spiderling = new(GameVersion.V32, "Spiderling", "DCCB00", 3, 0, 0, null, V32Infested, 1, 1, null, V32SpiderEgg1, V32SpiderEgg2);
+
+		#endregion V3.2
+
 		private static readonly GameVersion[] _gameVersions = (GameVersion[])Enum.GetValues(typeof(GameVersion));
 
 		private static readonly IEnumerable<DevilDaggersEntity> _entities = typeof(GameInfo).GetFields().Where(f => f.FieldType.IsSubclassOf(typeof(DevilDaggersEntity))).Select(f => (DevilDaggersEntity)f.GetValue(null)!);
@@ -309,6 +370,28 @@ namespace DevilDaggersCore.Game
 			{ V31SpiderEgg2, new[] { "Hatches into 5 Spiderlings after 10 seconds" } },
 			{ V31Spiderling, new[] { "Darts towards the player in bursts with random offsets" } },
 			{ V31TheOrb, new[] { "Activates 10 seconds after Leviathan's death", "Behaves like an eyeball, will look at the player, then attract and transmute all skulls by beckoning every 2.5333 seconds", "Becomes stunned under constant fire, cannot look or attract skulls while stunned" } },
+			{ V32Squid1, new[] { "Spawns at the edge of the arena", "Moves slowly and rotates clockwise", "Spawns 10 Skull Is and 1 Skull II every 20 seconds (starting 3 seconds after its initial appearance)" } },
+			{ V32Squid2, new[] { "Spawns at the edge of the arena", "Moves slowly and rotates clockwise", "Spawns 10 Skull Is and 1 Skull III every 20 seconds (starting 3 seconds after its initial appearance)" } },
+			{ V32Squid3, new[] { "Spawns at the edge of the arena", "Moves slowly and rotates clockwise", "Spawns 15 Skull Is and 1 Skull IV every 20 seconds (starting 3 seconds after its initial appearance)" } },
+			{ V32Centipede, new[] { "Emerges approximately 3 seconds after its spawn, starts flying idly for a while, then starts chasing the player", "Regularly dives down and moves underground for a while" } },
+			{ V32Gigapede, new[] { "Emerges approximately 3 seconds after its spawn, then starts chasing the player immediately" } },
+			{ V32Ghostpede, new[] { "Emerges approximately 3 seconds after its spawn, then starts flying in circles high above the arena", "Attracts and consumes all homing daggers, making them useless" } },
+			{ V32Leviathan, new[] { "Activates 8.5333 seconds after its initial appearance", "Attracts and transmutes all skulls by beckoning every 20 seconds, starting 13.5333 seconds after its spawn (5 seconds after becoming active)", "Rotates counter-clockwise", "Drops The Orb 3.3167 seconds after dying" } },
+			{ V32Thorn, new[] { "Emerges approximately 3 seconds after its spawn", "Takes up space" } },
+			{ V32Spider1, new[] { "Spawns at the edge of the arena and starts lifting its head, faces the player after 3 seconds", "Attracts and consumes gems when facing the player, ejecting them as Spider Egg I one at a time", "Hides its head when shot and left unharmed for 1 second", "Begins moving randomly in an unpredictable jittery fashion after initially raising its head" } },
+			{ V32Spider2, new[] { "Spawns at the edge of the arena and starts lifting its head, faces the player after 9 seconds", "Attracts and consumes gems when facing the player, ejecting them as Spider Egg II one at a time", "Hides its head when shot and left unharmed for 1 second", "Begins moving randomly in an unpredictable jittery fashion after initially raising its head (though barely noticeable due to its size)" } },
+			{ V32Skull1, new[] { "Slowly chases the player" } },
+			{ V32Skull2, new[] { "Moves randomly" } },
+			{ V32Skull3, new[] { "Chases the player fast" } },
+			{ V32Skull4, new[] { "Chases the player fast" } },
+			{ V32TransmutedSkull1, new[] { "Slowly chases the player" } },
+			{ V32TransmutedSkull2, new[] { "Moves randomly" } },
+			{ V32TransmutedSkull3, new[] { "Chases the player fast" } },
+			{ V32TransmutedSkull4, new[] { "Chases the player fast" } },
+			{ V32SpiderEgg1, new[] { "Hatches into 5 Spiderlings after 10 seconds" } },
+			{ V32SpiderEgg2, new[] { "Hatches into 5 Spiderlings after 10 seconds" } },
+			{ V32Spiderling, new[] { "Darts towards the player in bursts with random offsets" } },
+			{ V32TheOrb, new[] { "Activates 10 seconds after Leviathan's death", "Behaves like an eyeball, will look at the player, then attract and transmute all skulls by beckoning every 2.5333 seconds", "Becomes stunned under constant fire, cannot look or attract skulls while stunned" } },
 		};
 
 		private static readonly List<Dagger> _v1Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V1).ToList();
@@ -331,6 +414,11 @@ namespace DevilDaggersCore.Game
 		private static readonly List<Enemy> _v31Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V31).ToList();
 		private static readonly List<Upgrade> _v31Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V31).ToList();
 
+		private static readonly List<Dagger> _v32Daggers = _entities.OfType<Dagger>().Where(e => e.GameVersion == GameVersion.V32).ToList();
+		private static readonly List<Death> _v32Deaths = _entities.OfType<Death>().Where(e => e.GameVersion == GameVersion.V32).ToList();
+		private static readonly List<Enemy> _v32Enemies = _entities.OfType<Enemy>().Where(e => e.GameVersion == GameVersion.V32).ToList();
+		private static readonly List<Upgrade> _v32Upgrades = _entities.OfType<Upgrade>().Where(e => e.GameVersion == GameVersion.V32).ToList();
+
 		public static GameVersion? GetGameVersionFromDate(DateTime dateTime)
 		{
 			for (int i = 0; i < _gameVersions.Length; i++)
@@ -348,6 +436,7 @@ namespace DevilDaggersCore.Game
 			GameVersion.V2 => new(2016, 7, 5),
 			GameVersion.V3 => new(2016, 9, 19),
 			GameVersion.V31 => new(2021, 2, 19),
+			GameVersion.V32 => new(2021, 10, 27),
 			_ => null,
 		};
 
@@ -367,7 +456,8 @@ namespace DevilDaggersCore.Game
 			GameVersion.V1 => _v1Daggers,
 			GameVersion.V2 => _v2Daggers,
 			GameVersion.V3 => _v3Daggers,
-			_ => _v31Daggers,
+			GameVersion.V31 => _v31Daggers,
+			_ => _v32Daggers,
 		};
 
 		public static List<Death> GetDeaths(GameVersion gameVersion) => gameVersion switch
@@ -375,7 +465,8 @@ namespace DevilDaggersCore.Game
 			GameVersion.V1 => _v1Deaths,
 			GameVersion.V2 => _v2Deaths,
 			GameVersion.V3 => _v3Deaths,
-			_ => _v31Deaths,
+			GameVersion.V31 => _v31Deaths,
+			_ => _v32Deaths,
 		};
 
 		public static List<Enemy> GetEnemies(GameVersion gameVersion) => gameVersion switch
@@ -383,7 +474,8 @@ namespace DevilDaggersCore.Game
 			GameVersion.V1 => _v1Enemies,
 			GameVersion.V2 => _v2Enemies,
 			GameVersion.V3 => _v3Enemies,
-			_ => _v31Enemies,
+			GameVersion.V31 => _v31Enemies,
+			_ => _v32Enemies,
 		};
 
 		public static List<Upgrade> GetUpgrades(GameVersion gameVersion) => gameVersion switch
@@ -391,7 +483,8 @@ namespace DevilDaggersCore.Game
 			GameVersion.V1 => _v1Upgrades,
 			GameVersion.V2 => _v2Upgrades,
 			GameVersion.V3 => _v3Upgrades,
-			_ => _v31Upgrades,
+			GameVersion.V31 => _v31Upgrades,
+			_ => _v32Upgrades,
 		};
 
 		public static Enemy? GetEnemyBySpawnsetType(GameVersion gameVersion, int spawnsetType)
@@ -419,6 +512,6 @@ namespace DevilDaggersCore.Game
 		}
 
 		public static IEnumerable<GameVersion> GetAppearances(string entityName)
-			=> _entities.Where(e => e.Name == entityName && e.GameVersion != GameVersion.V31).Select(e => e.GameVersion);
+			=> _entities.Where(e => e.Name == entityName && !(e.GameVersion is GameVersion.V31 or GameVersion.V32)).Select(e => e.GameVersion);
 	}
 }
