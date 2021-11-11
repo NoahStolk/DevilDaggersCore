@@ -1009,6 +1009,13 @@
 		"AssetName": "pedeblackbody"
 	},
 	{
+		"DefaultWidth": 128,
+		"DefaultHeight": 128,
+		"IsModelTexture": true,
+		"ModelBinding": "",
+		"AssetName": "pedeblackbodyfragged"
+	},
+	{
 		"DefaultWidth": 256,
 		"DefaultHeight": 256,
 		"IsModelTexture": true,
@@ -1034,6 +1041,13 @@
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
+		"AssetName": "pedeblackleg1fragged"
+	},
+	{
+		"DefaultWidth": 32,
+		"DefaultHeight": 32,
+		"IsModelTexture": true,
+		"ModelBinding": "",
 		"AssetName": "pedeblackleg2"
 	},
 	{
@@ -1041,7 +1055,21 @@
 		"DefaultHeight": 32,
 		"IsModelTexture": true,
 		"ModelBinding": "",
+		"AssetName": "pedeblackleg2fragged"
+	},
+	{
+		"DefaultWidth": 32,
+		"DefaultHeight": 32,
+		"IsModelTexture": true,
+		"ModelBinding": "",
 		"AssetName": "pedeblackleg3"
+	},
+	{
+		"DefaultWidth": 32,
+		"DefaultHeight": 32,
+		"IsModelTexture": true,
+		"ModelBinding": "",
+		"AssetName": "pedeblackleg3fragged"
 	},
 	{
 		"DefaultWidth": 128,
