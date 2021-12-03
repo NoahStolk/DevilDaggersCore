@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore", "DevilDaggersCore\DevilDaggersCore.csproj", "{AFC09672-34F0-4BA0-BEE3-5F059A39516C}"
 EndProject
@@ -9,7 +8,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf", "Dev
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf.TestApp", "DevilDaggersCore.Wpf.TestApp\DevilDaggersCore.Wpf.TestApp.csproj", "{3E84A4D0-F410-4CAE-AF8D-03783C31F992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevilDaggersCore.Tests", "DevilDaggersCore.Tests\DevilDaggersCore.Tests.csproj", "{AB869696-999B-4ED0-879F-824A707BE4C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Tests", "DevilDaggersCore.Tests\DevilDaggersCore.Tests.csproj", "{AB869696-999B-4ED0-879F-824A707BE4C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFD8500F-818F-4189-A6AC-4562E63639F0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
