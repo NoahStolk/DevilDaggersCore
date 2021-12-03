@@ -1,32 +1,31 @@
 using System;
 
-namespace DevilDaggersCore.Extensions
+namespace DevilDaggersCore.Extensions;
+
+public static class StringExtensions
 {
-	public static class StringExtensions
+	public static string TrimEnd(this string s, string value)
 	{
-		public static string TrimEnd(this string s, string value)
-		{
-			if (!s.EndsWith(value))
-				return s;
+		if (!s.EndsWith(value))
+			return s;
 
-			return s.Remove(s.LastIndexOf(value));
-		}
+		return s.Remove(s.LastIndexOf(value));
+	}
 
-		public static string Reverse(this string s)
-		{
-			char[] charArray = s.ToCharArray();
-			Array.Reverse(charArray);
+	public static string Reverse(this string s)
+	{
+		char[] charArray = s.ToCharArray();
+		Array.Reverse(charArray);
 
-			return new string(charArray);
-		}
+		return new string(charArray);
+	}
 
-		public static string TrimAfter(this string s, int count, bool appendThreePeriods = false)
-		{
-			if (s.Length <= count)
-				return s;
+	public static string TrimAfter(this string s, int count, bool appendThreePeriods = false)
+	{
+		if (s.Length <= count)
+			return s;
 
-			string subString = s.Substring(0, count);
-			return appendThreePeriods ? $"{subString}..." : subString;
-		}
+		string subString = s.Substring(0, count);
+		return appendThreePeriods ? $"{subString}..." : subString;
 	}
 }

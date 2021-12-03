@@ -1,21 +1,20 @@
 using System.Diagnostics;
 
-namespace DevilDaggersCore.Utils
-{
-	public static class ProcessUtils
-	{
-		public static Process? GetDevilDaggersProcess(string processName = "dd", string processWindowTitle = "Devil Daggers")
-		{
-			foreach (Process process in Process.GetProcessesByName(processName))
-			{
-				if (process.MainWindowTitle == processWindowTitle)
-					return process;
-			}
+namespace DevilDaggersCore.Utils;
 
-			return null;
+public static class ProcessUtils
+{
+	public static Process? GetDevilDaggersProcess(string processName = "dd", string processWindowTitle = "Devil Daggers")
+	{
+		foreach (Process process in Process.GetProcessesByName(processName))
+		{
+			if (process.MainWindowTitle == processWindowTitle)
+				return process;
 		}
 
-		public static void OpenUrl(string url)
-			=> Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+		return null;
 	}
+
+	public static void OpenUrl(string url)
+		=> Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
 }

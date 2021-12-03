@@ -2,22 +2,21 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace DevilDaggersCore.Wpf.Windows
+namespace DevilDaggersCore.Wpf.Windows;
+
+public partial class CheckingForUpdatesWindow : Window
 {
-	public partial class CheckingForUpdatesWindow : Window
+	public CheckingForUpdatesWindow(Func<bool> getOnlineToolFunction)
 	{
-		public CheckingForUpdatesWindow(Func<bool> getOnlineToolFunction)
-		{
-			InitializeComponent();
+		InitializeComponent();
 
-			using BackgroundWorker thread = new();
-			thread.DoWork += (sender, e) => getOnlineToolFunction();
-			thread.RunWorkerCompleted += (sender, e) => Close();
+		using BackgroundWorker thread = new();
+		thread.DoWork += (sender, e) => getOnlineToolFunction();
+		thread.RunWorkerCompleted += (sender, e) => Close();
 
-			thread.RunWorkerAsync();
-		}
-
-		private void CancelButton_Click(object sender, RoutedEventArgs e)
-			=> Close();
+		thread.RunWorkerAsync();
 	}
+
+	private void CancelButton_Click(object sender, RoutedEventArgs e)
+		=> Close();
 }

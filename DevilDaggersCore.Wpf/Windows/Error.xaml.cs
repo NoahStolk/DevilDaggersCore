@@ -1,31 +1,30 @@
 using System;
 using System.Windows;
 
-namespace DevilDaggersCore.Wpf.Windows
+namespace DevilDaggersCore.Wpf.Windows;
+
+public partial class ErrorWindow : Window
 {
-	public partial class ErrorWindow : Window
+	public ErrorWindow(string errorTitle, string errorMessage, Exception? exception)
 	{
-		public ErrorWindow(string errorTitle, string errorMessage, Exception? exception)
+		InitializeComponent();
+
+		Title = errorTitle;
+		ErrorMessage = errorMessage;
+		Exception = exception;
+
+		if (exception != null)
 		{
-			InitializeComponent();
-
-			Title = errorTitle;
-			ErrorMessage = errorMessage;
-			Exception = exception;
-
-			if (exception != null)
-			{
-				ExceptionStackPanel.DataContext = exception;
-				ExceptionStackPanel.Visibility = Visibility.Visible;
-			}
-
-			Error.DataContext = this;
+			ExceptionStackPanel.DataContext = exception;
+			ExceptionStackPanel.Visibility = Visibility.Visible;
 		}
 
-		public string ErrorMessage { get; set; }
-		public Exception? Exception { get; set; }
-
-		private void OkButton_Click(object sender, RoutedEventArgs e)
-			=> DialogResult = true;
+		Error.DataContext = this;
 	}
+
+	public string ErrorMessage { get; set; }
+	public Exception? Exception { get; set; }
+
+	private void OkButton_Click(object sender, RoutedEventArgs e)
+		=> DialogResult = true;
 }

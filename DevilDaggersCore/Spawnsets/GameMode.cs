@@ -1,8 +1,7 @@
-namespace DevilDaggersCore.Spawnsets
+namespace DevilDaggersCore.Spawnsets;
+
+public enum GameMode
 {
-	public enum GameMode
-	{
-		Default = 0,
-		TimeAttack = 1,
-	}
+	Default = 0,
+	TimeAttack = 1,
 }

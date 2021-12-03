@@ -1,11 +1,10 @@
-namespace DevilDaggersCore.Mods
+namespace DevilDaggersCore.Mods;
+
+public enum AssetType
 {
-	public enum AssetType
-	{
-		Audio,
-		Model,
-		ModelBinding,
-		Shader,
-		Texture,
-	}
+	Audio,
+	Model,
+	ModelBinding,
+	Shader,
+	Texture,
 }

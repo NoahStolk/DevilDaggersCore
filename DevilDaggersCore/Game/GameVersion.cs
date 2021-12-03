@@ -1,11 +1,10 @@
-namespace DevilDaggersCore.Game
+namespace DevilDaggersCore.Game;
+
+public enum GameVersion
 {
-	public enum GameVersion
-	{
-		V1 = 1,
-		V2 = 2,
-		V3 = 3,
-		V31 = 4,
-		V32 = 5,
-	}
+	V1 = 1,
+	V2 = 2,
+	V3 = 3,
+	V31 = 4,
+	V32 = 5,
 }
