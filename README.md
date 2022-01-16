@@ -6,7 +6,6 @@
 DevilDaggersCore is a class library created for various Devil Daggers related applications.
 
 ## Used in
-- [devildaggers.info](https://devildaggers.info/)
 - [DevilDaggersSurvivalEditor](https://github.com/NoahStolk/DevilDaggersSurvivalEditor)
 - [DevilDaggersCustomLeaderboards](https://github.com/NoahStolk/DevilDaggersCustomLeaderboards)
 - [DevilDaggersAssetEditor](https://github.com/NoahStolk/DevilDaggersAssetEditor)
@@ -14,7 +13,7 @@ DevilDaggersCore is a class library created for various Devil Daggers related ap
 ## License
 MIT License
 
-Copyright (c) 2018-2021 Noah Stolk
+Copyright (c) 2018-2022 Noah Stolk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
