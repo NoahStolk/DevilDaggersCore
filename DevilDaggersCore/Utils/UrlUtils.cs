@@ -17,6 +17,4 @@ public static class UrlUtils
 	public static string ApiGetTool(string toolName) => $"{BaseUrl}api/tools/{toolName}/file";
 
 	public static Uri SourceCodeUrl(string toolName) => new($"https://github.com/NoahStolk/{toolName}");
-
-	public static string CustomLeaderboardPage(string spawnsetFileName) => $"{BaseUrl}CustomLeaderboards/Leaderboard?spawnset={spawnsetFileName}";
 }
