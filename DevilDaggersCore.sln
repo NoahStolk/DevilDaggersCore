@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf", "Dev
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf.TestApp", "DevilDaggersCore.Wpf.TestApp\DevilDaggersCore.Wpf.TestApp.csproj", "{3E84A4D0-F410-4CAE-AF8D-03783C31F992}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Tests", "DevilDaggersCore.Tests\DevilDaggersCore.Tests.csproj", "{AB869696-999B-4ED0-879F-824A707BE4C5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFD8500F-818F-4189-A6AC-4562E63639F0}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -64,18 +62,6 @@ Global
 		{3E84A4D0-F410-4CAE-AF8D-03783C31F992}.Release|x64.Build.0 = Release|Any CPU
 		{3E84A4D0-F410-4CAE-AF8D-03783C31F992}.Release|x86.ActiveCfg = Release|Any CPU
 		{3E84A4D0-F410-4CAE-AF8D-03783C31F992}.Release|x86.Build.0 = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|x64.Build.0 = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Debug|x86.Build.0 = Debug|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|x64.ActiveCfg = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|x64.Build.0 = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|x86.ActiveCfg = Release|Any CPU
-		{AB869696-999B-4ED0-879F-824A707BE4C5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
