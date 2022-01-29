@@ -1,9 +1,8 @@
 [![NuGet Version](https://img.shields.io/nuget/v/DevilDaggersCore.svg)](https://www.nuget.org/packages/DevilDaggersCore/)
 [![NuGet Version](https://img.shields.io/nuget/v/DevilDaggersCore.Wpf.svg)](https://www.nuget.org/packages/DevilDaggersCore.Wpf/)
-[![Scc Count Badge](https://sloc.xyz/github/NoahStolk/DevilDaggersCore/)](https://github.com/NoahStolk/DevilDaggersCore/)
 
 # DevilDaggersCore
-DevilDaggersCore is a class library created for various Devil Daggers related applications.
+DevilDaggersCore is a class library created for various Devil Daggers related applications. **These packages will no longer receive new features, and will eventually be deprecated.**
 
 ## Used in
 - [DevilDaggersSurvivalEditor](https://github.com/NoahStolk/DevilDaggersSurvivalEditor)
