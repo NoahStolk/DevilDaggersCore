@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore", "DevilDaggersCore\DevilDaggersCore.csproj", "{AFC09672-34F0-4BA0-BEE3-5F059A39516C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf", "DevilDaggersCore.Wpf\DevilDaggersCore.Wpf.csproj", "{6D76D094-82B0-43F4-B122-DED18BDA2EB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevilDaggersCore.Wpf.TestApp", "DevilDaggersCore.Wpf.TestApp\DevilDaggersCore.Wpf.TestApp.csproj", "{3E84A4D0-F410-4CAE-AF8D-03783C31F992}"
@@ -26,18 +24,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|x64.Build.0 = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Debug|x86.Build.0 = Debug|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|x64.ActiveCfg = Release|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|x64.Build.0 = Release|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|x86.ActiveCfg = Release|Any CPU
-		{AFC09672-34F0-4BA0-BEE3-5F059A39516C}.Release|x86.Build.0 = Release|Any CPU
 		{6D76D094-82B0-43F4-B122-DED18BDA2EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D76D094-82B0-43F4-B122-DED18BDA2EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D76D094-82B0-43F4-B122-DED18BDA2EB8}.Debug|x64.ActiveCfg = Debug|Any CPU
