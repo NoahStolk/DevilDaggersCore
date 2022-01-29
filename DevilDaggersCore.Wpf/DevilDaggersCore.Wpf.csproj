@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>DevilDaggersCore.Wpf</PackageId>
-    <Version>1.4.0</Version>
+    <Version>2.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -23,8 +23,5 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DevilDaggersCore\DevilDaggersCore.csproj" />
   </ItemGroup>
 </Project>

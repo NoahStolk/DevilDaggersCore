@@ -1,4 +1,5 @@
-using DevilDaggersCore.Utils;
+using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace DevilDaggersCore.Wpf.Windows;
@@ -20,7 +21,8 @@ public partial class UpdateRecommendedWindow : Window
 
 	private void DownloadButton_Click(object sender, RoutedEventArgs e)
 	{
-		ProcessUtils.OpenUrl(UrlUtils.ApiGetTool(_applicationName));
+		Uri baseUrl = new("https://devildaggers.info");
+		Process.Start(new ProcessStartInfo($"{baseUrl}api/tools/{_applicationName}/file") { UseShellExecute = true });
 		Close();
 	}
 }
