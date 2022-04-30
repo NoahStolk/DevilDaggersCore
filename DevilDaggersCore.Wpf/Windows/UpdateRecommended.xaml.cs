@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.Windows;
 
@@ -6,12 +5,12 @@ namespace DevilDaggersCore.Wpf.Windows;
 
 public partial class UpdateRecommendedWindow : Window
 {
-	private readonly string _applicationName;
+	private readonly string _fullDownloadUrl;
 	private readonly string _applicationDisplayName;
 
-	public UpdateRecommendedWindow(string onlineVersion, string localVersion, string applicationName, string applicationDisplayName)
+	public UpdateRecommendedWindow(string onlineVersion, string localVersion, string fullDownloadUrl, string applicationDisplayName)
 	{
-		_applicationName = applicationName;
+		_fullDownloadUrl = fullDownloadUrl;
 		_applicationDisplayName = applicationDisplayName;
 
 		InitializeComponent();
@@ -21,8 +20,7 @@ public partial class UpdateRecommendedWindow : Window
 
 	private void DownloadButton_Click(object sender, RoutedEventArgs e)
 	{
-		Uri baseUrl = new("https://devildaggers.info");
-		Process.Start(new ProcessStartInfo($"{baseUrl}api/tools/{_applicationName}/file") { UseShellExecute = true });
+		Process.Start(new ProcessStartInfo(_fullDownloadUrl) { UseShellExecute = true });
 		Close();
 	}
 }
