@@ -34,13 +34,10 @@
 			<Setter Property="Foreground" Value="{StaticResource Text}" />
 		</Style.Setters>
 	</Style>
-	<Style TargetType="{x:Type windows:ChangelogWindow}" BasedOn="{StaticResource {x:Type Window}}" />
-	<Style TargetType="{x:Type windows:CheckingForUpdatesWindow}" BasedOn="{StaticResource {x:Type Window}}" />
 	<Style TargetType="{x:Type windows:ConfirmWindow}" BasedOn="{StaticResource {x:Type Window}}" />
 	<Style TargetType="{x:Type windows:DebugWindow}" BasedOn="{StaticResource {x:Type Window}}" />
 	<Style TargetType="{x:Type windows:ErrorWindow}" BasedOn="{StaticResource {x:Type Window}}" />
 	<Style TargetType="{x:Type windows:MessageWindow}" BasedOn="{StaticResource {x:Type Window}}" />
-	<Style TargetType="{x:Type windows:UpdateRecommendedWindow}" BasedOn="{StaticResource {x:Type Window}}" />
 
 	<!-- CONTROLS -->
 	<Style TargetType="{x:Type Hyperlink}">
